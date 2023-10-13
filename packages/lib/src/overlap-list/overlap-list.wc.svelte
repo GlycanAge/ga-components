@@ -8,7 +8,15 @@
 <script lang="ts">
 	import { Language } from '../shared/interfaces/language.interface';
 
+	/**
+	 * Language of the rendered list
+	 */
 	export let language: Language;
+
+	/**
+	 * ID of the report
+	 */
+	export let report: string;
 
 	const items: Array<{
 		id: string;
