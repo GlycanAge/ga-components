@@ -19,6 +19,10 @@
 	export let report: string;
 </script>
 
-<div style="background-color: #CBDBD1; width: 100%; height: 100%; border-radius: 12px;">
+<div style="background-color: #CBDBD1; width: 400px; height: 210px; border-radius: 12px;">
 	<span>{report}</span>
+	<p>lorem ipsum lorem ipsum lorem ipsum lorem ipsum</p>
+	<p>lorem ipsum lorem ipsum lorem ipsum lorem ipsum</p>
+	<p>lorem ipsum lorem ipsum lorem ipsum lorem ipsum</p>
+	<p>lorem ipsum lorem ipsum lorem ipsum lorem ipsum</p>
 </div>
