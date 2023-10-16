@@ -16,9 +16,9 @@
 	/**
 	 * ID of the report
 	 */
-	export let reportData: any;
+	export let report: string;
 </script>
 
 <div style="background-color: #CBDBD1; width: 100%; height: 100%; border-radius: 12px;">
-	{reportData}
+	<span>{report}</span>
 </div>

@@ -8,9 +8,10 @@
    
   });
 </script>
+
 <div bind:this={el} class="p-4" style="background-color: lightcyan;">
     <div style="width: 400px; height: 210px; background-color: red;">
-        <ga-arthritis reportData="1K4GyKDgsB9ATQflwio7"></ga-arthritis>
+        <ga-arthritis report="1K4GyKDgsB9ATQflwio7"></ga-arthritis>
     </div>
 </div>
 
