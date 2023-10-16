@@ -19,7 +19,8 @@ export default defineConfig({
       output: {
         inlineDynamicImports: false,
         chunkFileNames: '[name].js',
-        manualChunks: { svelte: ['svelte'] }
+        // TODO: Check 16.10.2023.
+        // manualChunks: { svelte: ['svelte'] }
       }
     }
   },
