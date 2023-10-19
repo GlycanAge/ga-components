@@ -1,8 +1,7 @@
 <svelte:options customElement={{tag: "ga-arthritis",shadow: "open",}}/>
 
 <script lang="ts">
-    import {Language} from '../shared/interfaces/language.interface';
-    import TriangleSmallDown from 'svelte-material-icons/TriangleSmallDown.svelte';
+    import type {Language} from '../shared/interfaces/language.interface';
     // Language of the rendered list
     export let language: Language;
 
@@ -131,7 +130,7 @@
                      style="padding: {getPadding(res1, mid1, perc1)}; margin: {getMargin(res1, mid1, perc1)}; border-radius: {getBorderRadius(res1, mid1, perc1)}">
                     <div class="resultDisplay" style="right: {moveDiv(res1, mid1, perc1)};">
                         <div class="message"><b>{res1} ({perc1}<sup>{suffix(perc1)}</sup> percentile)</b></div>
-                        <TriangleSmallDown color="#33664D" size="22"/>
+                        <div class="triangle-down"></div>
                     </div>
                 </div>
             </div>
@@ -150,7 +149,7 @@
                      style="padding: {getPadding(res2, mid2, perc2)}; margin: {getMargin(res2, mid2, perc2)}; border-radius: {getBorderRadius(res2, mid2, perc2)}">
                     <div class="resultDisplay" style="right: {moveDiv(res2, mid2, perc2)};">
                         <div class="message"><b>{res2} ({perc2}<sup>{suffix(perc2)}</sup> percentile)</b></div>
-                        <TriangleSmallDown color="#33664D" size="22"/>
+                       <div class="triangle-down"></div>
                     </div>
                 </div>
             </div>
@@ -169,7 +168,7 @@
                      style="padding: {getPadding(res3, mid3, perc3)}; margin: {getMargin(res3, mid3, perc3)}; border-radius: {getBorderRadius(res3, mid3, perc3)}">
                     <div class="resultDisplay" style="right: {moveDiv(res3, mid3, perc3)};">
                         <div class="message"><b>{res3} ({perc3}<sup>{suffix(perc3)}</sup> percentile)</b></div>
-                       <TriangleSmallDown color="#33664D" size="22"/>
+                      <div class="triangle-down"></div>
                     </div>
                 </div>
             </div>
@@ -342,5 +341,15 @@
         min-width: 100px;
         font-size: 0.5rem;
         margin-bottom: -6px;
+    }
+
+    .triangle-down {
+        margin-top: 0.5rem;
+        margin-bottom: 0.4rem;
+        width: 0;
+        height: 0;
+        border-left: 4px solid transparent;
+        border-right: 4px solid transparent;
+        border-top: 8px solid #33664D;
     }
 </style>
