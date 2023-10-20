@@ -12,7 +12,7 @@
     let max1 = 0.185; // G0xmax
     let mid1 = 0.133; // G0xaverage
     let res1 = 0.141; // G0yourscore
-    let perc1 = 72; // G0percentile
+    let perc1 = 100; // G0percentile
 
     let min2 = 0.091; // G1xmin
     let max2 = 0.216; // G1xmax
@@ -184,8 +184,8 @@
 
 <style>
     .main {
-        width: 400px;
-        height: 210px;
+        width: 530px;
+        height: 230px;
         background-color: #F0F6F5;
         border: 2px solid #C8DBD0;
         border-radius: 12px;
