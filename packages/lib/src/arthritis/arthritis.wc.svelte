@@ -184,8 +184,8 @@
 
 <style>
     .main {
-        width: 530px;
-        height: 230px;
+        width: 400px;
+        height: 210px;
         background-color: #F0F6F5;
         border: 2px solid #C8DBD0;
         border-radius: 12px;
