@@ -11,8 +11,8 @@
     let min1 = 0.081; // G0xmin
     let max1 = 0.185; // G0xmax
     let mid1 = 0.133; // G0xaverage
-    let res1 = 0.110; // G0yourscore
-    let perc1 = 12; // G0percentile
+    let res1 = 0.133; // G0yourscore
+    let perc1 = 50; // G0percentile
 
     let min2 = 0.091; // G1xmin
     let max2 = 0.216; // G1xmax
@@ -38,12 +38,12 @@
         } else {
             if (res > mid) {
                 return perc > 90
-                    ? `0 ${perc - 37 + (1.55 * (perc-51))}px 0 0`
-                    : `0 ${perc - 37 + (1.6 * (perc-51))}px 0 0`;
+                    ? `0 ${perc - 68 + (1.9 * (perc-51))}px 0 0`
+                    : `0 ${perc - 37 + (1.18 * (perc-51))}px 0 0`;
             } else {
                 return perc < 10
-                    ? `0 0 0 ${100 - perc - 37 + (1.6 * (100 - perc-51))}px`
-                    : `0 0 0 ${100 - perc - 37 + (1.7 * (100 - perc-51))}px`;
+                    ? `0 0 0 ${100 - perc - 51 + (1.6 * (100 - perc-51))}px`
+                    : `0 0 0 ${100 - perc - 37 + (1.2 * (100 - perc-51))}px`;
             }
         }
     }
@@ -54,12 +54,12 @@
         } else {
             if (res > mid) {
                 return perc > 90
-                    ? `0 0 0 ${perc - 37 + 4 + (1.55 * (perc-51))}px`
-                    : `0 0 0 ${perc - 37 + 4 + (1.6 * (perc-51))}px`;
+                    ? `0 0 0 ${perc - 68 + 4 + (1.9 * (perc-51))}px`
+                    : `0 0 0 ${perc - 37 + 4 + (1.18 * (perc-51))}px`;
             } else {
                 return perc < 10
-                    ? `0 ${(100 - perc - 37) + 4 + (1.6 * (100 - perc -51))}px 0 0`
-                    : `0 ${(100 - perc - 37) + 4 + (1.7 * (100 - perc -51))}px 0 0`;
+                    ? `0 ${(100 - perc - 51) + 4 + (1.6 * (100 - perc -51))}px 0 0`
+                    : `0 ${(100 - perc - 37) + 4 + (1.2 * (100 - perc -51))}px 0 0`;
             }
         }
     }
@@ -78,31 +78,31 @@
 
     function moveDiv(res: number, mid: number, perc: number) {
         if (perc === 50) {
-            return `-1030%`;
+            return `-1150%`;
         } else {
             if (res > mid) {
-                if (perc > 50 && perc < 55) {return `${-270 + (perc-51) * 30}%`;}
-                if (perc >= 55 && perc < 60) {return `${-170 + (perc-55) * 10}%`;}
-                if (perc >= 60 && perc < 65) {return `${-120 + (perc-60) * 8}%`;}
-                if (perc >= 65 && perc < 70) {return `${-90 + (perc-65 + 2) * 2}%`;}
-                if (perc >= 70 && perc < 75) {return `${-70 + (perc-70) * 2}%`;}
-                if (perc >= 75 && perc < 80) {return `${-60 + (perc-75) * 2}%`;}
-                if (perc >= 80 && perc < 85) {return `${-52 + (perc-80-1) * 2}%`;}
-                if (perc >= 85 && perc < 90) {return `${-48 + (perc-85) * 2}%`;}
-                if (perc >= 90 && perc < 95) {return `${-40}%`;}
-                if (perc >= 95) {return `${-38 + (perc-95-1)}%`;}
+                if (perc > 50 && perc < 55) {return `${-270 + (perc-51) * 25}%`;}
+                if (perc >= 55 && perc < 60) {return `${-175 + (perc-55) * 10}%`;}
+                if (perc >= 60 && perc < 65) {return `${-130 + (perc-60) * 6.5}%`;}
+                if (perc >= 65 && perc < 70) {return `${-105 + (perc-65 + 2) * 3}%`;}
+                if (perc >= 70 && perc < 75) {return `${-82 + (perc-70) * 2.5}%`;}
+                if (perc >= 75 && perc < 80) {return `${-70 + (perc-75) * 2}%`;}
+                if (perc >= 80 && perc < 85) {return `${-58 + (perc-80-1) * 1.2}%`;}
+                if (perc >= 85 && perc < 90) {return `${-53 + (perc-85)}%`;}
+                if (perc >= 90 && perc < 95) {return `${-48 + (perc-90)}%`;}
+                if (perc >= 95) {return `${-42 + (perc-95-1)}%`;}
             } else
             {
-                if (perc >= 0 && perc <= 5){return `${61 + ((100 - perc - 95)*1.1)}%`;}
-                if (perc > 5 && perc <= 10){return `${60}%`;}
-                if (perc > 10 && perc <= 15){return `${54 + ((100 - perc - 85)*1.4)}%`;}
-                if (perc > 15 && perc <= 20) {return `${48 + ((100 - perc - 80)*1.7)}%`;}
-                if (perc > 20 && perc <= 25) {return `${40 + ((100 - perc - 75)*2)}%`;}
-                if (perc > 25 && perc <= 30) {return `${28 + ((100 - perc - 70)*3)}%`;}
-                if (perc > 30 && perc <= 35) {return `${10 + ((100 - perc - 65)*4)}%`;}
-                if (perc > 35 && perc <= 40) {return `${-20 + ((100 - perc - 60)*8)}%`;}
-                if (perc > 40 && perc <= 45) {return `${-70 + ((100 - perc - 55)*12)}%`;}
-                if (perc > 45) {return `${-170 + ((100 - perc - 51)*30)}%`;}
+                if (perc >= 0 && perc <= 5){return `${57 + ((100 - perc - 95))}%`;}
+                if (perc > 5 && perc <= 10){return `${53+ ((100 - perc - 90))}%`;}
+                if (perc > 10 && perc <= 15){return `${47 + ((100 - perc - 85))}%`;}
+                if (perc > 15 && perc <= 20) {return `${41 + ((100 - perc - 80))}%`;}
+                if (perc > 20 && perc <= 25) {return `${32 + ((100 - perc - 75))}%`;}
+                if (perc > 25 && perc <= 30) {return `${18 + ((100 - perc - 70)*2)}%`;}
+                if (perc > 30 && perc <= 35) {return `${1 + ((100 - perc - 65)*3)}%`;}
+                if (perc > 35 && perc <= 40) {return `${-30 + ((100 - perc - 60)*6)}%`;}
+                if (perc > 40 && perc <= 45) {return `${-85 + ((100 - perc - 55)*12)}%`;}
+                if (perc > 45) {return `${-230 + ((100 - perc - 49)*(25))}%`;}
             }
         }
     }
@@ -209,8 +209,8 @@
 
 <style>
     .main {
-        width: 530px;
-        height: 320px;
+        width: 450px;
+        height: 280px;
         background-color: #F0F6F5;
         border: 2px solid #C8DBD0;
         border-radius: 12px;
@@ -221,15 +221,15 @@
 
     .row {
         width: 100%;
-        height: 23%;
-        max-height: 58px;
+        height: 16%;
         display: flex;
+        margin: 0.2rem 0 0.2rem 0;
     }
 
     .label {
         width: 14%;
         height: 100%;
-        margin-left: 2.5rem;
+        margin-left: 1.5rem;
         font-size: 0.8rem;
         line-height: 0.9rem;
         display: flex;
@@ -242,14 +242,13 @@
         width: 86%;
         height: 100%;
         position: relative;
-        margin-right: 1rem;
     }
 
     .min {
         position: absolute;
         top: 34%;
         left: 1.6%;
-        font-size: 0.7rem;
+        font-size: 0.6rem;
         color: #6B8678;
     }
 
@@ -311,7 +310,7 @@
 
     .yAxis {
         position: absolute;
-        left: 49.75%;
+        left: 49.72%;
         width: 0.1rem;
         height: 88%;
         background-color: #08341F;
@@ -322,7 +321,7 @@
         position: absolute;
         top: 34%;
         right: 5.5%;
-        font-size: 0.7rem;
+        font-size: 0.6rem;
         color: #6B8678;
     }
 
@@ -355,7 +354,7 @@
 
     .resultDisplay {
         position: absolute;
-        bottom: 60%;
+        bottom: 50%;
         display: flex;
         align-items: center;
         flex-direction: column;
@@ -365,17 +364,17 @@
         color: #33664D;
         z-index: 99999;
         min-width: 100px;
-        font-size: 0.5rem;
+        font-size: 0.48rem;
         margin-bottom: -6px;
     }
 
     .triangle-down {
-        margin-top: 0.5rem;
+        margin-top: 0.6rem;
         margin-bottom: 0.4rem;
         width: 0;
         height: 0;
-        border-left: 4px solid transparent;
-        border-right: 4px solid transparent;
-        border-top: 8px solid #33664D;
+        border-left: 3px solid transparent;
+        border-right: 3px solid transparent;
+        border-top: 6px solid #33664D;
     }
 </style>
