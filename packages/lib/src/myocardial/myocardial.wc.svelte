@@ -1,4 +1,4 @@
-<svelte:options customElement={{tag: "ga-arthritis",shadow: "open",}}/>
+<svelte:options customElement={{tag: "ga-myocardial",shadow: "open",}}/>
 
 <script lang="ts">
     import type {Language} from '../shared/interfaces/language.interface';
@@ -12,65 +12,51 @@
 
     export let type: string;
 
-    let min1 = 0.081; // G0xmin
-    let max1 = 0.185; // G0xmax
-    let mid1 = 0.133; // G0xaverage
-    let res1 = 0.155; // G0yourscore
-    let perc1 = 51; // G0percentile
-
-    let min2 = 0.091; // G1xmin
-    let max2 = 0.216; // G1xmax
-    let mid2 = 0.150;  // G1xaverage
-    let res2 = 0.144; // G1yourscore
-    let perc2 = 33; // G1percentile
-
-    let min3 = 0.109; // G2xmin
-    let max3 = 0.175; // G2xmax
-    let mid3 = 0.141; //G2xaverage
-    let res3 = 0.133; // G2yourscore
-    let perc3 = 33; // G2percentile
+    let min1 = 0.081; // P22xmin
+    let max1 = 0.185; // P22xmax
+    let mid1 = 0.133; // P22xaverage
+    let res1 = 0.135; // P22yourscore
+    let perc1 = 51; // P22percentile
 
     let overlap = false;
-    let someOverlap = false;
     let noOverlap = false;
 
     function getColor() {
-        if (res1 > mid1 && res2 < mid2 && res3 < mid3) {
+        if (perc1 === 50) {
+            return 'green';
+        }
+        if (res1 > mid1) {
             return '#d90202';
         }
-        if (res1 > mid1 || res2 < mid2 || res3 < mid3) {
-            return 'darkorange';
-        }
 
-        if (res1 < mid1 && res2 > mid2 && res3 > mid3) {
+        if (res1 < mid1) {
             return 'green';
         }
         return 'green';
     }
 
     function getBackground() {
-        if (res1 > mid1 && res2 < mid2 && res3 < mid3) {
+        if (perc1 === 50) {
+            return '#d4fad4';
+        }
+        if (res1 > mid1) {
             return '#fad2d2';
         }
-        if (res1 > mid1 || res2 < mid2 || res3 < mid3) {
-            return '#fce9d3';
-        }
-
-        if (res1 < mid1 && res2 > mid2 && res3 > mid3) {
+        if (res1 < mid1) {
             return '#d4fad4';
         }
         return '#d4fad4';
     }
 
     function getWording() {
-        if (res1 > mid1 && res2 < mid2 && res3 < mid3) {
+        if (perc1 === 50) {
+            return 'no significant overlap';
+        }
+        if (res1 > mid1) {
             return 'a significant overlap';
         }
-        if (res1 > mid1 || res2 < mid2 || res3 < mid3) {
-            return 'some overlap';
-        }
 
-        if (res1 < mid1 && res2 > mid2 && res3 > mid3) {
+        if (res1 < mid1) {
             return 'no significant overlap';
         }
 
@@ -78,16 +64,16 @@
     }
 
     onMount(() => {
-        if (res1 > mid1 && res2 < mid2 && res3 < mid3) {
+        if (perc1 === 50) {
+            noOverlap = true;
+            return;
+        }
+        if (res1 > mid1) {
             overlap = true;
             return;
         }
-        if (res1 > mid1 || res2 < mid2 || res3 < mid3) {
-            someOverlap = true;
-            return;
-        }
 
-        if (res1 < mid1 && res2 > mid2 && res3 > mid3) {
+        if (res1 < mid1) {
             noOverlap = true;
             return;
         }
@@ -106,52 +92,45 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#d90202" d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"/></svg>
             &nbsp; Significant overlap
         {/if}
-        {#if someOverlap}
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="darkorange" d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"/></svg>
-            &nbsp;Some overlap
-        {/if}
         {#if noOverlap}
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="green" d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"/></svg>
             &nbsp; No overlap
         {/if}
     </div>
- {:else if type === 'summary'}
-     <div class="summaryMain" style="border: 2px solid {getColor()};">
+{:else if type === 'summary'}
+    <div class="summaryMain" style="border: 2px solid {getColor()};">
         <div class="summaryHeader" style="background-color: {getBackground()}; border-bottom: 2px solid {getColor()};">
             <div style="width: 10%; padding-left: 1.5rem; padding-right: 1rem;">
                 {#if overlap}
                     <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"><path fill="#d90202" d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"/></svg>
                 {/if}
-                {#if someOverlap}
-                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"><path fill="darkorange" d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"/></svg>
-                {/if}
                 {#if noOverlap}
                     <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"><path fill="green" d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"/></svg>
                 {/if}
             </div>
-            <div style="width: 90%;">There is <b>{getWording()}</b> of glycan indexes between <br> your patient and rheumatoid arthritis patients.</div>
+            <div style="width: 90%; font-size: 0.8rem;">There is <b>{getWording()}</b> of glycan indexes between <br> your patient and myocardial infarction and stroke <br> cases patients.</div>
         </div>
         <div class="summaryBody">
-             <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptomps to check for:</div>
-             <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Joint pain and stiffnes:</b> The immune attack on synovium leads to
-                 inflammation <br>, causing pain and stiffness in the affected joints.</div>
-             <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Swelling:</b> Persistent inflammation can cause noticeable joint swelling.</div>
-             <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Symmetrical joint involvement:</b> RA often affects joints on both sides of the
-                 body <br> simultaneously, indicating an autoimmune process.</div>
-             <div style="font-size: 1.2rem; padding-top: 1.2rem;padding-bottom: 1rem;">Possible follow-up tests:</div>
-             <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Rheumatoid factor (RF) test:</b> This blood test detects the presence of <br>RF
-                 antibodies, commonly found in RA patients.</div>
-             <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Anti cyclic citrullinated peptide (anti-CCP) test:</b> : This blood test detects the <br> presence of RF
-                 antibodies, commonly found in RA patients.</div>
-             <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Joint imaging (X-rays, MRI):</b>  Imaging can reveal joint damage and
-                 inflammation <br> characteristic of RA.</div>
+            <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptomps to check for:</div>
+            <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Chest pain or discomfort:</b> Blockage in the heart s blood vessels can cause
+                intense <br> chest pain or discomfort.</div>
+            <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Sudden numbness or weakness:</b> Reduced blood flow to the brain during a stroke <br>can cause sudden numbness or weakness, especially on one side <br> of the body.</div>
+            <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Shortness of breath:</b> A heart attack can cause difficulty breathing due to
+                impaired <br> heart function.</div>
+            <div style="font-size: 1.2rem; padding-top: 1.2rem;padding-bottom: 1rem;">Possible follow-up tests:</div>
+            <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Electrocardiogram (EKG):</b> It detects and records the heart s electrical
+                activity <br> and can help identify a heart attack.</div>
+            <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Blood tests:</b> :Certain enzymes and proteins released during a heart attack or <br>
+                stroke can be identified in the blood.</div>
+            <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Imaging tests (like CT or MRI for stroke):</b> These tests can identify areas of <br>
+                damage and help in diagnosis and management.</div>
         </div>
-     </div>
-     {:else}
+    </div>
+{:else}
 
     <div class="main">
         <div class="row">
-            <div class="label">Glycan<br><b>Mature</b></div>
+            <div class="label"><b>Peak 22</b></div>
             <div class="content">
                 <div class="min"><b>{min1}</b></div>
                 <div class="max"><b>{max1}</b></div>
@@ -169,47 +148,9 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="label">Glycan<br> <b>Median</b></div>
-            <div class="content">
-                <div class="min"><b>{min2}</b></div>
-                <div class="max"><b>{max2}</b></div>
-                <div class="middleParent">
-                    <div class="xAxis"></div>
-                    <div class="yAxis"></div>
-                    <div class="diseaseArea" style="border-radius: 6px 0 0 6px; right: 50.3%;"></div>
-                    <div class="result2"
-                         style="padding: {getPadding(res2, mid2, perc2)}; margin: {getMargin(res2, mid2, perc2)}; border-radius: {getBorderRadius(res2, mid2, perc2)}">
-                        <div class="resultDisplay" style="right: {moveDiv(res2, mid2, perc2)};">
-                            <div class="message"><b>{res2} ({perc2}<sup>{suffix(perc2)}</sup> percentile)</b></div>
-                            <div class="triangle-down"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="label">Glycan<br> <b>Youth</b></div>
-            <div class="content">
-                <div class="min"><b>{min3}</b></div>
-                <div class="max"><b>{max3}</b></div>
-                <div class="middleParent">
-                    <div class="xAxis"></div>
-                    <div class="yAxis"></div>
-                    <div class="diseaseArea" style="border-radius: 6px 0 0 6px; right: 50.3%;"></div>
-                    <div class="result3"
-                         style="padding: {getPadding(res3, mid3, perc3)}; margin: {getMargin(res3, mid3, perc3)}; border-radius: {getBorderRadius(res3, mid3, perc3)}">
-                        <div class="resultDisplay" style="right: {moveDiv(res3, mid3, perc3)};">
-                            <div class="message"><b>{res3} ({perc3}<sup>{suffix(perc3)}</sup> percentile)</b></div>
-                            <div class="triangle-down"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="lastRow">
             <div class="dot1"></div>
-            <div style="font-size: 0.8rem;">Rheumatoid arthritis</div>
+            <div style="font-size: 0.8rem;">Myocardial infarction and stroke cases</div>
             <div class="dot2"></div>
             <div style="font-size: 0.8rem;">Your patient</div>
         </div>
@@ -219,7 +160,7 @@
 <style>
     .main {
         width: 450px;
-        height: 222px;
+        height: 180px;
         background-color: #F0F6F5;
         border: 2px solid #C8DBD0;
         border-radius: 12px;
@@ -253,7 +194,8 @@
 
     .row {
         width: 100%;
-        height: 23%;
+        height: 30%;
+        padding-bottom: 1rem;
         display: flex;
     }
 
@@ -322,23 +264,6 @@
         position: relative;
     }
 
-    .result2 {
-        width: 1.5%;
-        height: 24%;
-        background-color: #33664D;
-        z-index: 9998;
-        position: relative;
-    }
-
-    .result3 {
-        width: 1.5%;
-        height: 24%;
-        background-color: #33664D;
-        z-index: 9998;
-        position: relative;
-    }
-
-
     .yAxis {
         position: absolute;
         left: 49.72%;
@@ -385,7 +310,7 @@
 
     .resultDisplay {
         position: absolute;
-        bottom: 60%;
+        bottom: 80%;
         display: flex;
         align-items: center;
         flex-direction: column;
