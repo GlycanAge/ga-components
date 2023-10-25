@@ -4,6 +4,7 @@
     import type {Language} from '../shared/interfaces/language.interface';
     import {onMount} from 'svelte';
     import {getPadding, getMargin, getBorderRadius, moveDiv, suffix} from '../shared/functions/helpers';
+    import type {Service} from '../shared/utils/service';
     // Language of the rendered list
     export let language: Language;
 
@@ -12,23 +13,26 @@
 
     export let type: string;
 
-    let min1 = 0.081; // G0xmin
-    let max1 = 0.185; // G0xmax
-    let mid1 = 0.133; // G0xaverage
-    let res1 = 0.155; // G0yourscore
-    let perc1 = 51; // G0percentile
+    export let service: Service = window.GaReportService;
+    let reportData: any;
 
-    let min2 = 0.091; // G1xmin
-    let max2 = 0.216; // G1xmax
-    let mid2 = 0.150;  // G1xaverage
-    let res2 = 0.144; // G1yourscore
-    let perc2 = 33; // G1percentile
+    let min1 = 0; // G0xmin
+    let max1 = 0; // G0xmax
+    let mid1 = 0; // G0xaverage
+    let res1 = 0; // G0yourscore
+    let perc1 = 0; // G0percentile
 
-    let min3 = 0.109; // G2xmin
-    let max3 = 0.175; // G2xmax
-    let mid3 = 0.141; //G2xaverage
-    let res3 = 0.133; // G2yourscore
-    let perc3 = 33; // G2percentile
+    let min2 = 0; // G1xmin
+    let max2 = 0; // G1xmax
+    let mid2 = 0;  // G1xaverage
+    let res2 = 0; // G1yourscore
+    let perc2 = 0; // G1percentile
+
+    let min3 = 0; // G2xmin
+    let max3 = 0; // G2xmax
+    let mid3 = 0; //G2xaverage
+    let res3 = 0; // G2yourscore
+    let perc3 = 0; // G2percentile
 
     let overlap = false;
     let someOverlap = false;
@@ -77,7 +81,26 @@
         return 'no significant overlap';
     }
 
-    onMount(() => {
+    onMount(async () => {
+        reportData = await service.getReport(report);
+        min1 = reportData.G0xmin;
+        max1 =  reportData.G0xmax;
+        mid1 =  reportData.G0xaverage;
+        res1 =  reportData.G0yourscore;
+        perc1 =  reportData.G0percentile;
+        min2 =  reportData.G1xmin
+        max2 =  reportData.G1xmax
+        mid2 =  reportData.G1xaverage
+        res2 =  reportData.G1yourscore
+        perc2 =  reportData.G1percentile
+
+        min3 =  reportData.G2xmin
+        max3 =  reportData.G2xmax
+        mid3 =  reportData.G2xaverage
+        res3 =  reportData.G2yourscore
+        perc3 =  reportData.G2percentile
+
+        console.log(reportData);
         if (res1 > mid1 && res2 < mid2 && res3 < mid3) {
             overlap = true;
             return;
@@ -134,7 +157,7 @@
         <div class="summaryBody">
              <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptomps to check for:</div>
              <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Joint pain and stiffnes:</b> The immune attack on synovium leads to
-                 inflammation <br>, causing pain and stiffness in the affected joints.</div>
+                 inflammation, <br> causing pain and stiffness in the affected joints.</div>
              <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Swelling:</b> Persistent inflammation can cause noticeable joint swelling.</div>
              <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Symmetrical joint involvement:</b> RA often affects joints on both sides of the
                  body <br> simultaneously, indicating an autoimmune process.</div>

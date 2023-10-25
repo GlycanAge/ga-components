@@ -11,11 +11,12 @@
   import '../../../dist/endometrial.wc.js';
   import '../../../dist/ovarian.wc.js';
   import '../../../dist/hypertension.wc.js';
+  import {MockService} from './mock-service';
 
   let el: HTMLDivElement;
 
   onMount(() => {
-   
+   window.GaReportService = new MockService();
   });
 </script>
 

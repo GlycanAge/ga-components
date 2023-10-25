@@ -1,5 +1,5 @@
 export class Service {
-	getReport(id: string) {
+	getReport(id: string): Promise<any> {
 		return Promise.resolve(true);
 	}
 }
