@@ -95,8 +95,8 @@
         return 'no significant overlap';
     }
 
-    onMount(async () => {
-        reportData = await service.getReport(report);
+    onMount(() => {
+        reportData = JSON.parse(service.getReport(undefined) as unknown as string);
         min1 = reportData.G0xmin;
         max1 =  reportData.G0xmax;
         mid1 =  reportData.G0xaverage;
