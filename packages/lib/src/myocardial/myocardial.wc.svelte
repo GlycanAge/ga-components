@@ -20,92 +20,222 @@
     let mid1 = 0; // P22xaverage
     let res1 = 0; // P22yourscore
     let perc1 = 0; // P22percentile
+    let gender = ''; // sex
+
+    let min2 = 0; // G0xmin
+    let max2 = 0; // G0xmax
+    let mid2 = 0; // G0xaverage
+    let res2 = 0; // G0yourscore
+    let perc2 = 0; // G0percentile
+
+    let min3 = 0; // G2xmin
+    let max3 = 0; // G2xmax
+    let mid3 = 0; // G2xaverage
+    let res3 = 0; // G2yourscore
+    let perc3 = 0; // G2percentile
+
+    let min4 = 0; // Sxmin
+    let max4 = 0; // Sxmax
+    let mid4 = 0; // Sxaverage
+    let res4 = 0; // Syourscore
+    let perc4 = 0; // Spercentile
+
+    let min5 = 0; // Bxmin
+    let max5 = 0; // Bxmax
+    let mid5 = 0; // Bxaverage
+    let res5 = 0; // Byourscore
+    let perc5 = 0; // Bpercentile
 
     let overlap = false;
+    let someOverlap = false;
     let noOverlap = false;
     let showSummary = false;
 
     function getColor() {
-        if (perc1 === 50) {
-            return '#00AA44';
-        }
-        if (res1 > mid1) {
-            return '#CC0000';
-        }
+        if (gender === 'M') {
+            if (res2 > mid2 && res3 < mid3 && res4 < mid4 && res5 > mid5) {
+                return '#CC0000';
+            }
+            if (res2 > mid2 || res3 < mid3 || res4 < mid4 || res5 > mid5) {
+                return '#EE9933';
+            }
 
-        if (res1 < mid1) {
+            if (res2 < mid2 && res3 > mid3 && res4 > mid4 && res5 < mid5) {
+                return '#00AA44';
+            }
+
+            return '#00AA44';
+        } else {
+            if (perc1 === 50) {
+                return '#00AA44';
+            }
+            if (res1 > mid1) {
+                return '#CC0000';
+            }
+
+            if (res1 < mid1) {
+                return '#00AA44';
+            }
             return '#00AA44';
         }
-        return '#00AA44';
     }
 
     function getBackground() {
-        if (perc1 === 50) {
+        if (gender === 'M') {
+            if (res2 > mid2 && res3 < mid3 && res4 < mid4 && res5 > mid5) {
+                return 'rgba(204,0,0,0.15)';
+            }
+            if (res2 > mid2 || res3 < mid3 || res4 < mid4 || res5 > mid5) {
+                return 'rgba(238,153,51,0.15)';
+            }
+
+            if (res2 < mid2 && res3 > mid3 && res4 > mid4 && res5 < mid5) {
+                return 'rgba(0,170,68,0.15)';
+            }
+
+            return 'rgba(0,170,68,0.15)';
+        } else {
+            if (perc1 === 50) {
+                return 'rgba(0,170,68,0.15)';
+            }
+            if (res1 > mid1) {
+                return 'rgba(204,0,0,0.15)';
+            }
+            if (res1 < mid1) {
+                return 'rgba(0,170,68,0.15)';
+            }
             return 'rgba(0,170,68,0.15)';
         }
-        if (res1 > mid1) {
-            return 'rgba(204,0,0,0.15)';
-        }
-        if (res1 < mid1) {
-            return 'rgba(0,170,68,0.15)';
-        }
-        return 'rgba(0,170,68,0.15)';
     }
 
     function getBodyBackground() {
-        if (perc1 === 50) {
+        if (gender === 'M') {
+            if (res2 > mid2 && res3 < mid3 && res4 < mid4 && res5 > mid5) {
+                return 'rgba(204,0,0,0.05)';
+            }
+            if (res2 > mid2 || res3 < mid3 || res4 < mid4 || res5 > mid5) {
+                return 'rgba(238,153,51,0.05)';
+            }
+
+            if (res2 < mid2 && res3 > mid3 && res4 > mid4 && res5 < mid5) {
+                return 'rgba(0,170,68,0.05)';
+            }
+
+            return 'rgba(0,170,68,0.05)';
+        } else {
+            if (perc1 === 50) {
+                return 'rgba(0,170,68,0.05)';
+            }
+            if (res1 > mid1) {
+                return 'rgba(204,0,0,0.05)';
+            }
+            if (res1 < mid1) {
+                return 'rgba(0,170,68,0.05)';
+            }
             return 'rgba(0,170,68,0.05)';
         }
-        if (res1 > mid1) {
-            return 'rgba(204,0,0,0.05)';
-        }
-        if (res1 < mid1) {
-            return 'rgba(0,170,68,0.05)';
-        }
-        return 'rgba(0,170,68,0.05)';
     }
 
     function getWording() {
-        if (perc1 === 50) {
+        if (gender === 'M') {
+            if (res2 > mid2 && res3 < mid3 && res4 < mid4 && res5 > mid5) {
+                return 'a significant overlap';
+            }
+            if (res2 > mid2 || res3 < mid3 || res4 < mid4 || res5 > mid5) {
+                return 'some overlap';
+            }
+
+            if (res2 < mid2 && res3 > mid3 && res4 > mid4 && res5 < mid5) {
+                return 'no significant overlap';
+            }
+
+            return 'no significant overlap';
+        } else {
+            if (perc1 === 50) {
+                return 'no significant overlap';
+            }
+            if (res1 > mid1) {
+                return 'a significant overlap';
+            }
+
+            if (res1 < mid1) {
+                return 'no significant overlap';
+            }
+
             return 'no significant overlap';
         }
-        if (res1 > mid1) {
-            return 'a significant overlap';
-        }
-
-        if (res1 < mid1) {
-            return 'no significant overlap';
-        }
-
-        return 'no significant overlap';
     }
 
     onMount(() => {
         reportData = service.getReport(undefined);
-        min1 = reportData.P22xmin;
-        max1 =  reportData.P22xmax;
-        mid1 =  reportData.P22xaverage;
-        res1 =  reportData.P22yourscore;
-        perc1 =  reportData.P22percentile;
+        gender = reportData.sex;
+        if (gender === 'M') {
+            min2 =  reportData.G0xmin;
+            max2 =  reportData.G0xmax;
+            mid2 =  reportData.G0xaverage;
+            res2 =  reportData.G0yourscore;
+            perc2 =  reportData.G0percentile;
+            min3 =  reportData.G2xmin;
+            max3 =  reportData.G2xmax;
+            mid3 =  reportData.G2xaverage;
+            res3 =  reportData.G2yourscore;
+            perc3 =  reportData.G2percentile;
+            min4 =  reportData.Sxmin;
+            max4 =  reportData.Sxmax;
+            mid4 =  reportData.Sxaverage;
+            res4 =  reportData.Syourscore;
+            perc4 =  reportData.Spercentile;
+            min5 =  reportData.Bxmin;
+            max5 =  reportData.Bxmax;
+            mid5 =  reportData.Bxaverage;
+            res5 =  reportData.Byourscore;
+            perc5 =  reportData.Bpercentile;
+        } else {
+            min1 = reportData.P22xmin;
+            max1 = reportData.P22xmax;
+            mid1 = reportData.P22xaverage;
+            res1 = reportData.P22yourscore;
+            perc1 = reportData.P22percentile;
+        }
 
-        if (perc1 === 50) {
+        if (gender === 'M') {
+            if (res2 > mid2 && res3 < mid3 && res4 < mid4 && res5 > mid5) {
+                overlap = true;
+                showSummary = true;
+                return;
+            }
+            if (res2 > mid2 || res3 < mid3 || res4 < mid4 || res5 > mid5) {
+                someOverlap = true;
+                showSummary = true;
+                return;
+            }
+
+            if (res2 < mid2 && res3 > mid3 && res4 > mid4 && res5 < mid5) {
+                noOverlap = true;
+                showSummary = true;
+                return;
+            }
             noOverlap = true;
-            showSummary = true;
-            return;
-        }
-        if (res1 > mid1) {
-            overlap = true;
-            showSummary = true;
-            return;
-        }
+        } else {
+            if (perc1 === 50) {
+                noOverlap = true;
+                showSummary = true;
+                return;
+            }
+            if (res1 > mid1) {
+                overlap = true;
+                showSummary = true;
+                return;
+            }
 
-        if (res1 < mid1) {
+            if (res1 < mid1) {
+                noOverlap = true;
+                showSummary = true;
+                return;
+            }
+
             noOverlap = true;
-            showSummary = true;
-            return;
         }
-
-        noOverlap = true;
     });
 </script>
 
@@ -119,6 +249,10 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#CC0000" d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"/></svg>
             &nbsp; Significant overlap
         {/if}
+        {#if someOverlap}
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#EE9933" d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"/></svg>
+            &nbsp; Some overlap
+        {/if}
         {#if noOverlap}
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#00AA44" d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"/></svg>
             &nbsp; No overlap
@@ -131,6 +265,9 @@
                 <div style="width: 10%; padding-left: 1.5rem; padding-right: 1rem;">
                     {#if overlap}
                         <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"><path fill="#CC0000" d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"/></svg>
+                    {/if}
+                    {#if someOverlap}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"><path fill="#EE9933" d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"/></svg>
                     {/if}
                     {#if noOverlap}
                         <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"><path fill="#00AA44" d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"/></svg>
@@ -156,40 +293,125 @@
         </div>
     {/if}
 {:else}
-
-    <div class="main">
-        <div class="row">
-            <div class="label"><b>Peak 22</b></div>
-            <div class="content">
-                <div class="min"><b>{min1}</b></div>
-                <div class="max"><b>{max1}</b></div>
-                <div class="middleParent">
-                    <div class="xAxis"></div>
-                    <div class="yAxis"></div>
-                    <div class="diseaseArea" style="border-radius: 0 6px 6px 0; left: 50.3%;"></div>
-                    <div class="result"
-                         style="padding: {getPadding(res1, mid1, perc1)}; margin: {getMargin(res1, mid1, perc1)}; border-radius: {getBorderRadius(res1, mid1, perc1)}">
-                        <div class="resultDisplay" style="right: {moveDiv(res1, mid1, perc1)};">
-                            <div class="message"><b>{res1} ({perc1}<sup>{suffix(perc1)}</sup> percentile)</b></div>
-                            <div class="triangle-down"></div>
+    {#if gender === 'M'}
+        <div class="main" style="height: 260px;">
+            <div class="row" style="height: 14%; margin: 0.2rem 0 0.2rem 0;">
+                <div class="label" style="font-size: 0.7rem;">Glycan<br> <b>Mature</b></div>
+                <div class="content">
+                    <div class="min"><b>{min2}</b></div>
+                    <div class="max"><b>{max2}</b></div>
+                    <div class="middleParent">
+                        <div class="xAxis"></div>
+                        <div class="yAxis"></div>
+                        <div class="diseaseArea" style="border-radius: 0 6px 6px 0; left: 50.3%;"></div>
+                        <div class="result"
+                             style="padding: {getPadding(res2, mid2, perc2)}; margin: {getMargin(res2, mid2, perc2)}; border-radius: {getBorderRadius(res2, mid2, perc2)}">
+                            <div class="resultDisplay" style="right: {moveDiv(res2, mid2, perc2)};">
+                                <div class="message"><b>{res2} ({perc2}<sup>{suffix(perc2)}</sup> percentile)</b></div>
+                                <div class="triangle-down"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="row" style="height: 14%; margin: 0.2rem 0 0.2rem 0;">
+                <div class="label" style="font-size: 0.7rem;">Glycan<br> <b>Youth</b></div>
+                <div class="content">
+                    <div class="min"><b>{min3}</b></div>
+                    <div class="max"><b>{max3}</b></div>
+                    <div class="middleParent">
+                        <div class="xAxis"></div>
+                        <div class="yAxis"></div>
+                        <div class="diseaseArea" style="border-radius: 6px 0 0 6px; right: 50.3%;"></div>
+                        <div class="result3"
+                             style="padding: {getPadding(res3, mid3, perc3)}; margin: {getMargin(res3, mid3, perc3)}; border-radius: {getBorderRadius(res3, mid3, perc3)}">
+                            <div class="resultDisplay" style="right: {moveDiv(res3, mid3, perc3)};">
+                                <div class="message"><b>{res3} ({perc3}<sup>{suffix(perc3)}</sup> percentile)</b></div>
+                                <div class="triangle-down"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="height: 14%; margin: 0.2rem 0 0.2rem 0;">
+                <div class="label" style="font-size: 0.7rem;">Glycan<br> <b>Shield</b></div>
+                <div class="content">
+                    <div class="min"><b>{min4}</b></div>
+                    <div class="max"><b>{max4}</b></div>
+                    <div class="middleParent">
+                        <div class="xAxis"></div>
+                        <div class="yAxis"></div>
+                        <div class="diseaseArea" style="border-radius: 6px 0 0 6px; right: 50.3%;"></div>
+                        <div class="result3"
+                             style="padding: {getPadding(res4, mid4, perc4)}; margin: {getMargin(res4, mid4, perc4)}; border-radius: {getBorderRadius(res4, mid4, perc4)}">
+                            <div class="resultDisplay" style="right: {moveDiv(res4, mid4, perc4)};">
+                                <div class="message"><b>{res4} ({perc4}<sup>{suffix(perc4)}</sup> percentile)</b></div>
+                                <div class="triangle-down"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="height: 14%; margin: 0.2rem 0 0.2rem 0;">
+                <div class="label" style="font-size: 0.7rem;">Glycan<br> <b>Lifestyle</b></div>
+                <div class="content">
+                    <div class="min"><b>{min5}</b></div>
+                    <div class="max"><b>{max5}</b></div>
+                    <div class="middleParent">
+                        <div class="xAxis"></div>
+                        <div class="yAxis"></div>
+                        <div class="diseaseArea" style="border-radius: 0 6px 6px 0; left: 50.3%;"></div>
+                        <div class="result3"
+                             style="padding: {getPadding(res5, mid5, perc5)}; margin: {getMargin(res5, mid5, perc5)}; border-radius: {getBorderRadius(res5, mid5, perc5)}">
+                            <div class="resultDisplay" style="right: {moveDiv(res5, mid5, perc5)};">
+                                <div class="message"><b>{res5} ({perc5}<sup>{suffix(perc5)}</sup> percentile)</b></div>
+                                <div class="triangle-down"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="lastRow">
+                <div class="dot1"></div>
+                <div style="font-size: 0.8rem;">Myocardial infarction and stroke cases</div>
+                <div class="dot2"></div>
+                <div style="font-size: 0.8rem;">Your patient</div>
+            </div>
         </div>
-        <div class="lastRow">
-            <div class="dot1"></div>
-            <div style="font-size: 0.8rem;">Myocardial infarction and stroke cases</div>
-            <div class="dot2"></div>
-            <div style="font-size: 0.8rem;">Your patient</div>
+    {:else}
+        <div class="main" style="height: 180px;">
+            <div class="row" style="height: 30%; padding-bottom: 1rem;">
+                <div class="label" style="font-size: 0.8rem;"><b>Peak 22</b></div>
+                <div class="content">
+                    <div class="min"><b>{min1}</b></div>
+                    <div class="max"><b>{max1}</b></div>
+                    <div class="middleParent">
+                        <div class="xAxis"></div>
+                        <div class="yAxis"></div>
+                        <div class="diseaseArea" style="border-radius: 0 6px 6px 0; left: 50.3%;"></div>
+                        <div class="result"
+                             style="padding: {getPadding(res1, mid1, perc1)}; margin: {getMargin(res1, mid1, perc1)}; border-radius: {getBorderRadius(res1, mid1, perc1)}">
+                            <div class="resultDisplay" style="right: {moveDiv(res1, mid1, perc1)};">
+                                <div class="message"><b>{res1} ({perc1}<sup>{suffix(perc1)}</sup> percentile)</b></div>
+                                <div class="triangle-down"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="lastRow">
+                <div class="dot1"></div>
+                <div style="font-size: 0.8rem;">Myocardial infarction and stroke cases</div>
+                <div class="dot2"></div>
+                <div style="font-size: 0.8rem;">Your patient</div>
+            </div>
         </div>
-    </div>
+    {/if}
 {/if}
 
 <style>
     .main {
         width: 450px;
-        height: 180px;
         background-color: #F0F6F5;
         border: 2px solid #C8DBD0;
         border-radius: 12px;
@@ -222,8 +444,6 @@
     }
     .row {
         width: 100%;
-        height: 30%;
-        padding-bottom: 1rem;
         display: flex;
     }
 
@@ -231,7 +451,6 @@
         width: 14%;
         height: 100%;
         margin-left: 1.5rem;
-        font-size: 0.8rem;
         line-height: 0.9rem;
         display: flex;
         align-items: start;
@@ -274,6 +493,7 @@
         background-color: #08341F;
         border-radius: 10px;
         z-index: 9999;
+        max-height: 1px;
     }
 
     .diseaseArea {
@@ -285,6 +505,22 @@
     }
 
     .result {
+        width: 1.5%;
+        height: 24%;
+        background-color: #33664D;
+        z-index: 9998;
+        position: relative;
+    }
+
+    .result2 {
+        width: 1.5%;
+        height: 24%;
+        background-color: #33664D;
+        z-index: 9998;
+        position: relative;
+    }
+
+    .result3 {
         width: 1.5%;
         height: 24%;
         background-color: #33664D;

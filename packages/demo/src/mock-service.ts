@@ -48,6 +48,7 @@ export class MockService implements Service {
             P26xaverage: "0.150",
             P26yourscore: "0.175",
             P26percentile: "99",
+            sex: 'M',
         });
 
     }

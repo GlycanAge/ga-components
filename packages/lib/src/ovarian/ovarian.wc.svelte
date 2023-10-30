@@ -373,6 +373,7 @@
         background-color: #08341F;
         border-radius: 10px;
         z-index: 9999;
+        max-height: 1px;
     }
 
     .diseaseArea {
