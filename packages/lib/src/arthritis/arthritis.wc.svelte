@@ -96,7 +96,7 @@
     }
 
     onMount(() => {
-        reportData = JSON.parse(service.getReport(undefined) as unknown as string);
+        reportData = service.getReport(undefined);
         min1 = reportData.G0xmin;
         max1 =  reportData.G0xmax;
         mid1 =  reportData.G0xaverage;
