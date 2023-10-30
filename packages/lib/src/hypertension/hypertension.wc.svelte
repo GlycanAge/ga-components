@@ -46,6 +46,7 @@
     let overlap = false;
     let someOverlap = false;
     let noOverlap = false;
+    let showSummary = false;
 
     function getColor() {
         if (res4 < mid4 && res3 < mid3 && res1 > mid1 && res2 < mid2 && res3 < mid3) {
@@ -132,15 +133,18 @@
 
         if (res4 < mid4 && res3 < mid3 && res1 > mid1 && res2 < mid2 && res3 < mid3) {
             overlap = true;
+            showSummary = true;
             return;
         }
         if (res4 < mid4 || res3 < mid3 || res1 > mid1 || res2 < mid2 || res3 < mid3) {
             someOverlap = true;
+            showSummary = true;
             return;
         }
 
         if (res4 > mid4 && res3 > mid3 && res1 < mid1 && res2 > mid2 && res3 > mid3) {
             noOverlap = true;
+            showSummary = true;
             return;
         }
         noOverlap = true;
@@ -167,32 +171,34 @@
         {/if}
     </div>
 {:else if type === 'summary'}
-    <div class="summaryMain" style="border: 2px solid {getColor()};">
-        <div class="summaryHeader" style="background-color: {getBackground()}; border-bottom: 2px solid {getColor()};">
-            <div style="width: 10%; padding-left: 1.5rem; padding-right: 1rem;">
-                {#if overlap}
-                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"><path fill="#CC0000" d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"/></svg>
-                {/if}
-                {#if someOverlap}
-                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"><path fill="#EE9933" d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"/></svg>
-                {/if}
-                {#if noOverlap}
-                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"><path fill="#00AA44" d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"/></svg>
-                {/if}
+    {#if showSummary}
+        <div class="summaryMain" style="border: 2px solid {getColor()};">
+            <div class="summaryHeader" style="background-color: {getBackground()}; border-bottom: 2px solid {getColor()};">
+                <div style="width: 10%; padding-left: 1.5rem; padding-right: 1rem;">
+                    {#if overlap}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"><path fill="#CC0000" d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"/></svg>
+                    {/if}
+                    {#if someOverlap}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"><path fill="#EE9933" d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"/></svg>
+                    {/if}
+                    {#if noOverlap}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"><path fill="#00AA44" d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"/></svg>
+                    {/if}
+                </div>
+                <div style="width: 90%;">There is <b>{getWording()}</b> of glycan indexes between <br> your patient and hypertension patients.</div>
             </div>
-            <div style="width: 90%;">There is <b>{getWording()}</b> of glycan indexes between <br> your patient and hypertension patients.</div>
+            <div class="summaryBody" style="background-color: {getBodyBackground()};">
+                <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptomps to check for:</div>
+                <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Headaches:</b> Elevated blood pressure may lead to headaches.</div>
+                <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Vision problems:</b> High blood pressure can cause blurred or narrowed vision.</div>
+                <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Shortness of breath:</b>  Elevated blood pressure can affect the heart and lungs, <br> leading to shortness of breath.</div>
+                <div style="font-size: 1.2rem; padding-top: 1.2rem;padding-bottom: 1rem;">Possible follow-up tests:</div>
+                <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Blood pressure monitoring:</b>  Regular blood pressure checks can accurately <br> monitor hypertension levels.</div>
+                <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Blood tests:</b>  These assess cholesterol levels and other factors related to <br> hypertension.</div>
+                <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Electrocardiogram (EKG or ECG):</b>  This test can identify issues with heart <br> rhythm or damage related to hypertension.</div>
+            </div>
         </div>
-        <div class="summaryBody" style="background-color: {getBodyBackground()};">
-            <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptomps to check for:</div>
-            <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Headaches:</b> Elevated blood pressure may lead to headaches.</div>
-            <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Vision problems:</b> High blood pressure can cause blurred or narrowed vision.</div>
-            <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Shortness of breath:</b>  Elevated blood pressure can affect the heart and lungs, <br> leading to shortness of breath.</div>
-            <div style="font-size: 1.2rem; padding-top: 1.2rem;padding-bottom: 1rem;">Possible follow-up tests:</div>
-            <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Blood pressure monitoring:</b>  Regular blood pressure checks can accurately <br> monitor hypertension levels.</div>
-            <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Blood tests:</b>  These assess cholesterol levels and other factors related to <br> hypertension.</div>
-            <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Electrocardiogram (EKG or ECG):</b>  This test can identify issues with heart <br> rhythm or damage related to hypertension.</div>
-        </div>
-    </div>
+    {/if}
 {:else}
     <div class="main">
         <div class="row" style="margin-top: 2rem;">

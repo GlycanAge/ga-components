@@ -23,6 +23,7 @@
 
     let overlap = false;
     let noOverlap = false;
+    let showSummary = false;
 
     function getColor() {
         if (perc1 === 50) {
@@ -89,15 +90,18 @@
 
         if (perc1 === 50) {
             noOverlap = true;
+            showSummary = true;
             return;
         }
         if (res1 > mid1) {
             overlap = true;
+            showSummary = true;
             return;
         }
 
         if (res1 < mid1) {
             noOverlap = true;
+            showSummary = true;
             return;
         }
 
@@ -121,34 +125,36 @@
         {/if}
     </div>
 {:else if type === 'summary'}
-    <div class="summaryMain" style="border: 2px solid {getColor()};">
-        <div class="summaryHeader" style="background-color: {getBackground()}; border-bottom: 2px solid {getColor()};">
-            <div style="width: 10%; padding-left: 1.5rem; padding-right: 1rem;">
-                {#if overlap}
-                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"><path fill="#CC0000" d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"/></svg>
-                {/if}
-                {#if noOverlap}
-                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"><path fill="#00AA44" d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"/></svg>
-                {/if}
+    {#if showSummary}
+        <div class="summaryMain" style="border: 2px solid {getColor()};">
+            <div class="summaryHeader" style="background-color: {getBackground()}; border-bottom: 2px solid {getColor()};">
+                <div style="width: 10%; padding-left: 1.5rem; padding-right: 1rem;">
+                    {#if overlap}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"><path fill="#CC0000" d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"/></svg>
+                    {/if}
+                    {#if noOverlap}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"><path fill="#00AA44" d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"/></svg>
+                    {/if}
+                </div>
+                <div style="width: 90%; font-size: 0.8rem;">There is <b>{getWording()}</b> of glycan indexes between <br> your patient and myocardial infarction and stroke <br> cases patients.</div>
             </div>
-            <div style="width: 90%; font-size: 0.8rem;">There is <b>{getWording()}</b> of glycan indexes between <br> your patient and myocardial infarction and stroke <br> cases patients.</div>
+            <div class="summaryBody" style="background-color: {getBodyBackground()};">
+                <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptomps to check for:</div>
+                <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Chest pain or discomfort:</b> Blockage in the heart s blood vessels can cause
+                    intense <br> chest pain or discomfort.</div>
+                <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Sudden numbness or weakness:</b> Reduced blood flow to the brain during a stroke <br>can cause sudden numbness or weakness, especially on one side <br> of the body.</div>
+                <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Shortness of breath:</b> A heart attack can cause difficulty breathing due to
+                    impaired <br> heart function.</div>
+                <div style="font-size: 1.2rem; padding-top: 0.4rem;padding-bottom: 1rem;">Possible follow-up tests:</div>
+                <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Electrocardiogram (EKG):</b> It detects and records the heart s electrical
+                    activity <br> and can help identify a heart attack.</div>
+                <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Blood tests:</b> :Certain enzymes and proteins released during a heart attack or <br>
+                    stroke can be identified in the blood.</div>
+                <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Imaging tests (like CT or MRI for stroke):</b> These tests can identify areas of <br>
+                    damage and help in diagnosis and management.</div>
+            </div>
         </div>
-        <div class="summaryBody" style="background-color: {getBodyBackground()};">
-            <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptomps to check for:</div>
-            <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Chest pain or discomfort:</b> Blockage in the heart s blood vessels can cause
-                intense <br> chest pain or discomfort.</div>
-            <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Sudden numbness or weakness:</b> Reduced blood flow to the brain during a stroke <br>can cause sudden numbness or weakness, especially on one side <br> of the body.</div>
-            <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Shortness of breath:</b> A heart attack can cause difficulty breathing due to
-                impaired <br> heart function.</div>
-            <div style="font-size: 1.2rem; padding-top: 0.4rem;padding-bottom: 1rem;">Possible follow-up tests:</div>
-            <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Electrocardiogram (EKG):</b> It detects and records the heart s electrical
-                activity <br> and can help identify a heart attack.</div>
-            <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Blood tests:</b> :Certain enzymes and proteins released during a heart attack or <br>
-                stroke can be identified in the blood.</div>
-            <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Imaging tests (like CT or MRI for stroke):</b> These tests can identify areas of <br>
-                damage and help in diagnosis and management.</div>
-        </div>
-    </div>
+    {/if}
 {:else}
 
     <div class="main">

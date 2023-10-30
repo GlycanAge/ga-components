@@ -43,6 +43,7 @@
     let overlap = false;
     let someOverlap = false;
     let noOverlap = false;
+    let showSummary = false;
 
     function getColor() {
         if (res1 < mid1 && res2 < mid2 && res3 > mid3 && res4 > mid4) {
@@ -128,15 +129,18 @@
         perc4 =  reportData.P26percentile;
         if (res1 < mid1 && res2 < mid2 && res3 > mid3 && res4 > mid4) {
             overlap = true;
+            showSummary = true;
             return;
         }
         if (res1 < mid1 || res2 < mid2 || res3 > mid3 || res4 > mid4) {
             someOverlap = true;
+            showSummary = true;
             return;
         }
 
         if (res1 > mid1 && res2 > mid2 && res3 < mid3 && res4 < mid4) {
             noOverlap = true;
+            showSummary = true;
             return;
         }
         noOverlap = true;
@@ -163,34 +167,36 @@
         {/if}
     </div>
 {:else if type === 'summary'}
-    <div class="summaryMain" style="border: 2px solid {getColor()};">
-        <div class="summaryHeader" style="background-color: {getBackground()}; border-bottom: 2px solid {getColor()};">
-            <div style="width: 10%; padding-left: 1.5rem; padding-right: 1rem;">
-                {#if overlap}
-                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"><path fill="#CC0000" d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"/></svg>
-                {/if}
-                {#if someOverlap}
-                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"><path fill="#EE9933" d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"/></svg>
-                {/if}
-                {#if noOverlap}
-                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"><path fill="#00AA44" d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"/></svg>
-                {/if}
+    {#if showSummary}
+        <div class="summaryMain" style="border: 2px solid {getColor()};">
+            <div class="summaryHeader" style="background-color: {getBackground()}; border-bottom: 2px solid {getColor()};">
+                <div style="width: 10%; padding-left: 1.5rem; padding-right: 1rem;">
+                    {#if overlap}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"><path fill="#CC0000" d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"/></svg>
+                    {/if}
+                    {#if someOverlap}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"><path fill="#EE9933" d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"/></svg>
+                    {/if}
+                    {#if noOverlap}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"><path fill="#00AA44" d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"/></svg>
+                    {/if}
+                </div>
+                <div style="width: 90%;">There is <b>{getWording()}</b> of glycan indexes between <br> your patient and lupus patients.</div>
             </div>
-            <div style="width: 90%;">There is <b>{getWording()}</b> of glycan indexes between <br> your patient and lupus patients.</div>
+            <div class="summaryBody" style="background-color: {getBodyBackground()};">
+                <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptomps to check for:</div>
+                <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Fatigue:</b> Overactive immune responses lead to chronic exhaustion.</div>
+                <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Joint pain and swelling:</b> Inflammation from the immune attack affects the joints.</div>
+                <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Skin rash:</b> Particularly a butterfly-shaped rash on the face, indicating skin <br>
+                    inflammation.</div>
+                <div style="font-size: 1.2rem; padding-top: 2rem;padding-bottom: 1rem;">Possible follow-up tests:</div>
+                <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Antinuclear antibody (ANA) test:</b> This blood test detects the presence of
+                    ANA, <br> commonly found in people with lupus.</div>
+                <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Complete blood count:</b> This test evaluates the levels of blood cells which <br> may be affected by lupus.</div>
+                <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Urinalysis:</b>  Examining the urine can reveal kidney involvement in lupus.</div>
+            </div>
         </div>
-        <div class="summaryBody" style="background-color: {getBodyBackground()};">
-            <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptomps to check for:</div>
-            <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Fatigue:</b> Overactive immune responses lead to chronic exhaustion.</div>
-            <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Joint pain and swelling:</b> Inflammation from the immune attack affects the joints.</div>
-            <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Skin rash:</b> Particularly a butterfly-shaped rash on the face, indicating skin <br>
-                inflammation.</div>
-            <div style="font-size: 1.2rem; padding-top: 2rem;padding-bottom: 1rem;">Possible follow-up tests:</div>
-            <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Antinuclear antibody (ANA) test:</b> This blood test detects the presence of
-                ANA, <br> commonly found in people with lupus.</div>
-            <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Complete blood count:</b> This test evaluates the levels of blood cells which <br> may be affected by lupus.</div>
-            <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Urinalysis:</b>  Examining the urine can reveal kidney involvement in lupus.</div>
-        </div>
-    </div>
+    {/if}
 {:else}
     <div class="main">
         <div class="row">
