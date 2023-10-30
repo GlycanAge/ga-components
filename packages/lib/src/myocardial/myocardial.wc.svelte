@@ -4,6 +4,7 @@
     import type {Language} from '../shared/interfaces/language.interface';
     import {onMount} from 'svelte';
     import {getPadding, getMargin, getBorderRadius, moveDiv, suffix} from '../shared/functions/helpers';
+    import {Service} from '../shared/utils/service';
     // Language of the rendered list
     export let language: Language;
 
@@ -11,12 +12,14 @@
     export let report: string;
 
     export let type: string;
+    export let service: Service = window.GaReportService;
+    let reportData: any;
 
-    let min1 = 0.081; // P22xmin
-    let max1 = 0.185; // P22xmax
-    let mid1 = 0.133; // P22xaverage
-    let res1 = 0.135; // P22yourscore
-    let perc1 = 51; // P22percentile
+    let min1 = 0; // P22xmin
+    let max1 = 0; // P22xmax
+    let mid1 = 0; // P22xaverage
+    let res1 = 0; // P22yourscore
+    let perc1 = 0; // P22percentile
 
     let overlap = false;
     let noOverlap = false;
@@ -77,6 +80,13 @@
     }
 
     onMount(() => {
+        reportData = service.getReport(undefined);
+        min1 = reportData.P22xmin;
+        max1 =  reportData.P22xmax;
+        mid1 =  reportData.P22xaverage;
+        res1 =  reportData.P22yourscore;
+        perc1 =  reportData.P22percentile;
+
         if (perc1 === 50) {
             noOverlap = true;
             return;

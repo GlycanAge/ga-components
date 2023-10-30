@@ -107,7 +107,6 @@
         mid2 =  reportData.G1xaverage;
         res2 =  reportData.G1yourscore;
         perc2 =  reportData.G1percentile;
-
         min3 =  reportData.G2xmin;
         max3 =  reportData.G2xmax;
         mid3 =  reportData.G2xaverage;

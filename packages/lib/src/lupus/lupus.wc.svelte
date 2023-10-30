@@ -4,6 +4,7 @@
     import type {Language} from '../shared/interfaces/language.interface';
     import {onMount} from 'svelte';
     import {getPadding, getMargin, getBorderRadius, moveDiv, suffix} from '../shared/functions/helpers';
+    import {Service} from '../shared/utils/service';
     // Language of the rendered list
     export let language: Language;
 
@@ -11,29 +12,32 @@
     export let report: string;
     export let type: string;
 
-    let min1 = 0.081; // P18xmin
-    let max1 = 0.185; // P18xmax
-    let mid1 = 0.133; // P18xaverage
-    let res1 = 0.12; // P18yourscore
-    let perc1 = 44; // P18percentile
+    export let service: Service = window.GaReportService;
+    let reportData: any;
 
-    let min2 = 0.091; // P22xmin
-    let max2 = 0.216; // P22xmax
-    let mid2 = 0.199;  // P22xaverage
-    let res2 = 0.198; // P22yourscore
-    let perc2 = 40; // P22percentile
+    let min1 = 0; // P18xmin
+    let max1 = 0; // P18xmax
+    let mid1 = 0; // P18xaverage
+    let res1 = 0; // P18yourscore
+    let perc1 = 0; // P18percentile
 
-    let min3 = 0.109; // P23xmin
-    let max3 = 0.175; // P23xmax
-    let mid3 = 0.140; //P23xaverage
-    let res3 = 0.141; // P23yourscore
-    let perc3 = 55; // P23percentile
+    let min2 = 0; // P22xmin
+    let max2 = 0; // P22xmax
+    let mid2 = 0;  // P22xaverage
+    let res2 = 0; // P22yourscore
+    let perc2 = 0; // P22percentile
 
-    let min4 = 0.109; // P26xmin
-    let max4 = 0.175; // P26xmax
-    let mid4 = 0.140; //P26xaverage
-    let res4 = 0.150; // P26yourscore
-    let perc4 = 60; // P26percentile
+    let min3 = 0; // P23xmin
+    let max3 = 0; // P23xmax
+    let mid3 = 0; //P23xaverage
+    let res3 = 0; // P23yourscore
+    let perc3 = 0; // P23percentile
+
+    let min4 = 0; // P26xmin
+    let max4 = 0; // P26xmax
+    let mid4 = 0; //P26xaverage
+    let res4 = 0; // P26yourscore
+    let perc4 = 0; // P26percentile
 
 
     let overlap = false;
@@ -101,6 +105,27 @@
     }
 
     onMount(() => {
+        reportData = service.getReport(undefined);
+        min1 = reportData.P18xmin;
+        max1 =  reportData.P18xmax;
+        mid1 =  reportData.P18xaverage;
+        res1 =  reportData.P18yourscore;
+        perc1 =  reportData.P18percentile;
+        min2 =  reportData.P22xmin;
+        max2 =  reportData.P22xmax;
+        mid2 =  reportData.P22xaverage;
+        res2 =  reportData.P22yourscore;
+        perc2 =  reportData.P22percentile;
+        min3 =  reportData.P23xmin;
+        max3 =  reportData.P23xmax;
+        mid3 =  reportData.P23xaverage;
+        res3 =  reportData.P23yourscore;
+        perc3 =  reportData.P23percentile;
+        min4 =  reportData.P26xmin;
+        max4 =  reportData.P26xmax;
+        mid4 =  reportData.P26xaverage;
+        res4 =  reportData.P26yourscore;
+        perc4 =  reportData.P26percentile;
         if (res1 < mid1 && res2 < mid2 && res3 > mid3 && res4 > mid4) {
             overlap = true;
             return;

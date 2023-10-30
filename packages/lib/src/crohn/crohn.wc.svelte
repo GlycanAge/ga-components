@@ -4,42 +4,45 @@
     import type {Language} from '../shared/interfaces/language.interface';
     import {onMount} from 'svelte';
     import {getPadding, getMargin, getBorderRadius, moveDiv, suffix} from '../shared/functions/helpers';
+    import {Service} from '../shared/utils/service';
     // Language of the rendered list
     export let language: Language;
 
     // ID of the report
     export let report: string;
     export let type: string;
+    export let service: Service = window.GaReportService;
+    let reportData: any;
 
-    let min1 = 0.081; // G0xmin
-    let max1 = 0.185; // G0xmax
-    let mid1 = 0.133; // G0xaverage
-    let res1 = 0.155; // G0yourscore
-    let perc1 = 55; // G0percentile
+    let min1 = 0; // G0xmin
+    let max1 = 0; // G0xmax
+    let mid1 = 0; // G0xaverage
+    let res1 = 0; // G0yourscore
+    let perc1 = 0; // G0percentile
 
-    let min2 = 0.091; // G1xmin
-    let max2 = 0.216; // G1xmax
-    let mid2 = 0.199;  // G1xaverage
-    let res2 = 0.133; // G1yourscore
-    let perc2 = 33; // G1percentile
+    let min2 = 0; // G1xmin
+    let max2 = 0; // G1xmax
+    let mid2 = 0;  // G1xaverage
+    let res2 = 0; // G1yourscore
+    let perc2 = 0; // G1percentile
 
-    let min3 = 0.109; // G2xmin
-    let max3 = 0.175; // G2xmax
-    let mid3 = 0.140; //G2xaverage
-    let res3 = 0.133; // G2yourscore
-    let perc3 = 33; // G2percentile
+    let min3 = 0; // G2xmin
+    let max3 = 0; // G2xmax
+    let mid3 = 0; //G2xaverage
+    let res3 = 0; // G2yourscore
+    let perc3 = 0; // G2percentile
 
-    let min4 = 0.109; // Sxmin
-    let max4 = 0.175; // Sxmax
-    let mid4 = 0.140; //Sxaverage
-    let res4 = 0.133; // Syourscore
-    let perc4 = 33; // Spercentile
+    let min4 = 0; // Sxmin
+    let max4 = 0; // Sxmax
+    let mid4 = 0; //Sxaverage
+    let res4 = 0; // Syourscore
+    let perc4 = 0; // Spercentile
 
-    let min5 = 0.109; // Bxmin
-    let max5 = 0.175; // Bxmax
-    let mid5 = 0.140; //Bxaverage
-    let res5 = 0.155; // Byourscore
-    let perc5 = 55; // Bpercentile
+    let min5 = 0; // Bxmin
+    let max5 = 0; // Bxmax
+    let mid5 = 0; //Bxaverage
+    let res5 = 0; // Byourscore
+    let perc5 = 0; // Bpercentile
 
     let overlap = false;
     let someOverlap = false;
@@ -106,6 +109,32 @@
     }
 
     onMount(() => {
+        reportData = service.getReport(undefined);
+        min1 = reportData.G0xmin;
+        max1 =  reportData.G0xmax;
+        mid1 =  reportData.G0xaverage;
+        res1 =  reportData.G0yourscore;
+        perc1 =  reportData.G0percentile;
+        min2 =  reportData.G1xmin;
+        max2 =  reportData.G1xmax;
+        mid2 =  reportData.G1xaverage;
+        res2 =  reportData.G1yourscore;
+        perc2 =  reportData.G1percentile;
+        min3 =  reportData.G2xmin;
+        max3 =  reportData.G2xmax;
+        mid3 =  reportData.G2xaverage;
+        res3 =  reportData.G2yourscore;
+        perc3 =  reportData.G2percentile;
+        min4 =  reportData.Sxmin;
+        max4 =  reportData.Sxmax;
+        mid4 =  reportData.Sxaverage;
+        res4 =  reportData.Syourscore;
+        perc4 =  reportData.Spercentile;
+        min5 =  reportData.Bxmin;
+        max5 =  reportData.Bxmax;
+        mid5 =  reportData.Bxaverage;
+        res5 =  reportData.Byourscore;
+        perc5 =  reportData.Bpercentile;
         if (res1 > mid1 && res2 < mid2 && res3 < mid3 && res4 < mid4 && res5 > mid5) {
             overlap = true;
             return;
