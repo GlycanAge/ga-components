@@ -49,14 +49,14 @@
     let showSummary = false;
 
     function getColor() {
-        if (res4 < mid4 && res3 < mid3 && res1 > mid1 && res2 < mid2 && res3 < mid3) {
+        if (overlap) {
             return '#CC0000';
         }
-        if (res4 < mid4 || res3 < mid3 || res1 > mid1 || res2 < mid2 || res3 < mid3) {
+        if (someOverlap) {
             return '#EE9933';
         }
 
-        if (res4 > mid4 && res3 > mid3 && res1 < mid1 && res2 > mid2 && res3 > mid3) {
+        if (noOverlap) {
             return '#00AA44';
         }
 
@@ -64,14 +64,14 @@
     }
 
     function getBackground() {
-        if (res4 < mid4 && res3 < mid3 && res1 > mid1 && res2 < mid2 && res3 < mid3) {
+        if (overlap) {
             return 'rgba(204,0,0,0.15)';
         }
-        if (res4 < mid4 || res3 < mid3 || res1 > mid1 || res2 < mid2 || res3 < mid3) {
+        if (someOverlap) {
             return 'rgba(238,153,51,0.15)';
         }
 
-        if (res4 > mid4 && res3 > mid3 && res1 < mid1 && res2 > mid2 && res3 > mid3) {
+        if (noOverlap) {
             return 'rgba(0,170,68,0.15)';
         }
 
@@ -79,14 +79,14 @@
     }
 
     function getBodyBackground() {
-        if (res4 < mid4 && res3 < mid3 && res1 > mid1 && res2 < mid2 && res3 < mid3) {
+        if (overlap) {
             return 'rgba(204,0,0,0.05)';
         }
-        if (res4 < mid4 || res3 < mid3 || res1 > mid1 || res2 < mid2 || res3 < mid3) {
+        if (someOverlap) {
             return 'rgba(238,153,51,0.05)';
         }
 
-        if (res4 > mid4 && res3 > mid3 && res1 < mid1 && res2 > mid2 && res3 > mid3) {
+        if (noOverlap) {
             return 'rgba(0,170,68,0.05)';
         }
 
@@ -94,42 +94,42 @@
     }
 
     function getWording() {
-        if (res4 < mid4 && res3 < mid3 && res1 > mid1 && res2 < mid2 && res3 < mid3) {
+        if (overlap) {
             return 'a significant overlap';
         }
-        if (res4 < mid4 || res3 < mid3 || res1 > mid1 || res2 < mid2 || res3 < mid3) {
+        if (someOverlap) {
             return 'some overlap';
         }
 
-        if (res4 > mid4 && res3 > mid3 && res1 < mid1 && res2 > mid2 && res3 > mid3) {
+        if (noOverlap) {
             return 'no significant overlap';
         }
 
         return 'no significant overlap';
     }
 
-    onMount(() => {
-        reportData = service.getReport(undefined);
-        min1 = reportData.G0xmin;
-        max1 =  reportData.G0xmax;
-        mid1 =  reportData.G0xaverage;
-        res1 =  reportData.G0yourscore;
-        perc1 =  reportData.G0percentile;
-        min2 =  reportData.G1xmin;
-        max2 =  reportData.G1xmax;
-        mid2 =  reportData.G1xaverage;
-        res2 =  reportData.G1yourscore;
-        perc2 =  reportData.G1percentile;
-        min3 =  reportData.G2xmin;
-        max3 =  reportData.G2xmax;
-        mid3 =  reportData.G2xaverage;
-        res3 =  reportData.G2yourscore;
-        perc3 =  reportData.G2percentile;
-        min4 =  reportData.Bxmin;
-        max4 =  reportData.Bxmax;
-        mid4 =  reportData.Bxaverage;
-        res4 =  reportData.Byourscore;
-        perc4 =  reportData.Bpercentile;
+    onMount(async () => {
+        reportData = await service.getReport(undefined);
+        min1 = Number(reportData.G0xmin);
+        max1 =  Number(reportData.G0xmax);
+        mid1 =  Number(reportData.G0xaverage);
+        res1 =  Number(reportData.G0yourscore);
+        perc1 =  Number(reportData.G0percentile);
+        min2 =  Number(reportData.G1xmin);
+        max2 =  Number(reportData.G1xmax);
+        mid2 =  Number(reportData.G1xaverage);
+        res2 =  Number(reportData.G1yourscore);
+        perc2 =  Number(reportData.G1percentile);
+        min3 =  Number(reportData.G2xmin);
+        max3 =  Number(reportData.G2xmax);
+        mid3 =  Number(reportData.G2xaverage);
+        res3 =  Number(reportData.G2yourscore);
+        perc3 =  Number(reportData.G2percentile);
+        min4 =  Number(reportData.Sxmin);
+        max4 =  Number(reportData.Sxmax);
+        mid4 =  Number(reportData.Sxaverage);
+        res4 =  Number(reportData.Syourscore);
+        perc4 =  Number(reportData.Spercentile);
 
         if (res4 < mid4 && res3 < mid3 && res1 > mid1 && res2 < mid2 && res3 < mid3) {
             overlap = true;
@@ -137,17 +137,23 @@
             return;
         }
         if (res4 < mid4 || res3 < mid3 || res1 > mid1 || res2 < mid2 || res3 < mid3) {
-            someOverlap = true;
-            showSummary = true;
-            return;
-        }
-
-        if (res4 > mid4 && res3 > mid3 && res1 < mid1 && res2 > mid2 && res3 > mid3) {
+            if ((res1 > mid1 && res2 < mid2 && res3 < mid3) ||
+                (res1 > mid1 && res2 < mid2 && res4 < mid4) ||
+                (res2 < mid2 && res3 < mid3 && res4 < mid4) ||
+                (res1 > mid1 && res3 < mid3 && res4 < mid4))
+            {
+                someOverlap = true;
+                showSummary = true;
+                return;
+            }
             noOverlap = true;
             showSummary = true;
             return;
         }
+
         noOverlap = true;
+        showSummary = true;
+        return;
     })
 </script>
 
@@ -158,7 +164,7 @@
 {#if type === 'header'}
     <div class="header">
         {#if overlap}
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#CC0000" d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#CC0000" d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45ZM12 17q.425 0 .713-.288T13 16q0-.425-.288-.713T12 15q-.425 0-.713.288T11 16q0 .425.288.713T12 17Zm-1-4h2V7h-2v6Z"/></svg>
             &nbsp; Significant overlap
         {/if}
         {#if someOverlap}
@@ -172,32 +178,50 @@
     </div>
 {:else if type === 'summary'}
     {#if showSummary}
-        <div class="summaryMain" style="border: 2px solid {getColor()};">
-            <div class="summaryHeader" style="background-color: {getBackground()}; border-bottom: 2px solid {getColor()};">
-                <div style="width: 10%; padding-left: 1.5rem; padding-right: 1rem;">
-                    {#if overlap}
-                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"><path fill="#CC0000" d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"/></svg>
-                    {/if}
-                    {#if someOverlap}
-                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"><path fill="#EE9933" d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"/></svg>
-                    {/if}
-                    {#if noOverlap}
+        {#if noOverlap}
+            <div class="summaryMain">
+                <div class="summaryHeader" style="border-radius: 8px; background-color: rgba(0,170,68,0.15); border: 2px solid #00AA44;">
+                    <div style="width: 10%; padding-left: 1.5rem; padding-right: 1rem;">
                         <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"><path fill="#00AA44" d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"/></svg>
-                    {/if}
+                    </div>
+                    <div style="width: 90%;">There is <b>no significant overlap</b> of glycan indexes between <br> your patient and hypertension patients.</div>
                 </div>
-                <div style="width: 90%;">There is <b>{getWording()}</b> of glycan indexes between <br> your patient and hypertension patients.</div>
+                <div class="summaryBody" style="opacity: 0.35;">
+                    <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptomps to check for:</div>
+                    <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Headaches:</b> Elevated blood pressure may lead to headaches.</div>
+                    <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Vision problems:</b> High blood pressure can cause blurred or narrowed vision.</div>
+                    <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Shortness of breath:</b>  Elevated blood pressure can affect the heart and lungs, <br> leading to shortness of breath.</div>
+                    <div style="font-size: 1.2rem; padding-top: 1.2rem;padding-bottom: 1rem;">Possible follow-up tests:</div>
+                    <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Blood pressure monitoring:</b>  Regular blood pressure checks can accurately <br> monitor hypertension levels.</div>
+                    <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Blood tests:</b>  These assess cholesterol levels and other factors related to <br> hypertension.</div>
+                    <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Electrocardiogram (EKG or ECG):</b>  This test can identify issues with heart <br> rhythm or damage related to hypertension.</div>
+                </div>
             </div>
-            <div class="summaryBody" style="background-color: {getBodyBackground()};">
-                <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptomps to check for:</div>
-                <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Headaches:</b> Elevated blood pressure may lead to headaches.</div>
-                <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Vision problems:</b> High blood pressure can cause blurred or narrowed vision.</div>
-                <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Shortness of breath:</b>  Elevated blood pressure can affect the heart and lungs, <br> leading to shortness of breath.</div>
-                <div style="font-size: 1.2rem; padding-top: 1.2rem;padding-bottom: 1rem;">Possible follow-up tests:</div>
-                <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Blood pressure monitoring:</b>  Regular blood pressure checks can accurately <br> monitor hypertension levels.</div>
-                <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Blood tests:</b>  These assess cholesterol levels and other factors related to <br> hypertension.</div>
-                <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Electrocardiogram (EKG or ECG):</b>  This test can identify issues with heart <br> rhythm or damage related to hypertension.</div>
+        {:else}
+            <div class="summaryMain" style="border: 2px solid {getColor()};">
+                <div class="summaryHeader" style="border-radius: 8px 8px 0 0; background-color: {getBackground()}; border-bottom: 2px solid {getColor()};">
+                    <div style="width: 10%; padding-left: 1.5rem; padding-right: 1rem;">
+                        {#if overlap}
+                            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"><path fill="#CC0000" d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45ZM12 17q.425 0 .713-.288T13 16q0-.425-.288-.713T12 15q-.425 0-.713.288T11 16q0 .425.288.713T12 17Zm-1-4h2V7h-2v6Z"/></svg>
+                        {/if}
+                        {#if someOverlap}
+                            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"><path fill="#EE9933" d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"/></svg>
+                        {/if}
+                    </div>
+                    <div style="width: 90%;">There is <b>{getWording()}</b> of glycan indexes between <br> your patient and hypertension patients.</div>
+                </div>
+                <div class="summaryBody" style="background-color: {getBodyBackground()};">
+                    <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptomps to check for:</div>
+                    <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Headaches:</b> Elevated blood pressure may lead to headaches.</div>
+                    <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Vision problems:</b> High blood pressure can cause blurred or narrowed vision.</div>
+                    <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Shortness of breath:</b>  Elevated blood pressure can affect the heart and lungs, <br> leading to shortness of breath.</div>
+                    <div style="font-size: 1.2rem; padding-top: 1.2rem;padding-bottom: 1rem;">Possible follow-up tests:</div>
+                    <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Blood pressure monitoring:</b>  Regular blood pressure checks can accurately <br> monitor hypertension levels.</div>
+                    <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Blood tests:</b>  These assess cholesterol levels and other factors related to <br> hypertension.</div>
+                    <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Electrocardiogram (EKG or ECG):</b>  This test can identify issues with heart <br> rhythm or damage related to hypertension.</div>
+                </div>
             </div>
-        </div>
+        {/if}
     {/if}
 {:else}
     <div class="main">
@@ -334,7 +358,6 @@
     .summaryHeader {
         width: 100%;
         height: 20%;
-        border-radius: 8px 8px 0 0;
         font-size: 0.9rem;
         display: flex;
         align-items: center;
@@ -491,7 +514,7 @@
         z-index: 99999;
         min-width: 100px;
         font-size: 0.48rem;
-        margin-bottom: -6px;
+        margin-bottom: -9px;
     }
 
     .triangle-down {

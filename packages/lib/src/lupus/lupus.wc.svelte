@@ -46,14 +46,14 @@
     let showSummary = false;
 
     function getColor() {
-        if (res1 < mid1 && res2 < mid2 && res3 > mid3 && res4 > mid4) {
+        if (overlap) {
             return '#CC0000';
         }
-        if (res1 < mid1 || res2 < mid2 || res3 > mid3 || res4 > mid4) {
+        if (someOverlap) {
             return '#EE9933';
         }
 
-        if (res1 > mid1 && res2 > mid2 && res3 < mid3 && res4 < mid4) {
+        if (noOverlap) {
             return '#00AA44';
         }
 
@@ -61,14 +61,14 @@
     }
 
     function getBackground() {
-        if (res1 < mid1 && res2 < mid2 && res3 > mid3 && res4 > mid4) {
+        if (overlap) {
             return 'rgba(204,0,0,0.15)';
         }
-        if (res1 < mid1 || res2 < mid2 || res3 > mid3 || res4 > mid4) {
+        if (someOverlap) {
             return 'rgba(238,153,51,0.15)';
         }
 
-        if (res1 > mid1 && res2 > mid2 && res3 < mid3 && res4 < mid4) {
+        if (noOverlap) {
             return 'rgba(0,170,68,0.15)';
         }
 
@@ -76,14 +76,14 @@
     }
 
     function getBodyBackground() {
-        if (res1 < mid1 && res2 < mid2 && res3 > mid3 && res4 > mid4) {
+        if (overlap) {
             return 'rgba(204,0,0,0.05)';
         }
-        if (res1 < mid1 || res2 < mid2 || res3 > mid3 || res4 > mid4) {
+        if (someOverlap) {
             return 'rgba(238,153,51,0.05)';
         }
 
-        if (res1 > mid1 && res2 > mid2 && res3 < mid3 && res4 < mid4) {
+        if (noOverlap) {
             return 'rgba(0,170,68,0.05)';
         }
 
@@ -91,59 +91,64 @@
     }
 
     function getWording() {
-        if (res1 < mid1 && res2 < mid2 && res3 > mid3 && res4 > mid4) {
+        if (overlap) {
             return 'a significant overlap';
         }
-        if (res1 < mid1 || res2 < mid2 || res3 > mid3 || res4 > mid4) {
+        if (someOverlap) {
             return 'some overlap';
         }
 
-        if (res1 > mid1 && res2 > mid2 && res3 < mid3 && res4 < mid4) {
+        if (noOverlap) {
             return 'no significant overlap';
         }
 
         return 'no significant overlap';
     }
 
-    onMount(() => {
-        reportData = service.getReport(undefined);
-        min1 = reportData.P18xmin;
-        max1 =  reportData.P18xmax;
-        mid1 =  reportData.P18xaverage;
-        res1 =  reportData.P18yourscore;
-        perc1 =  reportData.P18percentile;
-        min2 =  reportData.P22xmin;
-        max2 =  reportData.P22xmax;
-        mid2 =  reportData.P22xaverage;
-        res2 =  reportData.P22yourscore;
-        perc2 =  reportData.P22percentile;
-        min3 =  reportData.P23xmin;
-        max3 =  reportData.P23xmax;
-        mid3 =  reportData.P23xaverage;
-        res3 =  reportData.P23yourscore;
-        perc3 =  reportData.P23percentile;
-        min4 =  reportData.P26xmin;
-        max4 =  reportData.P26xmax;
-        mid4 =  reportData.P26xaverage;
-        res4 =  reportData.P26yourscore;
-        perc4 =  reportData.P26percentile;
+    onMount(async () => {
+        reportData = await service.getReport(undefined);
+        min1 = Number(reportData.P18xmin);
+        max1 =  Number(reportData.P18xmax);
+        mid1 =  Number(reportData.P18xaverage);
+        res1 =  Number(reportData.P18yourscore);
+        perc1 =  Number(reportData.P18percentile);
+        min2 =  Number(reportData.P22xmin);
+        max2 =  Number(reportData.P22xmax);
+        mid2 =  Number(reportData.P22xaverage);
+        res2 =  Number(reportData.P22yourscore);
+        perc2 =  Number(reportData.P22percentile);
+        min3 =  Number(reportData.P23xmin);
+        max3 =  Number(reportData.P23xmax);
+        mid3 =  Number(reportData.P23xaverage);
+        res3 =  Number(reportData.P23yourscore);
+        perc3 =  Number(reportData.P23percentile);
+        min4 =  Number(reportData.P26xmin);
+        max4 =  Number(reportData.P26xmax);
+        mid4 =  Number(reportData.P26xaverage);
+        res4 =  Number(reportData.P26yourscore);
+        perc4 =  Number(reportData.P26percentile);
         if (res1 < mid1 && res2 < mid2 && res3 > mid3 && res4 > mid4) {
             overlap = true;
             showSummary = true;
             return;
         }
         if (res1 < mid1 || res2 < mid2 || res3 > mid3 || res4 > mid4) {
-            someOverlap = true;
-            showSummary = true;
-            return;
-        }
-
-        if (res1 > mid1 && res2 > mid2 && res3 < mid3 && res4 < mid4) {
+            if ((res1 < mid1 && res2 < mid2 && res3 > mid3) ||
+                (res1 < mid1 && res2 < mid2 && res4 > mid4) ||
+                (res2 < mid2 && res3 > mid3 && res4 > mid4) ||
+                (res1 < mid1 && res3 > mid3 && res4 > mid4))
+            {
+                someOverlap = true;
+                showSummary = true;
+                return;
+            }
             noOverlap = true;
             showSummary = true;
             return;
         }
         noOverlap = true;
+        showSummary = true;
+        return;
     })
 </script>
 
@@ -154,7 +159,7 @@
 {#if type === 'header'}
     <div class="header">
         {#if overlap}
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#CC0000" d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#CC0000" d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45ZM12 17q.425 0 .713-.288T13 16q0-.425-.288-.713T12 15q-.425 0-.713.288T11 16q0 .425.288.713T12 17Zm-1-4h2V7h-2v6Z"/></svg>
             &nbsp; Significant overlap
         {/if}
         {#if someOverlap}
@@ -168,34 +173,54 @@
     </div>
 {:else if type === 'summary'}
     {#if showSummary}
-        <div class="summaryMain" style="border: 2px solid {getColor()};">
-            <div class="summaryHeader" style="background-color: {getBackground()}; border-bottom: 2px solid {getColor()};">
-                <div style="width: 10%; padding-left: 1.5rem; padding-right: 1rem;">
-                    {#if overlap}
-                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"><path fill="#CC0000" d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"/></svg>
-                    {/if}
-                    {#if someOverlap}
-                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"><path fill="#EE9933" d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"/></svg>
-                    {/if}
-                    {#if noOverlap}
+        {#if noOverlap}
+            <div class="summaryMain">
+                <div class="summaryHeader" style="border-radius: 8px; background-color: rgba(0,170,68,0.15); border: 2px solid #00AA44;">
+                    <div style="width: 10%; padding-left: 1.5rem; padding-right: 1rem;">
                         <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"><path fill="#00AA44" d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"/></svg>
-                    {/if}
+                    </div>
+                    <div style="width: 90%;">There is <b>no significant overlap</b> of glycan indexes between <br> your patient and and lupus patients.</div>
                 </div>
-                <div style="width: 90%;">There is <b>{getWording()}</b> of glycan indexes between <br> your patient and lupus patients.</div>
+                <div class="summaryBody" style="opacity: 0.35;">
+                    <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptomps to check for:</div>
+                    <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Fatigue:</b> Overactive immune responses lead to chronic exhaustion.</div>
+                    <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Joint pain and swelling:</b> Inflammation from the immune attack affects the joints.</div>
+                    <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Skin rash:</b> Particularly a butterfly-shaped rash on the face, indicating skin <br>
+                        inflammation.</div>
+                    <div style="font-size: 1.2rem; padding-top: 2rem;padding-bottom: 1rem;">Possible follow-up tests:</div>
+                    <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Antinuclear antibody (ANA) test:</b> This blood test detects the presence of
+                        ANA, <br> commonly found in people with lupus.</div>
+                    <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Complete blood count:</b> This test evaluates the levels of blood cells which <br> may be affected by lupus.</div>
+                    <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Urinalysis:</b>  Examining the urine can reveal kidney involvement in lupus.</div>
+                </div>
             </div>
-            <div class="summaryBody" style="background-color: {getBodyBackground()};">
-                <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptomps to check for:</div>
-                <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Fatigue:</b> Overactive immune responses lead to chronic exhaustion.</div>
-                <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Joint pain and swelling:</b> Inflammation from the immune attack affects the joints.</div>
-                <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Skin rash:</b> Particularly a butterfly-shaped rash on the face, indicating skin <br>
-                    inflammation.</div>
-                <div style="font-size: 1.2rem; padding-top: 2rem;padding-bottom: 1rem;">Possible follow-up tests:</div>
-                <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Antinuclear antibody (ANA) test:</b> This blood test detects the presence of
-                    ANA, <br> commonly found in people with lupus.</div>
-                <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Complete blood count:</b> This test evaluates the levels of blood cells which <br> may be affected by lupus.</div>
-                <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Urinalysis:</b>  Examining the urine can reveal kidney involvement in lupus.</div>
+        {:else}
+            <div class="summaryMain" style="border: 2px solid {getColor()};">
+                <div class="summaryHeader" style="border-radius: 8px 8px 0 0; background-color: {getBackground()}; border-bottom: 2px solid {getColor()};">
+                    <div style="width: 10%; padding-left: 1.5rem; padding-right: 1rem;">
+                        {#if overlap}
+                            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"><path fill="#CC0000" d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45ZM12 17q.425 0 .713-.288T13 16q0-.425-.288-.713T12 15q-.425 0-.713.288T11 16q0 .425.288.713T12 17Zm-1-4h2V7h-2v6Z"/></svg>
+                        {/if}
+                        {#if someOverlap}
+                            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"><path fill="#EE9933" d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"/></svg>
+                        {/if}
+                    </div>
+                    <div style="width: 90%;">There is <b>{getWording()}</b> of glycan indexes between <br> your patient and lupus patients.</div>
+                </div>
+                <div class="summaryBody" style="background-color: {getBodyBackground()};">
+                    <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptomps to check for:</div>
+                    <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Fatigue:</b> Overactive immune responses lead to chronic exhaustion.</div>
+                    <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Joint pain and swelling:</b> Inflammation from the immune attack affects the joints.</div>
+                    <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Skin rash:</b> Particularly a butterfly-shaped rash on the face, indicating skin <br>
+                        inflammation.</div>
+                    <div style="font-size: 1.2rem; padding-top: 2rem;padding-bottom: 1rem;">Possible follow-up tests:</div>
+                    <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Antinuclear antibody (ANA) test:</b> This blood test detects the presence of
+                        ANA, <br> commonly found in people with lupus.</div>
+                    <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Complete blood count:</b> This test evaluates the levels of blood cells which <br> may be affected by lupus.</div>
+                    <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Urinalysis:</b>  Examining the urine can reveal kidney involvement in lupus.</div>
+                </div>
             </div>
-        </div>
+        {/if}
     {/if}
 {:else}
     <div class="main">
@@ -305,7 +330,6 @@
     .summaryHeader {
         width: 100%;
         height: 20%;
-        border-radius: 8px 8px 0 0;
         font-size: 0.9rem;
         display: flex;
         align-items: center;
@@ -464,7 +488,7 @@
         z-index: 99999;
         min-width: 100px;
         font-size: 0.48rem;
-        margin-bottom: -6px;
+        margin-bottom: -7px;
     }
 
     .triangle-down {
