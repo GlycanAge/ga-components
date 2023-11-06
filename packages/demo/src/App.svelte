@@ -11,6 +11,7 @@
   import '../../../dist/endometrial.wc.js';
   import '../../../dist/ovarian.wc.js';
   import '../../../dist/hypertension.wc.js';
+  import '../../../dist/chronic.wc.js';
   import {MockService} from './mock-service';
 
   let el: HTMLDivElement;
@@ -21,6 +22,7 @@
 </script>
 
 <div bind:this={el} class="p-4">
+    <ga-chronic></ga-chronic>
       <div class="flex flex-col">
           <div class="flex justify-evenly pb-8">
                   <div class="flex flex-col items-center">

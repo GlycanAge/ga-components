@@ -10,5 +10,6 @@ export default () => {
   import('./src/endometrial/endometrial.wc.svelte');
   import('./src/ovarian/ovarian.wc.svelte');
   import('./src/hypertension/hypertension.wc.svelte');
+  import('./src/chronic/chronic.wc.svelte');
   import('./src/shared/interfaces/language.interface');
 };
