@@ -58,11 +58,11 @@ export class MockService implements Service {
             P21xmin: "0.176",
             P21yourscore: "0.201",
             P22: "10.7184385730859",
-            P22percentile: "99",
+            P22percentile: "49",
             P22xaverage: "0.117",
             P22xmax: "0.154",
             P22xmin: "0.084",
-            P22yourscore: "0.120",
+            P22yourscore: "0.116",
             P23: "4.1967011171428",
             P23percentile: "12",
             P23xaverage: "0.062",
@@ -118,7 +118,7 @@ export class MockService implements Service {
             trrd: "20231017",
             type: "regular",
             userId: "FiLdM3UZ9PVT1zH9N72PMj8IHWg2",
-            sex: "M"
+            sex: "F"
         });
     }
 }
