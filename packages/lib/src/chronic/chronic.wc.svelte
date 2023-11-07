@@ -78,7 +78,6 @@
     .main {
         height: 5rem;
         width: 25rem;
-        border: 1px solid red;
         display: flex;
         justify-content: center;
     }
@@ -89,7 +88,6 @@
         align-items: center;
         max-width: 7rem;
         height: 100%;
-        border: 1px solid blue;
     }
 
     .age-font {
