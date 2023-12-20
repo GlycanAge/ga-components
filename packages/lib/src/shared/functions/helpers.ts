@@ -74,6 +74,9 @@ export function moveDiv(res: number, mid: number, perc: number) {
 }
 
 export function suffix(perc: number) {
+    if (perc === 11 || perc === 12 || perc === 13) {
+        return 'th';
+    }
     let lastDigit = perc.toString().split('').pop();
     switch (lastDigit) {
         case '1':

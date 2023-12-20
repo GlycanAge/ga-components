@@ -10,6 +10,10 @@
   import '../../../dist/menopause.wc.js';
   import '../../../dist/endometrial.wc.js';
   import '../../../dist/ovarian.wc.js';
+  import '../../../dist/dyslipidemia.wc.js';
+  import '../../../dist/atherosclerosis.wc.js';
+  import '../../../dist/coronary.wc.js';
+  import '../../../dist/copd.wc.js';
   import '../../../dist/hypertension.wc.js';
   import '../../../dist/chronic.wc.js';
   import {MockService} from './mock-service';
@@ -24,6 +28,38 @@
 <div bind:this={el} class="p-4">
     <ga-chronic></ga-chronic>
       <div class="flex flex-col">
+          <div class="flex justify-evenly pb-8">
+              <div class="flex flex-col items-center">
+                  <ga-dyslipidemia report="1K4GyKDgsB9ATQflwio7"></ga-dyslipidemia>
+                  <div class="p-10"></div>
+                  <ga-dyslipidemia report="1K4GyKDgsB9ATQflwio7" type="header"></ga-dyslipidemia>
+              </div>
+              <ga-dyslipidemia report="1K4GyKDgsB9ATQflwio7" type="summary"></ga-dyslipidemia>
+          </div>
+          <div class="flex justify-evenly pb-8">
+              <div class="flex flex-col items-center">
+                  <ga-atherosclerosis report="1K4GyKDgsB9ATQflwio7"></ga-atherosclerosis>
+                  <div class="p-10"></div>
+                  <ga-atherosclerosis report="1K4GyKDgsB9ATQflwio7" type="header"></ga-atherosclerosis>
+              </div>
+              <ga-atherosclerosis report="1K4GyKDgsB9ATQflwio7" type="summary"></ga-atherosclerosis>
+          </div>
+          <div class="flex justify-evenly pb-8">
+              <div class="flex flex-col items-center">
+                  <ga-coronary report="1K4GyKDgsB9ATQflwio7"></ga-coronary>
+                  <div class="p-10"></div>
+                  <ga-coronary report="1K4GyKDgsB9ATQflwio7" type="header"></ga-coronary>
+              </div>
+              <ga-coronary report="1K4GyKDgsB9ATQflwio7" type="summary"></ga-coronary>
+          </div>
+          <div class="flex justify-evenly pb-8">
+              <div class="flex flex-col items-center">
+                  <ga-copd report="1K4GyKDgsB9ATQflwio7"></ga-copd>
+                  <div class="p-10"></div>
+                  <ga-copd report="1K4GyKDgsB9ATQflwio7" type="header"></ga-copd>
+              </div>
+              <ga-copd report="1K4GyKDgsB9ATQflwio7" type="summary"></ga-copd>
+          </div>
           <div class="flex justify-evenly pb-8">
                   <div class="flex flex-col items-center">
                       <ga-arthritis report="1K4GyKDgsB9ATQflwio7"></ga-arthritis>

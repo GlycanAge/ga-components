@@ -11,5 +11,9 @@ export default () => {
   import('./src/ovarian/ovarian.wc.svelte');
   import('./src/hypertension/hypertension.wc.svelte');
   import('./src/chronic/chronic.wc.svelte');
+  import('./src/dyslipidemia/dyslipidemia.wc.svelte');
+  import('./src/atherosclerosis/atherosclerosis.wc.svelte');
+  import('./src/coronary/coronary.wc.svelte');
+  import('./src/copd/copd.wc.svelte');
   import('./src/shared/interfaces/language.interface');
 };
