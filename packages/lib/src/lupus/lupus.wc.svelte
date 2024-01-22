@@ -182,7 +182,7 @@
                     <div style="width: 90%;">There is <b>no significant overlap</b> of glycan indexes between <br> your patient and and lupus patients.</div>
                 </div>
                 <div class="summaryBody" style="opacity: 0.35;">
-                    <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptomps to check for:</div>
+                    <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptoms to check for:</div>
                     <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Fatigue:</b> Overactive immune responses lead to chronic exhaustion.</div>
                     <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Joint pain and swelling:</b> Inflammation from the immune attack affects the joints.</div>
                     <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Skin rash:</b> Particularly a butterfly-shaped rash on the face, indicating skin <br>
@@ -208,7 +208,7 @@
                     <div style="width: 90%;">There is <b>{getWording()}</b> of glycan indexes between <br> your patient and lupus patients.</div>
                 </div>
                 <div class="summaryBody" style="background-color: {getBodyBackground()};">
-                    <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptomps to check for:</div>
+                    <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptoms to check for:</div>
                     <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Fatigue:</b> Overactive immune responses lead to chronic exhaustion.</div>
                     <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Joint pain and swelling:</b> Inflammation from the immune attack affects the joints.</div>
                     <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Skin rash:</b> Particularly a butterfly-shaped rash on the face, indicating skin <br>

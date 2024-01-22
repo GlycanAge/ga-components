@@ -198,7 +198,7 @@
                     <div style="width: 90%;">There is <b>no significant overlap</b> of glycan indexes between <br> your patient and colorectal cancer patients.</div>
                 </div>
                 <div class="summaryBody" style="opacity: 0.35;">
-                    <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptomps to check for:</div>
+                    <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptoms to check for:</div>
                     <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Changes in bowel habits:</b> Cancer in the colon or rectum can cause
                         alterations <br> in bowel habits.</div>
                     <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Rectal bleeding or blood in stool:</b> The growth of cancerous cells in the
@@ -228,7 +228,7 @@
                     <div style="width: 90%;">There is <b>{getWording()}</b> of glycan indexes between <br> your patient and colorectal cancer patients.</div>
                 </div>
                 <div class="summaryBody" style="background-color: {getBodyBackground()};">
-                    <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptomps to check for:</div>
+                    <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptoms to check for:</div>
                     <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Changes in bowel habits:</b> Cancer in the colon or rectum can cause
                         alterations <br> in bowel habits.</div>
                     <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Rectal bleeding or blood in stool:</b> The growth of cancerous cells in the

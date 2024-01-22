@@ -198,7 +198,7 @@
                     <div style="width: 90%;">There is <b>no significant overlap</b> of glycan indexes between <br> your patient and perimenopausal women.</div>
                 </div>
                 <div class="summaryBody" style="opacity: 0.35;">
-                    <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptomps to check for:</div>
+                    <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptoms to check for:</div>
                     <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Irregular periods:</b> Hormonal fluctuations during perimenopause lead to
                         changes in <br>menstrual cycle patterns.</div>
                     <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Hot flashes:</b>  Sudden feelings of warmth, usually in the upper body, are
@@ -228,7 +228,7 @@
                     <div style="width: 90%;">There is <b>{getWording()}</b> of glycan indexes <br> between your patient and perimenopausal women.</div>
                 </div>
                 <div class="summaryBody" style="background-color: {getBodyBackground()};">
-                    <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptomps to check for:</div>
+                    <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptoms to check for:</div>
                     <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Irregular periods:</b> Hormonal fluctuations during perimenopause lead to
                         changes in <br>menstrual cycle patterns.</div>
                     <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Hot flashes:</b>  Sudden feelings of warmth, usually in the upper body, are

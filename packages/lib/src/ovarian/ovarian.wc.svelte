@@ -183,7 +183,7 @@
                     <div style="width: 90%;">There is <b>no significant overlap</b> of glycan indexes between <br> your patient and ovarian cancer patients.</div>
                 </div>
                 <div class="summaryBody" style="opacity: 0.35;">
-                    <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptomps to check for:</div>
+                    <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptoms to check for:</div>
                     <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Abdominal bloating or swelling:</b> Persistent bloating may be a sign of
                         ovarian <br> cancer.</div>
                     <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Quickly feeling full when eating:</b>  Ovarian cancer may cause a loss of
@@ -211,7 +211,7 @@
                     <div style="width: 90%;">There is <b>{getWording()}</b> of glycan indexes between <br> your patient and ovarian cancer patients.</div>
                 </div>
                 <div class="summaryBody" style="background-color: {getBodyBackground()};">
-                    <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptomps to check for:</div>
+                    <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptoms to check for:</div>
                     <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Abdominal bloating or swelling:</b> Persistent bloating may be a sign of
                         ovarian <br> cancer.</div>
                     <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Quickly feeling full when eating:</b>  Ovarian cancer may cause a loss of

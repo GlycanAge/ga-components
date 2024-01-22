@@ -198,7 +198,7 @@
                     <div style="width: 90%;">There is <b>no significant overlap</b> of glycan indexes between <br> your patient and atherosclerosis patients.</div>
                 </div>
                 <div class="summaryBody" style="opacity: 0.35;">
-                    <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptomps to check for:</div>
+                    <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptoms to check for:</div>
                     <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Angina (Chest Pain):</b> Caused by reduced blood supply to the heart muscle <br>
                         due to narrowed arteries.</div>
                     <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Pain in Legs or Arms:</b> Occurs when the blood flow to limbs is restricted, <br>
@@ -228,7 +228,7 @@
                     <div style="width: 90%;">There is <b>{getWording()}</b> of glycan indexes between <br> your patient and atherosclerosis patients.</div>
                 </div>
                 <div class="summaryBody" style="background-color: {getBodyBackground()};">
-                    <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptomps to check for:</div>
+                    <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptoms to check for:</div>
                     <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Angina (Chest Pain):</b> Caused by reduced blood supply to the heart muscle <br>
                         due to narrowed arteries.</div>
                     <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Pain in Legs or Arms:</b> Occurs when the blood flow to limbs is restricted, <br>

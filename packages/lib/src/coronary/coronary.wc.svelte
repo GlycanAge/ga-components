@@ -150,7 +150,7 @@
                     <div style="width: 90%;">There is <b>no significant overlap</b> of glycan indexes between <br> your patient and coronary artery disease patients.</div>
                 </div>
                 <div class="summaryBody" style="opacity: 0.35;">
-                    <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptomps to check for:</div>
+                    <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptoms to check for:</div>
                     <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Chest Discomfort or Pain:</b> Often more subtle in women, can indicate <br>
                         reduced blood flow to the heart.</div>
                     <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Nausea or Fatigue:</b> Women may experience these symptoms more often <br>
@@ -180,7 +180,7 @@
                     <div style="width: 90%;">There is <b>{getWording()}</b> of glycan indexes between <br> your patient and coronary artery disease patients.</div>
                 </div>
                 <div class="summaryBody" style="background-color: {getBodyBackground()};">
-                    <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptomps to check for:</div>
+                    <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptoms to check for:</div>
                     <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Chest Discomfort or Pain:</b> Often more subtle in women, can indicate <br>
                         reduced blood flow to the heart.</div>
                     <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Nausea or Fatigue:</b> Women may experience these symptoms more often <br>

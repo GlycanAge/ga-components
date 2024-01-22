@@ -198,7 +198,7 @@
                     <div style="width: 90%;">There is <b>no significant overlap</b> of glycan indexes between <br> your patient and Crohn’s disease patients.</div>
                 </div>
                 <div class="summaryBody" style="opacity: 0.35;">
-                    <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptomps to check for:</div>
+                    <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptoms to check for:</div>
                     <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Diarrhea:</b> Persistent inflammation in the digestive tract often leads to
                         frequent <br> diarrhea.</div>
                     <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Abdominal pain and cramping:</b> Inflammation and ulcers may cause
@@ -228,7 +228,7 @@
                     <div style="width: 90%;">There is <b>{getWording()}</b> of glycan indexes between <br> your patient and Crohn’s disease patients.</div>
                 </div>
                 <div class="summaryBody" style="background-color: {getBodyBackground()};">
-                    <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptomps to check for:</div>
+                    <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptoms to check for:</div>
                     <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Diarrhea:</b> Persistent inflammation in the digestive tract often leads to
                         frequent <br> diarrhea.</div>
                     <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Abdominal pain and cramping:</b> Inflammation and ulcers may cause

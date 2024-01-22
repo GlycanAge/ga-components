@@ -182,7 +182,7 @@
                     <div style="width: 90%;">There is <b>no significant overlap</b> of glycan indexes between <br> your patient and dyslipidemia patients.</div>
                 </div>
                 <div class="summaryBody" style="opacity: 0.35;">
-                    <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptomps to check for:</div>
+                    <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptoms to check for:</div>
                     <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Asymptomatic Nature:</b> Dyslipidemia often shows no physical symptoms, <br>
                         identified usually through routine blood tests.</div>
                     <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Xanthomas:</b>  Fatty deposits under the skin, particularly around the eyelids, <br>
@@ -212,7 +212,7 @@
                     <div style="width: 90%;">There is <b>{getWording()}</b> of glycan indexes between <br> your patient and dyslipidemia patients.</div>
                 </div>
                 <div class="summaryBody" style="background-color: {getBodyBackground()};">
-                    <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptomps to check for:</div>
+                    <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptoms to check for:</div>
                     <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Asymptomatic Nature:</b> Dyslipidemia often shows no physical symptoms, <br>
                         identified usually through routine blood tests.</div>
                     <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Xanthomas:</b>  Fatty deposits under the skin, particularly around the eyelids, <br>

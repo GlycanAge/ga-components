@@ -166,7 +166,7 @@
                     <div style="width: 90%;">There is <b>no significant overlap</b> of glycan indexes between <br> your patient and rheumatoid arthritis patients.</div>
                 </div>
                 <div class="summaryBody" style="opacity: 0.35;">
-                    <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptomps to check for:</div>
+                    <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptoms to check for:</div>
                     <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Joint pain and stiffnes:</b> The immune attack on synovium leads to
                         inflammation, <br> causing pain and stiffness in the affected joints.</div>
                     <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Swelling:</b> Persistent inflammation can cause noticeable joint swelling.</div>
@@ -195,7 +195,7 @@
                     <div style="width: 90%;">There is <b>{getWording()}</b> of glycan indexes between <br> your patient and rheumatoid arthritis patients.</div>
                 </div>
                 <div class="summaryBody" style="background-color: {getBodyBackground()};">
-                    <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptomps to check for:</div>
+                    <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptoms to check for:</div>
                     <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Joint pain and stiffnes:</b> The immune attack on synovium leads to
                         inflammation, <br> causing pain and stiffness in the affected joints.</div>
                     <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Swelling:</b> Persistent inflammation can cause noticeable joint swelling.</div>

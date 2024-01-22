@@ -187,7 +187,7 @@
                     <div style="width: 90%;">There is <b>no significant overlap</b> of glycan indexes between <br> your patient and hypertension patients.</div>
                 </div>
                 <div class="summaryBody" style="opacity: 0.35;">
-                    <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptomps to check for:</div>
+                    <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptoms to check for:</div>
                     <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Headaches:</b> Elevated blood pressure may lead to headaches.</div>
                     <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Vision problems:</b> High blood pressure can cause blurred or narrowed vision.</div>
                     <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Shortness of breath:</b>  Elevated blood pressure can affect the heart and lungs, <br> leading to shortness of breath.</div>
@@ -211,7 +211,7 @@
                     <div style="width: 90%;">There is <b>{getWording()}</b> of glycan indexes between <br> your patient and hypertension patients.</div>
                 </div>
                 <div class="summaryBody" style="background-color: {getBodyBackground()};">
-                    <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptomps to check for:</div>
+                    <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptoms to check for:</div>
                     <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Headaches:</b> Elevated blood pressure may lead to headaches.</div>
                     <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Vision problems:</b> High blood pressure can cause blurred or narrowed vision.</div>
                     <div style="font-size: 0.7rem; padding-bottom: 0.4rem;"><b>Shortness of breath:</b>  Elevated blood pressure can affect the heart and lungs, <br> leading to shortness of breath.</div>
