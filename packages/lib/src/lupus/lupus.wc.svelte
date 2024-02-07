@@ -17,28 +17,23 @@
 
     let min1 = 0; // P18xmin
     let max1 = 0; // P18xmax
-    let mid1 = 0; // P18xaverage
     let res1 = 0; // P18yourscore
     let perc1 = 0; // P18percentile
 
     let min2 = 0; // P22xmin
     let max2 = 0; // P22xmax
-    let mid2 = 0;  // P22xaverage
     let res2 = 0; // P22yourscore
     let perc2 = 0; // P22percentile
 
     let min3 = 0; // P23xmin
     let max3 = 0; // P23xmax
-    let mid3 = 0; //P23xaverage
     let res3 = 0; // P23yourscore
     let perc3 = 0; // P23percentile
 
     let min4 = 0; // P26xmin
     let max4 = 0; // P26xmax
-    let mid4 = 0; //P26xaverage
     let res4 = 0; // P26yourscore
     let perc4 = 0; // P26percentile
-
 
     let overlap = false;
     let someOverlap = false;
@@ -109,34 +104,31 @@
         reportData = await service.getReport(undefined);
         min1 = Number(reportData.P18xmin);
         max1 =  Number(reportData.P18xmax);
-        mid1 =  Number(reportData.P18xaverage);
         res1 =  Number(reportData.P18yourscore);
         perc1 =  Number(reportData.P18percentile);
         min2 =  Number(reportData.P22xmin);
         max2 =  Number(reportData.P22xmax);
-        mid2 =  Number(reportData.P22xaverage);
         res2 =  Number(reportData.P22yourscore);
         perc2 =  Number(reportData.P22percentile);
         min3 =  Number(reportData.P23xmin);
         max3 =  Number(reportData.P23xmax);
-        mid3 =  Number(reportData.P23xaverage);
         res3 =  Number(reportData.P23yourscore);
         perc3 =  Number(reportData.P23percentile);
         min4 =  Number(reportData.P26xmin);
         max4 =  Number(reportData.P26xmax);
-        mid4 =  Number(reportData.P26xaverage);
         res4 =  Number(reportData.P26yourscore);
         perc4 =  Number(reportData.P26percentile);
-        if (res1 < mid1 && res2 < mid2 && res3 > mid3 && res4 > mid4) {
+
+        if (perc1 < 50 && perc2 < 50 && perc3 > 50 && perc4 > 50) {
             overlap = true;
             showSummary = true;
             return;
         }
-        if (res1 < mid1 || res2 < mid2 || res3 > mid3 || res4 > mid4) {
-            if ((res1 < mid1 && res2 < mid2 && res3 > mid3) ||
-                (res1 < mid1 && res2 < mid2 && res4 > mid4) ||
-                (res2 < mid2 && res3 > mid3 && res4 > mid4) ||
-                (res1 < mid1 && res3 > mid3 && res4 > mid4))
+        if (perc1 < 50 || perc2 < 50 || perc3 > 50 || perc4 > 50) {
+            if ((perc1 < 50 && perc2 < 50 && perc3 > 50) ||
+                (perc1 < 50 && perc2 < 50 && perc4 > 50) ||
+                (perc2 < 50 && perc3 > 50 && perc4 > 50) ||
+                (perc1 < 50 && perc3 > 50 && perc4 > 50))
             {
                 someOverlap = true;
                 showSummary = true;
@@ -234,8 +226,8 @@
                     <div class="yAxis"></div>
                     <div class="diseaseArea" style="border-radius: 6px 0 0 6px; right: 50.3%;"></div>
                     <div class="result"
-                         style="padding: {getPadding(res1, mid1, perc1)}; margin: {getMargin(res1, mid1, perc1)}; border-radius: {getBorderRadius(res1, mid1, perc1)}">
-                        <div class="resultDisplay" style="right: {moveDiv(res1, mid1, perc1)};">
+                         style="padding: {getPadding(perc1)}; margin: {getMargin(perc1)}; border-radius: {getBorderRadius(perc1)}">
+                        <div class="resultDisplay" style="right: {moveDiv(perc1)};">
                             <div class="message"><b>{res1} ({perc1}<sup>{suffix(perc1)}</sup> percentile)</b></div>
                             <div class="triangle-down"></div>
                         </div>
@@ -253,8 +245,8 @@
                     <div class="yAxis"></div>
                     <div class="diseaseArea" style="border-radius: 6px 0 0 6px; right: 50.3%;"></div>
                     <div class="result2"
-                         style="padding: {getPadding(res2, mid2, perc2)}; margin: {getMargin(res2, mid2, perc2)}; border-radius: {getBorderRadius(res2, mid2, perc2)}">
-                        <div class="resultDisplay" style="right: {moveDiv(res2, mid2, perc2)};">
+                         style="padding: {getPadding(perc2)}; margin: {getMargin(perc2)}; border-radius: {getBorderRadius(perc2)}">
+                        <div class="resultDisplay" style="right: {moveDiv(perc2)};">
                             <div class="message"><b>{res2} ({perc2}<sup>{suffix(perc2)}</sup> percentile)</b></div>
                             <div class="triangle-down"></div>
                         </div>
@@ -272,8 +264,8 @@
                     <div class="yAxis"></div>
                     <div class="diseaseArea" style="border-radius: 0 6px 6px 0; left: 50.3%;"></div>
                     <div class="result3"
-                         style="padding: {getPadding(res3, mid3, perc3)}; margin: {getMargin(res3, mid3, perc3)}; border-radius: {getBorderRadius(res3, mid3, perc3)}">
-                        <div class="resultDisplay" style="right: {moveDiv(res3, mid3, perc3)};">
+                         style="padding: {getPadding(perc3)}; margin: {getMargin(perc3)}; border-radius: {getBorderRadius(perc3)}">
+                        <div class="resultDisplay" style="right: {moveDiv(perc3)};">
                             <div class="message"><b>{res3} ({perc3}<sup>{suffix(perc3)}</sup> percentile)</b></div>
                             <div class="triangle-down"></div>
                         </div>
@@ -291,8 +283,8 @@
                     <div class="yAxis"></div>
                     <div class="diseaseArea" style="border-radius: 0 6px 6px 0; left: 50.3%;"></div>
                     <div class="result3"
-                         style="padding: {getPadding(res4, mid4, perc4)}; margin: {getMargin(res4, mid4, perc4)}; border-radius: {getBorderRadius(res4, mid4, perc4)}">
-                        <div class="resultDisplay" style="right: {moveDiv(res4, mid4, perc4)};">
+                         style="padding: {getPadding(perc4)}; margin: {getMargin(perc4)}; border-radius: {getBorderRadius(perc4)}">
+                        <div class="resultDisplay" style="right: {moveDiv(perc4)};">
                             <div class="message"><b>{res4} ({perc4}<sup>{suffix(perc4)}</sup> percentile)</b></div>
                             <div class="triangle-down"></div>
                         </div>

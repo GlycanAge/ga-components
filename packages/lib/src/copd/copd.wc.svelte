@@ -18,13 +18,11 @@
 
     let min1 = 0; // G1xmin
     let max1 = 0; // G1xmax
-    let mid1 = 0; // G1xaverage
     let res1 = 0; // G1yourscore
     let perc1 = 0; // G1percentile
 
     let min2 = 0; // Bxmin
     let max2 = 0; // Bxmax
-    let mid2 = 0;  // Bxaverage
     let res2 = 0; // Byourscore
     let perc2 = 0; // Bpercentile
 
@@ -94,21 +92,19 @@
         reportData = await service.getReport(undefined);
         min1 = Number(reportData.G1xmin);
         max1 =  Number(reportData.G1xmax);
-        mid1 =  Number(reportData.G1xaverage);
         res1 =  Number(reportData.G1yourscore);
         perc1 =  Number(reportData.G1percentile);
         min2 =  Number(reportData.Bxmin);
         max2 =  Number(reportData.Bxmax);
-        mid2 =  Number(reportData.Bxaverage);
         res2 =  Number(reportData.Byourscore);
         perc2 =  Number(reportData.Bpercentile);
 
-        if (res1 < mid1 && res2 > mid2) {
+        if (perc1 < 50 && perc2 > 50) {
             overlap = true;
             showSummary = true;
             return;
         }
-        if (res1 < mid1 || res2 > mid2) {
+        if (perc1 < 50 || perc2 > 50) {
             someOverlap = true;
             showSummary = true;
             return;
@@ -210,8 +206,8 @@
                     <div class="yAxis"></div>
                     <div class="diseaseArea" style="border-radius: 6px 0 0 6px; right: 50.3%;"></div>
                     <div class="result"
-                         style="padding: {getPadding(res1, mid1, perc1)}; margin: {getMargin(res1, mid1, perc1)}; border-radius: {getBorderRadius(res1, mid1, perc1)}">
-                        <div class="resultDisplay" style="right: {moveDiv(res1, mid1, perc1)};">
+                         style="padding: {getPadding(perc1)}; margin: {getMargin(perc1)}; border-radius: {getBorderRadius(perc1)}">
+                        <div class="resultDisplay" style="right: {moveDiv(perc1)};">
                             <div class="message"><b>{res1} ({perc1}<sup>{suffix(perc1)}</sup> percentile)</b></div>
                             <div class="triangle-down"></div>
                         </div>
@@ -229,8 +225,8 @@
                     <div class="yAxis"></div>
                     <div class="diseaseArea" style="border-radius: 0 6px 6px 0; left: 50.3%;"></div>
                     <div class="result2"
-                         style="padding: {getPadding(res2, mid2, perc2)}; margin: {getMargin(res2, mid2, perc2)}; border-radius: {getBorderRadius(res2, mid2, perc2)}">
-                        <div class="resultDisplay" style="right: {moveDiv(res2, mid2, perc2)};">
+                         style="padding: {getPadding(perc2)}; margin: {getMargin(perc2)}; border-radius: {getBorderRadius(perc2)}">
+                        <div class="resultDisplay" style="right: {moveDiv(perc2)};">
                             <div class="message"><b>{res2} ({perc2}<sup>{suffix(perc2)}</sup> percentile)</b></div>
                             <div class="triangle-down"></div>
                         </div>

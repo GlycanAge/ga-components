@@ -1,8 +1,8 @@
-export function getPadding(res: number, mid: number, perc: number) {
+export function getPadding(perc: number) {
     if (perc === 50) {
         return `0 0 0 0`;
     } else {
-        if (res > mid) {
+        if (perc > 50) {
             return perc > 90
                 ? `0 ${perc - 68 + (1.9 * (perc-51))}px 0 0`
                 : `0 ${perc - 37 + (1.18 * (perc-51))}px 0 0`;
@@ -14,11 +14,11 @@ export function getPadding(res: number, mid: number, perc: number) {
     }
 }
 
-export function getMargin(res: number, mid: number, perc: number) {
+export function getMargin(perc: number) {
     if (perc === 50) {
         return `0 0 0 0`;
     } else {
-        if (res > mid) {
+        if (perc > 50) {
             return perc > 90
                 ? `0 0 0 ${perc - 68 + 4 + (1.9 * (perc-51))}px`
                 : `0 0 0 ${perc - 37 + 4 + (1.18 * (perc-51))}px`;
@@ -30,11 +30,11 @@ export function getMargin(res: number, mid: number, perc: number) {
     }
 }
 
-export function getBorderRadius(res: number, mid: number, perc: number) {
+export function getBorderRadius(perc: number) {
     if (perc === 50) {
         return `0 0 0 0`;
     } else {
-        if (res > mid) {
+        if (perc > 50) {
             return '0 6px 6px 0';
         } else {
             return '6px 0 0 6px';
@@ -42,11 +42,11 @@ export function getBorderRadius(res: number, mid: number, perc: number) {
     }
 }
 
-export function moveDiv(res: number, mid: number, perc: number) {
+export function moveDiv(perc: number) {
     if (perc === 50) {
         return `-1150%`;
     } else {
-        if (res > mid) {
+        if (perc > 50) {
             if (perc > 50 && perc < 55) {return `${-270 + (perc-51) * 25}%`;}
             if (perc >= 55 && perc < 60) {return `${-175 + (perc-55) * 10}%`;}
             if (perc >= 60 && perc < 65) {return `${-130 + (perc-60) * 6.5}%`;}
