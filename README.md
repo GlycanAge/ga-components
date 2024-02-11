@@ -2,7 +2,7 @@
 
 # @glycanage/web-components
 
-A collection of web components.
+A collection of web components used for rendering different disease segments on GlycanAge reports.
 
 ```
 npm i --save-exact @glycanage/web-components
@@ -10,4 +10,4 @@ npm i --save-exact @glycanage/web-components
 
 Visit our documentation site for more details.
 
-[Documentation](https://glycanage.github.io/web-components/)
+[Documentation](https://developers.glycanage.com/)

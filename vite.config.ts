@@ -18,7 +18,7 @@ export default defineConfig({
     rollupOptions: {
       output: {
         inlineDynamicImports: false,
-        chunkFileNames: '[name].js',
+        chunkFileNames: '[name].js'
         // TODO: Check 16.10.2023.
         // manualChunks: { svelte: ['svelte'] }
       }

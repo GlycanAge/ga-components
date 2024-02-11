@@ -1,3 +1,3 @@
 export interface Report {
-	name: string;
+  name: string;
 }
