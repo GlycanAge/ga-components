@@ -297,7 +297,6 @@
             <b>Liver Function Tests:</b> Important as the liver plays a key role in lipid <br />
             metabolism; abnormalities can indicate secondary effects of dyslipidemia.
           </div>
-          ov
         </div>
       </div>
     {/if}
