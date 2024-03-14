@@ -185,7 +185,7 @@
                 <div class="summaryBody" style="opacity: 0.35;">
                     <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptoms to check for:</div>
                     <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-                        <b>Elevated blood pressure readings:</b> Blood pressure readings consistently above
+                        <b>Elevated blood pressure:</b> Blood pressure readings consistently above
                         <br /> normal but below hypertension thresholds are indicative of pre- <br />
                         hypertension
                     </div>
@@ -201,7 +201,7 @@
                         Possible follow-up tests:
                     </div>
                     <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-                        <b>Routine blood pressure check:</b> Essential for monitoring and managing
+                        <b>Routine blood pressure checks:</b> Essential for monitoring and managing
                         <br /> blood pressure levels within the pre-hypertension range.
                     </div>
                     <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
@@ -209,7 +209,7 @@
                         <br /> factors to identify areas for improvement.
                     </div>
                     <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-                        <b>Electrocardiogram (EKG):</b> To assess heart function and detect any early changes
+                        <b>Echocardiogram:</b> To assess heart function and detect any early changes
                         <br /> that may be associated with pre-hypertension.
                     </div>
                 </div>
@@ -246,7 +246,7 @@
                 <div class="summaryBody" style="background-color: {getBodyBackground()};">
                     <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptoms to check for:</div>
                     <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-                        <b>Elevated blood pressure readings:</b> Blood pressure readings consistently above
+                        <b>Elevated blood pressure:</b> Blood pressure readings consistently above
                         <br /> normal but below hypertension thresholds are indicative of pre- <br />
                         hypertension
                     </div>
@@ -262,7 +262,7 @@
                         Possible follow-up tests:
                     </div>
                     <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-                        <b>Routine blood pressure check:</b> Essential for monitoring and managing
+                        <b>Routine blood pressure checks:</b> Essential for monitoring and managing
                         <br /> blood pressure levels within the pre-hypertension range.
                     </div>
                     <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
@@ -270,7 +270,7 @@
                         <br /> factors to identify areas for improvement.
                     </div>
                     <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-                        <b>Electrocardiogram (EKG):</b> To assess heart function and detect any early changes
+                        <b>Echocardiogram:</b> To assess heart function and detect any early changes
                         <br /> that may be associated with pre-hypertension.
                     </div>
                 </div>

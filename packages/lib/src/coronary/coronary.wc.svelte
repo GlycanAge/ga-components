@@ -221,6 +221,9 @@
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
             <b>ECG.</b>
           </div>
+          <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
+            Referral to cardiologist for other diagnostics (e.g., cardiac echo, stress <br /> echo, coronary CT, coronary angiography etc.)
+          </div>
         </div>
       </div>
     {:else}
