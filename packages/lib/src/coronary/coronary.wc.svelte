@@ -33,6 +33,7 @@
   let someOverlap = false;
   let noOverlap = false;
   let showSummary = false;
+  let counter = '';
 
   function getColor() {
     if (overlap) {
@@ -78,10 +79,10 @@
 
   function getWording() {
     if (overlap) {
-      return 'a significant overlap';
+      return 'some overlap';
     }
     if (someOverlap) {
-      return 'some overlap';
+      return 'a minor overlap';
     }
 
     if (noOverlap) {
@@ -104,16 +105,19 @@
     perc2 = Number(reportData.Spercentile);
 
     if (perc1 > 50 && perc2 < 50) {
+      counter = '2/2';
       overlap = true;
       showSummary = true;
       return;
     }
     if (perc1 > 50 || perc2 < 50) {
+      counter = '1/2';
       someOverlap = true;
       showSummary = true;
       return;
     }
 
+    counter = '0/2';
     noOverlap = true;
     showSummary = true;
     return;
@@ -130,31 +134,40 @@
 {#if type === 'header'}
   <div class="header">
     {#if overlap}
+      <div style="padding-right: 10px;">
+        <b>{counter}</b>
+      </div>
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
         ><path
-          fill="#CC0000"
+          fill="#F2590D"
           d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45ZM12 17q.425 0 .713-.288T13 16q0-.425-.288-.713T12 15q-.425 0-.713.288T11 16q0 .425.288.713T12 17Zm-1-4h2V7h-2v6Z"
-        /></svg
-      >
-      &nbsp; Significant overlap
-    {/if}
-    {#if someOverlap}
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-        ><path
-          fill="#EE9933"
-          d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"
         /></svg
       >
       &nbsp; Some overlap
     {/if}
-    {#if noOverlap}
+    {#if someOverlap}
+      <div style="padding-right: 10px;">
+        <b>{counter}</b>
+      </div>
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
         ><path
-          fill="#00AA44"
+          fill="#FFAA00"
           d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"
         /></svg
       >
-      &nbsp; No overlap
+      &nbsp; Minor overlap
+    {/if}
+    {#if noOverlap}
+      <div style="padding-right: 10px;">
+        <b>{counter}</b>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+        ><path
+          fill="#12A195"
+          d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"
+        /></svg
+      >
+      &nbsp; No significant overlap
     {/if}
   </div>
 {:else if type === 'summary'}
@@ -181,33 +194,32 @@
         <div class="summaryBody" style="opacity: 0.35;">
           <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptoms to check for:</div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Chest Discomfort or Pain:</b> Often more subtle in women, can indicate <br />
-            reduced blood flow to the heart.
+            Symptoms of stable angina.
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Nausea or Fatigue:</b> Women may experience these symptoms more often <br />
-            than men due to heart strain.
+            <b>Chest pain ±</b> radiation into the jaw, neck, left arm, back.
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Shortness of Breath:</b> A sign of heart struggling to pump effectively, not <br />
-            necessarily accompanied by chest pain.
+            <b>Breathlessness.</b>
+          </div>
+          <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
+            <b>Other symptoms</b> including syncope, palpitations, tachypnea, lower <br />
+            extremity oedema, orthopnea, reduced exercise capacity.
           </div>
           <div style="font-size: 1.2rem; padding-top: 1.2rem;padding-bottom: 1rem;">
             Possible follow-up tests:
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>EKG/ECG:</b> Detects electrical abnormalities in the heart that can arise from <br />
-            reduced coronary blood flow.
+            <b>Blood tests:</b> Basic (LDL-C, HDL-C, total cholesterol, total cholesterol:HDL-C <br />
+            ratio, non-HDL-C, triglycerides) and extended lipid profile (e.g., oxLDL, <br />
+            VLDL, LDL-P, Lp(a), ApoB, Lp-PLA2), hsCRP, homocysteine, renal and liver <br />
+            function, glucose/HbA1c.
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Stress Test:</b> Assesses how the heart functions under stress, can reveal hidden
-            <br />
-            problems with blood flow.
+            <b>Blood pressure check.</b>
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Coronary Angiography:</b> Directly visualizes the coronary arteries to identify
-            <br />
-            any blockages or narrowing.
+            <b>ECG.</b>
           </div>
         </div>
       </div>
@@ -243,33 +255,33 @@
         <div class="summaryBody" style="background-color: {getBodyBackground()};">
           <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptoms to check for:</div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Chest Discomfort or Pain:</b> Often more subtle in women, can indicate <br />
-            reduced blood flow to the heart.
+            <b>Chest pain ±</b> radiation into the jaw, neck, left arm, back.
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Nausea or Fatigue:</b> Women may experience these symptoms more often <br />
-            than men due to heart strain.
+            <b>Breathlessness.</b>
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Shortness of Breath:</b> A sign of heart struggling to pump effectively, not <br />
-            necessarily accompanied by chest pain.
+            <b>Other symptoms</b> including syncope, palpitations, tachypnea, lower <br />
+            extremity oedema, orthopnea, reduced exercise capacity.
           </div>
           <div style="font-size: 1.2rem; padding-top: 1.2rem;padding-bottom: 1rem;">
             Possible follow-up tests:
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>EKG/ECG:</b> Detects electrical abnormalities in the heart that can arise from <br />
-            reduced coronary blood flow.
+            <b>Blood tests:</b> Basic (LDL-C, HDL-C, total cholesterol, total cholesterol:HDL-C <br />
+            ratio, non-HDL-C, triglycerides) and extended lipid profile (e.g., oxLDL, <br />
+            VLDL, LDL-P, Lp(a), ApoB, Lp-PLA2), hsCRP, homocysteine, renal and liver <br />
+            function, glucose/HbA1c.
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Stress Test:</b> Assesses how the heart functions under stress, can reveal hidden
-            <br />
-            problems with blood flow.
+            <b>Blood pressure check.</b>
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Coronary Angiography:</b> Directly visualizes the coronary arteries to identify
-            <br />
-            any blockages or narrowing.
+            <b>ECG.</b>
+          </div>
+          <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
+            Referral to cardiologist for other diagnostics (e.g., cardiac echo, stress <br />
+            echo, coronary CT, coronary angiography etc.).
           </div>
         </div>
       </div>

@@ -48,6 +48,7 @@
   let someOverlap = false;
   let noOverlap = false;
   let showSummary = false;
+  let counter: number = 0;
 
   function getColor() {
     if (overlap) {
@@ -96,10 +97,10 @@
 
   function getWording() {
     if (overlap) {
-      return 'a significant overlap';
+      return 'some overlap';
     }
     if (someOverlap) {
-      return 'some overlap';
+      return 'a minor overlap';
     }
 
     if (noOverlap) {
@@ -107,6 +108,24 @@
     }
 
     return 'no significant overlap';
+  }
+
+  function countMatches() {
+    if (perc1 > 50) {
+      counter++;
+    }
+    if (perc2 < 50) {
+      counter++;
+    }
+    if (perc3 < 50) {
+      counter++;
+    }
+    if (perc4 < 50) {
+      counter++;
+    }
+    if (perc5 > 50) {
+      counter++;
+    }
   }
 
   onMount(async () => {
@@ -133,6 +152,8 @@
     res5 = Number(reportData.Byourscore);
     perc5 = Number(reportData.Bpercentile);
 
+    countMatches();
+
     if (perc1 > 50 && perc2 < 50 && perc3 < 50 && perc4 < 50 && perc5 > 50) {
       overlap = true;
       showSummary = true;
@@ -154,6 +175,7 @@
         showSummary = true;
         return;
       }
+
       noOverlap = true;
       showSummary = true;
       return;
@@ -174,31 +196,40 @@
 {#if type === 'header'}
   <div class="header">
     {#if overlap}
+      <div style="padding-right: 10px;">
+        <b>{counter}/5</b>
+      </div>
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
         ><path
-          fill="#CC0000"
+          fill="#F2590D"
           d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45ZM12 17q.425 0 .713-.288T13 16q0-.425-.288-.713T12 15q-.425 0-.713.288T11 16q0 .425.288.713T12 17Zm-1-4h2V7h-2v6Z"
-        /></svg
-      >
-      &nbsp; Significant overlap
-    {/if}
-    {#if someOverlap}
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-        ><path
-          fill="#EE9933"
-          d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"
         /></svg
       >
       &nbsp; Some overlap
     {/if}
-    {#if noOverlap}
+    {#if someOverlap}
+      <div style="padding-right: 10px;">
+        <b>{counter}/5</b>
+      </div>
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
         ><path
-          fill="#00AA44"
+          fill="#FFAA00"
           d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"
         /></svg
       >
-      &nbsp; No overlap
+      &nbsp; Minor overlap
+    {/if}
+    {#if noOverlap}
+      <div style="padding-right: 10px;">
+        <b>{counter}/5</b>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+        ><path
+          fill="#12A195"
+          d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"
+        /></svg
+      >
+      &nbsp; No significant overlap
     {/if}
   </div>
 {:else if type === 'summary'}
@@ -225,31 +256,33 @@
         <div class="summaryBody" style="opacity: 0.35;">
           <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptoms to check for:</div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Angina (Chest Pain):</b> Caused by reduced blood supply to the heart muscle <br />
-            due to narrowed arteries.
+            <b>Symptoms of coronary artery disease:</b> Occasional self-resolving chest pain, <br /> breathlessness.
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Pain in Legs or Arms:</b> Occurs when the blood flow to limbs is restricted, <br />
-            leading to muscle pain or cramping.
+            <b>Symptoms of peripheral artery disease:</b> Pain in legs that worsens with <br /> physical activity and improves with rest.
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Shortness of Breath:</b> An indication that the heart is struggling to pump <br />
-            efficiently due to reduced arterial flow.
+            <b>Chronic kidney disease:</b> Asymptomatic until later stages (when presents <br /> with fatigue, weight loss, nausea, skin changes).
           </div>
           <div style="font-size: 1.2rem; padding-top: 1.2rem;padding-bottom: 1rem;">
             Possible follow-up tests:
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Blood Tests:</b> To identify high cholesterol levels and inflammatory markers <br />
-            that contribute to plaque buildup.
+            <b>Blood Tests:</b> Basic (LDL-C, HDL-C, total cholesterol, total cholesterol:HDL-C <br />
+            ratio, non-HDL-C, triglycerides) and extended lipid profile (e.g., oxLDL, <br />
+            VLDL, LDL-P, Lp(a), ApoB, Lp-PLA2), hsCRP, homocysteine, renal and liver <br />
+            function, glucose/HbA1c.
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Ankle Brachial Index:</b> Compares blood pressure in the ankle with the arm <br />
-            to check for peripheral artery disease.
+            <b>Blood pressure check.</b>
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Ultrasound or Angiography:</b> Visualizes the inside of arteries to detect <br />
-            areas of plaque accumulation and blockage.
+            <b>ECG.</b>
+          </div>
+          <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
+            Referral to cardiologist for other diagnostics (e.g., cardiac echo, stress <br />
+            echo, CT coronary artery calcium, coronary angiography, carotid artery <br />
+            ultrasound, etc.).
           </div>
         </div>
       </div>
@@ -285,32 +318,33 @@
         <div class="summaryBody" style="background-color: {getBodyBackground()};">
           <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptoms to check for:</div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Angina (Chest Pain):</b> Caused by reduced blood supply to the heart muscle <br />
-            due to narrowed arteries.
+            <b>Symptoms of coronary artery disease:</b> Occasional self-resolving chest pain, <br /> breathlessness.
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Pain in Legs or Arms:</b> Occurs when the blood flow to limbs is restricted, <br />
-            leading to muscle pain or cramping.
+            <b>Symptoms of peripheral artery disease:</b> Pain in legs that worsens with <br /> physical activity and improves with rest.
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Shortness of Breath:</b> An indication that the heart is struggling to pump <br />
-            efficiently due to reduced arterial flow.
+            <b>Chronic kidney disease:</b> Asymptomatic until later stages (when presents <br /> with fatigue, weight loss, nausea, skin changes).
           </div>
           <div style="font-size: 1.2rem; padding-top: 1.2rem;padding-bottom: 1rem;">
             Possible follow-up tests:
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Blood Tests:</b> To identify high cholesterol levels and inflammatory markers <br />
-            that contribute to plaque buildup.
+            <b>Blood Tests:</b> Basic (LDL-C, HDL-C, total cholesterol, total cholesterol:HDL-C <br />
+            ratio, non-HDL-C, triglycerides) and extended lipid profile (e.g., oxLDL, <br />
+            VLDL, LDL-P, Lp(a), ApoB, Lp-PLA2), hsCRP, homocysteine, renal and liver <br />
+            function, glucose/HbA1c.
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Ankle Brachial Index:</b> These tests can detect blood or certain DNA mutations
-            <br />
-            in the stool that may indicate cancer.
+            <b>Blood pressure check.</b>
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Ultrasound or Angiography:</b> Visualizes the inside of arteries to detect <br />
-            areas of plaque accumulation and blockage.
+            <b>ECG.</b>
+          </div>
+          <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
+            Referral to cardiologist for other diagnostics (e.g., cardiac echo, stress <br />
+            echo, CT coronary artery calcium, coronary angiography, carotid artery <br />
+            ultrasound, etc.).
           </div>
         </div>
       </div>
@@ -466,7 +500,7 @@
 
   .summaryMain {
     width: 500px;
-    height: 500px;
+    height: 555px;
     border-radius: 10px;
   }
 

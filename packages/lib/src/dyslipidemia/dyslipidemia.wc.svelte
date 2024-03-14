@@ -43,6 +43,7 @@
   let someOverlap = false;
   let noOverlap = false;
   let showSummary = false;
+  let counter: number = 0;
 
   function getColor() {
     if (overlap) {
@@ -91,10 +92,10 @@
 
   function getWording() {
     if (overlap) {
-      return 'a significant overlap';
+      return 'some overlap';
     }
     if (someOverlap) {
-      return 'some overlap';
+      return 'a minor overlap';
     }
 
     if (noOverlap) {
@@ -102,6 +103,21 @@
     }
 
     return 'no significant overlap';
+  }
+
+  function countMatches() {
+    if (perc1 > 50) {
+      counter++;
+    }
+    if (perc2 < 50) {
+      counter++;
+    }
+    if (perc3 < 50) {
+      counter++;
+    }
+    if (perc4 > 50) {
+      counter++;
+    }
   }
 
   onMount(async () => {
@@ -124,6 +140,8 @@
     res4 = Number(reportData.Byourscore);
     perc4 = Number(reportData.Bpercentile);
 
+    countMatches();
+
     if (perc1 > 50 && perc2 < 50 && perc3 < 50 && perc4 > 50) {
       overlap = true;
       showSummary = true;
@@ -140,6 +158,7 @@
         showSummary = true;
         return;
       }
+
       noOverlap = true;
       showSummary = true;
       return;
@@ -160,31 +179,40 @@
 {#if type === 'header'}
   <div class="header">
     {#if overlap}
+      <div style="padding-right: 10px;">
+        <b>{counter}/4</b>
+      </div>
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
         ><path
-          fill="#CC0000"
+          fill="#F2590D"
           d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45ZM12 17q.425 0 .713-.288T13 16q0-.425-.288-.713T12 15q-.425 0-.713.288T11 16q0 .425.288.713T12 17Zm-1-4h2V7h-2v6Z"
-        /></svg
-      >
-      &nbsp; Significant overlap
-    {/if}
-    {#if someOverlap}
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-        ><path
-          fill="#EE9933"
-          d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"
         /></svg
       >
       &nbsp; Some overlap
     {/if}
-    {#if noOverlap}
+    {#if someOverlap}
+      <div style="padding-right: 10px;">
+        <b>{counter}/4</b>
+      </div>
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
         ><path
-          fill="#00AA44"
+          fill="#FFAA00"
           d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"
         /></svg
       >
-      &nbsp; No overlap
+      &nbsp; Minor overlap
+    {/if}
+    {#if noOverlap}
+      <div style="padding-right: 10px;">
+        <b>{counter}/4</b>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+        ><path
+          fill="#12A195"
+          d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"
+        /></svg
+      >
+      &nbsp; No significant overlap
     {/if}
   </div>
 {:else if type === 'summary'}
@@ -214,28 +242,17 @@
             <b>Asymptomatic Nature:</b> Dyslipidemia often shows no physical symptoms, <br />
             identified usually through routine blood tests.
           </div>
-          <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Xanthomas:</b> Fatty deposits under the skin, particularly around the eyelids, <br />
-            indicating elevated lipid levels.
-          </div>
-          <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Chest Pain or Heart Complications:</b> In severe cases, high lipid levels can <br />
-            lead to coronary artery disease, manifesting as chest pain.
-          </div>
           <div style="font-size: 1.2rem; padding-top: 1.2rem;padding-bottom: 1rem;">
             Possible follow-up tests:
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Lipid Panel:</b> Essential for measuring total cholesterol, LDL, HDL, and <br />
-            triglycerides, to assess the severity of dyslipidemia.
+            <b>Blood tests:</b> Basic (LDL-C, HDL-C, total cholesterol, total cholesterol:HDL-C <br />
+            ratio, non-HDL-C, triglycerides) and extended lipid profile (e.g., oxLDL, VLDL, <br />
+            LDL-P, Lp(a), ApoB, Lp-PLA2), hsCRP, homocysteine, renal and liver function, <br />
+            glucose/HbA1c.
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Genetic Testing:</b> To determine if dyslipidemia is hereditary, especially in <br />
-            cases of familial hypercholesterolemia.
-          </div>
-          <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Liver Function Tests:</b> Important as the liver plays a key role in lipid <br />
-            metabolism; abnormalities can indicate secondary effects of dyslipidemia.
+            <b>Blood pressure check.</b>
           </div>
         </div>
       </div>
@@ -274,28 +291,17 @@
             <b>Asymptomatic Nature:</b> Dyslipidemia often shows no physical symptoms, <br />
             identified usually through routine blood tests.
           </div>
-          <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Xanthomas:</b> Fatty deposits under the skin, particularly around the eyelids, <br />
-            indicating elevated lipid levels.
-          </div>
-          <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Chest Pain or Heart Complications:</b> In severe cases, high lipid levels can <br />
-            lead to coronary artery disease, manifesting as chest pain.
-          </div>
           <div style="font-size: 1.2rem; padding-top: 1.2rem;padding-bottom: 1rem;">
             Possible follow-up tests:
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Lipid Panel:</b> Essential for measuring total cholesterol, LDL, HDL, and <br />
-            triglycerides, to assess the severity of dyslipidemia.
+            <b>Blood tests:</b> Basic (LDL-C, HDL-C, total cholesterol, total cholesterol:HDL-C <br />
+            ratio, non-HDL-C, triglycerides) and extended lipid profile (e.g., oxLDL, VLDL, <br />
+            LDL-P, Lp(a), ApoB, Lp-PLA2), hsCRP, homocysteine, renal and liver function, <br />
+            glucose/HbA1c.
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Genetic Testing:</b> To determine if dyslipidemia is hereditary, especially in <br />
-            cases of familial hypercholesterolemia.
-          </div>
-          <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Liver Function Tests:</b> Important as the liver plays a key role in lipid <br />
-            metabolism; abnormalities can indicate secondary effects of dyslipidemia.
+            <b>Blood pressure check.</b>
           </div>
         </div>
       </div>

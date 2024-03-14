@@ -15,5 +15,7 @@ export default () => {
   import('./src/atherosclerosis/atherosclerosis.wc.svelte');
   import('./src/coronary/coronary.wc.svelte');
   import('./src/copd/copd.wc.svelte');
+  import('./src/hypertension-risk/hypertension-risk.wc.svelte');
+  import('./src/pre-hypertension/pre-hypertension.wc.svelte');
   import('./src/shared/interfaces/language.interface');
 };

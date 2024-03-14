@@ -15,6 +15,8 @@
   import '../../../dist/coronary.wc.js';
   import '../../../dist/copd.wc.js';
   import '../../../dist/hypertension.wc.js';
+  import '../../../dist/hypertension-risk.wc.js';
+  import '../../../dist/pre-hypertension.wc.js';
   import '../../../dist/chronic.wc.js';
   import { MockService } from './mock-service';
 
@@ -28,6 +30,22 @@
 <div bind:this={el} class="p-4">
   <ga-chronic></ga-chronic>
   <div class="flex flex-col">
+    <div class="flex justify-evenly pb-8">
+      <div class="flex flex-col items-center">
+        <ga-hypertension-risk report="1K4GyKDgsB9ATQflwio7"></ga-hypertension-risk>
+        <div class="p-10"></div>
+        <ga-hypertension-risk report="1K4GyKDgsB9ATQflwio7" type="header"></ga-hypertension-risk>
+      </div>
+      <ga-hypertension-risk report="1K4GyKDgsB9ATQflwio7" type="summary"></ga-hypertension-risk>
+    </div>
+    <div class="flex justify-evenly pb-8">
+      <div class="flex flex-col items-center">
+        <ga-pre-hypertension report="1K4GyKDgsB9ATQflwio7"></ga-pre-hypertension>
+        <div class="p-10"></div>
+        <ga-pre-hypertension report="1K4GyKDgsB9ATQflwio7" type="header"></ga-pre-hypertension>
+      </div>
+      <ga-pre-hypertension report="1K4GyKDgsB9ATQflwio7" type="summary"></ga-pre-hypertension>
+    </div>
     <div class="flex justify-evenly pb-8">
       <div class="flex flex-col items-center">
         <ga-dyslipidemia report="1K4GyKDgsB9ATQflwio7"></ga-dyslipidemia>

@@ -37,16 +37,11 @@
   let res3 = 0; // G2yourscore
   let perc3 = 0; // G2percentile
 
-  // lifestyle
-  let min4 = 0; // Bxmin
-  let max4 = 0; // Bxmax
-  let res4 = 0; // Byourscore
-  let perc4 = 0; // Bpercentile
-
   let overlap = false;
   let someOverlap = false;
   let noOverlap = false;
   let showSummary = false;
+  let counter = '';
 
   function getColor() {
     if (overlap) {
@@ -95,10 +90,10 @@
 
   function getWording() {
     if (overlap) {
-      return 'a significant overlap';
+      return 'some overlap';
     }
     if (someOverlap) {
-      return 'some overlap';
+      return 'a minor overlap';
     }
 
     if (noOverlap) {
@@ -123,32 +118,31 @@
     max3 = Number(reportData.G2xmax);
     res3 = Number(reportData.G2yourscore);
     perc3 = Number(reportData.G2percentile);
-    min4 = Number(reportData.Sxmin);
-    max4 = Number(reportData.Sxmax);
-    res4 = Number(reportData.Syourscore);
-    perc4 = Number(reportData.Spercentile);
 
-    if (perc4 < 50 && perc3 < 50 && perc1 > 50 && perc2 < 50) {
+    if (perc1 > 50 && perc2 < 50 && perc3 < 50) {
+      counter = '3/3';
       overlap = true;
       showSummary = true;
       return;
     }
-    if (perc4 < 50 || perc3 < 50 || perc1 > 50 || perc2 < 50) {
+    if (perc1 > 50 || perc2 < 50 || perc3 < 50) {
       if (
-        (perc1 > 50 && perc2 < 50 && perc3 < 50) ||
-        (perc1 > 50 && perc2 < 50 && perc4 < 50) ||
-        (perc2 < 50 && perc3 < 50 && perc4 < 50) ||
-        (perc1 > 50 && perc3 < 50 && perc4 < 50)
+        (perc1 > 50 && perc2 < 50) ||
+        (perc2 < 50 && perc3 < 50) ||
+        (perc1 > 50 && perc3 < 50)
       ) {
+        counter = '2/3';
         someOverlap = true;
         showSummary = true;
         return;
       }
+      counter = '1/3';
       noOverlap = true;
       showSummary = true;
       return;
     }
 
+    counter = '0/3';
     noOverlap = true;
     showSummary = true;
     return;
@@ -164,31 +158,40 @@
 {#if type === 'header'}
   <div class="header">
     {#if overlap}
+      <div style="padding-right: 10px;">
+        <b>{counter}</b>
+      </div>
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
         ><path
-          fill="#CC0000"
+          fill="#F2590D"
           d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45ZM12 17q.425 0 .713-.288T13 16q0-.425-.288-.713T12 15q-.425 0-.713.288T11 16q0 .425.288.713T12 17Zm-1-4h2V7h-2v6Z"
-        /></svg
-      >
-      &nbsp; Significant overlap
-    {/if}
-    {#if someOverlap}
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-        ><path
-          fill="#EE9933"
-          d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"
         /></svg
       >
       &nbsp; Some overlap
     {/if}
-    {#if noOverlap}
+    {#if someOverlap}
+      <div style="padding-right: 10px;">
+        <b>{counter}</b>
+      </div>
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
         ><path
-          fill="#00AA44"
+          fill="#FFAA00"
           d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"
         /></svg
       >
-      &nbsp; No overlap
+      &nbsp; Minor overlap
+    {/if}
+    {#if noOverlap}
+      <div style="padding-right: 10px;">
+        <b>{counter}</b>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+        ><path
+          fill="#12A195"
+          d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"
+        /></svg
+      >
+      &nbsp; No significant overlap
     {/if}
   </div>
 {:else if type === 'summary'}
@@ -215,28 +218,26 @@
         <div class="summaryBody" style="opacity: 0.35;">
           <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptoms to check for:</div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Headaches:</b> Elevated blood pressure may lead to headaches.
+            <b>Persistent high blood pressure:</b> Regular readings above 140/90 mmHg are <br /> a clear symptom of hypertension.
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Vision problems:</b> High blood pressure can cause blurred or narrowed vision.
+            <b>Headaches and dizziness:</b> Frequent headaches or episodes of dizziness can <br /> be symptoms of elevated blood pressure.
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Shortness of breath:</b> Elevated blood pressure can affect the heart and lungs,
-            <br /> leading to shortness of breath.
+            <b>Visual disturbances:</b> In some cases, hypertension can cause blurred vision
+            <br /> or visual disturbances.
           </div>
           <div style="font-size: 1.2rem; padding-top: 1.2rem;padding-bottom: 1rem;">
             Possible follow-up tests:
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Blood pressure monitoring:</b> Regular blood pressure checks can accurately <br /> monitor
-            hypertension levels.
+            <b>Regular blood pressure monitoring:</b> To track blood pressure levels and the <br /> effectiveness of treatment strategies.
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Blood tests:</b> These assess cholesterol levels and other factors related to <br /> hypertension.
+            <b>24-hour ambulatory blood pressure monitoring:</b> To assess blood pressure <br /> variations over a day and identify patterns.
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Electrocardiogram (EKG or ECG):</b> This test can identify issues with heart <br /> rhythm
-            or damage related to hypertension.
+            <b>Kidney function tests:</b> To evaluate the impact of hypertension on kidney <br /> health.
           </div>
         </div>
       </div>
@@ -272,28 +273,26 @@
         <div class="summaryBody" style="background-color: {getBodyBackground()};">
           <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptoms to check for:</div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Headaches:</b> Elevated blood pressure may lead to headaches.
+            <b>Persistent high blood pressure:</b> Regular readings above 140/90 mmHg are <br /> a clear symptom of hypertension.
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Vision problems:</b> High blood pressure can cause blurred or narrowed vision.
+            <b>Headaches and dizziness:</b> Frequent headaches or episodes of dizziness can <br /> be symptoms of elevated blood pressure.
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Shortness of breath:</b> Elevated blood pressure can affect the heart and lungs,
-            <br /> leading to shortness of breath.
+            <b>Visual disturbances:</b> In some cases, hypertension can cause blurred vision
+            <br /> or visual disturbances.
           </div>
           <div style="font-size: 1.2rem; padding-top: 1.2rem;padding-bottom: 1rem;">
             Possible follow-up tests:
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Blood pressure monitoring:</b> Regular blood pressure checks can accurately <br /> monitor
-            hypertension levels.
+            <b>Regular blood pressure monitoring:</b> To track blood pressure levels and the <br /> effectiveness of treatment strategies.
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Blood tests:</b> These assess cholesterol levels and other factors related to <br /> hypertension.
+            <b>24-hour ambulatory blood pressure monitoring:</b> To assess blood pressure <br /> variations over a day and identify patterns.
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Electrocardiogram (EKG or ECG):</b> This test can identify issues with heart <br /> rhythm
-            or damage related to hypertension.
+            <b>Kidney function tests:</b> To evaluate the impact of hypertension on kidney <br /> health.
           </div>
         </div>
       </div>
@@ -301,56 +300,6 @@
   {/if}
 {:else}
   <div class="main">
-    <div class="row" style="margin-top: 2rem;">
-      <div class="label">Glycan<br /> <b>Lifestyle</b></div>
-      <div class="content">
-        <div class="min"><b>{min4}</b></div>
-        <div class="max"><b>{max4}</b></div>
-        <div class="middleParent">
-          <div class="xAxis"></div>
-          <div class="yAxis"></div>
-          <div class="diseaseArea" style="border-radius: 6px 0 0 6px; right: 50.3%;"></div>
-          <div
-            class="result"
-            style="padding: {getPadding(perc4)}; margin: {getMargin(
-              perc4
-            )}; border-radius: {getBorderRadius(perc4)}"
-          >
-            <div class="resultDisplay" style="right: {moveDiv(perc4)};">
-              <div class="message">
-                <b>{res4} ({perc4}<sup>{suffix(perc4)}</sup> percentile)</b>
-              </div>
-              <div class="triangle-down"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row" style="margin-top: 2.2rem; margin-bottom: 2.2rem;">
-      <div class="label">Glycan<br /> <b>Youth</b></div>
-      <div class="content">
-        <div class="min"><b>{min3}</b></div>
-        <div class="max"><b>{max3}</b></div>
-        <div class="middleParent">
-          <div class="xAxis"></div>
-          <div class="yAxis"></div>
-          <div class="diseaseArea" style="border-radius: 6px 0 0 6px; right: 50.3%;"></div>
-          <div
-            class="result2"
-            style="padding: {getPadding(perc3)}; margin: {getMargin(
-              perc3
-            )}; border-radius: {getBorderRadius(perc3)}"
-          >
-            <div class="resultDisplay" style="right: {moveDiv(perc3)};">
-              <div class="message">
-                <b>{res3} ({perc3}<sup>{suffix(perc3)}</sup> percentile)</b>
-              </div>
-              <div class="triangle-down"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="row">
       <div class="label">Glycan<br /> <b>Mature</b></div>
       <div class="content">
@@ -432,35 +381,6 @@
       <div class="dot2"></div>
       <div style="font-size: 0.8rem;">Your patient</div>
     </div>
-    <div style="position: absolute; top: 3%; left: 5.5%; font-size: 0.6rem;">
-      <b>1. Increased risk of hypertension</b>
-    </div>
-    <div style="position: absolute; top: 23%; left: 5.5%; font-size: 0.6rem;">
-      <b>2. Pre-hypertension</b>
-    </div>
-    <div
-      style="position: absolute; top: 25%; left: 0; font-size: 0.7rem; height: 2px; width: 4%; background-color: #C8DBD0;"
-    >
-      <b></b>
-    </div>
-    <div
-      style="position: absolute; top: 25%; right: 0; font-size: 0.7rem; height: 2px; width: 70%; background-color: #C8DBD0;"
-    >
-      <b></b>
-    </div>
-    <div
-      style="position: absolute; top: 46%; left: 0; font-size: 0.7rem; height: 2px; width: 4%; background-color: #C8DBD0;"
-    >
-      <b></b>
-    </div>
-    <div
-      style="position: absolute; top: 46%; right: 0; font-size: 0.7rem; height: 2px; width: 75%; background-color: #C8DBD0;"
-    >
-      <b></b>
-    </div>
-    <div style="position: absolute; top: 44%; left: 5.5%; font-size: 0.6rem;">
-      <b>3. Hypertension</b>
-    </div>
   </div>
 {/if}
 
@@ -468,7 +388,7 @@
   .main {
     position: relative;
     width: 450px;
-    height: 320px;
+    height: 222px;
     background-color: #f0f6f5;
     border: 2px solid #c8dbd0;
     border-radius: 12px;
@@ -499,7 +419,7 @@
 
   .row {
     width: 100%;
-    height: 9%;
+    height: 20%;
     display: flex;
   }
 
@@ -561,22 +481,6 @@
     background-color: #c8dbd0;
   }
 
-  .result {
-    width: 1.5%;
-    height: 24%;
-    background-color: #33664d;
-    z-index: 9998;
-    position: relative;
-  }
-
-  .result2 {
-    width: 1.5%;
-    height: 24%;
-    background-color: #33664d;
-    z-index: 9998;
-    position: relative;
-  }
-
   .result3 {
     width: 1.5%;
     height: 24%;
@@ -608,6 +512,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-top: 10px;
   }
 
   .dot1 {

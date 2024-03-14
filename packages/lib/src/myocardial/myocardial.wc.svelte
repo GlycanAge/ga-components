@@ -49,6 +49,7 @@
   let someOverlap = false;
   let noOverlap = false;
   let showSummary = false;
+  let counter = '';
 
   function getColor() {
     if (gender === 'M') {
@@ -138,10 +139,10 @@
   function getWording() {
     if (gender === 'M') {
       if (overlap) {
-        return 'a significant overlap';
+        return 'some overlap';
       }
       if (someOverlap) {
-        return 'some overlap';
+        return 'a minor overlap';
       }
 
       if (noOverlap) {
@@ -154,7 +155,7 @@
         return 'no significant overlap';
       }
       if (perc1 < 50) {
-        return 'a significant overlap';
+        return 'some overlap';
       }
 
       if (perc1 > 50) {
@@ -196,6 +197,7 @@
 
     if (gender === 'M') {
       if (perc2 > 50 && perc3 < 50 && perc4 < 50 && perc5 > 50) {
+        counter = '4/4';
         overlap = true;
         showSummary = true;
         return;
@@ -207,37 +209,54 @@
           (perc3 < 50 && perc4 < 50 && perc5 > 50) ||
           (perc2 > 50 && perc4 < 50 && perc5 > 50)
         ) {
+          counter = '3/4';
           someOverlap = true;
           showSummary = true;
           return;
         }
+
+        if (
+            (perc2 > 50 && perc3 < 50) ||
+            (perc2 > 50 && perc4 < 50) ||
+            (perc2 > 50 && perc5 > 50) ||
+            (perc3 < 50 && perc4 < 50) ||
+            (perc3 < 50 && perc5 > 50) ||
+            (perc4 < 50 && perc5 > 50)
+        ) {
+          counter = '2/4';
+        } else {
+          counter = '1/4';
+        }
+
         noOverlap = true;
         showSummary = true;
         return;
       }
 
+      counter = '0/4';
       noOverlap = true;
       showSummary = true;
       return;
     } else {
       if (perc1 === 50) {
+        counter = '0/1';
         noOverlap = true;
         showSummary = true;
         return;
       }
       if (perc1 < 50) {
+        counter = '1/1';
         overlap = true;
         showSummary = true;
         return;
       }
 
       if (perc1 > 50) {
+        counter = '0/1';
         noOverlap = true;
         showSummary = true;
         return;
       }
-
-      noOverlap = true;
     }
   });
 </script>
@@ -252,31 +271,40 @@
 {#if type === 'header'}
   <div class="header">
     {#if overlap}
+      <div style="padding-right: 10px;">
+        <b>{counter}</b>
+      </div>
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
         ><path
-          fill="#CC0000"
+          fill="#F2590D"
           d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45ZM12 17q.425 0 .713-.288T13 16q0-.425-.288-.713T12 15q-.425 0-.713.288T11 16q0 .425.288.713T12 17Zm-1-4h2V7h-2v6Z"
-        /></svg
-      >
-      &nbsp; Significant overlap
-    {/if}
-    {#if someOverlap}
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-        ><path
-          fill="#EE9933"
-          d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"
         /></svg
       >
       &nbsp; Some overlap
     {/if}
-    {#if noOverlap}
+    {#if someOverlap}
+      <div style="padding-right: 10px;">
+        <b>{counter}</b>
+      </div>
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
         ><path
-          fill="#00AA44"
+          fill="#FFAA00"
           d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"
         /></svg
       >
-      &nbsp; No overlap
+      &nbsp; Minor overlap
+    {/if}
+    {#if noOverlap}
+      <div style="padding-right: 10px;">
+        <b>{counter}</b>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+        ><path
+          fill="#12A195"
+          d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"
+        /></svg
+      >
+      &nbsp; No significant overlap
     {/if}
   </div>
 {:else if type === 'summary'}
@@ -301,35 +329,35 @@
           </div>
         </div>
         <div class="summaryBody" style="opacity: 0.35;">
-          <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptoms to check for:</div>
+          <div style="font-size: 1.2rem; padding-bottom: 1rem;">Risk factor checker:</div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Chest pain or discomfort:</b> Blockage in the heart s blood vessels can cause intense
-            <br /> chest pain or discomfort.
+            <b>Personal history</b> of hypertension, diabetes mellitus, chronic kidney disease,
+            <br /> dyslipidemia, arrhythmia, rheumatoid arthritis, SLE.
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Sudden numbness or weakness:</b> Reduced blood flow to the brain during a stroke
-            <br />can cause sudden numbness or weakness, especially on one side <br /> of the body.
+            <b>Medication history:</b> Anti-hypertensive medication, statins, aspirin or other
+            <br /> blood thinners.
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Shortness of breath:</b> A heart attack can cause difficulty breathing due to
-            impaired <br /> heart function.
+            Current/previous <b>smoking history</b>.
           </div>
           <div style="font-size: 1.2rem; padding-top: 0.4rem;padding-bottom: 1rem;">
             Possible follow-up tests:
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Electrocardiogram (EKG):</b> It detects and records the heart s electrical activity
-            <br /> and can help identify a heart attack.
+            <b>Blood Tests:</b> Basic (LDL-C, HDL-C, total cholesterol, total cholesterol:HDL-C <br />
+            ratio, non-HDL-C, triglycerides) and extended lipid profile (e.g., oxLDL, <br />
+            VLDL, LDL-P, Lp(a), ApoB, Lp-PLA2), hsCRP, homocysteine, renal and liver <br />
+            function, glucose/HbA1c.
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Blood tests:</b> :Certain enzymes and proteins released during a heart attack or
-            <br />
-            stroke can be identified in the blood.
+            <b>Blood pressure check.</b>
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Imaging tests (like CT or MRI for stroke):</b> These tests can identify areas of
-            <br />
-            damage and help in diagnosis and management.
+            <b>ECG.</b>
+          </div>
+          <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
+            Referral to cardiologist for other diagnostics (e.g., cardiac echo, stress echo, coronary CT, coronary angiography etc.).
           </div>
         </div>
       </div>
@@ -363,35 +391,35 @@
           </div>
         </div>
         <div class="summaryBody" style="background-color: {getBodyBackground()};">
-          <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptoms to check for:</div>
+          <div style="font-size: 1.2rem; padding-bottom: 1rem;">Risk factor checker:</div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Chest pain or discomfort:</b> Blockage in the heart s blood vessels can cause intense
-            <br /> chest pain or discomfort.
+            <b>Personal history</b> of hypertension, diabetes mellitus, chronic kidney disease,
+            <br /> dyslipidemia, arrhythmia, rheumatoid arthritis, SLE.
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Sudden numbness or weakness:</b> Reduced blood flow to the brain during a stroke
-            <br />can cause sudden numbness or weakness, especially on one side <br /> of the body.
+            <b>Medication history:</b> Anti-hypertensive medication, statins, aspirin or other
+            <br /> blood thinners.
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Shortness of breath:</b> A heart attack can cause difficulty breathing due to
-            impaired <br /> heart function.
+            Current/previous <b>smoking history</b>.
           </div>
           <div style="font-size: 1.2rem; padding-top: 0.4rem;padding-bottom: 1rem;">
             Possible follow-up tests:
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Electrocardiogram (EKG):</b> It detects and records the heart s electrical activity
-            <br /> and can help identify a heart attack.
+            <b>Blood Tests:</b> Basic (LDL-C, HDL-C, total cholesterol, total cholesterol:HDL-C <br />
+            ratio, non-HDL-C, triglycerides) and extended lipid profile (e.g., oxLDL, <br />
+            VLDL, LDL-P, Lp(a), ApoB, Lp-PLA2), hsCRP, homocysteine, renal and liver <br />
+            function, glucose/HbA1c.
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Blood tests:</b> :Certain enzymes and proteins released during a heart attack or
-            <br />
-            stroke can be identified in the blood.
+            <b>Blood pressure check.</b>
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Imaging tests (like CT or MRI for stroke):</b> These tests can identify areas of
-            <br />
-            damage and help in diagnosis and management.
+            <b>ECG.</b>
+          </div>
+          <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
+            Referral to cardiologist for other diagnostics (e.g., cardiac echo, stress echo, coronary CT, coronary angiography etc.).
           </div>
         </div>
       </div>

@@ -43,6 +43,7 @@
   let someOverlap = false;
   let noOverlap = false;
   let showSummary = false;
+  let counter: number = 0;
 
   function getColor() {
     if (overlap) {
@@ -91,10 +92,10 @@
 
   function getWording() {
     if (overlap) {
-      return 'a significant overlap';
+      return 'some overlap';
     }
     if (someOverlap) {
-      return 'some overlap';
+      return 'a minor overlap';
     }
 
     if (noOverlap) {
@@ -102,6 +103,21 @@
     }
 
     return 'no significant overlap';
+  }
+
+  function countMatches() {
+    if (perc1 > 50) {
+      counter++;
+    }
+    if (perc2 < 50) {
+      counter++;
+    }
+    if (perc3 > 50) {
+      counter++;
+    }
+    if (perc4 < 50) {
+      counter++;
+    }
   }
 
   onMount(async () => {
@@ -124,26 +140,30 @@
     res4 = Number(reportData.P26yourscore);
     perc4 = Number(reportData.P26percentile);
 
-    if (perc1 < 50 && perc2 < 50 && perc3 > 50 && perc4 > 50) {
+    countMatches();
+
+    if (perc1 > 50 && perc2 < 50 && perc3 > 50 && perc4 < 50) {
       overlap = true;
       showSummary = true;
       return;
     }
-    if (perc1 < 50 || perc2 < 50 || perc3 > 50 || perc4 > 50) {
+    if (perc1 > 50 || perc2 < 50 || perc3 > 50 || perc4 < 50) {
       if (
-        (perc1 < 50 && perc2 < 50 && perc3 > 50) ||
-        (perc1 < 50 && perc2 < 50 && perc4 > 50) ||
-        (perc2 < 50 && perc3 > 50 && perc4 > 50) ||
-        (perc1 < 50 && perc3 > 50 && perc4 > 50)
+        (perc1 > 50 && perc2 < 50 && perc3 > 50) ||
+        (perc1 > 50 && perc2 < 50 && perc4 < 50) ||
+        (perc2 < 50 && perc3 > 50 && perc4 < 50) ||
+        (perc1 > 50 && perc3 > 50 && perc4 < 50)
       ) {
         someOverlap = true;
         showSummary = true;
         return;
       }
+
       noOverlap = true;
       showSummary = true;
       return;
     }
+
     noOverlap = true;
     showSummary = true;
     return;
@@ -159,31 +179,40 @@
 {#if type === 'header'}
   <div class="header">
     {#if overlap}
+      <div style="padding-right: 10px;">
+        <b>{counter}/4</b>
+      </div>
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
         ><path
-          fill="#CC0000"
+          fill="#F2590D"
           d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45ZM12 17q.425 0 .713-.288T13 16q0-.425-.288-.713T12 15q-.425 0-.713.288T11 16q0 .425.288.713T12 17Zm-1-4h2V7h-2v6Z"
-        /></svg
-      >
-      &nbsp; Significant overlap
-    {/if}
-    {#if someOverlap}
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-        ><path
-          fill="#EE9933"
-          d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"
         /></svg
       >
       &nbsp; Some overlap
     {/if}
-    {#if noOverlap}
+    {#if someOverlap}
+      <div style="padding-right: 10px;">
+        <b>{counter}/4</b>
+      </div>
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
         ><path
-          fill="#00AA44"
+          fill="#FFAA00"
           d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"
         /></svg
       >
-      &nbsp; No overlap
+      &nbsp; Minor overlap
+    {/if}
+    {#if noOverlap}
+      <div style="padding-right: 10px;">
+        <b>{counter}/4</b>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+        ><path
+          fill="#12A195"
+          d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"
+        /></svg
+      >
+      &nbsp; No significant overlap
     {/if}
   </div>
 {:else if type === 'summary'}
@@ -224,15 +253,15 @@
             Possible follow-up tests:
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Antinuclear antibody (ANA) test:</b> This blood test detects the presence of ANA,
-            <br /> commonly found in people with lupus.
+            <b>Blood tests:</b> Full blood count, renal function, liver function, CRP, ESR, <br />
+            immunoglobulins, autoantibodies (starting with ANA and anti-dsDNA, <br />
+            and expanding the panel if indicated)
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Complete blood count:</b> This test evaluates the levels of blood cells which <br /> may
-            be affected by lupus.
+            <b>Urinalysis.</b>
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Urinalysis:</b> Examining the urine can reveal kidney involvement in lupus.
+            <b>Organ-targeted imaging</b> (if relevant (e.g., CT thorax, CT abdomen))
           </div>
         </div>
       </div>
@@ -281,15 +310,15 @@
             Possible follow-up tests:
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Antinuclear antibody (ANA) test:</b> This blood test detects the presence of ANA,
-            <br /> commonly found in people with lupus.
+            <b>Blood tests:</b> Full blood count, renal function, liver function, CRP, ESR, <br />
+            immunoglobulins, autoantibodies (starting with ANA and anti-dsDNA, <br />
+            and expanding the panel if indicated)
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Complete blood count:</b> This test evaluates the levels of blood cells which <br /> may
-            be affected by lupus.
+            <b>Urinalysis.</b>
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Urinalysis:</b> Examining the urine can reveal kidney involvement in lupus.
+            <b>Organ-targeted imaging</b> (if relevant (e.g., CT thorax, CT abdomen))
           </div>
         </div>
       </div>
@@ -305,7 +334,7 @@
         <div class="middleParent">
           <div class="xAxis"></div>
           <div class="yAxis"></div>
-          <div class="diseaseArea" style="border-radius: 6px 0 0 6px; right: 50.3%;"></div>
+          <div class="diseaseArea" style="border-radius: 0 6px 6px 0; left: 50.3%;"></div>
           <div
             class="result"
             style="padding: {getPadding(perc1)}; margin: {getMargin(
@@ -380,7 +409,7 @@
         <div class="middleParent">
           <div class="xAxis"></div>
           <div class="yAxis"></div>
-          <div class="diseaseArea" style="border-radius: 0 6px 6px 0; left: 50.3%;"></div>
+          <div class="diseaseArea" style="border-radius: 6px 0 0 6px; right: 50.3%;"></div>
           <div
             class="result3"
             style="padding: {getPadding(perc4)}; margin: {getMargin(
@@ -399,7 +428,7 @@
     </div>
     <div class="lastRow">
       <div class="dot1"></div>
-      <div style="font-size: 0.8rem;">Lupus</div>
+      <div style="font-size: 0.8rem;">SLE</div>
       <div class="dot2"></div>
       <div style="font-size: 0.8rem;">Your patient</div>
     </div>

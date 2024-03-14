@@ -24,30 +24,26 @@
   let res1 = 0; // G0yourscore
   let perc1 = 0; // G0percentile
 
-  let min2 = 0; // G1xmin
-  let max2 = 0; // G1xmax
-  let res2 = 0; // G1yourscore
-  let perc2 = 0; // G1percentile
+  let min2 = 0; // G2xmin
+  let max2 = 0; // G2xmax
+  let res2 = 0; // G2yourscore
+  let perc2 = 0; // G2percentile
 
-  let min3 = 0; // G2xmin
-  let max3 = 0; // G2xmax
-  let res3 = 0; // G2yourscore
-  let perc3 = 0; // G2percentile
+  let min3 = 0; // Sxmin
+  let max3 = 0; // Sxmax
+  let res3 = 0; // Syourscore
+  let perc3 = 0; // Spercentile
 
-  let min4 = 0; // Sxmin
-  let max4 = 0; // Sxmax
-  let res4 = 0; // Syourscore
-  let perc4 = 0; // Spercentile
-
-  let min5 = 0; // Bxmin
-  let max5 = 0; // Bxmax
-  let res5 = 0; // Byourscore
-  let perc5 = 0; // Bpercentile
+  let min4 = 0; // Bxmin
+  let max4 = 0; // Bxmax
+  let res4 = 0; // Byourscore
+  let perc4 = 0; // Bpercentile
 
   let overlap = false;
   let someOverlap = false;
   let noOverlap = false;
   let showSummary = false;
+  let counter: number = 0;
 
   function getColor() {
     if (overlap) {
@@ -96,10 +92,10 @@
 
   function getWording() {
     if (overlap) {
-      return 'a significant overlap';
+      return 'some overlap';
     }
     if (someOverlap) {
-      return 'some overlap';
+      return 'a minor overlap';
     }
 
     if (noOverlap) {
@@ -109,6 +105,21 @@
     return 'no significant overlap';
   }
 
+  function countMatches() {
+    if (perc1 > 50) {
+      counter++;
+    }
+    if (perc2 < 50) {
+      counter++;
+    }
+    if (perc3 < 50) {
+      counter++;
+    }
+    if (perc4 > 50) {
+      counter++;
+    }
+  }
+
   onMount(async () => {
     reportData = await service.getReport(report);
 
@@ -116,44 +127,38 @@
     max1 = Number(reportData.G0xmax);
     res1 = Number(reportData.G0yourscore);
     perc1 = Number(reportData.G0percentile);
-    min2 = Number(reportData.G1xmin);
-    max2 = Number(reportData.G1xmax);
-    res2 = Number(reportData.G1yourscore);
-    perc2 = Number(reportData.G1percentile);
-    min3 = Number(reportData.G2xmin);
-    max3 = Number(reportData.G2xmax);
-    res3 = Number(reportData.G2yourscore);
-    perc3 = Number(reportData.G2percentile);
-    min4 = Number(reportData.Sxmin);
-    max4 = Number(reportData.Sxmax);
-    res4 = Number(reportData.Syourscore);
-    perc4 = Number(reportData.Spercentile);
-    min5 = Number(reportData.Bxmin);
-    max5 = Number(reportData.Bxmax);
-    res5 = Number(reportData.Byourscore);
-    perc5 = Number(reportData.Bpercentile);
+    min2 = Number(reportData.G2xmin);
+    max2 = Number(reportData.G2xmax);
+    res2 = Number(reportData.G2yourscore);
+    perc2 = Number(reportData.G2percentile);
+    min3 = Number(reportData.Sxmin);
+    max3 = Number(reportData.Sxmax);
+    res3 = Number(reportData.Syourscore);
+    perc3 = Number(reportData.Spercentile);
+    min4 = Number(reportData.Bxmin);
+    max4 = Number(reportData.Bxmax);
+    res4 = Number(reportData.Byourscore);
+    perc4 = Number(reportData.Bpercentile);
 
-    if (perc1 > 50 && perc2 < 50 && perc3 < 50 && perc4 < 50 && perc5 > 50) {
+    countMatches();
+
+    if (perc1 > 50 && perc2 < 50 && perc3 < 50 && perc4 > 50) {
       overlap = true;
       showSummary = true;
       return;
     }
-    if (perc1 > 50 || perc2 < 50 || perc3 < 50 || perc4 < 50 || perc5 > 50) {
+    if (perc1 > 50 || perc2 < 50 || perc3 < 50 || perc4 > 50) {
       if (
         (perc1 > 50 && perc2 < 50 && perc3 < 50) ||
-        (perc1 > 50 && perc2 < 50 && perc4 < 50) ||
-        (perc1 > 50 && perc2 < 50 && perc5 > 50) ||
-        (perc1 > 50 && perc3 < 50 && perc4 < 50) ||
-        (perc1 > 50 && perc3 < 50 && perc5 > 50) ||
-        (perc1 > 50 && perc4 < 50 && perc5 > 50) ||
-        (perc2 < 50 && perc3 < 50 && perc4 < 50) ||
-        (perc2 < 50 && perc3 < 50 && perc5 > 50) ||
-        (perc3 < 50 && perc4 < 50 && perc5 > 50)
+        (perc1 > 50 && perc2 < 50 && perc4 > 50) ||
+        (perc1 > 50 && perc3 < 50 && perc4 > 50) ||
+        (perc2 < 50 && perc3 < 50 && perc4 > 50)
       ) {
         someOverlap = true;
         showSummary = true;
         return;
       }
+
       noOverlap = true;
       showSummary = true;
       return;
@@ -174,31 +179,40 @@
 {#if type === 'header'}
   <div class="header">
     {#if overlap}
+      <div style="padding-right: 10px;">
+        <b>{counter}/4</b>
+      </div>
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
         ><path
-          fill="#CC0000"
+          fill="#F2590D"
           d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45ZM12 17q.425 0 .713-.288T13 16q0-.425-.288-.713T12 15q-.425 0-.713.288T11 16q0 .425.288.713T12 17Zm-1-4h2V7h-2v6Z"
-        /></svg
-      >
-      &nbsp; Significant overlap
-    {/if}
-    {#if someOverlap}
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-        ><path
-          fill="#EE9933"
-          d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"
         /></svg
       >
       &nbsp; Some overlap
     {/if}
-    {#if noOverlap}
+    {#if someOverlap}
+      <div style="padding-right: 10px;">
+        <b>{counter}/4</b>
+      </div>
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
         ><path
-          fill="#00AA44"
+          fill="#FFAA00"
           d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"
         /></svg
       >
-      &nbsp; No overlap
+      &nbsp; Minor overlap
+    {/if}
+    {#if noOverlap}
+      <div style="padding-right: 10px;">
+        <b>{counter}/4</b>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+        ><path
+          fill="#12A195"
+          d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"
+        /></svg
+      >
+      &nbsp; No significant overlap
     {/if}
   </div>
 {:else if type === 'summary'}
@@ -343,7 +357,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="label">Glycan<br /> <b>Median</b></div>
+      <div class="label">Glycan<br /> <b>Youth</b></div>
       <div class="content">
         <div class="min"><b>{min2}</b></div>
         <div class="max"><b>{max2}</b></div>
@@ -352,7 +366,7 @@
           <div class="yAxis"></div>
           <div class="diseaseArea" style="border-radius: 6px 0 0 6px; right: 50.3%;"></div>
           <div
-            class="result2"
+            class="result3"
             style="padding: {getPadding(perc2)}; margin: {getMargin(
               perc2
             )}; border-radius: {getBorderRadius(perc2)}"
@@ -368,7 +382,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="label">Glycan<br /> <b>Youth</b></div>
+      <div class="label">Glycan<br /> <b>Shield</b></div>
       <div class="content">
         <div class="min"><b>{min3}</b></div>
         <div class="max"><b>{max3}</b></div>
@@ -393,14 +407,14 @@
       </div>
     </div>
     <div class="row">
-      <div class="label">Glycan<br /> <b>Shield</b></div>
+      <div class="label">Glycan<br /> <b>Lifestyle</b></div>
       <div class="content">
         <div class="min"><b>{min4}</b></div>
         <div class="max"><b>{max4}</b></div>
         <div class="middleParent">
           <div class="xAxis"></div>
           <div class="yAxis"></div>
-          <div class="diseaseArea" style="border-radius: 6px 0 0 6px; right: 50.3%;"></div>
+          <div class="diseaseArea" style="border-radius: 0 6px 6px 0; left: 50.3%;"></div>
           <div
             class="result3"
             style="padding: {getPadding(perc4)}; margin: {getMargin(
@@ -410,31 +424,6 @@
             <div class="resultDisplay" style="right: {moveDiv(perc4)};">
               <div class="message">
                 <b>{res4} ({perc4}<sup>{suffix(perc4)}</sup> percentile)</b>
-              </div>
-              <div class="triangle-down"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="label">Glycan<br /> <b>Lifestyle</b></div>
-      <div class="content">
-        <div class="min"><b>{min5}</b></div>
-        <div class="max"><b>{max5}</b></div>
-        <div class="middleParent">
-          <div class="xAxis"></div>
-          <div class="yAxis"></div>
-          <div class="diseaseArea" style="border-radius: 0 6px 6px 0; left: 50.3%;"></div>
-          <div
-            class="result3"
-            style="padding: {getPadding(perc5)}; margin: {getMargin(
-              perc5
-            )}; border-radius: {getBorderRadius(perc5)}"
-          >
-            <div class="resultDisplay" style="right: {moveDiv(perc5)};">
-              <div class="message">
-                <b>{res5} ({perc5}<sup>{suffix(perc5)}</sup> percentile)</b>
               </div>
               <div class="triangle-down"></div>
             </div>
@@ -454,7 +443,7 @@
 <style>
   .main {
     width: 450px;
-    height: 300px;
+    height: 260px;
     background-color: #f0f6f5;
     border: 2px solid #c8dbd0;
     border-radius: 12px;
@@ -485,7 +474,7 @@
 
   .row {
     width: 100%;
-    height: 12%;
+    height: 14%;
     display: flex;
     margin: 0.2rem 0 0.2rem 0;
   }

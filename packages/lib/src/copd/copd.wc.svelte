@@ -33,6 +33,7 @@
   let someOverlap = false;
   let noOverlap = false;
   let showSummary = false;
+  let counter = '';
 
   function getColor() {
     if (overlap) {
@@ -78,10 +79,10 @@
 
   function getWording() {
     if (overlap) {
-      return 'a significant overlap';
+      return 'some overlap';
     }
     if (someOverlap) {
-      return 'some overlap';
+      return 'a minor overlap';
     }
 
     if (noOverlap) {
@@ -104,16 +105,19 @@
     perc2 = Number(reportData.Bpercentile);
 
     if (perc1 < 50 && perc2 > 50) {
+      counter = '2/2';
       overlap = true;
       showSummary = true;
       return;
     }
     if (perc1 < 50 || perc2 > 50) {
+      counter = '1/2';
       someOverlap = true;
       showSummary = true;
       return;
     }
 
+    counter = '0/2';
     noOverlap = true;
     showSummary = true;
     return;
@@ -130,31 +134,40 @@
 {#if type === 'header'}
   <div class="header">
     {#if overlap}
+      <div style="padding-right: 10px;">
+        <b>{counter}</b>
+      </div>
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
         ><path
-          fill="#CC0000"
+          fill="#F2590D"
           d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45ZM12 17q.425 0 .713-.288T13 16q0-.425-.288-.713T12 15q-.425 0-.713.288T11 16q0 .425.288.713T12 17Zm-1-4h2V7h-2v6Z"
-        /></svg
-      >
-      &nbsp; Significant overlap
-    {/if}
-    {#if someOverlap}
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-        ><path
-          fill="#EE9933"
-          d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"
         /></svg
       >
       &nbsp; Some overlap
     {/if}
-    {#if noOverlap}
+    {#if someOverlap}
+      <div style="padding-right: 10px;">
+        <b>{counter}</b>
+      </div>
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
         ><path
-          fill="#00AA44"
+          fill="#FFAA00"
           d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"
         /></svg
       >
-      &nbsp; No overlap
+      &nbsp; Minor overlap
+    {/if}
+    {#if noOverlap}
+      <div style="padding-right: 10px;">
+        <b>{counter}</b>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+        ><path
+          fill="#12A195"
+          d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"
+        /></svg
+      >
+      &nbsp; No significant overlap
     {/if}
   </div>
 {:else if type === 'summary'}
@@ -181,31 +194,30 @@
         <div class="summaryBody" style="opacity: 0.35;">
           <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptoms to check for:</div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Chronic Cough:</b> The body s response to clear the airways of mucus, a <br />
-            common feature in chronic bronchitis.
+            Difficulty breathing due to airflow restriction.
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Shortness of Breath:</b> Due to reduced airflow and decreased oxygen <br />
-            exchange in the lungs.
+            Chronic cough, sometimes productive, with phelgm.
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Wheezing:</b> Indicates narrowing or obstruction in the bronchial tubes, <br />
-            typical in emphysema.
+            Fatigue.
           </div>
           <div style="font-size: 1.2rem; padding-top: 1.2rem;padding-bottom: 1rem;">
             Possible follow-up tests:
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Spirometry:</b> Measures the amount and speed of air a person can exhale, <br />
-            crucial for diagnosing COPD
+            <b>Spirometry:</b> Produces an obstructive picture with FVC under 70% <br />
+            Severity graded based on FEV1
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Chest X-Ray:</b> Can show emphysema, one of the main diseases under the <br />
-            COPD umbrella, and rule out other lung problems.
+            <b>Blood tests:</b> Full blood count to check for polycythaemia.
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Arterial Blood Gas Analysis:</b> Assesses the oxygen and carbon dioxide levels <br />
-            in the blood, indicating how well lungs are functioning.
+            <b>ECG:</b> Checking for signs of right atrial and ventricular hypertrophy.
+          </div>
+          <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
+            <b>Chest X-Ray (CXR):</b> Classic signs include hyperinflation, flat <br />
+            hemidiaphragms, loss of peripheral markings, and bullae.
           </div>
         </div>
       </div>
@@ -240,31 +252,30 @@
         <div class="summaryBody" style="background-color: {getBodyBackground()};">
           <div style="font-size: 1.2rem; padding-bottom: 1rem;">Symptoms to check for:</div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Chronic Cough:</b> The body s response to clear the airways of mucus, a <br />
-            common feature in chronic bronchitis.
+            Difficulty breathing due to airflow restriction.
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Shortness of Breath:</b> Due to reduced airflow and decreased oxygen <br />
-            exchange in the lungs.
+            Chronic cough, sometimes productive, with phelgm.
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Wheezing:</b> Indicates narrowing or obstruction in the bronchial tubes, <br />
-            typical in emphysema.
+            Fatigue.
           </div>
           <div style="font-size: 1.2rem; padding-top: 1.2rem;padding-bottom: 1rem;">
             Possible follow-up tests:
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Spirometry:</b> Measures the amount and speed of air a person can exhale, <br />
-            crucial for diagnosing COPD.
+            <b>Spirometry:</b> Produces an obstructive picture with FVC under 70% <br />
+            Severity graded based on FEV1.
+          </div>
+          <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
+            <b>Blood tests:</b> Full blood count to check for polycythaemia.
+          </div>
+          <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
+            <b>ECG:</b> Checking for signs of right atrial and ventricular hypertrophy.
           </div>
           <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
             <b>Chest X-Ray:</b> Can show emphysema, one of the main diseases under the <br />
             COPD umbrella, and rule out other lung problems.
-          </div>
-          <div style="font-size: 0.7rem; padding-bottom: 0.4rem;">
-            <b>Arterial Blood Gas Analysis:</b> Assesses the oxygen and carbon dioxide levels <br />
-            in the blood, indicating how well lungs are functioning.
           </div>
         </div>
       </div>
@@ -345,7 +356,7 @@
 
   .summaryMain {
     width: 500px;
-    height: 500px;
+    height: 450px;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
