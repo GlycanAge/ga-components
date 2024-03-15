@@ -232,8 +232,7 @@
             >
           </div>
           <div style="width: 90%;">
-            There is <b>no significant overlap</b> of glycan indexes between <br /> your patient and
-            and lupus patients.
+            There is <b>no significant overlap</b> of glycan indexes between <br /> your patient and SLE patients.
           </div>
         </div>
         <div class="summaryBody" style="opacity: 0.35;">
@@ -290,7 +289,7 @@
             {/if}
           </div>
           <div style="width: 90%;">
-            There is <b>{getWording()}</b> of glycan indexes between <br /> your patient and lupus patients.
+            There is <b>{getWording()}</b> of glycan indexes between <br /> your patient and SLE patients.
           </div>
         </div>
         <div class="summaryBody" style="background-color: {getBodyBackground()};">

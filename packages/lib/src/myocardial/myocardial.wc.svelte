@@ -583,7 +583,7 @@
 
   .summaryMain {
     width: 500px;
-    height: 500px;
+    height: 520px;
     border-radius: 10px;
     display: flex;
     flex-direction: column;

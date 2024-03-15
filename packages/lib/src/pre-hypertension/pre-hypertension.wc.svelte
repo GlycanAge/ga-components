@@ -179,7 +179,7 @@
                     </div>
                     <div style="width: 90%;">
                         There is <b>no significant overlap</b> of glycan indexes between <br /> your patient and
-                        increased risk of hypertension <br /> patients.
+                        pre-hypertension <br /> patients.
                     </div>
                 </div>
                 <div class="summaryBody" style="opacity: 0.35;">
@@ -240,7 +240,7 @@
                     </div>
                     <div style="width: 90%; font-size: 0.8rem;">
                         There is <b>{getWording()}</b> of glycan indexes between <br /> your patient and
-                        increased risk of hypertension patients.
+                        pre-hypertension patients.
                     </div>
                 </div>
                 <div class="summaryBody" style="background-color: {getBodyBackground()};">
