@@ -34,11 +34,11 @@
         if (perc1 === 50) {
             return '#00AA44';
         }
-        if (perc1 < 50) {
+        if (perc1 > 50) {
             return '#CC0000';
         }
 
-        if (perc1 > 50) {
+        if (perc1 < 50) {
             return '#00AA44';
         }
         return '#00AA44';
@@ -48,10 +48,10 @@
         if (perc1 === 50) {
             return 'rgba(0,170,68,0.15)';
         }
-        if (perc1 < 50) {
+        if (perc1 > 50) {
             return 'rgba(204,0,0,0.15)';
         }
-        if (perc1 > 50) {
+        if (perc1 < 50) {
             return 'rgba(0,170,68,0.15)';
         }
         return 'rgba(0,170,68,0.15)';
@@ -61,10 +61,10 @@
         if (perc1 === 50) {
             return 'rgba(0,170,68,0.05)';
         }
-        if (perc1 < 50) {
+        if (perc1 > 50) {
             return 'rgba(204,0,0,0.05)';
         }
-        if (perc1 > 50) {
+        if (perc1 < 50) {
             return 'rgba(0,170,68,0.05)';
         }
         return 'rgba(0,170,68,0.05)';
@@ -74,11 +74,11 @@
         if (perc1 === 50) {
             return 'no significant overlap';
         }
-        if (perc1 < 50) {
+        if (perc1 > 50) {
             return 'some overlap';
         }
 
-        if (perc1 > 50) {
+        if (perc1 < 50) {
             return 'no significant overlap';
         }
 
@@ -99,14 +99,14 @@
             showSummary = true;
             return;
         }
-        if (perc1 < 50) {
+        if (perc1 > 50) {
             counter = '1/1';
             overlap = true;
             showSummary = true;
             return;
         }
 
-        if (perc1 > 50) {
+        if (perc1 < 50) {
             counter = '0/1';
             noOverlap = true;
             showSummary = true;
@@ -290,7 +290,7 @@
                 <div class="middleParent">
                     <div class="xAxis"></div>
                     <div class="yAxis"></div>
-                    <div class="diseaseArea" style="border-radius: 6px 0 0 6px; right: 50.3%;"></div>
+                    <div class="diseaseArea" style="border-radius: 0 6px 6px 0; left: 50.3%;"></div>
                     <div
                             class="result"
                             style="padding: {getPadding(perc1)}; margin: {getMargin(
