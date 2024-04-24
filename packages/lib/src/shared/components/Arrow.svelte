@@ -21,7 +21,7 @@
     <div style="height: 100%; width: 13.7%; background-color: {type === 'left' ? '#DF2020' : '#CADBD1'}; border-radius: 4px;"></div>
     <div style="height: 100%; width: 13.7%; background-color: {type === 'left' ? '#F2800D' : '#CADBD1'}; border-radius: 4px;"></div>
     <div style="position: relative; height: 100%; width: 13.7%; background-color: #CADBD1; border-radius: 4px;">
-         <div style="position: absolute; left: 92%; height: 2px; width: 12px; background-color: #32664C; transform: rotate(90deg); border-radius: 4px;"></div>
+         <div style="position: absolute; left: 92.05%; height: 2px; width: 12px; background-color: #32664C; transform: rotate(90deg); border-radius: 4px;"></div>
     </div>
     <div style="height: 100%; width: 13.7%; background-color: #CADBD1; border-radius: 4px;"></div>
     <div style="height: 100%; width: 13.7%; background-color: {type === 'left' ? '#CADBD1' : '#F2800D'}; border-radius: 4px;"></div>

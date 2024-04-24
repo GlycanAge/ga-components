@@ -38,7 +38,6 @@
         if (percentile > 68) {
             counter = '0/1';
             message = 'Higher than average';
-            counter = '1/1';
             showSummary = true;
             return;
         }

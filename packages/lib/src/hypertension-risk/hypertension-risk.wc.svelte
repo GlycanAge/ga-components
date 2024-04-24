@@ -37,7 +37,6 @@
         if (percentile > 68) {
             counter = '1/1';
             message = 'Higher than average';
-            counter = '1/1';
             overlap = true;
             showSummary = true;
             return;
