@@ -113,8 +113,8 @@
 
 <style>
     .summaryMain {
-        width: 500px;
-        height: 750px;
+        width: 100%;
+        height: 100%;
         display: flex;
         flex-direction: column;
         color: #09341FCC;
@@ -135,8 +135,8 @@
         border-top: 2px solid #C9DBD2;
     }
     .main {
-        height: 76px;
-        width: 650px;
+        height: 100%;
+        width: 100%;
         display: flex;
     }
 
