@@ -14,7 +14,6 @@
 
   let overlap = false;
   let someOverlap = false;
-  let noOverlap = false;
   let showSummary = false;
   let counter = '';
   let message = '';
@@ -77,13 +76,11 @@
         return;
       }
       counter = '1/3';
-      noOverlap = true;
       showSummary = true;
       return;
     }
 
     counter = '0/3';
-    noOverlap = true;
     showSummary = true;
     return;
   });
@@ -139,7 +136,7 @@
       </ul>
       <h5>Related research papers</h5>
       <a style="color: #E66439;" href="https://pubmed.ncbi.nlm.nih.gov/27124023/">The Association Between Glycosylation of Immunoglobulin G and Hypertension: A Multiple Ethnic Cross-Sectional Study</a>
-      <p style="margin: 0; font-size: 0.8rem; color: #09341FCC;">In an extensive study with 4757 participants, including 913 from the Chinese Han Beijing population, 985 from Croatian Korčula, 896 from Croatian Vis, and 1963 from Scottish Orkney, researchers investigated changes in IgG glycans associated with prehypertension and hypertension. The demographic composition of the study was approximately 40% female and 60% male participants. A notable observation was the decrease in G2 in the cohort with prehypertension.</p>
+      <p style="margin: 0; font-size: 0.8rem; color: #09341FCC;">In an extensive study with 4757 participants, including 913 from the Chinese Han Beijing population, 985 from Croatian Korčula, 896 from Croatian Vis, and 1963 from Scottish Orkney, researchers investigated changes in IgG glycans associated with prehypertension and hypertension. The demographic composition of the study was approximately 40% female and 60% male participants. Among hypertension patients, there was a noted decrease in G2 and S, alongside an increase in G0.</p>
     </div>
   </div>
 {:else}
