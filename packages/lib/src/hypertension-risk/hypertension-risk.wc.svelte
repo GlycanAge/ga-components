@@ -84,7 +84,7 @@
                 <li>Usually asymptomatic</li>
             </ul>
 
-            <h5>Possible follow-up tests</h5>
+            <h5>Possible follow-up</h5>
             <ul style="font-size: 0.8rem;">
                 <li>Serial blood pressure (BP) measurements ± 24-hour BP monitoring</li>
                 <li>BMI and/or body composition check</li>

@@ -128,7 +128,7 @@
         <li>Blurred vision or visual disturbances</li>
       </ul>
 
-      <h5>Possible follow-up tests</h5>
+      <h5>Possible follow-up</h5>
       <ul style="font-size: 0.8rem;">
         <li>Regular blood pressure monitoring</li>
         <li>24-hour ambulatory blood pressure monitoring</li>

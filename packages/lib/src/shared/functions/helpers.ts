@@ -128,3 +128,15 @@ export function suffix(perc: number) {
       return 'th';
   }
 }
+
+export function getHeaderMessage(percentile: number) {
+  if (percentile < 32) {
+    return 'Lower than average';
+  }
+  if (percentile >= 32 && percentile <= 68) {
+    return 'Around average';
+  }
+  if (percentile > 68) {
+    return 'Higher than average';
+  }
+}

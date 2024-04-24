@@ -1,13 +1,8 @@
 <script lang="ts">
-    import { onMount } from 'svelte';
     import {suffix} from '../functions/helpers';
 
     export let percentile = 0;
     export let type = '';
-
-    onMount(async () => {
-        console.log('type inside onMount', type);
-    });
 </script>
 
 

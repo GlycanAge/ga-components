@@ -71,7 +71,7 @@
     }
 
     if (gender === 'M') {
-      if (perc1 > 68 && perc2 < 32 && perc3 < 32 && perc4 > 60) {
+      if (perc1 > 68 && perc2 < 32 && perc3 < 32 && perc4 > 68) {
         counter = '4/4';
         overlap = true;
         showSummary = true;
@@ -160,22 +160,23 @@
       </div>
     </div>
     <div class="summaryBody">
-      <h5>Signs and symptoms</h5>
+      <h5>Risk and factors</h5>
       <ul style="font-size: 0.8rem;">
-        <li>Persistent blood pressure over 140/90 mmHg</li>
-        <li>Headaches and dizziness</li>
-        <li>Blurred vision or visual disturbances</li>
+        <li>Past medical history (cardiometabolic syndrome, autoimmune disease)</li>
+        <li>Medication history (e.g., statins, blood thinners)</li>
+        <li>Current/previous smoking history</li>
       </ul>
 
-      <h5>Possible follow-up tests</h5>
+      <h5>Possible follow-up</h5>
       <ul style="font-size: 0.8rem;">
-        <li>Regular blood pressure monitoring</li>
-        <li>24-hour ambulatory blood pressure monitoring</li>
-        <li>Kidney function tests</li>
+        <li>Blood tests: basic and extended lipid profile (e.g., Lp(a), ApoB), hsCRP, homocysteine, renal and liver function, HbA1c</li>
+        <li>BP check</li>
+        <li>ECG</li>
+        <li>Cardiology referral for other tests (e.g., cardiac echo, coronary CT)</li>
       </ul>
       <h5>Related research papers</h5>
-      <a style="color: #E66439;" href="https://pubmed.ncbi.nlm.nih.gov/27124023/">The Association Between Glycosylation of Immunoglobulin G and Hypertension: A Multiple Ethnic Cross-Sectional Study</a>
-      <p style="margin: 0; font-size: 0.8rem; color: #09341FCC;">In an extensive study with 4757 participants, including 913 from the Chinese Han Beijing population, 985 from Croatian Korčula, 896 from Croatian Vis, and 1963 from Scottish Orkney, researchers investigated changes in IgG glycans associated with prehypertension and hypertension. The demographic composition of the study was approximately 40% female and 60% male participants. Among hypertension patients, there was a noted decrease in G2 and S, alongside an increase in G0.</p>
+      <a style="color: #E66439;" href="https://pubmed.ncbi.nlm.nih.gov/36174116/">Immunoglobulin G N-Glycosylation Signatures in Incident Type 2 Diabetes and Cardiovascular Disease</a>
+      <p style="margin: 0; font-size: 0.8rem; color: #09341FCC;">In the EPIC-Potsdam cohort, involving 2,175 participants in the cardiovascular disease (CVD) subcohort, which includes 417 cases of MI and CVA, changes in IgG glycosylation were analysed. This cohort comprised 61% females and 39% males, with an average age of 49. In male participants, an increase in G0 and B was observed, along with a decrease in G2 and S. A predictive model employing 2 specific glycan peaks was developed, demonstrating a hazard ratio (HR) of 1.60.</p>
     </div>
   </div>
 {:else}
@@ -245,7 +246,7 @@
         </div>
       </div>
       <div style="width: 70%; display: flex; align-items: center;">
-        <Arrow type="right" {percentile} />
+        <Arrow type="left" {percentile} />
       </div>
     </div>
   {/if}
