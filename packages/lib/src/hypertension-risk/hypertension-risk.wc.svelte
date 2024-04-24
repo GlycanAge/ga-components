@@ -16,25 +16,25 @@
     let showSummary = false;
     let counter = '';
     let message = '';
-    let perc1 = 0; // Bpercentile
+    let percentile = 0; // Bpercentile
 
     onMount(async () => {
         reportData = await service.getReport(report);
-        perc1 = Number(reportData.Bpercentile);
+        percentile = Number(reportData.Bpercentile);
 
-        if (perc1 < 32) {
+        if (percentile < 32) {
             counter = '0/1';
             message = 'Lower than average';
             showSummary = true;
             return;
         }
-        if (perc1 >= 32 && perc1 <= 68) {
+        if (percentile >= 32 && percentile <= 68) {
             counter = '0/1';
             message = 'Around average';
             showSummary = true;
             return;
         }
-        if (perc1 > 68) {
+        if (percentile > 68) {
             counter = '1/1';
             message = 'Higher than average';
             counter = '1/1';
@@ -63,7 +63,7 @@
                     fill="#12A195"
                     d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"/></svg>
         {/if}
-        &nbsp;{overlap ? 'Some overlap' : 'No significant overlap'}
+        &nbsp;&nbsp;{overlap ? 'Some overlap' : 'No significant overlap'}
     </div>
 {:else if type === 'summary' && showSummary}
     <div class="summaryMain">
@@ -76,7 +76,7 @@
                 {/if}
             </div>
             <div>
-                <b style="color: {overlap ? '#F2590D' : '#12A195'}">{perc1 > 68 ? 'Some overlap' : 'No significant overlap'}</b> of glycan indexes between <br /> your patient and this condition.
+                <b style="color: {overlap ? '#F2590D' : '#12A195'}">{percentile > 68 ? 'Some overlap' : 'No significant overlap'}</b> of glycan indexes between <br /> your patient and this condition.
             </div>
         </div>
         <div class="summaryBody">
@@ -99,14 +99,14 @@
 {:else}
     <div class="main">
         <div class="label" style="font-size: 0.8rem;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path  fill={perc1 <= 68 ? '#12A195' : '#F2590D'} d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45ZM12 17q.425 0 .713-.288T13 16q0-.425-.288-.713T12 15q-.425 0-.713.288T11 16q0 .425.288.713T12 17Zm-1-4h2V7h-2v6Z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path  fill={percentile <= 68 ? '#12A195' : '#F2590D'} d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45ZM12 17q.425 0 .713-.288T13 16q0-.425-.288-.713T12 15q-.425 0-.713.288T11 16q0 .425.288.713T12 17Zm-1-4h2V7h-2v6Z"/></svg>
             <div style="display: flex; flex-direction: column; padding-left: 0.3rem;">
                 <div>Glycan <b>Lifestyle (B)</b></div>
                 <div>{message}</div>
             </div>
         </div>
         <div style="width: 70%; display: flex; align-items: center;">
-            <Arrow type="right" percentile={perc1} />
+            <Arrow type="right" {percentile} />
         </div>
     </div>
 {/if}

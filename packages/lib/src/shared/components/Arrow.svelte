@@ -14,22 +14,22 @@
 <div style="position: relative; width: 100%; height: 4px; display: flex; justify-content: space-between;">
     <div style="position: relative; height: 100%; width: 7%; background-color: {type === 'left' ? '#DF2020' : '#CADBD1'}; border-radius: 4px;">
         {#if type === 'left'}
-            <div style="position: absolute; right: 13px; bottom: 8px; height: 3px; width: 24px; background-color: #DF2020; border-radius: 4px; transform: rotate(135deg);"></div>
-            <div style="position: absolute; right: 13px; top: 8px; height: 3px; width: 24px; background-color: #DF2020; border-radius: 4px; transform: rotate(-135deg);"></div>
+            <div style="position: absolute; right: 12px; bottom: 8px; height: 3px; width: 24px; background-color: #DF2020; border-radius: 4px; transform: rotate(135deg);"></div>
+            <div style="position: absolute; right: 12px; top: 8px; height: 3px; width: 24px; background-color: #DF2020; border-radius: 4px; transform: rotate(-135deg);"></div>
         {/if}
     </div>
     <div style="height: 100%; width: 13.7%; background-color: {type === 'left' ? '#DF2020' : '#CADBD1'}; border-radius: 4px;"></div>
     <div style="height: 100%; width: 13.7%; background-color: {type === 'left' ? '#F2800D' : '#CADBD1'}; border-radius: 4px;"></div>
     <div style="position: relative; height: 100%; width: 13.7%; background-color: #CADBD1; border-radius: 4px;">
-         <div style="position: absolute; left: 92.1%; height: 2px; width: 12px; background-color: #32664C; transform: rotate(90deg); border-radius: 4px;"></div>
+         <div style="position: absolute; left: 92%; height: 2px; width: 12px; background-color: #32664C; transform: rotate(90deg); border-radius: 4px;"></div>
     </div>
     <div style="height: 100%; width: 13.7%; background-color: #CADBD1; border-radius: 4px;"></div>
     <div style="height: 100%; width: 13.7%; background-color: {type === 'left' ? '#CADBD1' : '#F2800D'}; border-radius: 4px;"></div>
     <div style="height: 100%; width: 13.7%; background-color: {type === 'left' ? '#CADBD1' : '#DF2020'}; border-radius: 4px;"></div>
     <div style="position: relative; height: 100%; width: 7%; background-color: {type === 'left' ? '#CADBD1' : '#DF2020'}; border-radius: 4px;">
         {#if type === 'right'}
-            <div style="position: absolute; left: 13px; bottom: 8px; height: 3px; width: 24px; background-color: #DF2020; border-radius: 4px; transform: rotate(45deg);"></div>
-            <div style="position: absolute; left: 13px; top: 8px; height: 3px; width: 24px; background-color: #DF2020; border-radius: 4px; transform: rotate(-45deg);"></div>
+            <div style="position: absolute; left: 12px; bottom: 8px; height: 3px; width: 24px; background-color: #DF2020; border-radius: 4px; transform: rotate(45deg);"></div>
+            <div style="position: absolute; left: 12px; top: 8px; height: 3px; width: 24px; background-color: #DF2020; border-radius: 4px; transform: rotate(-45deg);"></div>
         {/if}
     </div>
 
