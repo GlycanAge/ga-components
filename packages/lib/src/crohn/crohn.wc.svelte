@@ -136,23 +136,23 @@
     </div>
     <div class="summaryBody">
       <h5>Signs and symptoms</h5>
-      <ul style="font-size: 0.8rem;">
+      <ul>
         <li>Abdominal pain and cramping</li>
         <li>Recurring diarrhea (± blood)</li>
         <li>Weight loss</li>
       </ul>
 
       <h5>Possible follow-up</h5>
-      <ul style="font-size: 0.8rem;">
+      <ul>
         <li>Blood tests: full blood count, renal and liver function, CRP</li>
         <li>Stool tests: faecal immunochemical test (FIT), faecal calprotectin</li>
         <li>Referral for CT colonoscopy</li>
       </ul>
       <h5>Related research papers</h5>
-      <a style="color: #E66439;" href="https://pubmed.ncbi.nlm.nih.gov/25895110/">Inflammatory bowel disease associates with proinflammatory potential of the immunoglobulin G glycome</a>
-      <p style="margin: 0; font-size: 0.8rem; color: #09341FCC;">In a Scottish study examining IgG glycosylation changes in IBS, a cohort of 287 CD patients and 320 controls, all with an average age of 42, was evaluated. The analysis indicated a significant increase in G0 and B glycan traits and a decrease in G1, G2, and S in CD patients compared to controls. The changes in specific glycan peaks showed predictive value, with an AUC of 0.77.</p>
-      <a style="color: #E66439;" href="https://pubmed.ncbi.nlm.nih.gov/29309774/">Glycosylation of Immunoglobulin G Associates With Clinical Features of Inflammatory Bowel Diseases</a>
-      <p style="margin: 0; font-size: 0.8rem; color: #09341FCC;">In a study focusing on CD, a cohort including 874 CD patients from Italy, 391 from the United States, and controls (427 in Italy and 440 from the United States) was analyzed for IgG glycosylation changes. With an average participant age of 35 and an equal gender distribution, the research revealed a decrease in G1, G2, and S glycan traits and an increase in G0, while B remained unchanged. The glycosylation traits contributed to a model achieving an AUC of 0.849, indicating strong predictive capability. A link was noted between decreased galactosylation and more severe CD manifestations, such as the necessity for surgical intervention, compared to controls.</p>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/25895110/">Inflammatory bowel disease associates with proinflammatory potential of the immunoglobulin G glycome</a>
+      <p>In a Scottish study examining IgG glycosylation changes in IBS, a cohort of 287 CD patients and 320 controls, all with an average age of 42, was evaluated. The analysis indicated a significant increase in G0 and B glycan traits and a decrease in G1, G2, and S in CD patients compared to controls. The changes in specific glycan peaks showed predictive value, with an AUC of 0.77.</p>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/29309774/">Glycosylation of Immunoglobulin G Associates With Clinical Features of Inflammatory Bowel Diseases</a>
+      <p>In a study focusing on CD, a cohort including 874 CD patients from Italy, 391 from the United States, and controls (427 in Italy and 440 from the United States) was analyzed for IgG glycosylation changes. With an average participant age of 35 and an equal gender distribution, the research revealed a decrease in G1, G2, and S glycan traits and an increase in G0, while B remained unchanged. The glycosylation traits contributed to a model achieving an AUC of 0.849, indicating strong predictive capability. A link was noted between decreased galactosylation and more severe CD manifestations, such as the necessity for surgical intervention, compared to controls.</p>
     </div>
   </div>
 {:else}

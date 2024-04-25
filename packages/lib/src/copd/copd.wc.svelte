@@ -109,21 +109,21 @@
     </div>
     <div class="summaryBody">
       <h5>Signs and symptoms</h5>
-      <ul style="font-size: 0.8rem;">
+      <ul>
         <li>Difficulty breathing</li>
         <li>Chronic cough (± productive)</li>
         <li>Fatigue</li>
       </ul>
 
       <h5>Possible follow-up</h5>
-      <ul style="font-size: 0.8rem;">
+      <ul>
         <li>Blood tests: full blood count</li>
         <li>Spirometry</li>
         <li>ECG, chest X-ray</li>
       </ul>
       <h5>Related research papers</h5>
-      <a style="color: #E66439;" href="https://translational-medicine.biomedcentral.com/articles/10.1186/s12967-018-1695-0">N-glycosylation patterns of plasma proteins and immunoglobulin G in chronic obstructive pulmonary disease</a>
-      <p style="margin: 0; font-size: 0.8rem; color: #09341FCC;">In a Croatian study focusing on COPD, researchers analyzed IgG glycosylation in 137 COPD patients and 95 controls in the discovery cohort, and 61 COPD patients and 148 controls in a replication cohort from another medical center. The discovery cohort included 97 female participants (42%), while the replication cohort had 116 females (56%). The study observed a decrease in G1 and an increase in B glycan structures in COPD patients. <br><br> For those who want to know more: <br><br> The analysis also revealed that N-glycans could distinguish between different COPD stages according to GOLD guidelines, with more complex glycan structures becoming relatively more abundant as the disease advanced. The study also noted significant associations between glycans and the frequency of COPD exacerbations and highlighted the impact of smoking, a major risk factor for COPD, on glycan compositions.</p>
+      <a href="https://translational-medicine.biomedcentral.com/articles/10.1186/s12967-018-1695-0">N-glycosylation patterns of plasma proteins and immunoglobulin G in chronic obstructive pulmonary disease</a>
+      <p>In a Croatian study focusing on COPD, researchers analyzed IgG glycosylation in 137 COPD patients and 95 controls in the discovery cohort, and 61 COPD patients and 148 controls in a replication cohort from another medical center. The discovery cohort included 97 female participants (42%), while the replication cohort had 116 females (56%). The study observed a decrease in G1 and an increase in B glycan structures in COPD patients. <br><br> For those who want to know more: <br><br> The analysis also revealed that N-glycans could distinguish between different COPD stages according to GOLD guidelines, with more complex glycan structures becoming relatively more abundant as the disease advanced. The study also noted significant associations between glycans and the frequency of COPD exacerbations and highlighted the impact of smoking, a major risk factor for COPD, on glycan compositions.</p>
     </div>
   </div>
 {:else}
@@ -158,45 +158,86 @@
 {/if}
 
 <style>
-  .summaryMain {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    color: #09341FCC;
-  }
+    .summaryMain {
+        padding: 0 48px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        color: #09341FCC;
+    }
 
-  .summaryHeader {
-    width: 100%;
-    height: 16%;
-    font-size: 0.9rem;
-    display: flex;
-    align-items: center;
-  }
+    .summaryMain hr {
+        border: 2px solid rgba(201, 219, 210, 1);
+        border-radius: 2px;
+        margin: 18px 0;
+    }
 
-  .summaryBody {
-    width: 80%;
-    height: 100%;
-    margin: auto;
-    border-top: 2px solid #C9DBD2;
-  }
-  .main {
-    height: 100%;
-    width: 100%;
-    display: flex;
-  }
+    .summaryMain h5 {
+        font-size: 16px;
+        margin: 0;
+    }
 
-  .label {
-    width: 30%;
-    display: flex;
-    align-items: center;
-  }
+    .summaryMain ul {
+        margin-top: 4px;
+        margin-bottom: 24px;
+        font-size: 14px;
+        padding-left: 20px;
+    }
 
-  .header {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-  }
+    .summaryMain ul li:not(:first-child) {
+        margin-top: 4px;
+    }
+
+    .summaryHeader {
+        width: 100%;
+        font-size: 16px;
+        line-height: 115%;
+        padding-top: 32px;
+        display: flex;
+        align-items: center;
+        transform: translateX(-48px);
+    }
+
+    .summaryBody {
+        width: 100%;
+        height: 100%;
+        margin: auto;
+    }
+
+    .summaryBody a {
+        display: block;
+        color: #E66439;
+        font-weight: bold;
+        font-size: 12px;
+        margin-top: 12px;
+    }
+
+    .summaryBody svg {
+        vertical-align: middle;
+    }
+
+    .summaryBody p {
+        color: rgba(9, 52, 31, 0.80);
+        font-size: 10px;
+        margin-top: 6px;
+    }
+
+    .main {
+        height: 100%;
+        width: 100%;
+        display: flex;
+    }
+
+    .label {
+        width: 30%;
+        display: flex;
+        align-items: center;
+    }
+
+    .header {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
 </style>
-

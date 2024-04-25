@@ -127,19 +127,19 @@
     </div>
     <div class="summaryBody">
       <h5>Signs and symptoms</h5>
-      <ul style="font-size: 0.8rem;">
+      <ul>
         <li>Usually asymptomatic</li>
       </ul>
 
       <h5>Possible follow-up</h5>
-      <ul style="font-size: 0.8rem;">
+      <ul>
         <li>Lipid profile blood tests: basic and extended (incl. oxLDL, VLDL, LDL-P, Lp-PLA2, Lp(a), ApoB)</li>
         <li>Other blood tests: hsCRP, homocysteine, renal and liver function, HbA1c</li>
         <li>BP check</li>
       </ul>
       <h5>Related research papers</h5>
-      <a style="color: #E66439;" href="https://translational-medicine.biomedcentral.com/articles/10.1186/s12967-018-1616-2">The changes of immunoglobulin G N-glycosylation in blood lipids and dyslipidaemia</a>
-      <p style="margin: 0; font-size: 0.8rem; color: #09341FCC;">In a study focusing on IgG glycome changes related to dyslipidemia, 598 participants (67% female participants) were selected from a larger observational cross-sectional study conducted in 2012, which initially involved 913 participants of Chinese Han ancestry from Beijing. The glycomic analysis revealed a decrease in G2 and S, coupled with an increase in G0 and B. A predictive model incorporating six specific glycan structures was developed from these findings, resulting in an AUC of 0.692.</p>
+      <a href="https://translational-medicine.biomedcentral.com/articles/10.1186/s12967-018-1616-2">The changes of immunoglobulin G N-glycosylation in blood lipids and dyslipidaemia</a>
+      <p>In a study focusing on IgG glycome changes related to dyslipidemia, 598 participants (67% female participants) were selected from a larger observational cross-sectional study conducted in 2012, which initially involved 913 participants of Chinese Han ancestry from Beijing. The glycomic analysis revealed a decrease in G2 and S, coupled with an increase in G0 and B. A predictive model incorporating six specific glycan structures was developed from these findings, resulting in an AUC of 0.692.</p>
     </div>
   </div>
 {:else}
@@ -202,45 +202,86 @@
 {/if}
 
 <style>
-  .summaryMain {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    color: #09341FCC;
-  }
+    .summaryMain {
+        padding: 0 48px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        color: #09341FCC;
+    }
 
-  .summaryHeader {
-    width: 100%;
-    height: 16%;
-    font-size: 0.9rem;
-    display: flex;
-    align-items: center;
-  }
+    .summaryMain hr {
+        border: 2px solid rgba(201, 219, 210, 1);
+        border-radius: 2px;
+        margin: 18px 0;
+    }
 
-  .summaryBody {
-    width: 80%;
-    height: 100%;
-    margin: auto;
-    border-top: 2px solid #C9DBD2;
-  }
-  .main {
-    height: 100%;
-    width: 100%;
-    display: flex;
-  }
+    .summaryMain h5 {
+        font-size: 16px;
+        margin: 0;
+    }
 
-  .label {
-    width: 30%;
-    display: flex;
-    align-items: center;
-  }
+    .summaryMain ul {
+        margin-top: 4px;
+        margin-bottom: 24px;
+        font-size: 14px;
+        padding-left: 20px;
+    }
 
-  .header {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-  }
+    .summaryMain ul li:not(:first-child) {
+        margin-top: 4px;
+    }
+
+    .summaryHeader {
+        width: 100%;
+        font-size: 16px;
+        line-height: 115%;
+        padding-top: 32px;
+        display: flex;
+        align-items: center;
+        transform: translateX(-48px);
+    }
+
+    .summaryBody {
+        width: 100%;
+        height: 100%;
+        margin: auto;
+    }
+
+    .summaryBody a {
+        display: block;
+        color: #E66439;
+        font-weight: bold;
+        font-size: 12px;
+        margin-top: 12px;
+    }
+
+    .summaryBody svg {
+        vertical-align: middle;
+    }
+
+    .summaryBody p {
+        color: rgba(9, 52, 31, 0.80);
+        font-size: 10px;
+        margin-top: 6px;
+    }
+
+    .main {
+        height: 100%;
+        width: 100%;
+        display: flex;
+    }
+
+    .label {
+        width: 30%;
+        display: flex;
+        align-items: center;
+    }
+
+    .header {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
 </style>
-
