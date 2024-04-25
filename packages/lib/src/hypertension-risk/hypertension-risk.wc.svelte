@@ -44,10 +44,6 @@
     });
 </script>
 
-<head>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,1,0"/>
-</head>
-
 {#if type === 'header'}
     <div class="header">
         <div style="padding-right: 10px;">
@@ -78,21 +74,25 @@
                 <b style="color: {overlap ? '#F2590D' : '#12A195'}">{percentile > 68 ? 'Some overlap' : 'No significant overlap'}</b> of glycan indexes between <br /> your patient and this condition.
             </div>
         </div>
+        <hr>
         <div class="summaryBody">
             <h5>Signs and symptoms</h5>
-            <ul style="font-size: 0.8rem;">
+            <ul>
                 <li>Usually asymptomatic</li>
             </ul>
 
             <h5>Possible follow-up</h5>
-            <ul style="font-size: 0.8rem;">
-                <li>Serial blood pressure (BP) measurements ± 24-hour BP monitoring</li>
+            <ul>
+                <li>Serial blood pressure (BP) measurements Â± 24-hour BP monitoring</li>
                 <li>BMI and/or body composition check</li>
                 <li>Basic bloods (lipid profile, renal and liver function)</li>
             </ul>
             <h5>Related research papers</h5>
-            <a style="color: #E66439;" href="https://pubmed.ncbi.nlm.nih.gov/34285147/">N-glycosylation of immunoglobulin G predicts incident hypertension</a>
-            <p style="margin: 0; font-size: 0.8rem; color: #09341FCC;">In a study investigating the relationship between IgG glycosylation and hypertension, 989 unrelated incident hypertension cases and 1628 controls from the TwinsUK cohort, with a mean follow-up of 6.3 years, were examined. The average age of the participants was 56. The findings, which included an observed increase in B, were validated in additional cohorts from the "10 001 Dalmatians" (106 individuals) and KORA S4 (729 individuals). A predictive model incorporating age, BMI, mean arterial pressure (MAP), and specific glycan peaks with B modifications demonstrated robust predictive accuracy, achieving a very high AUC of 0.923.</p>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/34285147/">
+                N-glycosylation of immunoglobulin G predicts incident hypertension
+                <svg stroke="#E66439" fill="#E66439" xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 -960 960 960" width="14"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z"/></svg>
+            </a>
+            <p>In a study investigating the relationship between IgG glycosylation and hypertension, 989 unrelated incident hypertension cases and 1628 controls from the TwinsUK cohort, with a mean follow-up of 6.3 years, were examined. The average age of the participants was 56. The findings, which included an observed increase in B, were validated in additional cohorts from the "10 001 Dalmatians" (106 individuals) and KORA S4 (729 individuals). A predictive model incorporating age, BMI, mean arterial pressure (MAP), and specific glycan peaks with B modifications demonstrated robust predictive accuracy, achieving a very high AUC of 0.923.</p>
         </div>
     </div>
 {:else}
@@ -111,28 +111,70 @@
 {/if}
 
 <style>
+    hr {
+        border: 2px solid rgba(201, 219, 210, 1);
+        border-radius: 2px;
+        margin: 18px 0;
+    }
+
     .summaryMain {
-        width: 100%;
+        padding: 0 48px;
         height: 100%;
         display: flex;
         flex-direction: column;
         color: #09341FCC;
     }
 
+    .summaryMain h5 {
+        font-size: 16px;
+        margin: 0;
+    }
+
+    .summaryMain ul {
+        margin-top: 4px;
+        margin-bottom: 24px;
+        font-size: 14px;
+        padding-left: 20px;
+    }
+
+    .summaryMain ul li:not(:first-child) {
+        margin-top: 4px;
+    }
+
     .summaryHeader {
         width: 100%;
-        height: 16%;
-        font-size: 0.9rem;
+        font-size: 16px;
+        line-height: 115%;
+        padding-top: 32px;
         display: flex;
         align-items: center;
+        transform: translateX(-48px);
     }
 
     .summaryBody {
-        width: 80%;
+        width: 100%;
         height: 100%;
         margin: auto;
-        border-top: 2px solid #C9DBD2;
     }
+
+    .summaryBody a {
+        display: block;
+        color: #E66439;
+        font-weight: bold;
+        font-size: 12px;
+        margin-top: 12px;
+    }
+
+    .summaryBody svg {
+        vertical-align: middle;
+    }
+
+    .summaryBody p {
+        color: rgba(9, 52, 31, 0.80);
+        font-size: 12px;
+        margin-top: 6px;
+    }
+
     .main {
         height: 100%;
         width: 100%;

@@ -6,10 +6,7 @@
   import '../../../dist/lupus.wc.js';
   import '../../../dist/diabetes.wc.js';
   import '../../../dist/myocardial.wc.js';
-  import '../../../dist/colorectal.wc.js';
   import '../../../dist/menopause.wc.js';
-  import '../../../dist/endometrial.wc.js';
-  import '../../../dist/ovarian.wc.js';
   import '../../../dist/dyslipidemia.wc.js';
   import '../../../dist/atherosclerosis.wc.js';
   import '../../../dist/coronary.wc.js';
