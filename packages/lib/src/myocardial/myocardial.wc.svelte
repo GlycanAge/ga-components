@@ -4,124 +4,111 @@
   import { onMount } from 'svelte';
   import { Service } from '../shared/utils/service';
   import Arrow from '../shared/components/Arrow.svelte';
+  import {getHeaderMessage} from '../shared/functions/helpers';
 
   export let report: string;
   export let type: string;
   export let subtype: string;
   export let service: Service = window.GaReportService;
 
+  let subtypes = [
+    {
+      name: 'peak',
+      csvName: 'P22percentile',
+    },
+    {
+      name: 'mature',
+      csvName: 'G0percentile',
+    },
+    {
+      name: 'youth',
+      csvName: 'G2percentile',
+    },
+    {
+      name: 'shield',
+      csvName: 'Spercentile',
+    },
+    {
+      name: 'lifestyle',
+      csvName: 'Bpercentile',
+    }
+  ]
+
   let reportData: any;
 
   let overlap = false;
   let someOverlap = false;
   let showSummary = false;
-  let counter = '';
+  let showHeader = false;
+
   let message = '';
-  let gender = ''; // sex
-
-  // peak22
-  let percF = 0; // P22percentile
-  // mature
-  let perc1 = 0; // G0percentile
-  // youth
-  let perc2 = 0; // G2percentile
-  // shield
-  let perc3 = 0; // Spercentile
-  // lifestyle
-  let perc4 = 0; // Bpercentile
-
+  let gender = '';
+  let percF = 0; // P22percentile, peak22
+  let perc2 = 0; // G0percentile, mature
+  let perc3 = 0; // G2percentile, youth
+  let perc4 = 0; // Spercentile, shield
+  let perc5 = 0; // Bpercentile, lifestyle
   let percentile = 0;
+  let counter: number = 0;
+
+  function countOverlaps() {
+    if (gender === 'F') {
+      if (percF > 68) {
+        counter++;
+      }
+      return;
+    }
+
+    if (perc2 < 32) {
+      counter++;
+    }
+    if (perc3 < 32) {
+      counter++;
+    }
+    if (perc4 < 32) {
+      counter++;
+    }
+    if (perc5 > 68) {
+      counter++;
+    }
+  }
+
+  const details = subtypes.find(x => x.name === subtype);
 
   onMount(async () => {
     reportData = await service.getReport(report);
 
-    switch (subtype) {
-      case 'peak':
-        percentile = Number(reportData.P22percentile);
-        break;
-      case 'mature':
-        percentile = Number(reportData.G0percentile);
-        break;
-      case 'youth':
-        percentile = Number(reportData.G2percentile);
-        break;
-      case 'shield':
-        percentile = Number(reportData.Spercentile);
-        break;
-      case 'lifestyle':
-        percentile = Number(reportData.Bpercentile);
-        break;
+    if (details) {
+      percentile = Number(reportData[details.csvName]);
+      message = getHeaderMessage(percentile);
+      gender = reportData.sex;
     }
 
     percF = Number(reportData.P22percentile);
-    perc1 = Number(reportData.G0percentile);
-    perc2 = Number(reportData.G2percentile);
-    perc3 = Number(reportData.Spercentile);
-    perc4 = Number(reportData.Bpercentile);
-    gender = reportData.sex;
+    perc2 = Number(reportData.G0percentile);
+    perc3 = Number(reportData.G2percentile);
+    perc4 = Number(reportData.Spercentile);
+    perc5 = Number(reportData.Bpercentile);
 
-    if (percentile < 32) {
-      message = 'Lower than average';
-    }
-    if (percentile >= 32 && percentile <= 68) {
-      message = 'Around average';
-    }
-    if (percentile > 68) {
-      message = 'Higher than average';
-    }
+    countOverlaps();
 
-    if (gender === 'M') {
-      if (perc1 > 68 && perc2 < 32 && perc3 < 32 && perc4 > 68) {
-        counter = '4/4';
+    if (gender === 'F') {
+      if (counter === 1) {
         overlap = true;
-        showSummary = true;
-        return;
       }
-      if (perc1 > 68 || perc2 < 32 || perc3 < 32 || perc4 > 68) {
-        if (
-                (perc1 > 68 && perc2 < 32 && perc3 < 32) ||
-                (perc1 > 68 && perc2 < 32 && perc4 > 68) ||
-                (perc2 < 32 && perc3 < 32 && perc4 > 68) ||
-                (perc1 > 68 && perc3 < 32 && perc4 > 68)
-        ) {
-          counter = '3/4';
-          someOverlap = true;
-          showSummary = true;
-          return;
-        }
-
-        if (
-                (perc1 > 68 && perc2 < 32) ||
-                (perc1 > 68 && perc3 < 32) ||
-                (perc1 > 68 && perc4 > 68) ||
-                (perc2 < 32 && perc3 < 32) ||
-                (perc2 < 32 && perc4 > 68) ||
-                (perc3 < 32 && perc4 > 68)
-        ) {
-          counter = '2/4';
-        } else {
-          counter = '1/4';
-        }
-
-        showSummary = true;
-        return;
-      }
-
-      counter = '0/4';
-      showSummary = true;
-      return;
     } else {
-      if (percF < 32) {
-        counter = '1/1';
+      if (counter === 4) {
         overlap = true;
-        showSummary = true;
-        return;
       }
 
-      counter = '0/1';
-      showSummary = true;
-      return;
+      if (counter === 3) {
+        someOverlap = true;
+      }
     }
+
+    showHeader = true;
+    showSummary = true;
+    return;
   });
 </script>
 
@@ -129,10 +116,10 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,1,0"/>
 </head>
 
-{#if type === 'header'}
+{#if type === 'header' && showHeader}
   <div class="header">
     <div style="padding-right: 10px;">
-      <b>{counter}</b>
+      <b>{counter}/{gender === 'M' ? '4' : '1'}</b>
     </div>
     {#if overlap || someOverlap}
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path
@@ -160,7 +147,7 @@
       </div>
     </div>
     <div class="summaryBody">
-      <h5>Risk and factors</h5>
+      <h5>Risk factors</h5>
       <ul style="font-size: 0.8rem;">
         <li>Past medical history (cardiometabolic syndrome, autoimmune disease)</li>
         <li>Medication history (e.g., statins, blood thinners)</li>
@@ -175,7 +162,7 @@
         <li>Cardiology referral for other tests (e.g., cardiac echo, coronary CT)</li>
       </ul>
       <h5>Related research papers</h5>
-      <a style="color: #E66439;" href="https://pubmed.ncbi.nlm.nih.gov/36174116/">Immunoglobulin G N-Glycosylation Signatures in Incident Type 2 Diabetes and Cardiovascular Disease</a>
+      <a style="color: #E66439;" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9679264/">Immunoglobulin G N-Glycosylation Signatures in Incident Type 2 Diabetes and Cardiovascular Disease</a>
       <p style="margin: 0; font-size: 0.8rem; color: #09341FCC;">In the EPIC-Potsdam cohort, involving 2,175 participants in the cardiovascular disease (CVD) subcohort, which includes 417 cases of MI and CVA, changes in IgG glycosylation were analysed. This cohort comprised 61% females and 39% males, with an average age of 49. In male participants, an increase in G0 and B was observed, along with a decrease in G2 and S. A predictive model employing 2 specific glycan peaks was developed, demonstrating a hazard ratio (HR) of 1.60.</p>
     </div>
   </div>
@@ -239,7 +226,7 @@
   {#if subtype === 'peak'}
     <div class="main">
       <div class="label" style="font-size: 0.8rem;">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path  fill={percentile <= 68 ? '#12A195' : '#F2590D'} d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45ZM12 17q.425 0 .713-.288T13 16q0-.425-.288-.713T12 15q-.425 0-.713.288T11 16q0 .425.288.713T12 17Zm-1-4h2V7h-2v6Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path  fill={percentile >= 32 ? '#12A195' : '#F2590D'} d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45ZM12 17q.425 0 .713-.288T13 16q0-.425-.288-.713T12 15q-.425 0-.713.288T11 16q0 .425.288.713T12 17Zm-1-4h2V7h-2v6Z"/></svg>
         <div style="display: flex; flex-direction: column; padding-left: 0.3rem;">
           <div>Peak <b>22 (P22)</b></div>
           <div>{message}</div>

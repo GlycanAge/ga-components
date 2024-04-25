@@ -4,83 +4,79 @@
   import { onMount } from 'svelte';
   import { Service } from '../shared/utils/service';
   import Arrow from '../shared/components/Arrow.svelte';
+  import {getHeaderMessage} from '../shared/functions/helpers';
 
   export let report: string;
   export let type: string;
   export let subtype: string;
   export let service: Service = window.GaReportService;
 
+  let subtypes = [
+    {
+      name: 'mature',
+      csvName: 'G0percentile',
+    },
+    {
+      name: 'median',
+      csvName: 'G1percentile',
+    },
+    {
+      name: 'youth',
+      csvName: 'G2percentile',
+    },
+  ]
+
   let reportData: any;
 
   let overlap = false;
   let someOverlap = false;
   let showSummary = false;
-  let counter = '';
+  let showHeader = false;
+
   let message = '';
-
-  // mature
-  let perc1 = 0; // G0percentile
-
-  // median
-  let perc2 = 0; // G1percentile
-
-  // youth
-  let perc3 = 0; // G2percentile
+  let perc1 = 0; // G0percentile, mature
+  let perc2 = 0; // G1percentile, median
+  let perc3 = 0; // G2percentile, youth
   let percentile = 0;
+  let counter: number = 0;
+
+  function countOverlaps() {
+    if (perc1 > 68) {
+      counter++;
+    }
+    if (perc2 < 32) {
+      counter++;
+    }
+    if (perc3 < 32) {
+      counter++;
+    }
+  }
+
+  const details = subtypes.find(x => x.name === subtype);
 
   onMount(async () => {
     reportData = await service.getReport(report);
 
-    switch (subtype) {
-      case 'mature':
-        percentile = Number(reportData.G0percentile);
-        break;
-      case 'median':
-        percentile = Number(reportData.G1percentile);
-        break;
-      case 'youth':
-        percentile = Number(reportData.G2percentile);
-        break;
+    if (details) {
+      percentile = Number(reportData[details.csvName]);
+      message = getHeaderMessage(percentile);
     }
 
     perc1 = Number(reportData.G0percentile);
     perc2 = Number(reportData.G1percentile);
     perc3 = Number(reportData.G2percentile);
 
-    if (percentile < 32) {
-      message = 'Lower than average';
-    }
-    if (percentile >= 32 && percentile <= 68) {
-      message = 'Around average';
-    }
-    if (percentile > 68) {
-      message = 'Higher than average';
-    }
+    countOverlaps();
 
-    if (perc1 > 68 && perc2 < 32 && perc3 < 32) {
-      counter = '3/3';
+    if (counter === 3) {
       overlap = true;
-      showSummary = true;
-      return;
     }
 
-    if (perc1 > 68 || perc2 < 32 || perc3 < 32) {
-      if (
-              (perc1 > 68 && perc2 < 32) ||
-              (perc2 < 32 && perc3 < 32) ||
-              (perc1 > 68 && perc3 < 32)
-      ) {
-        counter = '2/3';
-        someOverlap = true;
-        showSummary = true;
-        return;
-      }
-      counter = '1/3';
-      showSummary = true;
-      return;
+    if (counter === 2) {
+      someOverlap = true;
     }
 
-    counter = '0/3';
+    showHeader = true;
     showSummary = true;
     return;
   });
@@ -90,10 +86,10 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,1,0"/>
 </head>
 
-{#if type === 'header'}
+{#if type === 'header' && showHeader}
   <div class="header">
     <div style="padding-right: 10px;">
-      <b>{counter}</b>
+      <b>{counter}/3</b>
     </div>
     {#if overlap || someOverlap}
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path
@@ -123,20 +119,20 @@
     <div class="summaryBody">
       <h5>Signs and symptoms</h5>
       <ul style="font-size: 0.8rem;">
-        <li>Persistent blood pressure over 140/90 mmHg</li>
-        <li>Headaches and dizziness</li>
-        <li>Blurred vision or visual disturbances</li>
+        <li>Usually asymptomatic</li>
+        <li>BP consistently >140/90 mmHg</li>
+        <li>Signs of malignant hypertension (headache, dizziness, breathlessness, etc.)</li>
       </ul>
 
       <h5>Possible follow-up</h5>
       <ul style="font-size: 0.8rem;">
-        <li>Regular blood pressure monitoring</li>
-        <li>24-hour ambulatory blood pressure monitoring</li>
-        <li>Kidney function tests</li>
+        <li>Serial BP measurements and/or 24-hour BP monitoring</li>
+        <li>BMI and/or body composition check</li>
+        <li>Basic blood tests (lipid profile, renal and liver function)</li>
       </ul>
       <h5>Related research papers</h5>
       <a style="color: #E66439;" href="https://pubmed.ncbi.nlm.nih.gov/27124023/">The Association Between Glycosylation of Immunoglobulin G and Hypertension: A Multiple Ethnic Cross-Sectional Study</a>
-      <p style="margin: 0; font-size: 0.8rem; color: #09341FCC;">In an extensive study with 4757 participants, including 913 from the Chinese Han Beijing population, 985 from Croatian Korčula, 896 from Croatian Vis, and 1963 from Scottish Orkney, researchers investigated changes in IgG glycans associated with prehypertension and hypertension. The demographic composition of the study was approximately 40% female and 60% male participants. Among hypertension patients, there was a noted decrease in G2 and S, alongside an increase in G0.</p>
+      <p style="margin: 0; font-size: 0.8rem; color: #09341FCC;">In an extensive study with 4,757 participants, including 913 from the Chinese Han Beijing population, 985 from Croatian Korčula, 896 from Croatian Vis, and 1963 from Scottish Orkney, researchers investigated changes in IgG glycans associated with prehypertension and hypertension. The demographic composition of the study was approximately 40% female and 60% male participants. Among hypertension patients, there was a noted decrease in G2 and S, alongside an increase in G0.</p>
     </div>
   </div>
 {:else}

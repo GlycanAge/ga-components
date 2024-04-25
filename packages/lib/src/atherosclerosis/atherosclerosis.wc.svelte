@@ -83,6 +83,7 @@
     perc3 = Number(reportData.G2percentile);
     perc4 = Number(reportData.Spercentile);
     perc5 = Number(reportData.Bpercentile);
+
     countOverlaps();
 
     if (counter === 5) {
@@ -143,7 +144,7 @@
 
       <h5>Possible follow-up</h5>
       <ul style="font-size: 0.8rem;">
-        <li> Blood tests: basic and extended lipid profile (e.g., Lp(a), ApoB), hsCRP, homocysteine, renal and liver function, HbA1c</li>
+        <li>Blood tests: basic and extended lipid profile (e.g., Lp(a), ApoB), hsCRP, homocysteine, renal and liver function, HbA1c</li>
         <li>BP check</li>
         <li>ECG</li>
         <li>Cardiology referral for other tests (e.g., coronary artery calcium score)</li>
