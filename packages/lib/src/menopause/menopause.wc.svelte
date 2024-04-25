@@ -125,25 +125,26 @@
         <b style="color: {overlap || someOverlap ? '#F2590D' : '#12A195'}">{overlap ? 'Major overlap' : someOverlap ? 'Some overlap' : 'No significant overlap'}</b> of glycan indexes between <br /> your patient and this condition.
       </div>
     </div>
+    <hr>
     <div class="summaryBody">
       <h5>Signs and symptoms</h5>
-      <ul style="font-size: 0.8rem;">
+      <ul>
         <li>Irregular menstrual cycle</li>
         <li>Vasomotor symptoms (e.g., hot flushes)</li>
         <li>Other (e.g., mood swings, cognitive difficulties, sleep disturbance)</li>
       </ul>
 
       <h5>Possible follow-up</h5>
-      <ul style="font-size: 0.8rem;">
+      <ul>
         <li>Blood tests (incl. FSH, oestradiol, progesterone, testosterone, AMH)</li>
         <li>Blood pressure check</li>
         <li>Referral to (peri)menopause specialist/gynaecologist</li>
       </ul>
       <h5>Related research papers</h5>
-      <a style="color: #E66439;" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5313059/">Estrogens regulate glycosylation of IgG in women and men</a>
-      <p style="margin: 0; font-size: 0.65rem; color: #09341FCC;">In a comprehensive study examining IgG galactosylation only, 713 healthy adults from two cohorts representing White, Hispanic, and African American back grounds, along with 159 subjects from four randomized controlled trials on endocrine manipulation, were assessed, totaling 872 participants with an equal gender distribution. The study found that menopause was linked to an increase in agalactosylated IgG glycans, particularly the fucosylated nonbisected (G0F) glycoform. Treatment effects were noted, where conjugated estrogens and raloxifene reduced G0F glycans in postmenopausal women, and in premenopausal women, leuprolide increased G0F glycans, an effect that was reversed by estradiol.</p>
-      <a style="color: #E66439;" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8881712/">Immunoglobulin G glycome composition in transition from premenopause to postmenopause</a>
-      <p style="margin: 0; font-size: 0.65rem; color: #09341FCC;">In an extensive analysis, IgG glycome composition was studied in 5,080 samples from 1,940 women categorized as pre-, peri-, and postmenopausal, drawn from the TwinsUK registry. The study further included a validation cohort from two different population studies, CROATIA-Vis and CROATIA-Korcula. The participants were predominantly of White origin with an average age of 57. Notable glycan changes were observed in the transition from pre- to perimenopause, marked by an increase in G0 and B, and a decrease in G2 and S. A predictive model using age and IgG glycome to determine the onset of perimenopause was developed, achieving an AUC of 0.853 for a single time point measurement. Detailed differences in the glycan changes from peri- to post-menopause are also elaborated in the full paper.</p>
+      <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5313059/">Estrogens regulate glycosylation of IgG in women and men</a>
+      <p>In a comprehensive study examining IgG galactosylation only, 713 healthy adults from two cohorts representing White, Hispanic, and African American back grounds, along with 159 subjects from four randomized controlled trials on endocrine manipulation, were assessed, totaling 872 participants with an equal gender distribution. The study found that menopause was linked to an increase in agalactosylated IgG glycans, particularly the fucosylated nonbisected (G0F) glycoform. Treatment effects were noted, where conjugated estrogens and raloxifene reduced G0F glycans in postmenopausal women, and in premenopausal women, leuprolide increased G0F glycans, an effect that was reversed by estradiol.</p>
+      <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8881712/">Immunoglobulin G glycome composition in transition from premenopause to postmenopause</a>
+      <p>In an extensive analysis, IgG glycome composition was studied in 5,080 samples from 1,940 women categorized as pre-, peri-, and postmenopausal, drawn from the TwinsUK registry. The study further included a validation cohort from two different population studies, CROATIA-Vis and CROATIA-Korcula. The participants were predominantly of White origin with an average age of 57. Notable glycan changes were observed in the transition from pre- to perimenopause, marked by an increase in G0 and B, and a decrease in G2 and S. A predictive model using age and IgG glycome to determine the onset of perimenopause was developed, achieving an AUC of 0.853 for a single time point measurement. Detailed differences in the glycan changes from peri- to post-menopause are also elaborated in the full paper.</p>
     </div>
   </div>
 {:else}
@@ -206,45 +207,86 @@
 {/if}
 
 <style>
-  .summaryMain {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    color: #09341FCC;
-  }
+    .summaryMain {
+        padding: 0 48px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        color: #09341FCC;
+    }
 
-  .summaryHeader {
-    width: 100%;
-    height: 16%;
-    font-size: 0.9rem;
-    display: flex;
-    align-items: center;
-  }
+    .summaryMain hr {
+        border: 2px solid rgba(201, 219, 210, 1);
+        border-radius: 2px;
+        margin: 18px 0;
+    }
 
-  .summaryBody {
-    width: 80%;
-    height: 100%;
-    margin: auto;
-    border-top: 2px solid #C9DBD2;
-  }
-  .main {
-    height: 100%;
-    width: 100%;
-    display: flex;
-  }
+    .summaryMain h5 {
+        font-size: 16px;
+        margin: 0;
+    }
 
-  .label {
-    width: 30%;
-    display: flex;
-    align-items: center;
-  }
+    .summaryMain ul {
+        margin-top: 4px;
+        margin-bottom: 24px;
+        font-size: 14px;
+        padding-left: 20px;
+    }
 
-  .header {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-  }
+    .summaryMain ul li:not(:first-child) {
+        margin-top: 4px;
+    }
+
+    .summaryHeader {
+        width: 100%;
+        font-size: 16px;
+        line-height: 115%;
+        padding-top: 32px;
+        display: flex;
+        align-items: center;
+        transform: translateX(-48px);
+    }
+
+    .summaryBody {
+        width: 100%;
+        height: 100%;
+        margin: auto;
+    }
+
+    .summaryBody a {
+        display: block;
+        color: #E66439;
+        font-weight: bold;
+        font-size: 12px;
+        margin-top: 12px;
+    }
+
+    .summaryBody svg {
+        vertical-align: middle;
+    }
+
+    .summaryBody p {
+        color: rgba(9, 52, 31, 0.80);
+        font-size: 10px;
+        margin-top: 6px;
+    }
+
+    .main {
+        height: 100%;
+        width: 100%;
+        display: flex;
+    }
+
+    .label {
+        width: 30%;
+        display: flex;
+        align-items: center;
+    }
+
+    .header {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
 </style>
-

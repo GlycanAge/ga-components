@@ -90,7 +90,6 @@
             <h5>Related research papers</h5>
             <a href="https://pubmed.ncbi.nlm.nih.gov/34285147/">
                 N-glycosylation of immunoglobulin G predicts incident hypertension
-                <svg stroke="#E66439" fill="#E66439" xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 -960 960 960" width="14"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z"/></svg>
             </a>
             <p>In a study investigating the relationship between IgG glycosylation and hypertension, 989 unrelated incident hypertension cases and 1628 controls from the TwinsUK cohort, with a mean follow-up of 6.3 years, were examined. The average age of the participants was 56. The findings, which included an observed increase in B, were validated in additional cohorts from the "10 001 Dalmatians" (106 individuals) and KORA S4 (729 individuals). A predictive model incorporating age, BMI, mean arterial pressure (MAP), and specific glycan peaks with B modifications demonstrated robust predictive accuracy, achieving a very high AUC of 0.923.</p>
         </div>
@@ -111,18 +110,18 @@
 {/if}
 
 <style>
-    hr {
-        border: 2px solid rgba(201, 219, 210, 1);
-        border-radius: 2px;
-        margin: 18px 0;
-    }
-
     .summaryMain {
         padding: 0 48px;
         height: 100%;
         display: flex;
         flex-direction: column;
         color: #09341FCC;
+    }
+
+    .summaryMain hr {
+        border: 2px solid rgba(201, 219, 210, 1);
+        border-radius: 2px;
+        margin: 18px 0;
     }
 
     .summaryMain h5 {
@@ -171,7 +170,7 @@
 
     .summaryBody p {
         color: rgba(9, 52, 31, 0.80);
-        font-size: 12px;
+        font-size: 10px;
         margin-top: 6px;
     }
 

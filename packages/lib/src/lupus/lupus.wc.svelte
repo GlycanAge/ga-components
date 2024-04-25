@@ -125,23 +125,24 @@
         <b style="color: {overlap || someOverlap ? '#F2590D' : '#12A195'}">{overlap ? 'Major overlap' : someOverlap ? 'Some overlap' : 'No significant overlap'}</b> of glycan indexes between <br /> your patient and this condition.
       </div>
     </div>
+    <hr>
     <div class="summaryBody">
       <h5>Signs and symptoms</h5>
-      <ul style="font-size: 0.8rem;">
+      <ul>
         <li>Systemic (e.g., fatigue, weight loss, mouth ulcers, butterfly skin rash)</li>
         <li>Organ-specific (chest pain, difficulty breathing, leg swelling, anaemia, etc.)</li>
         <li>Joint pain and swelling</li>
       </ul>
 
       <h5>Possible follow-up</h5>
-      <ul style="font-size: 0.8rem;">
+      <ul>
         <li>Blood tests: full blood count, renal and liver function, CRP, ESR, autoantibodies (e.g., ANA, anti-dsDNA)</li>
         <li>Urinalysis</li>
         <li>Organ-targeted imaging (e.g., CT thorax, CT abdomen)</li>
       </ul>
       <h5>Related research papers</h5>
-      <a style="color: #E66439;" href="https://pubmed.ncbi.nlm.nih.gov/26200652/">Association of Systemic Lupus Erythematosus With Decreased Immunosuppressive Potential of the IgG Glycome</a>
-      <p style="margin: 0; font-size: 0.8rem; color: #09341FCC;">In an analysis focusing on SLE, a discovery cohort consisting of 261 predominantly female SLE patients and 247 matched controls of Latin American Mestizo origin was studied for changes in IgG glycome, alongside two independent replication cohorts from Trinidad (108 SLE patients and 193 controls) and China (106 SLE patients and 105 controls). The study identified specific alterations in glycan traits, including a decrease in G2 and S, and notable changes in glycan peaks, with increases in peaks 18 and 23 and decreases in peaks 22 and 26. Utilizing these peak variations, a predictive model was developed, achieving an AUC of up to 0.882.</p>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/26200652/">Association of Systemic Lupus Erythematosus With Decreased Immunosuppressive Potential of the IgG Glycome</a>
+      <p>In an analysis focusing on SLE, a discovery cohort consisting of 261 predominantly female SLE patients and 247 matched controls of Latin American Mestizo origin was studied for changes in IgG glycome, alongside two independent replication cohorts from Trinidad (108 SLE patients and 193 controls) and China (106 SLE patients and 105 controls). The study identified specific alterations in glycan traits, including a decrease in G2 and S, and notable changes in glycan peaks, with increases in peaks 18 and 23 and decreases in peaks 22 and 26. Utilizing these peak variations, a predictive model was developed, achieving an AUC of up to 0.882.</p>
     </div>
   </div>
 {:else}
@@ -204,45 +205,86 @@
 {/if}
 
 <style>
-  .summaryMain {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    color: #09341FCC;
-  }
+    .summaryMain {
+        padding: 0 48px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        color: #09341FCC;
+    }
 
-  .summaryHeader {
-    width: 100%;
-    height: 16%;
-    font-size: 0.9rem;
-    display: flex;
-    align-items: center;
-  }
+    .summaryMain hr {
+        border: 2px solid rgba(201, 219, 210, 1);
+        border-radius: 2px;
+        margin: 18px 0;
+    }
 
-  .summaryBody {
-    width: 80%;
-    height: 100%;
-    margin: auto;
-    border-top: 2px solid #C9DBD2;
-  }
-  .main {
-    height: 100%;
-    width: 100%;
-    display: flex;
-  }
+    .summaryMain h5 {
+        font-size: 16px;
+        margin: 0;
+    }
 
-  .label {
-    width: 30%;
-    display: flex;
-    align-items: center;
-  }
+    .summaryMain ul {
+        margin-top: 4px;
+        margin-bottom: 24px;
+        font-size: 14px;
+        padding-left: 20px;
+    }
 
-  .header {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-  }
+    .summaryMain ul li:not(:first-child) {
+        margin-top: 4px;
+    }
+
+    .summaryHeader {
+        width: 100%;
+        font-size: 16px;
+        line-height: 115%;
+        padding-top: 32px;
+        display: flex;
+        align-items: center;
+        transform: translateX(-48px);
+    }
+
+    .summaryBody {
+        width: 100%;
+        height: 100%;
+        margin: auto;
+    }
+
+    .summaryBody a {
+        display: block;
+        color: #E66439;
+        font-weight: bold;
+        font-size: 12px;
+        margin-top: 12px;
+    }
+
+    .summaryBody svg {
+        vertical-align: middle;
+    }
+
+    .summaryBody p {
+        color: rgba(9, 52, 31, 0.80);
+        font-size: 10px;
+        margin-top: 6px;
+    }
+
+    .main {
+        height: 100%;
+        width: 100%;
+        display: flex;
+    }
+
+    .label {
+        width: 30%;
+        display: flex;
+        align-items: center;
+    }
+
+    .header {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
 </style>
-

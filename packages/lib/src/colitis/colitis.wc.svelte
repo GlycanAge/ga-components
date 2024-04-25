@@ -125,25 +125,26 @@
         <b style="color: {overlap || someOverlap ? '#F2590D' : '#12A195'}">{overlap ? 'Major overlap' : someOverlap ? 'Some overlap' : 'No significant overlap'}</b> of glycan indexes between <br /> your patient and this condition.
       </div>
     </div>
+    <hr>
     <div class="summaryBody">
       <h5>Signs and symptoms</h5>
-      <ul style="font-size: 0.8rem;">
+      <ul>
         <li>Abdominal pain and cramping</li>
         <li>Urgency to defecate</li>
         <li>Recurring diarrhea (± blood)</li>
       </ul>
 
       <h5>Possible follow-up</h5>
-      <ul style="font-size: 0.8rem;">
+      <ul>
         <li>Blood tests: full blood count, renal and liver function, CRP</li>
         <li>Stool tests: faecal immunochemical test (FIT), fecal calprotectin</li>
         <li>Referral for CT colonoscopy</li>
       </ul>
       <h5>Related research papers</h5>
-      <a style="color: #E66439;" href="https://pubmed.ncbi.nlm.nih.gov/25895110/">Inflammatory bowel disease associates with proinflammatory potential of the immunoglobulin G glycome</a>
-      <p style="margin: 0; font-size: 0.7rem; color: #09341FCC;">In a Scottish study examining IgG glycosylation in IBS, focusing on the ulcerative colitis (UC) segment, a cohort of 507 UC patients and 320 controls, all with an average age of 45, was evaluated.The analysis revealed a significant increase in G0 and a decrease in G1 in the UC patients compared to the controls. Observed alterations of specific glycan peaks demonstrated predictive power, with an area under the curve (AUC) of 0.72, indicating their potential utility in distinguishing between UC patients and healthy individuals.</p>
-      <a style="color: #E66439;" href="https://pubmed.ncbi.nlm.nih.gov/29309774/">Glycosylation of Immunoglobulin G Associates With Clinical Features of Inflammatory Bowel Diseases</a>
-      <p style="margin: 0; font-size: 0.7rem; color: #09341FCC;">In a comprehensive study examining IgG glycosylation patterns in IBS, a cohort including 1,056 UC patients from Italy, 253 from the US, and controls (427 in Italy and 440 from the US) was analyzed. The average age of participants was 39, with a balanced gender distribution. The findings showed a decrease in G1, G2, and B glycan traits and an increase in G0 across UC patients. The glycosylation traits were incorporated into a model that demonstrated significant predictive capability with an AUC of 0.814. Additionally, a correlation was observed between decreased galactosylation and more severe cases of UC, notably those requiring surgical intervention, compared to controls.</p>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/25895110/">Inflammatory bowel disease associates with proinflammatory potential of the immunoglobulin G glycome</a>
+      <p>In a Scottish study examining IgG glycosylation in IBS, focusing on the ulcerative colitis (UC) segment, a cohort of 507 UC patients and 320 controls, all with an average age of 45, was evaluated.The analysis revealed a significant increase in G0 and a decrease in G1 in the UC patients compared to the controls. Observed alterations of specific glycan peaks demonstrated predictive power, with an area under the curve (AUC) of 0.72, indicating their potential utility in distinguishing between UC patients and healthy individuals.</p>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/29309774/">Glycosylation of Immunoglobulin G Associates With Clinical Features of Inflammatory Bowel Diseases</a>
+      <p>In a comprehensive study examining IgG glycosylation patterns in IBS, a cohort including 1,056 UC patients from Italy, 253 from the US, and controls (427 in Italy and 440 from the US) was analyzed. The average age of participants was 39, with a balanced gender distribution. The findings showed a decrease in G1, G2, and B glycan traits and an increase in G0 across UC patients. The glycosylation traits were incorporated into a model that demonstrated significant predictive capability with an AUC of 0.814. Additionally, a correlation was observed between decreased galactosylation and more severe cases of UC, notably those requiring surgical intervention, compared to controls.</p>
     </div>
   </div>
 {:else}
@@ -206,45 +207,86 @@
 {/if}
 
 <style>
-  .summaryMain {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    color: #09341FCC;
-  }
+    .summaryMain {
+        padding: 0 48px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        color: #09341FCC;
+    }
 
-  .summaryHeader {
-    width: 100%;
-    height: 16%;
-    font-size: 0.9rem;
-    display: flex;
-    align-items: center;
-  }
+    .summaryMain hr {
+        border: 2px solid rgba(201, 219, 210, 1);
+        border-radius: 2px;
+        margin: 18px 0;
+    }
 
-  .summaryBody {
-    width: 80%;
-    height: 100%;
-    margin: auto;
-    border-top: 2px solid #C9DBD2;
-  }
-  .main {
-    height: 100%;
-    width: 100%;
-    display: flex;
-  }
+    .summaryMain h5 {
+        font-size: 16px;
+        margin: 0;
+    }
 
-  .label {
-    width: 30%;
-    display: flex;
-    align-items: center;
-  }
+    .summaryMain ul {
+        margin-top: 4px;
+        margin-bottom: 24px;
+        font-size: 14px;
+        padding-left: 20px;
+    }
 
-  .header {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-  }
+    .summaryMain ul li:not(:first-child) {
+        margin-top: 4px;
+    }
+
+    .summaryHeader {
+        width: 100%;
+        font-size: 16px;
+        line-height: 115%;
+        padding-top: 32px;
+        display: flex;
+        align-items: center;
+        transform: translateX(-48px);
+    }
+
+    .summaryBody {
+        width: 100%;
+        height: 100%;
+        margin: auto;
+    }
+
+    .summaryBody a {
+        display: block;
+        color: #E66439;
+        font-weight: bold;
+        font-size: 12px;
+        margin-top: 12px;
+    }
+
+    .summaryBody svg {
+        vertical-align: middle;
+    }
+
+    .summaryBody p {
+        color: rgba(9, 52, 31, 0.80);
+        font-size: 10px;
+        margin-top: 6px;
+    }
+
+    .main {
+        height: 100%;
+        width: 100%;
+        display: flex;
+    }
+
+    .label {
+        width: 30%;
+        display: flex;
+        align-items: center;
+    }
+
+    .header {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
 </style>
-

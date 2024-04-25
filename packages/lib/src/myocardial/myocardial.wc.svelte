@@ -146,24 +146,25 @@
         <b style="color: {overlap || someOverlap ? '#F2590D' : '#12A195'}">{overlap ? 'Major overlap' : someOverlap ? 'Some overlap' : 'No significant overlap'}</b> of glycan indexes between <br /> your patient and this condition.
       </div>
     </div>
+    <hr>
     <div class="summaryBody">
       <h5>Risk factors</h5>
-      <ul style="font-size: 0.8rem;">
+      <ul>
         <li>Past medical history (cardiometabolic syndrome, autoimmune disease)</li>
         <li>Medication history (e.g., statins, blood thinners)</li>
         <li>Current/previous smoking history</li>
       </ul>
 
       <h5>Possible follow-up</h5>
-      <ul style="font-size: 0.8rem;">
+      <ul>
         <li>Blood tests: basic and extended lipid profile (e.g., Lp(a), ApoB), hsCRP, homocysteine, renal and liver function, HbA1c</li>
         <li>BP check</li>
         <li>ECG</li>
         <li>Cardiology referral for other tests (e.g., cardiac echo, coronary CT)</li>
       </ul>
       <h5>Related research papers</h5>
-      <a style="color: #E66439;" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9679264/">Immunoglobulin G N-Glycosylation Signatures in Incident Type 2 Diabetes and Cardiovascular Disease</a>
-      <p style="margin: 0; font-size: 0.8rem; color: #09341FCC;">In the EPIC-Potsdam cohort, involving 2,175 participants in the cardiovascular disease (CVD) subcohort, which includes 417 cases of MI and CVA, changes in IgG glycosylation were analysed. This cohort comprised 61% females and 39% males, with an average age of 49. In male participants, an increase in G0 and B was observed, along with a decrease in G2 and S. A predictive model employing 2 specific glycan peaks was developed, demonstrating a hazard ratio (HR) of 1.60.</p>
+      <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9679264/">Immunoglobulin G N-Glycosylation Signatures in Incident Type 2 Diabetes and Cardiovascular Disease</a>
+      <p>In the EPIC-Potsdam cohort, involving 2,175 participants in the cardiovascular disease (CVD) subcohort, which includes 417 cases of MI and CVA, changes in IgG glycosylation were analysed. This cohort comprised 61% females and 39% males, with an average age of 49. In male participants, an increase in G0 and B was observed, along with a decrease in G2 and S. A predictive model employing 2 specific glycan peaks was developed, demonstrating a hazard ratio (HR) of 1.60.</p>
     </div>
   </div>
 {:else}
@@ -240,45 +241,86 @@
 {/if}
 
 <style>
-  .summaryMain {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    color: #09341FCC;
-  }
+    .summaryMain {
+        padding: 0 48px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        color: #09341FCC;
+    }
 
-  .summaryHeader {
-    width: 100%;
-    height: 16%;
-    font-size: 0.9rem;
-    display: flex;
-    align-items: center;
-  }
+    .summaryMain hr {
+        border: 2px solid rgba(201, 219, 210, 1);
+        border-radius: 2px;
+        margin: 18px 0;
+    }
 
-  .summaryBody {
-    width: 80%;
-    height: 100%;
-    margin: auto;
-    border-top: 2px solid #C9DBD2;
-  }
-  .main {
-    height: 100%;
-    width: 100%;
-    display: flex;
-  }
+    .summaryMain h5 {
+        font-size: 16px;
+        margin: 0;
+    }
 
-  .label {
-    width: 30%;
-    display: flex;
-    align-items: center;
-  }
+    .summaryMain ul {
+        margin-top: 4px;
+        margin-bottom: 24px;
+        font-size: 14px;
+        padding-left: 20px;
+    }
 
-  .header {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-  }
+    .summaryMain ul li:not(:first-child) {
+        margin-top: 4px;
+    }
+
+    .summaryHeader {
+        width: 100%;
+        font-size: 16px;
+        line-height: 115%;
+        padding-top: 32px;
+        display: flex;
+        align-items: center;
+        transform: translateX(-48px);
+    }
+
+    .summaryBody {
+        width: 100%;
+        height: 100%;
+        margin: auto;
+    }
+
+    .summaryBody a {
+        display: block;
+        color: #E66439;
+        font-weight: bold;
+        font-size: 12px;
+        margin-top: 12px;
+    }
+
+    .summaryBody svg {
+        vertical-align: middle;
+    }
+
+    .summaryBody p {
+        color: rgba(9, 52, 31, 0.80);
+        font-size: 10px;
+        margin-top: 6px;
+    }
+
+    .main {
+        height: 100%;
+        width: 100%;
+        display: flex;
+    }
+
+    .label {
+        width: 30%;
+        display: flex;
+        align-items: center;
+    }
+
+    .header {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
 </style>
-

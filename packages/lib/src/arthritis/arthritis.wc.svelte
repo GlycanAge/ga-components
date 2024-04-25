@@ -125,27 +125,28 @@
         <b style="color: {overlap || someOverlap ? '#F2590D' : '#12A195'}">{overlap ? 'Major overlap' : someOverlap ? 'Some overlap' : 'No significant overlap'}</b> of glycan indexes between <br /> your patient and this condition.
       </div>
     </div>
+    <hr>
     <div class="summaryBody">
       <h5>Signs and symptoms</h5>
-      <ul style="font-size: 0.8rem;">
+      <ul>
         <li>Joint pain, swelling, stiffness and erythema</li>
         <li>Smaller and distant joint involvement (fingers, toes), usually symmetrical</li>
         <li>Systemic (fatigue, weight loss, etc.)</li>
       </ul>
 
       <h5>Possible follow-up</h5>
-      <ul style="font-size: 0.8rem;">
+      <ul>
         <li>Blood tests: full blood count, rheumatoid factor, anti-CCP antibodies, CRP</li>
         <li>Joint imaging (X-rays, MRI)</li>
       </ul>
       <h5>Related research papers</h5>
-      <div style="font-size: 0.7rem;">
-        <a style="color: #E66439;" href="https://pubmed.ncbi.nlm.nih.gov/24016253/">Association between galactosylation of immunoglobulin G and improvement of rheumatoid arthritis during pregnancy is independent of sialylation</a>
-        <p style="margin: 0; color: #09341FCC;">In an investigation focusing on IgG glycosylation in pregnant Caucasian women with an average age of 32 suffering from RA compared to a healthy control group, utilizing a cohort of 251 participants, the study identified an elevation in G0 and B, contrasted with a decrease in G1, G2, and S in the RA group. During the entire course of pregnancy and the postpartum period, a consistent reduction in galactosylation and sialylation was observed among the RA patients.</p>
-        <a style="color: #E66439;" href="https://pubmed.ncbi.nlm.nih.gov/28793911/">IgG Fc galactosylation predicts response to methotrexate in early rheumatoid arthritis</a>
-        <p style="margin: 0; color: #09341FCC;">In a study of Swedish patients with early rheumatoid arthritis (RA), 73% of whom were women with an average age of 53, compared to a control group comprising 72% women with an average age of 54, an increase in G0 was observed, while G1 and G2 were decreased. No changes were noted in B and S.</p>
-        <a style="color: #E66439;" href="https://pubmed.ncbi.nlm.nih.gov/29572115/">Low galactosylation of IgG associates with higher risk for future diagnosis of rheumatoid arthritis during 10 years of follow-up</a>
-        <p style="margin: 0; color: #09341FCC;">In an extensive study which encompassed two Finnish cohorts totaling 14,749 individuals, 179 subjects who developed rheumatoid arthritis (RA) were monitored over a 10-year period alongside 358 matched controls, 59% of whom were female. The analysis uncovered a reduction in G0 and an elevation in G1, with a nominally significant decrease observed in G2 and S; B was not assessed. Notably, the research identified a specific G0 glycan peak as a crucial pre-existing risk factor for the onset of RA.</p>
+      <div>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/24016253/">Association between galactosylation of immunoglobulin G and improvement of rheumatoid arthritis during pregnancy is independent of sialylation</a>
+        <p>In an investigation focusing on IgG glycosylation in pregnant Caucasian women with an average age of 32 suffering from RA compared to a healthy control group, utilizing a cohort of 251 participants, the study identified an elevation in G0 and B, contrasted with a decrease in G1, G2, and S in the RA group. During the entire course of pregnancy and the postpartum period, a consistent reduction in galactosylation and sialylation was observed among the RA patients.</p>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/28793911/">IgG Fc galactosylation predicts response to methotrexate in early rheumatoid arthritis</a>
+        <p>In a study of Swedish patients with early rheumatoid arthritis (RA), 73% of whom were women with an average age of 53, compared to a control group comprising 72% women with an average age of 54, an increase in G0 was observed, while G1 and G2 were decreased. No changes were noted in B and S.</p>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/29572115/">Low galactosylation of IgG associates with higher risk for future diagnosis of rheumatoid arthritis during 10 years of follow-up</a>
+        <p>In an extensive study which encompassed two Finnish cohorts totaling 14,749 individuals, 179 subjects who developed rheumatoid arthritis (RA) were monitored over a 10-year period alongside 358 matched controls, 59% of whom were female. The analysis uncovered a reduction in G0 and an elevation in G1, with a nominally significant decrease observed in G2 and S; B was not assessed. Notably, the research identified a specific G0 glycan peak as a crucial pre-existing risk factor for the onset of RA.</p>
       </div>
     </div>
   </div>
@@ -180,7 +181,7 @@
   {/if}
   {#if subtype === 'youth'}
     <div class="main">
-      <div class="label" style="font-size: 0.8rem;">
+      <div class="label">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path  fill={percentile >= 32 ? '#12A195' : '#F2590D'} d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45ZM12 17q.425 0 .713-.288T13 16q0-.425-.288-.713T12 15q-.425 0-.713.288T11 16q0 .425.288.713T12 17Zm-1-4h2V7h-2v6Z"/></svg>
         <div style="display: flex; flex-direction: column; padding-left: 0.3rem;">
           <div>Glycan <b>Youth (G2)</b></div>
@@ -209,45 +210,86 @@
 {/if}
 
 <style>
-  .summaryMain {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    color: #09341FCC;
-  }
+    .summaryMain {
+        padding: 0 48px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        color: #09341FCC;
+    }
 
-  .summaryHeader {
-    width: 100%;
-    height: 16%;
-    font-size: 0.9rem;
-    display: flex;
-    align-items: center;
-  }
+    .summaryMain hr {
+        border: 2px solid rgba(201, 219, 210, 1);
+        border-radius: 2px;
+        margin: 18px 0;
+    }
 
-  .summaryBody {
-    width: 80%;
-    height: 100%;
-    margin: auto;
-    border-top: 2px solid #C9DBD2;
-  }
-  .main {
-    height: 100%;
-    width: 100%;
-    display: flex;
-  }
+    .summaryMain h5 {
+        font-size: 16px;
+        margin: 0;
+    }
 
-  .label {
-    width: 30%;
-    display: flex;
-    align-items: center;
-  }
+    .summaryMain ul {
+        margin-top: 4px;
+        margin-bottom: 24px;
+        font-size: 14px;
+        padding-left: 20px;
+    }
 
-  .header {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-  }
+    .summaryMain ul li:not(:first-child) {
+        margin-top: 4px;
+    }
+
+    .summaryHeader {
+        width: 100%;
+        font-size: 16px;
+        line-height: 115%;
+        padding-top: 32px;
+        display: flex;
+        align-items: center;
+        transform: translateX(-48px);
+    }
+
+    .summaryBody {
+        width: 100%;
+        height: 100%;
+        margin: auto;
+    }
+
+    .summaryBody a {
+        display: block;
+        color: #E66439;
+        font-weight: bold;
+        font-size: 12px;
+        margin-top: 12px;
+    }
+
+    .summaryBody svg {
+        vertical-align: middle;
+    }
+
+    .summaryBody p {
+        color: rgba(9, 52, 31, 0.80);
+        font-size: 10px;
+        margin-top: 6px;
+    }
+
+    .main {
+        height: 100%;
+        width: 100%;
+        display: flex;
+    }
+
+    .label {
+        width: 30%;
+        display: flex;
+        align-items: center;
+    }
+
+    .header {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
 </style>
-

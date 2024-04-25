@@ -134,23 +134,24 @@
         <b style="color: {overlap || someOverlap ? '#F2590D' : '#12A195'}">{overlap ? 'Major overlap' : someOverlap ? 'Some overlap' : 'No significant overlap'}</b> of glycan indexes between <br /> your patient and this condition.
       </div>
     </div>
+    <hr>
     <div class="summaryBody">
       <h5>Signs and symptoms</h5>
-      <ul style="font-size: 0.8rem;">
+      <ul>
         <li>Fatigue</li>
         <li>Increased thirst and frequent urination</li>
         <li>Slow wound healing, blurred vision, frequent thrush</li>
       </ul>
 
       <h5>Possible follow-up</h5>
-      <ul style="font-size: 0.8rem;">
+      <ul>
         <li>Blood tests: full blood count, renal and liver function, fasting glucose and insulin, HbA1c, HOMA-IR</li>
         <li>BP check</li>
         <li>BMI and/or body composition check</li>
       </ul>
       <h5>Related research papers</h5>
-      <a style="color: #E66439;" href="https://pubmed.ncbi.nlm.nih.gov/28668296/">IgG glycan patterns are associated with type 2 diabetes in independent European populations</a>
-      <p style="margin: 0; font-size: 0.8rem; color: #09341FCC;">In the DiaGene study, a population-based case-control study with 1,886 cases and 854 controls, 58 IgG glycan traits were analyzed. The findings were then replicated and meta-analyzed in the combined population-based studies of CROATIA-Korcula, CROATIA-Vis, and ORCADES, involving 162 cases and 3,162 controls. Within this research, 46% of cases and 60% of controls were female, with an average participant age of 65. The analysis revealed a decrease in G1, G2, and S glycans, alongside an increase in G0 and B. A predictive model incorporating four specific glycan peaks achieved an AUC of 0.729. When IgG glycans were added to a model containing only age and sex, the AUC improved from 0.542 to 0.734, although incorporating them into a more comprehensive model did not significantly enhance the AUC.</p>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/28668296/">IgG glycan patterns are associated with type 2 diabetes in independent European populations</a>
+      <p>In the DiaGene study, a population-based case-control study with 1,886 cases and 854 controls, 58 IgG glycan traits were analyzed. The findings were then replicated and meta-analyzed in the combined population-based studies of CROATIA-Korcula, CROATIA-Vis, and ORCADES, involving 162 cases and 3,162 controls. Within this research, 46% of cases and 60% of controls were female, with an average participant age of 65. The analysis revealed a decrease in G1, G2, and S glycans, alongside an increase in G0 and B. A predictive model incorporating four specific glycan peaks achieved an AUC of 0.729. When IgG glycans were added to a model containing only age and sex, the AUC improved from 0.542 to 0.734, although incorporating them into a more comprehensive model did not significantly enhance the AUC.</p>
     </div>
   </div>
 {:else}
@@ -227,45 +228,86 @@
 {/if}
 
 <style>
-  .summaryMain {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    color: #09341FCC;
-  }
+    .summaryMain {
+        padding: 0 48px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        color: #09341FCC;
+    }
 
-  .summaryHeader {
-    width: 100%;
-    height: 16%;
-    font-size: 0.9rem;
-    display: flex;
-    align-items: center;
-  }
+    .summaryMain hr {
+        border: 2px solid rgba(201, 219, 210, 1);
+        border-radius: 2px;
+        margin: 18px 0;
+    }
 
-  .summaryBody {
-    width: 80%;
-    height: 100%;
-    margin: auto;
-    border-top: 2px solid #C9DBD2;
-  }
-  .main {
-    height: 100%;
-    width: 100%;
-    display: flex;
-  }
+    .summaryMain h5 {
+        font-size: 16px;
+        margin: 0;
+    }
 
-  .label {
-    width: 30%;
-    display: flex;
-    align-items: center;
-  }
+    .summaryMain ul {
+        margin-top: 4px;
+        margin-bottom: 24px;
+        font-size: 14px;
+        padding-left: 20px;
+    }
 
-  .header {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-  }
+    .summaryMain ul li:not(:first-child) {
+        margin-top: 4px;
+    }
+
+    .summaryHeader {
+        width: 100%;
+        font-size: 16px;
+        line-height: 115%;
+        padding-top: 32px;
+        display: flex;
+        align-items: center;
+        transform: translateX(-48px);
+    }
+
+    .summaryBody {
+        width: 100%;
+        height: 100%;
+        margin: auto;
+    }
+
+    .summaryBody a {
+        display: block;
+        color: #E66439;
+        font-weight: bold;
+        font-size: 12px;
+        margin-top: 12px;
+    }
+
+    .summaryBody svg {
+        vertical-align: middle;
+    }
+
+    .summaryBody p {
+        color: rgba(9, 52, 31, 0.80);
+        font-size: 10px;
+        margin-top: 6px;
+    }
+
+    .main {
+        height: 100%;
+        width: 100%;
+        display: flex;
+    }
+
+    .label {
+        width: 30%;
+        display: flex;
+        align-items: center;
+    }
+
+    .header {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
 </style>
-
