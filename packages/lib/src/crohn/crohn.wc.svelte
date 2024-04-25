@@ -131,7 +131,7 @@
         {/if}
       </div>
       <div>
-        <b style="color: {overlap || someOverlap ? '#F2590D' : '#12A195'}">{overlap ? 'Major overlap' : someOverlap ? 'Some overlap' : 'No significant overlap'}</b> of glycan indexes between <br /> your patient and this condition.
+        <b style="color: {overlap || someOverlap ? '#F2590D' : '#12A195'}">{overlap ? 'Major overlap' : someOverlap ? 'Some overlap' : 'No significant overlap'}</b> of glycan indexes between your patient and this condition.
       </div>
     </div>
     <hr>
@@ -231,27 +231,69 @@
 
 <style>
   .summaryMain {
-    width: 100%;
+    padding: 0 48px;
     height: 100%;
     display: flex;
     flex-direction: column;
     color: #09341FCC;
   }
 
+  .summaryMain hr {
+    border: 2px solid rgba(201, 219, 210, 1);
+    border-radius: 2px;
+    margin: 18px 0;
+  }
+
+  .summaryMain h5 {
+    font-size: 16px;
+    margin: 0;
+  }
+
+  .summaryMain ul {
+    margin-top: 4px;
+    margin-bottom: 24px;
+    font-size: 14px;
+    padding-left: 20px;
+  }
+
+  .summaryMain ul li:not(:first-child) {
+    margin-top: 4px;
+  }
+
   .summaryHeader {
     width: 100%;
-    height: 16%;
-    font-size: 0.9rem;
+    font-size: 16px;
+    line-height: 115%;
+    padding-top: 32px;
     display: flex;
     align-items: center;
+    transform: translateX(-48px);
   }
 
   .summaryBody {
-    width: 80%;
+    width: 100%;
     height: 100%;
     margin: auto;
-    border-top: 2px solid #C9DBD2;
   }
+
+  .summaryBody a {
+    display: block;
+    color: #E66439;
+    font-weight: bold;
+    font-size: 12px;
+    margin-top: 12px;
+  }
+
+  .summaryBody svg {
+    vertical-align: middle;
+  }
+
+  .summaryBody p {
+    color: rgba(9, 52, 31, 0.80);
+    font-size: 10px;
+    margin-top: 6px;
+  }
+
   .main {
     height: 100%;
     width: 100%;
