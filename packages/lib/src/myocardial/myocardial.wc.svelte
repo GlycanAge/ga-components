@@ -53,13 +53,13 @@
 
   function countOverlaps() {
     if (gender === 'F') {
-      if (percF > 68) {
+      if (percF < 32) {
         counter++;
       }
       return;
     }
 
-    if (perc2 < 32) {
+    if (perc2 > 68) {
       counter++;
     }
     if (perc3 < 32) {
@@ -77,11 +77,11 @@
 
   onMount(async () => {
     reportData = await service.getReport(report);
+    gender = reportData.sex;
 
     if (details) {
       percentile = Number(reportData[details.csvName]);
       message = getHeaderMessage(percentile);
-      gender = reportData.sex;
     }
 
     percF = Number(reportData.P22percentile);

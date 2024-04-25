@@ -36,7 +36,7 @@
         <div style="width: 630px;height: 49px; border: 1px solid red;"><ga-hypertension-risk report="1K4GyKDgsB9ATQflwio7"></ga-hypertension-risk></div>
         <div style="height: 60px;"></div>
         header
-        <div style="width: 630px;height: 49px; border: 1px solid red;"><ga-hypertension-risk report="1K4GyKDgsB9ATQflwio7" type="header"></ga-hypertension-risk></div>
+        <div style="width: 240px;height: 49px; border: 1px solid red;"><ga-hypertension-risk report="1K4GyKDgsB9ATQflwio7" type="header"></ga-hypertension-risk></div>
       </div>
       <div style="width: 200px;"></div>
       <div style="width: 520px;height: 928px;border: 1px solid red;"><ga-hypertension-risk style="width:50%;" report="1K4GyKDgsB9ATQflwio7" type="summary"></ga-hypertension-risk></div>
@@ -47,7 +47,7 @@
         <div style="width: 630px;height: 49px; border: 1px solid red;"><ga-pre-hypertension report="1K4GyKDgsB9ATQflwio7"></ga-pre-hypertension></div>
         <div style="height: 60px;"></div>
         header
-        <div style="width: 630px;height: 49px; border: 1px solid red;"><ga-pre-hypertension type="header" report="1K4GyKDgsB9ATQflwio7"></ga-pre-hypertension></div>
+        <div style="width: 240px;height: 49px; border: 1px solid red;"><ga-pre-hypertension type="header" report="1K4GyKDgsB9ATQflwio7"></ga-pre-hypertension></div>
       </div>
       <div style="width: 200px;"></div>
       <div style="width: 520px;height: 928px;border: 1px solid red;"><ga-pre-hypertension style="width:50%;" report="1K4GyKDgsB9ATQflwio7" type="summary"></ga-pre-hypertension></div>
@@ -62,7 +62,7 @@
         <div style="width: 630px;height: 49px; border: 1px solid red;"><ga-hypertension subtype="youth" report="1K4GyKDgsB9ATQflwio7"></ga-hypertension></div>
         <div style="height: 60px;"></div>
         header
-        <div style="width: 630px;height: 49px; border: 1px solid red;"><ga-hypertension type="header" report="1K4GyKDgsB9ATQflwio7"></ga-hypertension></div>
+        <div style="width: 240px;height: 49px; border: 1px solid red;"><ga-hypertension type="header" report="1K4GyKDgsB9ATQflwio7"></ga-hypertension></div>
       </div>
       <div style="width: 200px;"></div>
       <div style="width: 520px;height: 928px;border: 1px solid red;"><ga-hypertension style="width:50%;" report="1K4GyKDgsB9ATQflwio7" type="summary"></ga-hypertension></div>
@@ -78,11 +78,11 @@
         <div style="height: 20px;"></div>
         <div style="width: 630px;height: 49px; border: 1px solid red;"><ga-myocardial subtype="lifestyle" report="1K4GyKDgsB9ATQflwio7"></ga-myocardial></div>
         <div style="height: 20px;"></div>
-        female
-        <div style="width: 630px;height: 49px; border: 1px solid red;"><ga-myocardial subtype="peak" report="1K4GyKDgsB9ATQflwio7"></ga-myocardial></div>
+<!--        female-->
+<!--        <div style="width: 630px;height: 49px; border: 1px solid red;"><ga-myocardial subtype="peak" report="1K4GyKDgsB9ATQflwio7"></ga-myocardial></div>-->
         <div style="height: 20px;"></div>
         header
-        <div style="width: 630px;height: 49px; border: 1px solid red;"><ga-myocardial type="header" report="1K4GyKDgsB9ATQflwio7"></ga-myocardial></div>
+        <div style="width: 240px;height: 49px; border: 1px solid red;"><ga-myocardial type="header" report="1K4GyKDgsB9ATQflwio7"></ga-myocardial></div>
       </div>
       <div style="width: 200px;"></div>
       <div style="width: 520px;height: 928px;border: 1px solid red;"><ga-myocardial style="width:50%;" report="1K4GyKDgsB9ATQflwio7" type="summary"></ga-myocardial></div>
@@ -101,7 +101,7 @@
         <div style="width: 630px;height: 49px; border: 1px solid red;"><ga-atherosclerosis subtype="lifestyle" report="1K4GyKDgsB9ATQflwio7"></ga-atherosclerosis></div>
         <div style="height: 40px;"></div>
         header
-        <div style="width: 630px;height: 49px; border: 1px solid red;"><ga-atherosclerosis type="header" report="1K4GyKDgsB9ATQflwio7"></ga-atherosclerosis></div>
+        <div style="width: 240px;height: 49px; border: 1px solid red;"><ga-atherosclerosis type="header" report="1K4GyKDgsB9ATQflwio7"></ga-atherosclerosis></div>
       </div>
       <div style="width: 200px;"></div>
       <div style="width: 520px;height: 928px;border: 1px solid red;"><ga-atherosclerosis style="width:50%;" report="1K4GyKDgsB9ATQflwio7" type="summary"></ga-atherosclerosis></div>
@@ -114,7 +114,7 @@
         <div style="width: 630px;height: 49px; border: 1px solid red;"><ga-coronary subtype="shield" report="1K4GyKDgsB9ATQflwio7"></ga-coronary></div>
         <div style="height: 20px;"></div>
         header
-        <div style="width: 630px;height: 49px; border: 1px solid red;"><ga-coronary type="header" report="1K4GyKDgsB9ATQflwio7"></ga-coronary></div>
+        <div style="width: 240px;height: 49px; border: 1px solid red;"><ga-coronary type="header" report="1K4GyKDgsB9ATQflwio7"></ga-coronary></div>
       </div>
       <div style="width: 200px;"></div>
       <div style="width: 520px;height: 928px;border: 1px solid red;"><ga-coronary style="width:50%;" report="1K4GyKDgsB9ATQflwio7" type="summary"></ga-coronary></div>
@@ -131,7 +131,7 @@
         <div style="width: 630px;height: 49px; border: 1px solid red;"><ga-arthritis subtype="shield" report="1K4GyKDgsB9ATQflwio7"></ga-arthritis></div>
         <div style="height: 20px;"></div>
         header
-        <div style="width: 630px;height: 49px; border: 1px solid red;"><ga-arthritis type="header" report="1K4GyKDgsB9ATQflwio7"></ga-arthritis></div>
+        <div style="width: 240px;height: 49px; border: 1px solid red;"><ga-arthritis type="header" report="1K4GyKDgsB9ATQflwio7"></ga-arthritis></div>
       </div>
       <div style="width: 200px;"></div>
       <div style="width: 520px;height: 928px;border: 1px solid red;"><ga-arthritis style="width:50%;" report="1K4GyKDgsB9ATQflwio7" type="summary"></ga-arthritis></div>
@@ -148,7 +148,7 @@
         <div style="width: 630px;height: 49px; border: 1px solid red;"><ga-colitis subtype="lifestyle" report="1K4GyKDgsB9ATQflwio7"></ga-colitis></div>
         <div style="height: 20px;"></div>
         header
-        <div style="width: 630px;height: 49px; border: 1px solid red;"><ga-colitis type="header" report="1K4GyKDgsB9ATQflwio7"></ga-colitis></div>
+        <div style="width: 240px;height: 49px; border: 1px solid red;"><ga-colitis type="header" report="1K4GyKDgsB9ATQflwio7"></ga-colitis></div>
       </div>
       <div style="width: 200px;"></div>
       <div style="width: 520px;height: 928px;border: 1px solid red;"><ga-colitis style="width:50%;" report="1K4GyKDgsB9ATQflwio7" type="summary"></ga-colitis></div>
@@ -167,7 +167,7 @@
         <div style="width: 630px;height: 49px; border: 1px solid red;"><ga-crohn subtype="lifestyle" report="1K4GyKDgsB9ATQflwio7"></ga-crohn></div>
         <div style="height: 20px;"></div>
         header
-        <div style="width: 630px;height: 49px; border: 1px solid red;"><ga-crohn type="header" report="1K4GyKDgsB9ATQflwio7"></ga-crohn></div>
+        <div style="width: 240px;height: 49px; border: 1px solid red;"><ga-crohn type="header" report="1K4GyKDgsB9ATQflwio7"></ga-crohn></div>
       </div>
       <div style="width: 200px;"></div>
       <div style="width: 520px;height: 928px;border: 1px solid red;"><ga-crohn style="width:50%;" report="1K4GyKDgsB9ATQflwio7" type="summary"></ga-crohn></div>
@@ -184,7 +184,7 @@
         <div style="width: 630px;height: 49px; border: 1px solid red;"><ga-lupus subtype="peak26" report="1K4GyKDgsB9ATQflwio7"></ga-lupus></div>
         <div style="height: 20px;"></div>
         header
-        <div style="width: 630px;height: 49px; border: 1px solid red;"><ga-lupus type="header" report="1K4GyKDgsB9ATQflwio7"></ga-lupus></div>
+        <div style="width: 240px;height: 49px; border: 1px solid red;"><ga-lupus type="header" report="1K4GyKDgsB9ATQflwio7"></ga-lupus></div>
       </div>
       <div style="width: 200px;"></div>
       <div style="width: 520px;height: 928px;border: 1px solid red;"><ga-lupus style="width:50%;" report="1K4GyKDgsB9ATQflwio7" type="summary"></ga-lupus></div>
@@ -203,7 +203,7 @@
         <div style="width: 630px;height: 49px; border: 1px solid red;"><ga-diabetes subtype="lifestyle" report="1K4GyKDgsB9ATQflwio7"></ga-diabetes></div>
         <div style="height: 20px;"></div>
         header
-        <div style="width: 630px;height: 49px; border: 1px solid red;"><ga-diabetes type="header" report="1K4GyKDgsB9ATQflwio7"></ga-diabetes></div>
+        <div style="width: 240px;height: 49px; border: 1px solid red;"><ga-diabetes type="header" report="1K4GyKDgsB9ATQflwio7"></ga-diabetes></div>
       </div>
       <div style="width: 200px;"></div>
       <div style="width: 520px;height: 928px;border: 1px solid red;"><ga-diabetes style="width:50%;" report="1K4GyKDgsB9ATQflwio7" type="summary"></ga-diabetes></div>
@@ -220,7 +220,7 @@
         <div style="width: 630px;height: 49px; border: 1px solid red;"><ga-dyslipidemia subtype="lifestyle" report="1K4GyKDgsB9ATQflwio7"></ga-dyslipidemia></div>
         <div style="height: 20px;"></div>
         header
-        <div style="width: 630px;height: 49px; border: 1px solid red;"><ga-dyslipidemia type="header" report="1K4GyKDgsB9ATQflwio7"></ga-dyslipidemia></div>
+        <div style="width: 240px;height: 49px; border: 1px solid red;"><ga-dyslipidemia type="header" report="1K4GyKDgsB9ATQflwio7"></ga-dyslipidemia></div>
       </div>
       <div style="width: 200px;"></div>
       <div style="width: 520px;height: 928px;border: 1px solid red;"><ga-dyslipidemia style="width:50%;" report="1K4GyKDgsB9ATQflwio7" type="summary"></ga-dyslipidemia></div>
@@ -234,7 +234,7 @@
         <div style="width: 630px;height: 49px; border: 1px solid red;"><ga-copd subtype="shield" report="1K4GyKDgsB9ATQflwio7"></ga-copd></div>
         <div style="height: 20px;"></div>
         header
-        <div style="width: 630px;height: 49px; border: 1px solid red;"><ga-copd type="header" report="1K4GyKDgsB9ATQflwio7"></ga-copd></div>
+        <div style="width: 240px;height: 49px; border: 1px solid red;"><ga-copd type="header" report="1K4GyKDgsB9ATQflwio7"></ga-copd></div>
       </div>
       <div style="width: 200px;"></div>
       <div style="width: 520px;height: 928px;border: 1px solid red;"><ga-copd style="width:50%;" report="1K4GyKDgsB9ATQflwio7" type="summary"></ga-copd></div>
@@ -252,7 +252,7 @@
         <div style="width: 630px;height: 49px; border: 1px solid red;"><ga-menopause subtype="lifestyle" report="1K4GyKDgsB9ATQflwio7"></ga-menopause></div>
         <div style="height: 20px;"></div>
         header
-        <div style="width: 630px;height: 49px; border: 1px solid red;"><ga-menopause type="header" report="1K4GyKDgsB9ATQflwio7"></ga-menopause></div>
+        <div style="width: 240px;height: 49px; border: 1px solid red;"><ga-menopause type="header" report="1K4GyKDgsB9ATQflwio7"></ga-menopause></div>
       </div>
       <div style="width: 200px;"></div>
       <div style="width: 520px;height: 928px;border: 1px solid red;"><ga-menopause style="width:50%;" report="1K4GyKDgsB9ATQflwio7" type="summary"></ga-menopause></div>
