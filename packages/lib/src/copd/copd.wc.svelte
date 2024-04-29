@@ -13,11 +13,11 @@
 
   let subtypes = [
     {
-      name: 'mature',
+      name: 'median',
       csvName: 'G1percentile',
     },
     {
-      name: 'shield',
+      name: 'lifestyle',
       csvName: 'Bpercentile',
     },
   ]
