@@ -15,4 +15,7 @@ export default () => {
   import('./src/hypertension-risk/hypertension-risk.wc.svelte');
   import('./src/pre-hypertension/pre-hypertension.wc.svelte');
   import('./src/shared/interfaces/language.interface');
+  import('./src/colorectal/colorectal.wc.svelte');
+  import('./src/endometrial/endometrial.wc.svelte');
+  import('./src/ovarian/ovarian.wc.svelte');
 };

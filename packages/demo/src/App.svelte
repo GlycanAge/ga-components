@@ -15,6 +15,9 @@
   import '../../../dist/hypertension-risk.wc.js';
   import '../../../dist/pre-hypertension.wc.js';
   import '../../../dist/chronic.wc.js';
+  import '../../../dist/colorectal.wc.js';
+  import '../../../dist/endometrial.wc.js';
+  import '../../../dist/ovarian.wc.js';
   import { MockService } from './mock-service';
 
   let el: HTMLDivElement;
@@ -253,6 +256,64 @@
       </div>
       <div style="width: 200px;"></div>
       <div style="width: 520px;height: 928px;border: 1px solid red;"><ga-menopause style="width:50%;" report="1K4GyKDgsB9ATQflwio7" type="summary"></ga-menopause></div>
+    </div>
+
+    <div class="flex">
+      COLORECTAL &nbsp;
+      <div class="flex flex-col">
+        <div style="width: 630px;height: 49px; border: 1px solid red;"><ga-colorectal subtype="mature" report="1K4GyKDgsB9ATQflwio7"></ga-colorectal></div>
+        <div style="height: 20px;"></div>
+        <div style="width: 630px;height: 49px; border: 1px solid red;"><ga-colorectal subtype="median" report="1K4GyKDgsB9ATQflwio7"></ga-colorectal></div>
+        <div style="height: 20px;"></div>
+        <div style="width: 630px;height: 49px; border: 1px solid red;"><ga-colorectal subtype="youth" report="1K4GyKDgsB9ATQflwio7"></ga-colorectal></div>
+        <div style="height: 20px;"></div>
+        <div style="width: 630px;height: 49px; border: 1px solid red;"><ga-colorectal subtype="shield" report="1K4GyKDgsB9ATQflwio7"></ga-colorectal></div>
+        <div style="height: 20px;"></div>
+        <div style="width: 630px;height: 49px; border: 1px solid red;"><ga-colorectal subtype="lifestyle" report="1K4GyKDgsB9ATQflwio7"></ga-colorectal></div>
+        <div style="height: 20px;"></div>
+        header
+        <div style="width: 240px;height: 49px; border: 1px solid red;"><ga-colorectal type="header" report="1K4GyKDgsB9ATQflwio7"></ga-colorectal></div>
+      </div>
+      <div style="width: 200px;"></div>
+      <div style="width: 520px;height: 928px;border: 1px solid red;"><ga-colorectal style="width:50%;" report="1K4GyKDgsB9ATQflwio7" type="summary"></ga-colorectal></div>
+    </div>
+
+    <div class="flex">
+      ENDOMETRIAL &nbsp;
+      <div class="flex flex-col">
+        <div style="width: 630px;height: 49px; border: 1px solid red;"><ga-endometrial subtype="mature" report="1K4GyKDgsB9ATQflwio7"></ga-endometrial></div>
+        <div style="height: 20px;"></div>
+        <div style="width: 630px;height: 49px; border: 1px solid red;"><ga-endometrial subtype="median" report="1K4GyKDgsB9ATQflwio7"></ga-endometrial></div>
+        <div style="height: 20px;"></div>
+        <div style="width: 630px;height: 49px; border: 1px solid red;"><ga-endometrial subtype="youth" report="1K4GyKDgsB9ATQflwio7"></ga-endometrial></div>
+        <div style="height: 20px;"></div>
+        <div style="width: 630px;height: 49px; border: 1px solid red;"><ga-endometrial subtype="shield" report="1K4GyKDgsB9ATQflwio7"></ga-endometrial></div>
+        <div style="height: 20px;"></div>
+        <div style="width: 630px;height: 49px; border: 1px solid red;"><ga-endometrial subtype="lifestyle" report="1K4GyKDgsB9ATQflwio7"></ga-endometrial></div>
+        <div style="height: 20px;"></div>
+        header
+        <div style="width: 240px;height: 49px; border: 1px solid red;"><ga-endometrial type="header" report="1K4GyKDgsB9ATQflwio7"></ga-endometrial></div>
+      </div>
+      <div style="width: 200px;"></div>
+      <div style="width: 520px;height: 928px;border: 1px solid red;"><ga-endometrial style="width:50%;" report="1K4GyKDgsB9ATQflwio7" type="summary"></ga-endometrial></div>
+    </div>
+
+    <div class="flex">
+      OVARIAN &nbsp;
+      <div class="flex flex-col">
+        <div style="width: 630px;height: 49px; border: 1px solid red;"><ga-ovarian subtype="mature" report="1K4GyKDgsB9ATQflwio7"></ga-ovarian></div>
+        <div style="height: 20px;"></div>
+        <div style="width: 630px;height: 49px; border: 1px solid red;"><ga-ovarian subtype="median" report="1K4GyKDgsB9ATQflwio7"></ga-ovarian></div>
+        <div style="height: 20px;"></div>
+        <div style="width: 630px;height: 49px; border: 1px solid red;"><ga-ovarian subtype="youth" report="1K4GyKDgsB9ATQflwio7"></ga-ovarian></div>
+        <div style="height: 20px;"></div>
+        <div style="width: 630px;height: 49px; border: 1px solid red;"><ga-ovarian subtype="lifestyle" report="1K4GyKDgsB9ATQflwio7"></ga-ovarian></div>
+        <div style="height: 20px;"></div>
+        header
+        <div style="width: 240px;height: 49px; border: 1px solid red;"><ga-ovarian type="header" report="1K4GyKDgsB9ATQflwio7"></ga-ovarian></div>
+      </div>
+      <div style="width: 200px;"></div>
+      <div style="width: 520px;height: 928px;border: 1px solid red;"><ga-ovarian style="width:50%;" report="1K4GyKDgsB9ATQflwio7" type="summary"></ga-ovarian></div>
     </div>
   </div>
 </div>
