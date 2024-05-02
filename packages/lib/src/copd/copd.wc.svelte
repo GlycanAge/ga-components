@@ -36,10 +36,10 @@
   let counter: number = 0;
 
   function countOverlaps() {
-    if (perc1 > 68) {
+    if (perc1 < 32) {
       counter++;
     }
-    if (perc2 < 32) {
+    if (perc2 > 68) {
       counter++;
     }
   }
