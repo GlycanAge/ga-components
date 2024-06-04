@@ -139,7 +139,7 @@
       <h5>Signs and symptoms</h5>
       <ul>
         <li>Usually asymptomatic</li>
-        <li>Signs of coronary artery disease (e.g., self-resolving chest pain, bearthlessness)</li>
+        <li>Signs of coronary artery disease (e.g., self-resolving chest pain, breathlessness)</li>
         <li>Signs of peripheral artery disease (e.g., leg pain during activity)</li>
       </ul>
 
