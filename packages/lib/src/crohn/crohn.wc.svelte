@@ -111,14 +111,14 @@
     </div>
     {#if overlap || someOverlap}
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path
-              fill="#F2590D"
+              fill={someOverlap ? '#FFAA00' : '#F2590D'}
               d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45ZM12 17q.425 0 .713-.288T13 16q0-.425-.288-.713T12 15q-.425 0-.713.288T11 16q0 .425.288.713T12 17Zm-1-4h2V7h-2v6Z"/></svg>
     {:else}
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path
               fill="#12A195"
               d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"/></svg>
     {/if}
-    &nbsp;&nbsp;{overlap ? 'Major overlap' : someOverlap ? 'Some overlap' : 'No significant overlap'}
+    &nbsp;&nbsp;{overlap ? 'Some overlap' : someOverlap ? 'Minor overlap' : 'No significant overlap'}
   </div>
 {:else if type === 'summary' && showSummary}
   <div class="summaryMain">
@@ -131,9 +131,10 @@
         {/if}
       </div>
       <div>
-        <b style="color: {overlap || someOverlap ? '#F2590D' : '#12A195'}">{overlap ? 'Major overlap' : someOverlap ? 'Some overlap' : 'No significant overlap'}</b> of glycan indexes between <br /> your patient and this condition.
+        <b style="color: {overlap || someOverlap ? '#F2590D' : '#12A195'}">{overlap ? 'Major overlap' : someOverlap ? 'Some overlap' : 'No significant overlap'}</b> of glycan indexes between your patient and this condition.
       </div>
     </div>
+    <hr>
     <div class="summaryBody">
       <h5>Signs and symptoms</h5>
       <ul>
@@ -230,27 +231,69 @@
 
 <style>
   .summaryMain {
-    width: 100%;
+    padding: 0 48px;
     height: 100%;
     display: flex;
     flex-direction: column;
     color: #09341FCC;
   }
 
+  .summaryMain hr {
+    border: 2px solid rgba(201, 219, 210, 1);
+    border-radius: 2px;
+    margin: 18px 0;
+  }
+
+  .summaryMain h5 {
+    font-size: 16px;
+    margin: 0;
+  }
+
+  .summaryMain ul {
+    margin-top: 4px;
+    margin-bottom: 24px;
+    font-size: 14px;
+    padding-left: 20px;
+  }
+
+  .summaryMain ul li:not(:first-child) {
+    margin-top: 4px;
+  }
+
   .summaryHeader {
     width: 100%;
-    height: 16%;
-    font-size: 0.9rem;
+    font-size: 16px;
+    line-height: 115%;
+    padding-top: 32px;
     display: flex;
     align-items: center;
+    transform: translateX(-48px);
   }
 
   .summaryBody {
-    width: 80%;
+    width: 100%;
     height: 100%;
     margin: auto;
-    border-top: 2px solid #C9DBD2;
   }
+
+  .summaryBody a {
+    display: block;
+    color: #E66439;
+    font-weight: bold;
+    font-size: 12px;
+    margin-top: 12px;
+  }
+
+  .summaryBody svg {
+    vertical-align: middle;
+  }
+
+  .summaryBody p {
+    color: rgba(9, 52, 31, 0.80);
+    font-size: 10px;
+    margin-top: 6px;
+  }
+
   .main {
     height: 100%;
     width: 100%;

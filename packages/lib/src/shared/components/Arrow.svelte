@@ -22,8 +22,8 @@
     <div style="height: 100%; flex: 2; background-color: {type === 'left' ? '#CADBD1' : '#DF2020'}; border-radius: 4px;"></div>
     <div style="position: relative; height: 100%; flex: 1; background-color: {type === 'left' ? '#CADBD1' : '#DF2020'}; border-radius: 4px;">
         {#if type === 'right'}
-            <div style="position: absolute; left: 12px; bottom: 8px; height: 3px; width: 24px; background-color: #DF2020; border-radius: 4px; transform: rotate(45deg);"></div>
-            <div style="position: absolute; left: 12px; top: 8px; height: 3px; width: 24px; background-color: #DF2020; border-radius: 4px; transform: rotate(-45deg);"></div>
+            <div style="position: absolute; left: 11px; bottom: 8px; height: 3px; width: 24px; background-color: #DF2020; border-radius: 4px; transform: rotate(45deg);"></div>
+            <div style="position: absolute; left: 11px; top: 8px; height: 3px; width: 24px; background-color: #DF2020; border-radius: 4px; transform: rotate(-45deg);"></div>
         {/if}
     </div>
 
