@@ -17,12 +17,12 @@
       csvName: 'G0percentile',
     },
     {
-      name: 'median',
-      csvName: 'G1percentile',
-    },
-    {
       name: 'youth',
       csvName: 'G2percentile',
+    },
+    {
+      name: 'shield',
+      csvName: 'Spercentile',
     },
     {
       name: 'lifestyle',
@@ -39,8 +39,8 @@
 
   let message = '';
   let perc1 = 0; // G0percentile, mature
-  let perc2 = 0; // G1percentile, median
-  let perc3 = 0; // G2percentile, youth
+  let perc2 = 0; // G2percentile, youth
+  let perc3 = 0; // Spercentile, shield
   let perc4 = 0; // Bpercentile, lifestyle
   let percentile = 0;
   let counter: number = 0;
@@ -71,8 +71,8 @@
     }
 
     perc1 = Number(reportData.G0percentile);
-    perc2 = Number(reportData.G1percentile);
-    perc3 = Number(reportData.G2percentile);
+    perc2 = Number(reportData.G2percentile);
+    perc3 = Number(reportData.Spercentile);
     perc4 = Number(reportData.Bpercentile);
 
     countOverlaps();
@@ -81,7 +81,7 @@
       overlap = true;
     }
 
-    if (counter ===3) {
+    if (counter === 3) {
       someOverlap = true;
     }
 
@@ -158,12 +158,12 @@
       </div>
     </div>
   {/if}
-  {#if subtype === 'median'}
+  {#if subtype === 'youth'}
     <div class="main">
       <div class="label" style="font-size: 0.8rem;">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path  fill={percentile >= 32 ? '#12A195' : '#F2590D'} d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45ZM12 17q.425 0 .713-.288T13 16q0-.425-.288-.713T12 15q-.425 0-.713.288T11 16q0 .425.288.713T12 17Zm-1-4h2V7h-2v6Z"/></svg>
         <div style="display: flex; flex-direction: column; padding-left: 0.3rem;">
-          <div>Glycan <b>Median (G1)</b></div>
+          <div>Glycan <b>Youth (G2)</b></div>
           <div>{message}</div>
         </div>
       </div>
@@ -172,12 +172,12 @@
       </div>
     </div>
   {/if}
-  {#if subtype === 'youth'}
+  {#if subtype === 'shield'}
     <div class="main">
       <div class="label" style="font-size: 0.8rem;">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path  fill={percentile >= 32 ? '#12A195' : '#F2590D'} d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45ZM12 17q.425 0 .713-.288T13 16q0-.425-.288-.713T12 15q-.425 0-.713.288T11 16q0 .425.288.713T12 17Zm-1-4h2V7h-2v6Z"/></svg>
         <div style="display: flex; flex-direction: column; padding-left: 0.3rem;">
-          <div>Glycan <b>Youth (G2)</b></div>
+          <div>Glycan <b>Shield (S)</b></div>
           <div>{message}</div>
         </div>
       </div>
