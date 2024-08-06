@@ -119,23 +119,23 @@
       <div style="width: 200px;"></div>
       <div style="width: 520px;height: 928px;border: 1px solid red;"><ga-coronary lang="polish" style="width:50%;" report="1K4GyKDgsB9ATQflwio7" type="summary"></ga-coronary></div>
     </div>
-    <!--<div class="flex">
+    <div class="flex">
       ARTHRITIS &nbsp;
       <div class="flex flex-col">
-        <div style="width: 630px;height: 49px; border: 1px solid red;"><ga-arthritis subtype="mature" report="1K4GyKDgsB9ATQflwio7"></ga-arthritis></div>
+        <div style="width: 630px;height: 49px; border: 1px solid red;"><ga-arthritis lang="polish" subtype="mature" report="1K4GyKDgsB9ATQflwio7"></ga-arthritis></div>
         <div style="height: 20px;"></div>
-        <div style="width: 630px;height: 49px; border: 1px solid red;"><ga-arthritis subtype="median" report="1K4GyKDgsB9ATQflwio7"></ga-arthritis></div>
+        <div style="width: 630px;height: 49px; border: 1px solid red;"><ga-arthritis lang="polish" subtype="median" report="1K4GyKDgsB9ATQflwio7"></ga-arthritis></div>
         <div style="height: 20px;"></div>
-        <div style="width: 630px;height: 49px; border: 1px solid red;"><ga-arthritis subtype="youth" report="1K4GyKDgsB9ATQflwio7"></ga-arthritis></div>
+        <div style="width: 630px;height: 49px; border: 1px solid red;"><ga-arthritis lang="polish" subtype="youth" report="1K4GyKDgsB9ATQflwio7"></ga-arthritis></div>
         <div style="height: 20px;"></div>
-        <div style="width: 630px;height: 49px; border: 1px solid red;"><ga-arthritis subtype="shield" report="1K4GyKDgsB9ATQflwio7"></ga-arthritis></div>
+        <div style="width: 630px;height: 49px; border: 1px solid red;"><ga-arthritis lang="polish" subtype="shield" report="1K4GyKDgsB9ATQflwio7"></ga-arthritis></div>
         <div style="height: 20px;"></div>
         header
-        <div style="width: 240px;height: 49px; border: 1px solid red;"><ga-arthritis type="header" report="1K4GyKDgsB9ATQflwio7"></ga-arthritis></div>
+        <div style="width: 240px;height: 49px; border: 1px solid red;"><ga-arthritis lang="polish" type="header" report="1K4GyKDgsB9ATQflwio7"></ga-arthritis></div>
       </div>
       <div style="width: 200px;"></div>
-      <div style="width: 520px;height: 928px;border: 1px solid red;"><ga-arthritis style="width:50%;" report="1K4GyKDgsB9ATQflwio7" type="summary"></ga-arthritis></div>
-    </div>-->
+      <div style="width: 520px;height: 928px;border: 1px solid red;"><ga-arthritis lang="polish" style="width:50%;" report="1K4GyKDgsB9ATQflwio7" type="summary"></ga-arthritis></div>
+    </div>
     <div class="flex">
       COLITIS
       <div class="flex flex-col">
