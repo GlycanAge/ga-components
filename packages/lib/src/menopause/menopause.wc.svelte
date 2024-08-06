@@ -157,7 +157,6 @@
         <li>{getTranslation(lang,'POSSIBLE_FOLLOW_UP_TWENTYONE')}</li>
       </ul>
       <h5>{getTranslation(lang,'RELATED_RESEARCH_PAPERS')}</h5>
-
       <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5313059/">Estrogens regulate glycosylation of IgG in women and men</a>
       <p>In a comprehensive study examining IgG galactosylation only, 713 healthy adults from two cohorts representing White, Hispanic, and African American back grounds, along with 159 subjects from four randomized controlled trials on endocrine manipulation, were assessed, totaling 872 participants with an equal gender distribution. The study found that menopause was linked to an increase in agalactosylated IgG glycans, particularly the fucosylated nonbisected (G0F) glycoform. Treatment effects were noted, where conjugated estrogens and raloxifene reduced G0F glycans in postmenopausal women, and in premenopausal women, leuprolide increased G0F glycans, an effect that was reversed by estradiol.</p>
       <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8881712/">Immunoglobulin G glycome composition in transition from premenopause to postmenopause</a>

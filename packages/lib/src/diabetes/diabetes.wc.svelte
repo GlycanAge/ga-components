@@ -165,7 +165,7 @@
         <li>{getTranslation(lang,'POSSIBLE_FOLLOW_UP_FIVE')}</li>
         <li>{getTranslation(lang,'POSSIBLE_FOLLOW_UP_TWO')}</li>
       </ul>
-      <h5>Related research papers</h5>
+      <h5>{getTranslation(lang,'RELATED_RESEARCH_PAPERS')}</h5>
       <a href="https://pubmed.ncbi.nlm.nih.gov/28668296/">IgG glycan patterns are associated with type 2 diabetes in independent European populations</a>
       <p>In the DiaGene study, a population-based case-control study with 1,886 cases and 854 controls, 58 IgG glycan traits were analyzed. The findings were then replicated and meta-analyzed in the combined population-based studies of CROATIA-Korcula, CROATIA-Vis, and ORCADES, involving 162 cases and 3,162 controls. Within this research, 46% of cases and 60% of controls were female, with an average participant age of 65. The analysis revealed a decrease in G1, G2, and S glycans, alongside an increase in G0 and B. A predictive model incorporating four specific glycan peaks achieved an AUC of 0.729. When IgG glycans were added to a model containing only age and sex, the AUC improved from 0.542 to 0.734, although incorporating them into a more comprehensive model did not significantly enhance the AUC.</p>
     </div>
