@@ -36,7 +36,7 @@ export function getHeaderMessage(percentile: number, lang: string) {
   }
 }
 
-export function getTranslation(language: string, key: string) {
+export function getTranslation(language: string = 'english', key: string) {
   const translations = {
     english,
     polish
