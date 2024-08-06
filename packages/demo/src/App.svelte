@@ -229,9 +229,9 @@
     <div class="flex">
       COPD &nbsp;
       <div class="flex flex-col">
-        <div style="width: 630px;height: 49px; border: 1px solid red;"><ga-copd lang="polish" subtype="mature" report="1K4GyKDgsB9ATQflwio7"></ga-copd></div>
+        <div style="width: 630px;height: 49px; border: 1px solid red;"><ga-copd lang="polish" subtype="median" report="1K4GyKDgsB9ATQflwio7"></ga-copd></div>
         <div style="height: 20px;"></div>
-        <div style="width: 630px;height: 49px; border: 1px solid red;"><ga-copd lang="polish" subtype="shield" report="1K4GyKDgsB9ATQflwio7"></ga-copd></div>
+        <div style="width: 630px;height: 49px; border: 1px solid red;"><ga-copd lang="polish" subtype="lifestyle" report="1K4GyKDgsB9ATQflwio7"></ga-copd></div>
         <div style="height: 20px;"></div>
         header
         <div style="width: 240px;height: 49px; border: 1px solid red;"><ga-copd lang="polish" type="header" report="1K4GyKDgsB9ATQflwio7"></ga-copd></div>

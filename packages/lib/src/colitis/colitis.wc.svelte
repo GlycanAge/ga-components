@@ -68,7 +68,7 @@
 
     if (details) {
       percentile = Number(reportData[details.csvName]);
-      message = getHeaderMessage(percentile);
+      message = getHeaderMessage(percentile, lang);
     }
 
     perc1 = Number(reportData.G0percentile);

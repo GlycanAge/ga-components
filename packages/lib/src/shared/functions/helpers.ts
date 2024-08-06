@@ -17,13 +17,11 @@ export function suffix(perc: number) {
   }
 }
 
-export function getHeaderMessage(percentile: number, lang: string) {
+export function getHeaderMessage(percentile: number, lang: string = 'english') {
   const translations = {
     english,
     polish
   };
-
-  /*return translations[lang];*/
 
   if (percentile < 32) {
     return translations[lang]['LOWER_THAN_AVERAGE'];
