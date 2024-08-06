@@ -28,7 +28,7 @@
 </script>
 
 <div bind:this={el} class="p-4">
-  <!--<ga-chronic></ga-chronic>-->
+  <ga-chronic lang="polish"></ga-chronic>
   <div class="flex flex-col">
     <div class="flex">
       HYPERTENSION RISK &nbsp;

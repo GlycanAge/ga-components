@@ -1,13 +1,12 @@
 <svelte:options customElement={{ tag: 'ga-chronic', shadow: 'open' }} />
 
 <script lang="ts">
-  import type { Language } from '../shared/interfaces/language.interface';
   import { Service } from '../shared/utils/service';
   import { onMount } from 'svelte';
+  import { getTranslation } from '../shared/functions/helpers';
 
-  export let language: Language;
+  export let lang: string;
   export let report: string;
-  export let type: string;
   export let service: Service = window.GaReportService;
 
   let glycanAge = 0;
@@ -61,7 +60,7 @@
 {#if show}
   <div class="main">
     <div class="movable" style="margin: {getMargin()};">
-      <div>Biological age</div>
+      <div style="text-align: center">{getTranslation(lang,'BIOLOGICAL_AGE')}</div>
       <div class="age-font"><b>{glycanAge}</b></div>
       <svg
         class="rotate"

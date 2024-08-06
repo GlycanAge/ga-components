@@ -1,4 +1,5 @@
 export let english = {
+  BIOLOGICAL_AGE: 'Biological age',
   GLYCAN: 'Glycan',
   PEAK: 'Peak',
   LOWER_THAN_AVERAGE: 'Lower than average',
@@ -69,6 +70,7 @@ export let english = {
 };
 
 export let polish = {
+  BIOLOGICAL_AGE: 'Wiek biologiczny',
   GLYCAN: 'Glikan',
   PEAK: 'Pik',
   LOWER_THAN_AVERAGE: 'niższy od wartości średniej',
