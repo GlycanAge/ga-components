@@ -4,8 +4,9 @@
   import { onMount } from 'svelte';
   import { Service } from '../shared/utils/service';
   import Arrow from '../shared/components/Arrow.svelte';
-  import {getHeaderMessage} from '../shared/functions/helpers';
+  import {getHeaderMessage, getTranslation} from '../shared/functions/helpers';
 
+  export let lang: string;
   export let report: string;
   export let type: string;
   export let subtype: string;
@@ -59,7 +60,7 @@
 
     if (details) {
       percentile = Number(reportData[details.csvName]);
-      message = getHeaderMessage(percentile);
+      message = getHeaderMessage(percentile, lang);
     }
 
     perc1 = Number(reportData.G0percentile);
@@ -100,7 +101,14 @@
               fill="#12A195"
               d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"/></svg>
     {/if}
-    &nbsp;&nbsp;{overlap ? 'Some overlap' : someOverlap ? 'Minor overlap' : 'No significant overlap'}
+    &nbsp;&nbsp;
+    {#if overlap}
+      {getTranslation(lang, 'SOME_OVERLAP')}
+    {:else if someOverlap}
+      {getTranslation(lang, 'MINOR_OVERLAP')}
+    {:else}
+      {getTranslation(lang, 'NO_OVERLAP')}
+    {/if}
   </div>
 {:else if type === 'summary' && showSummary}
   <div class="summaryMain">
@@ -113,25 +121,33 @@
         {/if}
       </div>
       <div>
-        <b style="color: {overlap || someOverlap ? '#F2590D' : '#12A195'}">{overlap ? 'Major overlap' : someOverlap ? 'Some overlap' : 'No significant overlap'}</b> of glycan indexes between your patient and this condition.
+        <b style="color: {overlap ? '#F2590D' : '#12A195'}">
+          {#if overlap}
+            {getTranslation(lang, 'SOME_OVERLAP_LONG')}
+          {:else if someOverlap}
+            {getTranslation(lang, 'MINOR_OVERLAP_LONG')}
+          {:else}
+            {getTranslation(lang, 'NO_OVERLAP_LONG')}
+          {/if}
+        </b> {getTranslation(lang, 'OVERLAP_TEXT')}
       </div>
     </div>
     <hr>
     <div class="summaryBody">
-      <h5>Signs and symptoms</h5>
+      <h5>{getTranslation(lang, 'SYMPTOMS')}</h5>
       <ul>
-        <li>Usually asymptomatic</li>
-        <li>BP consistently >140/90 mmHg</li>
-        <li>Signs of malignant hypertension (headache, dizziness, breathlessness, etc.)</li>
+        <li>{getTranslation(lang, 'SYMPTOM_ONE')}</li>
+        <li>{getTranslation(lang, 'SYMPTOM_TWO')}</li>
+        <li>{getTranslation(lang, 'SYMPTOM_THREE')}</li>
       </ul>
 
-      <h5>Possible follow-up</h5>
+      <h5>{getTranslation(lang,'POSSIBLE_FOLLOW_UP')}</h5>
       <ul>
-        <li>Serial BP measurements and/or 24-hour BP monitoring</li>
-        <li>BMI and/or body composition check</li>
-        <li>Basic blood tests (lipid profile, renal and liver function)</li>
+        <li>{getTranslation(lang,'POSSIBLE_FOLLOW_UP_ONE')}</li>
+        <li>{getTranslation(lang,'POSSIBLE_FOLLOW_UP_TWO')}</li>
+        <li>{getTranslation(lang,'POSSIBLE_FOLLOW_UP_THREE')}</li>
       </ul>
-      <h5>Related research papers</h5>
+      <h5>{getTranslation(lang,'RELATED_RESEARCH_PAPERS')}</h5>
       <a href="https://pubmed.ncbi.nlm.nih.gov/27124023/">The Association Between Glycosylation of Immunoglobulin G and Hypertension: A Multiple Ethnic Cross-Sectional Study</a>
       <p>In an extensive study with 4,757 participants, including 913 from the Chinese Han Beijing population, 985 from Croatian Korčula, 896 from Croatian Vis, and 1963 from Scottish Orkney, researchers investigated changes in IgG glycans associated with prehypertension and hypertension. The demographic composition of the study was approximately 40% female and 60% male participants. Among hypertension patients, there was a noted decrease in G2 and S, alongside an increase in G0.</p>
     </div>
@@ -142,7 +158,7 @@
       <div class="label" style="font-size: 0.8rem;">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path  fill={percentile <= 68 ? '#12A195' : '#F2590D'} d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45ZM12 17q.425 0 .713-.288T13 16q0-.425-.288-.713T12 15q-.425 0-.713.288T11 16q0 .425.288.713T12 17Zm-1-4h2V7h-2v6Z"/></svg>
         <div style="display: flex; flex-direction: column; padding-left: 0.3rem;">
-          <div>Glycan <b>Mature (G0)</b></div>
+          <div>{getTranslation(lang,'GLYCAN')} <b>Mature (G0)</b></div>
           <div>{message}</div>
         </div>
       </div>
@@ -156,7 +172,7 @@
       <div class="label" style="font-size: 0.8rem;">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path  fill={percentile >= 32 ? '#12A195' : '#F2590D'} d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45ZM12 17q.425 0 .713-.288T13 16q0-.425-.288-.713T12 15q-.425 0-.713.288T11 16q0 .425.288.713T12 17Zm-1-4h2V7h-2v6Z"/></svg>
         <div style="display: flex; flex-direction: column; padding-left: 0.3rem;">
-          <div>Glycan <b>Median (G1)</b></div>
+          <div>{getTranslation(lang,'GLYCAN')} <b>Median (G1)</b></div>
           <div>{message}</div>
         </div>
       </div>
@@ -170,7 +186,7 @@
       <div class="label" style="font-size: 0.8rem;">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path  fill={percentile >= 32 ? '#12A195' : '#F2590D'} d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45ZM12 17q.425 0 .713-.288T13 16q0-.425-.288-.713T12 15q-.425 0-.713.288T11 16q0 .425.288.713T12 17Zm-1-4h2V7h-2v6Z"/></svg>
         <div style="display: flex; flex-direction: column; padding-left: 0.3rem;">
-          <div>Glycan <b>Youth (G2)</b></div>
+          <div>{getTranslation(lang,'GLYCAN')} <b>Youth (G2)</b></div>
           <div>{message}</div>
         </div>
       </div>

@@ -4,8 +4,9 @@
   import { onMount } from 'svelte';
   import { Service } from '../shared/utils/service';
   import Arrow from '../shared/components/Arrow.svelte';
-  import {getHeaderMessage} from '../shared/functions/helpers';
+  import {getHeaderMessage, getTranslation} from '../shared/functions/helpers';
 
+  export let lang: string;
   export let report: string;
   export let type: string;
   export let subtype: string;
@@ -81,7 +82,7 @@
 
     if (details) {
       percentile = Number(reportData[details.csvName]);
-      message = getHeaderMessage(percentile);
+      message = getHeaderMessage(percentile, lang);
     }
 
     percF = Number(reportData.P22percentile);
@@ -130,7 +131,14 @@
               fill="#12A195"
               d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"/></svg>
     {/if}
-    &nbsp;&nbsp;{overlap ? 'Some overlap' : someOverlap ? 'Minor overlap' : 'No significant overlap'}
+    &nbsp;&nbsp;
+    {#if overlap}
+      {getTranslation(lang, 'SOME_OVERLAP')}
+    {:else if someOverlap}
+      {getTranslation(lang, 'MINOR_OVERLAP')}
+    {:else}
+      {getTranslation(lang, 'NO_OVERLAP')}
+    {/if}
   </div>
 {:else if type === 'summary' && showSummary}
   <div class="summaryMain">
@@ -143,26 +151,34 @@
         {/if}
       </div>
       <div>
-        <b style="color: {overlap || someOverlap ? '#F2590D' : '#12A195'}">{overlap ? 'Major overlap' : someOverlap ? 'Some overlap' : 'No significant overlap'}</b> of glycan indexes between your patient and this condition.
+        <b style="color: {overlap || someOverlap ? '#F2590D' : '#12A195'}">
+          {#if overlap}
+            {getTranslation(lang, 'SOME_OVERLAP_LONG')}
+          {:else if someOverlap}
+            {getTranslation(lang, 'MINOR_OVERLAP_LONG')}
+          {:else}
+            {getTranslation(lang, 'NO_OVERLAP_LONG')}
+          {/if}
+        </b> {getTranslation(lang, 'OVERLAP_TEXT')}
       </div>
     </div>
     <hr>
     <div class="summaryBody">
-      <h5>Risk factors</h5>
+      <h5>{getTranslation(lang, 'RISK_FACTORS')}</h5>
       <ul>
-        <li>Past medical history (cardiometabolic syndrome, autoimmune disease)</li>
-        <li>Medication history (e.g., statins, blood thinners)</li>
-        <li>Current/previous smoking history</li>
+        <li>{getTranslation(lang, 'RISK_FACTOR_ONE')}</li>
+        <li>{getTranslation(lang, 'RISK_FACTOR_TWO')}</li>
+        <li>{getTranslation(lang, 'RISK_FACTOR_THREE')}</li>
       </ul>
 
-      <h5>Possible follow-up</h5>
+      <h5>{getTranslation(lang,'POSSIBLE_FOLLOW_UP')}</h5>
       <ul>
-        <li>Blood tests: basic and extended lipid profile (e.g., Lp(a), ApoB), hsCRP, homocysteine, renal and liver function, HbA1c</li>
-        <li>BP check</li>
-        <li>ECG</li>
-        <li>Cardiology referral for other tests (e.g., cardiac echo, coronary CT)</li>
+        <li>{getTranslation(lang,'POSSIBLE_FOLLOW_UP_FOUR')}</li>
+        <li>{getTranslation(lang,'POSSIBLE_FOLLOW_UP_FIVE')}</li>
+        <li>{getTranslation(lang,'POSSIBLE_FOLLOW_UP_SIX')}</li>
+        <li>{getTranslation(lang,'POSSIBLE_FOLLOW_UP_SEVEN')}</li>
       </ul>
-      <h5>Related research papers</h5>
+      <h5>{getTranslation(lang,'RELATED_RESEARCH_PAPERS')}</h5>
       <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9679264/">Immunoglobulin G N-Glycosylation Signatures in Incident Type 2 Diabetes and Cardiovascular Disease</a>
       <p>In the EPIC-Potsdam cohort, involving 2,175 participants in the cardiovascular disease (CVD) subcohort, which includes 417 cases of MI and CVA, changes in IgG glycosylation were analysed. This cohort comprised 61% females and 39% males, with an average age of 49. In male participants, an increase in G0 and B was observed, along with a decrease in G2 and S. A predictive model employing 2 specific glycan peaks was developed, demonstrating a hazard ratio (HR) of 1.60.</p>
     </div>

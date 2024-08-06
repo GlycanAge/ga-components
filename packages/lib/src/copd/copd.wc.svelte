@@ -4,8 +4,9 @@
   import { onMount } from 'svelte';
   import { Service } from '../shared/utils/service';
   import Arrow from '../shared/components/Arrow.svelte';
-  import {getHeaderMessage} from '../shared/functions/helpers';
+  import { getHeaderMessage, getTranslation } from '../shared/functions/helpers';
 
+  export let lang: string;
   export let report: string;
   export let type: string;
   export let subtype: string;
@@ -51,7 +52,7 @@
 
     if (details) {
       percentile = Number(reportData[details.csvName]);
-      message = getHeaderMessage(percentile);
+      message = getHeaderMessage(percentile, lang);
     }
 
     perc1 = Number(reportData.G1percentile);
@@ -91,7 +92,14 @@
               fill="#12A195"
               d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"/></svg>
     {/if}
-    &nbsp;&nbsp;{overlap ? 'Some overlap' : someOverlap ? 'Minor overlap' : 'No significant overlap'}
+    &nbsp;&nbsp;
+    {#if overlap}
+      {getTranslation(lang, 'SOME_OVERLAP')}
+    {:else if someOverlap}
+      {getTranslation(lang, 'MINOR_OVERLAP')}
+    {:else}
+      {getTranslation(lang, 'NO_OVERLAP')}
+    {/if}
   </div>
 {:else if type === 'summary' && showSummary}
   <div class="summaryMain">
@@ -104,25 +112,33 @@
         {/if}
       </div>
       <div>
-        <b style="color: {overlap || someOverlap ? '#F2590D' : '#12A195'}">{overlap ? 'Major overlap' : someOverlap ? 'Some overlap' : 'No significant overlap'}</b> of glycan indexes between your patient and this condition.
+        <b style="color: {overlap ? '#F2590D' : '#12A195'}">
+          {#if overlap}
+            {getTranslation(lang, 'SOME_OVERLAP_LONG')}
+          {:else if someOverlap}
+            {getTranslation(lang, 'MINOR_OVERLAP_LONG')}
+          {:else}
+            {getTranslation(lang, 'NO_OVERLAP_LONG')}
+          {/if}
+        </b> {getTranslation(lang, 'OVERLAP_TEXT')}
       </div>
     </div>
     <hr>
     <div class="summaryBody">
-      <h5>Signs and symptoms</h5>
+      <h5>{getTranslation(lang, 'SYMPTOMS')}</h5>
       <ul>
-        <li>Difficulty breathing</li>
-        <li>Chronic cough (± productive)</li>
-        <li>Fatigue</li>
+        <li>{getTranslation(lang, 'SYMPTOM_EIGHTEEN')}</li>
+        <li>{getTranslation(lang, 'SYMPTOM_NINETEEN')}</li>
+        <li>{getTranslation(lang, 'SYMPTOM_FIFTEEN')}</li>
       </ul>
 
-      <h5>Possible follow-up</h5>
+      <h5>{getTranslation(lang,'POSSIBLE_FOLLOW_UP')}</h5>
       <ul>
-        <li>Blood tests: full blood count</li>
-        <li>Spirometry</li>
-        <li>ECG, chest X-ray</li>
+        <li>{getTranslation(lang,'POSSIBLE_FOLLOW_UP_SEVENTEEN')}</li>
+        <li>{getTranslation(lang,'POSSIBLE_FOLLOW_UP_EIGHTEEN')}</li>
+        <li>{getTranslation(lang,'POSSIBLE_FOLLOW_UP_NINETEEN')}</li>
       </ul>
-      <h5>Related research papers</h5>
+      <h5>{getTranslation(lang,'RELATED_RESEARCH_PAPERS')}</h5>
       <a href="https://translational-medicine.biomedcentral.com/articles/10.1186/s12967-018-1695-0">N-glycosylation patterns of plasma proteins and immunoglobulin G in chronic obstructive pulmonary disease</a>
       <p>In a Croatian study focusing on COPD, researchers analyzed IgG glycosylation in 137 COPD patients and 95 controls in the discovery cohort, and 61 COPD patients and 148 controls in a replication cohort from another medical center. The discovery cohort included 97 female participants (42%), while the replication cohort had 116 females (56%). The study observed a decrease in G1 and an increase in B glycan structures in COPD patients. <br><br> For those who want to know more: <br><br> The analysis also revealed that N-glycans could distinguish between different COPD stages according to GOLD guidelines, with more complex glycan structures becoming relatively more abundant as the disease advanced. The study also noted significant associations between glycans and the frequency of COPD exacerbations and highlighted the impact of smoking, a major risk factor for COPD, on glycan compositions.</p>
     </div>
@@ -133,7 +149,7 @@
       <div class="label" style="font-size: 0.8rem;">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path  fill={percentile >= 32 ? '#12A195' : '#F2590D'} d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45ZM12 17q.425 0 .713-.288T13 16q0-.425-.288-.713T12 15q-.425 0-.713.288T11 16q0 .425.288.713T12 17Zm-1-4h2V7h-2v6Z"/></svg>
         <div style="display: flex; flex-direction: column; padding-left: 0.3rem;">
-          <div>Glycan <b>Median (G1)</b></div>
+          <div>{getTranslation(lang,'GLYCAN')} <b>Median (G1)</b></div>
           <div>{message}</div>
         </div>
       </div>
@@ -147,7 +163,7 @@
       <div class="label" style="font-size: 0.8rem;">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path  fill={percentile <= 68 ? '#12A195' : '#F2590D'} d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45ZM12 17q.425 0 .713-.288T13 16q0-.425-.288-.713T12 15q-.425 0-.713.288T11 16q0 .425.288.713T12 17Zm-1-4h2V7h-2v6Z"/></svg>
         <div style="display: flex; flex-direction: column; padding-left: 0.3rem;">
-          <div>Glycan <b>Lifestyle (B)</b></div>
+          <div>{getTranslation(lang,'GLYCAN')} <b>Lifestyle (B)</b></div>
           <div>{message}</div>
         </div>
       </div>

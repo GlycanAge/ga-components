@@ -1,3 +1,5 @@
+import { english, polish } from '../../../languages.const';
+
 export function suffix(perc: number) {
   if (perc === 11 || perc === 12 || perc === 13) {
     return 'th';
@@ -15,14 +17,30 @@ export function suffix(perc: number) {
   }
 }
 
-export function getHeaderMessage(percentile: number) {
+export function getHeaderMessage(percentile: number, lang: string) {
+  const translations = {
+    english,
+    polish
+  };
+
+  /*return translations[lang];*/
+
   if (percentile < 32) {
-    return 'Lower than average';
+    return translations[lang]['LOWER_THAN_AVERAGE'];
   }
   if (percentile >= 32 && percentile <= 68) {
-    return 'Around average';
+    return translations[lang]['AROUND_AVERAGE'];
   }
   if (percentile > 68) {
-    return 'Higher than average';
+    return translations[lang]['HIGHER_THAN_AVERAGE'];
   }
+}
+
+export function getTranslation(language: string, key: string) {
+  const translations = {
+    english,
+    polish
+  };
+
+  return translations[language][key];
 }

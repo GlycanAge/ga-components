@@ -4,7 +4,9 @@
     import { onMount } from 'svelte';
     import { Service } from '../shared/utils/service';
     import Arrow from '../shared/components/Arrow.svelte';
+    import { getTranslation } from '../shared/functions/helpers';
 
+    export let lang: string;
     export let report: string;
     export let type: string;
     export let service: Service = window.GaReportService;
@@ -24,19 +26,19 @@
 
         if (percentile < 32) {
             counter = '0/1';
-            message = 'Lower than average';
+            message = getTranslation(lang, 'LOWER_THAN_AVERAGE');
             showSummary = true;
             return;
         }
         if (percentile >= 32 && percentile <= 68) {
             counter = '0/1';
-            message = 'Around average';
+            message = getTranslation(lang, 'AROUND_AVERAGE');
             showSummary = true;
             return;
         }
         if (percentile > 68) {
             counter = '1/1';
-            message = 'Higher than average';
+            message = getTranslation(lang, 'HIGHER_THAN_AVERAGE');
             overlap = true;
             showSummary = true;
             return;
@@ -58,7 +60,12 @@
                     fill="#12A195"
                     d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"/></svg>
         {/if}
-        &nbsp;&nbsp;{overlap ? 'Some overlap' : 'No significant overlap'}
+        &nbsp;&nbsp;
+        {#if overlap}
+            {getTranslation(lang, 'SOME_OVERLAP')}
+        {:else}
+            {getTranslation(lang, 'NO_OVERLAP')}
+        {/if}
     </div>
 {:else if type === 'summary' && showSummary}
     <div class="summaryMain">
@@ -71,23 +78,23 @@
                 {/if}
             </div>
             <div>
-                <b style="color: {overlap ? '#F2590D' : '#12A195'}">{percentile > 68 ? 'Some overlap' : 'No significant overlap'}</b> of glycan indexes between your patient and this condition.
+                <b style="color: {overlap ? '#F2590D' : '#12A195'}">{percentile > 68 ? getTranslation(lang, 'SOME_OVERLAP_LONG') : getTranslation(lang, 'NO_OVERLAP_LONG')}</b> {getTranslation(lang, 'OVERLAP_TEXT')}
             </div>
         </div>
         <hr>
         <div class="summaryBody">
-            <h5>Signs and symptoms</h5>
+            <h5>{getTranslation(lang, 'SYMPTOMS')}</h5>
             <ul>
-                <li>Usually asymptomatic</li>
+                <li>{getTranslation(lang,'SYMPTOM_ONE')}</li>
             </ul>
 
-            <h5>Possible follow-up</h5>
+            <h5>{getTranslation(lang,'POSSIBLE_FOLLOW_UP')}</h5>
             <ul>
-                <li>Serial blood pressure (BP) measurements Â± 24-hour BP monitoring</li>
-                <li>BMI and/or body composition check</li>
-                <li>Basic bloods (lipid profile, renal and liver function)</li>
+                <li>{getTranslation(lang,'POSSIBLE_FOLLOW_UP_ONE')}</li>
+                <li>{getTranslation(lang,'POSSIBLE_FOLLOW_UP_TWO')}</li>
+                <li>{getTranslation(lang,'POSSIBLE_FOLLOW_UP_THREE')}</li>
             </ul>
-            <h5>Related research papers</h5>
+            <h5>{getTranslation(lang,'RELATED_RESEARCH_PAPERS')}</h5>
             <a href="https://pubmed.ncbi.nlm.nih.gov/34285147/">
                 N-glycosylation of immunoglobulin G predicts incident hypertension
             </a>
@@ -99,7 +106,7 @@
         <div class="label" style="font-size: 0.8rem;">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path  fill={percentile <= 68 ? '#12A195' : '#F2590D'} d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45ZM12 17q.425 0 .713-.288T13 16q0-.425-.288-.713T12 15q-.425 0-.713.288T11 16q0 .425.288.713T12 17Zm-1-4h2V7h-2v6Z"/></svg>
             <div style="display: flex; flex-direction: column; padding-left: 0.3rem;">
-                <div>Glycan <b>Lifestyle (B)</b></div>
+                <div>{getTranslation(lang,'GLYCAN')} <b>Lifestyle (B)</b></div>
                 <div>{message}</div>
             </div>
         </div>
