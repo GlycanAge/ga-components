@@ -60,7 +60,7 @@
 {#if show}
   <div class="main">
     <div class="movable" style="margin: {getMargin()};">
-      <div style="text-align: center">{getTranslation(lang,'BIOLOGICAL_AGE')}</div>
+      <div style="text-align: center; white-space: nowrap">{getTranslation(lang,'BIOLOGICAL_AGE')}</div>
       <div class="age-font"><b>{glycanAge}</b></div>
       <svg
         class="rotate"
