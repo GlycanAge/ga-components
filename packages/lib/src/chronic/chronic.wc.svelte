@@ -21,9 +21,9 @@
         if (glycanAge === chronoAge) {
             return 50;
         } else if (glycanAge > chronoAge) {
-            return 55 + diff;
+            return 50 + diff;
         } else if (glycanAge < chronoAge) {
-            return 45 - diff;
+            return 50 - diff;
         }
     }
 
@@ -63,7 +63,6 @@
         width: 25rem;
         display: flex;
         position: relative;
-        background-color: red;
     }
 
     .movable {
@@ -72,7 +71,6 @@
         align-items: center;
         width: 8rem;
         height: 100%;
-        border: 1px solid blue;
     }
 
     .age-font {
