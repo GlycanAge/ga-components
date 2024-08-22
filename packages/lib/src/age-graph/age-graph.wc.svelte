@@ -45,24 +45,24 @@
         <div class="colorBoxShort" style="background-color: #DF2120;"></div>
 
         <div class="slider-top" style="left: {calc()}%;">
-            <p style="font-size: 1.1rem;">
+            <p style="font-size: 1rem;">
                 Biological age
             </p>
-            <p style="font-size: 1.8rem;">
+            <p style="font-size: 1.5rem;">
                 <b>{glycanAge}</b>
             </p>
-            <svg class="rotateImg" width="22%" height="22%" viewBox="0 0 42 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg class="rotateImg" width="18%" height="18%" viewBox="0 0 42 37" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M14.0718 4C17.151 -1.33334 24.849 -1.33333 27.9282 4.00001L40.0525 25C43.1317 30.3333 39.2827 37 33.1243 37L8.87563 37C2.71722 37 -1.13177 30.3333 1.94743 25L14.0718 4Z" fill="#09371F"/>
             </svg>
         </div>
         <div class="slider-bottom">
-            <svg width="20%" height="20%" viewBox="0 0 42 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="16%" height="16%" viewBox="0 0 42 37" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M14.0718 4C17.151 -1.33334 24.849 -1.33333 27.9282 4.00001L40.0525 25C43.1317 30.3333 39.2827 37 33.1243 37L8.87563 37C2.71722 37 -1.13177 30.3333 1.94743 25L14.0718 4Z" fill="#09371F"/>
             </svg>
-            <div style="font-size: 1.8rem;">
+            <div style="font-size: 1.5rem;">
                 <b>{chronoAge}</b>
             </div>
-            <div style="font-size: 1.1rem;">
+            <div style="font-size: 1rem;">
                 Chronological age
             </div>
         </div>
@@ -82,9 +82,9 @@
         flex-direction: column;
         align-items: center;
         position: absolute;
-        transform: translate(-50%, -100%);
+        transform: translate(-50%, -102%);
         width: 24%;
-        max-height: 90px;
+        max-height: 85px;
         padding: 0.1rem;
     }
 
@@ -94,9 +94,9 @@
         align-items: center;
         position: absolute;
         width: 28%;
-        transform: translate(-50%, 15%);
+        transform: translate(-50%, 17%);
         left: 50%;
-        max-height: 90px;
+        max-height: 85px;
         padding: 0.1rem;
     }
 
