@@ -48,7 +48,7 @@
             <p style="font-size: 1.1rem;">
                 Biological age
             </p>
-            <p style="font-size: 2.5rem;">
+            <p style="font-size: 1.8rem;">
                 <b>{glycanAge}</b>
             </p>
             <svg class="rotateImg" width="22%" height="22%" viewBox="0 0 42 37" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -59,7 +59,7 @@
             <svg width="22%" height="22%" viewBox="0 0 42 37" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M14.0718 4C17.151 -1.33334 24.849 -1.33333 27.9282 4.00001L40.0525 25C43.1317 30.3333 39.2827 37 33.1243 37L8.87563 37C2.71722 37 -1.13177 30.3333 1.94743 25L14.0718 4Z" fill="#09371F"/>
             </svg>
-            <div style="font-size: 2.5rem;">
+            <div style="font-size: 1.8rem;">
                 <b>{chronoAge}</b>
             </div>
             <div style="font-size: 1.1rem;">
@@ -83,7 +83,7 @@
         align-items: center;
         position: absolute;
         transform: translate(-50%, -100%);
-        width: 18%;
+        width: 24%;
         max-height: 130px;
         border: 1px solid blue;
         padding: 0.1rem;
@@ -94,7 +94,7 @@
         flex-direction: column;
         align-items: center;
         position: absolute;
-        width: 18%;
+        width: 24%;
         transform: translate(-50%, 14%);
         left: 50%;
         max-height: 130px;
@@ -105,12 +105,12 @@
     .colorBox {
         width: 14%;
         border-radius: 24px;
-        margin-left: 0.3%;
-        margin-right: 0.3%;
+        margin-left: 0.2%;
+        margin-right: 0.2%;
     }
 
     .colorBoxShort {
-        width: 7%;
+        width: 10%;
         border-radius: 24px;
     }
 
