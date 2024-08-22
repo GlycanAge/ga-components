@@ -73,7 +73,7 @@
     .parent {
         display: flex;
         width: 100%;
-        height: 20px;
+        height: 18px;
         font-family: 'Sen', 'Noto Sans JP', sans-serif;
     }
 
@@ -84,6 +84,8 @@
         position: absolute;
         transform: translate(-50%, -100%);
         width: 18%;
+        max-height: 130px;
+        border: 1px solid blue;
         padding: 0.1rem;
     }
 
@@ -95,6 +97,8 @@
         width: 18%;
         transform: translate(-50%, 14%);
         left: 50%;
+        max-height: 130px;
+        border: 1px solid green;
         padding: 0.1rem;
     }
 
