@@ -18,4 +18,5 @@ export default () => {
   import('./src/colorectal/colorectal.wc.svelte');
   import('./src/endometrial/endometrial.wc.svelte');
   import('./src/ovarian/ovarian.wc.svelte');
+  import('./src/age-graph/age-graph.wc.svelte');
 };
