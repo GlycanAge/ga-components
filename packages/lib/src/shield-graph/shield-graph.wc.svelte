@@ -45,7 +45,7 @@
             <p style="font-size: 1rem;">
                 Your result
             </p>
-            <p style="font-size: 1.5rem;">
+            <p style="font-size: 1.2rem;">
                 <b>{result}</b>
             </p>
             <svg class="rotateImg" width="14%" height="14%" viewBox="0 0 42 37" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -54,21 +54,21 @@
         </div>
 
         <div class="bottom-triangle" style="left: 9.5%;">
-            <svg width="40%" height="40%" viewBox="0 0 42 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="30%" height="30%" viewBox="0 0 42 37" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M14.0718 4C17.151 -1.33334 24.849 -1.33333 27.9282 4.00001L40.0525 25C43.1317 30.3333 39.2827 37 33.1243 37L8.87563 37C2.71722 37 -1.13177 30.3333 1.94743 25L14.0718 4Z" fill="#6B8779"/>
             </svg>
             <div><b>{min}</b></div>
         </div>
 
         <div class="bottom-triangle" style="left: 50%;">
-            <svg width="40%" height="40%" viewBox="0 0 42 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="30%" height="30%" viewBox="0 0 42 37" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M14.0718 4C17.151 -1.33334 24.849 -1.33333 27.9282 4.00001L40.0525 25C43.1317 30.3333 39.2827 37 33.1243 37L8.87563 37C2.71722 37 -1.13177 30.3333 1.94743 25L14.0718 4Z" fill="#6B8779"/>
             </svg>
             <div><b>{mid}</b></div>
         </div>
 
         <div class="bottom-triangle" style="left: 90.5%;">
-            <svg width="40%" height="40%" viewBox="0 0 42 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="30%" height="30%" viewBox="0 0 42 37" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M14.0718 4C17.151 -1.33334 24.849 -1.33333 27.9282 4.00001L40.0525 25C43.1317 30.3333 39.2827 37 33.1243 37L8.87563 37C2.71722 37 -1.13177 30.3333 1.94743 25L14.0718 4Z" fill="#6B8779"/>
             </svg>
             <div><b>{max}</b></div>
@@ -105,13 +105,13 @@
         position: absolute;
         transform: translate(-50%, -110%);
         width: 24%;
-        max-height: 85px;
+        max-height: 70px;
     }
 
     .bottom-triangle {
         position: absolute;
         top: 100%;
-        transform: translate(-50%, 10%);
+        transform: translate(-50%, 2%);
         width: 8%;
         max-height: 60px;
         display: flex;
@@ -153,7 +153,7 @@
 
     .colored-percentile {
         height: 90%;
-        width: 32%;
+        width: 34%;
         color: white;
         display: flex;
         align-items: center;
@@ -163,7 +163,7 @@
 
     .higher {
         height: 60%;
-        width: 10%;
+        width: 12%;
         background-color: #015566;
         color: white;
         border-radius: 5px;
