@@ -19,4 +19,5 @@ export default () => {
   import('./src/endometrial/endometrial.wc.svelte');
   import('./src/ovarian/ovarian.wc.svelte');
   import('./src/age-graph/age-graph.wc.svelte');
+  import('./src/shield-graph/shield-graph.wc.svelte');
 };
