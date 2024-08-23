@@ -19,9 +19,9 @@
         if (glycanAge === chronoAge) {
             return 50;
         } else if (glycanAge > chronoAge) {
-            return diff > 35 ? 86 : 52 + diff;
+            return diff > 35 ? 85 : 52 + diff;
         } else if (glycanAge < chronoAge) {
-            return diff > 35 ? 14 : 48 - diff;
+            return diff > 35 ? 15 : 48 - diff;
         }
     }
 
@@ -109,7 +109,7 @@
     }
 
     .colorBoxShort {
-        width: 10%;
+        width: 8%;
         border-radius: 24px;
     }
 

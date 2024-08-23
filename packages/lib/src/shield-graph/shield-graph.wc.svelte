@@ -83,7 +83,7 @@
         </div>
         <div class="message-two">
             <p>Having a</p>
-            <div class="higher">higher</div>
+            <div class="higher"><b>higher</b></div>
             <p>percentile ranking <b>is better</b> for this index.</p>
         </div>
     </div>
@@ -113,7 +113,7 @@
         top: 100%;
         transform: translate(-50%, 2%);
         width: 8%;
-        max-height: 60px;
+        max-height: 36px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -124,7 +124,7 @@
     .message-one {
         position: absolute;
         top: 5rem;
-        width: 55%;
+        width: 70%;
         height: 3rem;
         transform: translate(-50%, 0%);
         left: 50%;
@@ -139,7 +139,7 @@
     .message-two {
         position: absolute;
         top: 8rem;
-        width: 55%;
+        width: 70%;
         height: 2rem;
         transform: translate(-50%, 0%);
         left: 50%;
@@ -147,13 +147,14 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 0.7rem;
+        font-size: 0.75rem;
         gap: .25rem;
     }
 
     .colored-percentile {
         height: 90%;
-        width: 34%;
+        width: 30%;
+        min-width: 160px;
         color: white;
         display: flex;
         align-items: center;
@@ -166,7 +167,7 @@
         width: 12%;
         background-color: #015566;
         color: white;
-        border-radius: 5px;
+        border-radius: 4px;
         display: flex;
         align-items: center;
         justify-content: center;
