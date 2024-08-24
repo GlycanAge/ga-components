@@ -138,7 +138,7 @@
 
     .message-two {
         position: absolute;
-        top: 8rem;
+        top: 7.4rem;
         width: 70%;
         height: 2rem;
         transform: translate(-50%, 0%);
@@ -154,7 +154,7 @@
     .colored-percentile {
         height: 90%;
         width: 30%;
-        min-width: 160px;
+        min-width: 150px;
         color: white;
         display: flex;
         align-items: center;
@@ -163,7 +163,7 @@
     }
 
     .higher {
-        height: 60%;
+        height: 70%;
         width: 12%;
         background-color: #015566;
         color: white;
