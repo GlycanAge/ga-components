@@ -155,3 +155,8 @@ export let slovenian = {
   PERCENTILE: 'percentilov',
   YOUR_RESULT: 'Vaš rezultat'
 }
+
+export let japanese = {
+  BIOLOGICAL_AGE: '生物学的年齢',
+  CHRONOLOGICAL_AGE: '暦年齢'
+}

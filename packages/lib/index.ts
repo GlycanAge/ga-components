@@ -21,4 +21,6 @@ export default () => {
   import('./src/age-graph/age-graph.wc.svelte');
   import('./src/index-graph/index-graph.wc.svelte');
   import('./src/median-graph/median-graph.wc.svelte');
+  import('./src/median-graph-japanese/median-graph-japanese.wc.svelte');
+  import('./src/index-graph-japanese/index-graph-japanese.wc.svelte');
 };

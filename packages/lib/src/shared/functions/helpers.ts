@@ -1,4 +1,4 @@
-import {english, polish, slovenian} from '../consts/languages.const';
+import {english, polish, slovenian, japanese} from '../consts/languages.const';
 
 export function suffix(perc: number, lang: string = 'english') {
   if (lang !== 'english' ) {
@@ -25,7 +25,8 @@ export function getHeaderMessage(percentile: number, lang: string = 'english') {
   const translations = {
     english,
     polish,
-    slovenian
+    slovenian,
+    japanese
   };
 
   if (percentile < 32) {
@@ -43,7 +44,8 @@ export function getTranslation(language: string = 'english', key: string) {
   const translations = {
     english,
     polish,
-    slovenian
+    slovenian,
+    japanese
   };
 
   return translations[language][key];
