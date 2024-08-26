@@ -89,3 +89,40 @@ export function getColorRedToBlue(min: number, mid: number, max: number, result:
     return '#015566';
   }
 }
+
+export function getColorBlueToRed(min: number, mid: number, max: number, result: number) {
+  const position = calculateSliderPosition(min, mid, max, result);
+
+  if (position < 23) {
+    return '#015566';
+  } else if (position >= 23 && position <= 36) {
+    return '#13A195';
+  } else if (position > 36 && position < 64) {
+    return '#66CCAA';
+  } else if (position >= 64 && position <= 77) {
+    return '#F2800D';
+  } else if (position > 77) {
+    return '#DF2120';
+  }
+}
+
+export function getColorMedian(min: number, mid: number, max: number, result: number) {
+  const position = calculateSliderPosition(min, mid, max, result);
+  console.log('position:', position);
+
+  if (position < 9.5) {
+    return '#DF2120';
+  } else if (position >= 9.5 && position <= 23) {
+    return '#F2800D';
+  } else if (position > 23 && position < 37) {
+    return '#13A195';
+  } else if (position >= 37 && position <= 63) {
+    return '#66CCAA';
+  } else if (position > 63 && position < 77) {
+    return '#13A195';
+  } else if (position >= 77 && position <= 90.5) {
+    return '#F2800D';
+  } else if (position > 90.5) {
+    return '#DF2120';
+  }
+}

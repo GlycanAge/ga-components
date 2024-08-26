@@ -1,30 +1,30 @@
-<svelte:options customElement={{ tag: 'ga-shield-graph', shadow: 'open' }}/>
+<svelte:options customElement={{ tag: 'ga-median-graph', shadow: 'open' }}/>
 
 <script lang="ts">
     import {onMount} from 'svelte';
     import {Service} from '../shared/utils/service';
-    import {calculateSliderPosition, getColorRedToBlue, suffix} from '../shared/functions/helpers';
+    import {calculateSliderPosition, getColorMedian, suffix} from '../shared/functions/helpers';
 
     export let report: string;
     export let service: Service = window.GaReportService;
 
     let reportData: any;
 
-    let min = 0; // Sxmin
-    let mid = 0; // Sxaverage
-    let max = 0; // Sxmax
-    let result = 0; // Syourscore
-    let percentile = 0; // Spercentile
+    let min = 0; // G1xmin
+    let mid = 0; // G1xaverage
+    let max = 0; // G1xmax
+    let result = 0; // G1yourscore
+    let percentile = 0; // G1percentile
 
     let show = false;
 
     onMount(async () => {
         reportData = await service.getReport(report);
-        min = Number(reportData.Sxmin);
-        mid = Number(reportData.Sxaverage);
-        max = Number(reportData.Sxmax);
-        result = Number(reportData.Syourscore);
-        percentile = Number(reportData.Spercentile);
+        min = Number(reportData.G1xmin);
+        mid = Number(reportData.G1xaverage);
+        max = Number(reportData.G1xmax);
+        result = Number(reportData.G1yourscore);
+        percentile = Number(reportData.G1percentile);
 
         show = true;
     });
@@ -33,13 +33,13 @@
 {#if show}
     <div class="parent">
         <div class="colorBoxShort" style="background-color: #DF2120;"></div>
-        <div class="colorBox" style="background-color: #DF2120;"></div>
         <div class="colorBox" style="background-color: #F2800D;"></div>
+        <div class="colorBox" style="background-color: #13A195;"></div>
         <div class="colorBox" style="background-color: #66CCAA;"></div>
         <div class="colorBox" style="background-color: #66CCAA;"></div>
         <div class="colorBox" style="background-color: #13A195;"></div>
-        <div class="colorBox" style="background-color: #015566;"></div>
-        <div class="colorBoxShort" style="background-color: #015566;"></div>
+        <div class="colorBox" style="background-color: #F2800D;"></div>
+        <div class="colorBoxShort" style="background-color: #DF2120;"></div>
 
         <div class="slider" style="left: {calculateSliderPosition(min, mid, max, result)}%;">
             <p style="font-size: 1rem;">
@@ -48,43 +48,50 @@
             <p style="font-size: 1.2rem;">
                 <b>{result}</b>
             </p>
-            <svg class="rotateImg" width="14%" height="14%" viewBox="0 0 42 37" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M14.0718 4C17.151 -1.33334 24.849 -1.33333 27.9282 4.00001L40.0525 25C43.1317 30.3333 39.2827 37 33.1243 37L8.87563 37C2.71722 37 -1.13177 30.3333 1.94743 25L14.0718 4Z" fill="#09371F"/>
+            <svg class="rotateImg" width="14%" height="14%" viewBox="0 0 42 37" fill="none"
+                 xmlns="http://www.w3.org/2000/svg">
+                <path d="M14.0718 4C17.151 -1.33334 24.849 -1.33333 27.9282 4.00001L40.0525 25C43.1317 30.3333 39.2827 37 33.1243 37L8.87563 37C2.71722 37 -1.13177 30.3333 1.94743 25L14.0718 4Z"
+                      fill="#09371F"/>
             </svg>
         </div>
 
         <div class="bottom-triangle" style="left: 9.5%;">
             <svg width="30%" height="30%" viewBox="0 0 42 37" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M14.0718 4C17.151 -1.33334 24.849 -1.33333 27.9282 4.00001L40.0525 25C43.1317 30.3333 39.2827 37 33.1243 37L8.87563 37C2.71722 37 -1.13177 30.3333 1.94743 25L14.0718 4Z" fill="#6B8779"/>
+                <path d="M14.0718 4C17.151 -1.33334 24.849 -1.33333 27.9282 4.00001L40.0525 25C43.1317 30.3333 39.2827 37 33.1243 37L8.87563 37C2.71722 37 -1.13177 30.3333 1.94743 25L14.0718 4Z"
+                      fill="#6B8779"/>
             </svg>
             <div><b>{min}</b></div>
         </div>
 
         <div class="bottom-triangle" style="left: 50%;">
             <svg width="30%" height="30%" viewBox="0 0 42 37" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M14.0718 4C17.151 -1.33334 24.849 -1.33333 27.9282 4.00001L40.0525 25C43.1317 30.3333 39.2827 37 33.1243 37L8.87563 37C2.71722 37 -1.13177 30.3333 1.94743 25L14.0718 4Z" fill="#6B8779"/>
+                <path d="M14.0718 4C17.151 -1.33334 24.849 -1.33333 27.9282 4.00001L40.0525 25C43.1317 30.3333 39.2827 37 33.1243 37L8.87563 37C2.71722 37 -1.13177 30.3333 1.94743 25L14.0718 4Z"
+                      fill="#6B8779"/>
             </svg>
             <div><b>{mid}</b></div>
         </div>
 
         <div class="bottom-triangle" style="left: 90.5%;">
             <svg width="30%" height="30%" viewBox="0 0 42 37" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M14.0718 4C17.151 -1.33334 24.849 -1.33333 27.9282 4.00001L40.0525 25C43.1317 30.3333 39.2827 37 33.1243 37L8.87563 37C2.71722 37 -1.13177 30.3333 1.94743 25L14.0718 4Z" fill="#6B8779"/>
+                <path d="M14.0718 4C17.151 -1.33334 24.849 -1.33333 27.9282 4.00001L40.0525 25C43.1317 30.3333 39.2827 37 33.1243 37L8.87563 37C2.71722 37 -1.13177 30.3333 1.94743 25L14.0718 4Z"
+                      fill="#6B8779"/>
             </svg>
             <div><b>{max}</b></div>
         </div>
 
         <div class="message-one">
             <p>This result ranks you in the</p>
-            <div class="colored-percentile" style="background-color: {getColorRedToBlue(min, mid, max, result)};">
+            <div class="colored-percentile"
+                 style="background-color: {getColorMedian(min, mid, max, result)};">
                 <b>{percentile}<sup>{suffix(percentile)}</sup> percentile</b>
             </div>
             <p>*</p>
         </div>
         <div class="message-two">
-            <p>Having a</p>
-            <div class="higher"><b>higher</b></div>
-            <p>percentile ranking <b>is better</b> for this index.</p>
+            <p style="text-align: center;">
+                <b>This index doesn’t influence your overall biological age.</b> However, it can help narrow down
+                associations with specific disease types, genetic traits, and/or some lifestyle habits.
+            </p>
         </div>
     </div>
 {/if}
@@ -134,43 +141,34 @@
         justify-content: center;
         font-size: 1.1rem;
         gap: .25rem;
+        color: #36614B;
     }
 
     .message-two {
         position: absolute;
-        top: 7.4rem;
         width: 70%;
         height: 2rem;
         transform: translate(-50%, 0%);
         left: 50%;
+        top: 8rem;
         max-height: 30px;
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 0.75rem;
         gap: .25rem;
+        color: #36614B;
     }
 
     .colored-percentile {
         height: 90%;
-        width: 30%;
-        min-width: 150px;
+        width: 28%;
+        min-width: 145px;
         color: white;
         display: flex;
         align-items: center;
         justify-content: center;
-        border-radius: 7px;
-    }
-
-    .higher {
-        height: 70%;
-        width: 12%;
-        background-color: #015566;
-        color: white;
-        border-radius: 4px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        border-radius: 8px;
     }
 
     .colorBox {
