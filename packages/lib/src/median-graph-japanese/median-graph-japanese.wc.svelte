@@ -125,14 +125,14 @@
     .message {
         position: absolute;
         top: 4rem;
-        width: 80%;
+        width: 90%;
         height: 3rem;
         transform: translate(-50%, 0%);
-        left: 60%;
+        left: 50%;
         max-height: 40px;
         display: flex;
         align-items: center;
-        justify-content: end;
+        justify-content: center;
         font-size: 0.95rem;
         gap: .25rem;
         color: #36614B;
