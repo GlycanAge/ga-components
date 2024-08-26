@@ -173,7 +173,6 @@
         font-size: 0.95rem;
         gap: .25rem;
         color: #36614B;
-        border: 1px solid black;
     }
 
     .colored-percentile {
