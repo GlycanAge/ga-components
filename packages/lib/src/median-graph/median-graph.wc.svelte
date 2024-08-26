@@ -84,7 +84,7 @@
             <p>{getTranslation(lang, 'RANKS_YOU')}</p>
             <div class="colored-percentile"
                  style="background-color: {getColorMedian(min, mid, max, result)};">
-                <b>{percentile}<sup>{suffix(percentile)}</sup> {getTranslation(lang, 'PERCENTILE')}</b>
+                <b>{percentile}{#if lang === 'polish'}.{/if}<sup>{suffix(percentile, lang)}</sup> {getTranslation(lang, 'PERCENTILE')}</b>
             </div>
             <p>*</p>
         </div>
@@ -141,13 +141,14 @@
 
     .colored-percentile {
         height: 90%;
-        width: 28%;
+        width: 29%;
         min-width: 145px;
         color: white;
         display: flex;
         align-items: center;
         justify-content: center;
         border-radius: 8px;
+        padding: 0 0.2rem 0 0.2rem;
     }
 
     .colorBox {

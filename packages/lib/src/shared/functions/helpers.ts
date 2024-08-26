@@ -1,6 +1,10 @@
 import {english, polish, slovenian} from '../consts/languages.const';
 
-export function suffix(perc: number) {
+export function suffix(perc: number, lang: string = 'english') {
+  if (lang !== 'english' ) {
+    return '';
+  }
+
   if (perc === 11 || perc === 12 || perc === 13) {
     return 'th';
   }
