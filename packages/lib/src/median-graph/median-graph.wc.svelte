@@ -79,19 +79,13 @@
             <div><b>{max}</b></div>
         </div>
 
-        <div class="message-one">
+        <div class="message">
             <p>This result ranks you in the</p>
             <div class="colored-percentile"
                  style="background-color: {getColorMedian(min, mid, max, result)};">
                 <b>{percentile}<sup>{suffix(percentile)}</sup> percentile</b>
             </div>
             <p>*</p>
-        </div>
-        <div class="message-two">
-            <p style="text-align: center;">
-                <b>This index doesn’t influence your overall biological age.</b> However, it can help narrow down
-                associations with specific disease types, genetic traits, and/or some lifestyle habits.
-            </p>
         </div>
     </div>
 {/if}
@@ -128,9 +122,9 @@
         color: #6B8779;
     }
 
-    .message-one {
+    .message {
         position: absolute;
-        top: 5rem;
+        top: 4rem;
         width: 70%;
         height: 3rem;
         transform: translate(-50%, 0%);
@@ -140,22 +134,6 @@
         align-items: center;
         justify-content: center;
         font-size: 1.1rem;
-        gap: .25rem;
-        color: #36614B;
-    }
-
-    .message-two {
-        position: absolute;
-        width: 70%;
-        height: 2rem;
-        transform: translate(-50%, 0%);
-        left: 50%;
-        top: 8rem;
-        max-height: 30px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 0.75rem;
         gap: .25rem;
         color: #36614B;
     }

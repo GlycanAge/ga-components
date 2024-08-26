@@ -116,30 +116,13 @@
             <div><b>{max}</b></div>
         </div>
 
-        <div class="message-one">
+        <div class="message">
             <p>This result ranks you in the</p>
             <div class="colored-percentile"
                  style="background-color: {type === 'shield' || type === 'youth' ? getColorRedToBlue(min, mid, max, result) : getColorBlueToRed(min, mid, max, result)};">
                 <b>{percentile}<sup>{suffix(percentile)}</sup> percentile</b>
             </div>
             <p>*</p>
-        </div>
-        <div class="message-two" style="top: {type === 'lifestyle' ? '8' : '7.4'}rem;">
-            {#if type === 'lifestyle'}
-                <p style="text-align: center;"><b>This index doesn’t influence your overall biological age.</b> However,
-                    it can help narrow down
-                    associations with specific disease types, genetic traits, and/or some lifestyle habits.</p>
-            {:else}
-                <p>Having a</p>
-                <div class="higher"><b>
-                    {#if type === 'shield' || type === 'youth'}
-                        higher
-                    {:else if type === 'mature'}
-                        lower
-                    {/if}
-                </b></div>
-                <p>percentile ranking <b>is better</b> for this index.</p>
-            {/if}
         </div>
     </div>
 {/if}
@@ -176,9 +159,9 @@
         color: #6B8779;
     }
 
-    .message-one {
+    .message {
         position: absolute;
-        top: 5rem;
+        top: 4rem;
         width: 70%;
         height: 3rem;
         transform: translate(-50%, 0%);
@@ -192,21 +175,6 @@
         color: #36614B;
     }
 
-    .message-two {
-        position: absolute;
-        width: 70%;
-        height: 2rem;
-        transform: translate(-50%, 0%);
-        left: 50%;
-        max-height: 30px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 0.75rem;
-        gap: .25rem;
-        color: #36614B;
-    }
-
     .colored-percentile {
         height: 90%;
         width: 28%;
@@ -216,17 +184,6 @@
         align-items: center;
         justify-content: center;
         border-radius: 8px;
-    }
-
-    .higher {
-        height: 70%;
-        width: 12%;
-        background-color: #015566;
-        color: white;
-        border-radius: 4px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
     }
 
     .colorBox {
