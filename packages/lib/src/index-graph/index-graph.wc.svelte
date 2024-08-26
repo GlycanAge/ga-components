@@ -3,10 +3,17 @@
 <script lang="ts">
     import {onMount} from 'svelte';
     import {Service} from '../shared/utils/service';
-    import {calculateSliderPosition, getColorBlueToRed, getColorRedToBlue, suffix} from '../shared/functions/helpers';
+    import {
+        calculateSliderPosition,
+        getColorBlueToRed,
+        getColorRedToBlue,
+        getTranslation,
+        suffix
+    } from '../shared/functions/helpers';
 
     export let report: string;
     export let type: string;
+    export let lang: string;
     export let service: Service = window.GaReportService;
 
     let reportData: any;
@@ -80,7 +87,7 @@
 
         <div class="slider" style="left: {calculateSliderPosition(min, mid, max, result)}%;">
             <p style="font-size: 1rem;">
-                Your result
+                {getTranslation(lang, 'YOUR_RESULT')}
             </p>
             <p style="font-size: 1.2rem;">
                 <b>{result}</b>
@@ -117,10 +124,10 @@
         </div>
 
         <div class="message">
-            <p>This result ranks you in the</p>
+            <p>{getTranslation(lang, 'RANKS_YOU')}</p>
             <div class="colored-percentile"
                  style="background-color: {type === 'shield' || type === 'youth' ? getColorRedToBlue(min, mid, max, result) : getColorBlueToRed(min, mid, max, result)};">
-                <b>{percentile}<sup>{suffix(percentile)}</sup> percentile</b>
+                <b>{percentile}<sup>{suffix(percentile)}</sup> {getTranslation(lang, 'PERCENTILE')}</b>
             </div>
             <p>*</p>
         </div>

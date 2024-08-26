@@ -3,8 +3,10 @@
 <script lang="ts">
     import {onMount} from 'svelte';
     import {Service} from '../shared/utils/service';
+    import {getTranslation} from '../shared/functions/helpers';
 
     export let report: string;
+    export let lang: string;
     export let service: Service = window.GaReportService;
 
     let glycanAge = 0;
@@ -46,7 +48,7 @@
 
         <div class="slider-top" style="left: {calc()}%;">
             <p style="font-size: 1rem;">
-                Biological age
+                {getTranslation(lang, 'BIOLOGICAL_AGE')}
             </p>
             <p style="font-size: 1.5rem;">
                 <b>{glycanAge}</b>
@@ -64,7 +66,7 @@
                 <b>{chronoAge}</b>
             </div>
             <div style="font-size: 1rem;">
-                Chronological age
+                {getTranslation(lang, 'CHRONOLOGICAL_AGE')}
             </div>
         </div>
     </div>

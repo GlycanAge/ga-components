@@ -1,5 +1,6 @@
 export let english = {
   BIOLOGICAL_AGE: 'Biological age',
+  CHRONOLOGICAL_AGE: 'Chronological age',
   GLYCAN: 'Glycan',
   PEAK: 'Peak',
   LOWER_THAN_AVERAGE: 'Lower than average',
@@ -62,15 +63,19 @@ export let english = {
   POSSIBLE_FOLLOW_UP_TWENTYONE: 'Referral to (peri)menopause specialist',
   POSSIBLE_FOLLOW_UP_TWENTYTWO: 'Blood tests: full blood count, rheumatoid factor, anti-CCP antibodies, CRP',
   POSSIBLE_FOLLOW_UP_TWENTYTHREE: 'Joint imaging (X-rays, MRI)',
+  PERCENTILE: 'percentile',
   RISK_FACTORS: 'Risk factors',
   RISK_FACTOR_ONE: 'Past medical history (cardiometabolic syndrome, autoimmune disease)',
   RISK_FACTOR_TWO: 'Medication history (e.g., statins, blood thinners)',
   RISK_FACTOR_THREE: 'Current/previous smoking history',
-  RELATED_RESEARCH_PAPERS: 'Related research papers'
+  RANKS_YOU: 'This result ranks you in the',
+  RELATED_RESEARCH_PAPERS: 'Related research papers',
+  YOUR_RESULT: 'Your result'
 };
 
 export let polish = {
   BIOLOGICAL_AGE: 'Wiek biologiczny',
+  CHRONOLOGICAL_AGE: 'Wiek Kalendarzowy',
   GLYCAN: 'Glikan',
   PEAK: 'Pik',
   LOWER_THAN_AVERAGE: 'niższy od wartości średniej',
@@ -133,9 +138,20 @@ export let polish = {
   POSSIBLE_FOLLOW_UP_TWENTYONE: 'Skierowanie do specjalisty/ginekologa zajmującego się (peri)menopauzą',
   POSSIBLE_FOLLOW_UP_TWENTYTWO: 'Badania krwi: pełna morfologia krwi, czynnik reumatoidalny, przeciwciała anty-CCP, CRP',
   POSSIBLE_FOLLOW_UP_TWENTYTHREE: 'Obrazowanie stawów (zdjęcia rentgenowskie, rezonans magnetyczny)',
+  PERCENTILE: 'percentylu',
   RISK_FACTORS: 'Czynniki ryzyka',
   RISK_FACTOR_ONE: 'Historia chorób (np. zespół kardiometaboliczny, choroby autoimmunologiczne)',
   RISK_FACTOR_TWO: 'Historia przyjmowania leków (np. statyn, leków przeciwzakrzepowych)',
   RISK_FACTOR_THREE: 'Palenie tytoniu',
-  RELATED_RESEARCH_PAPERS: 'Publikacje naukowe'
+  RANKS_YOU: 'Twoj wynik klasyfikuje Cię w',
+  RELATED_RESEARCH_PAPERS: 'Publikacje naukowe',
+  YOUR_RESULT: 'Twój wynik'
 };
+
+export let slovenian = {
+  BIOLOGICAL_AGE: 'Biološka starost',
+  CHRONOLOGICAL_AGE: 'Kronološka starost',
+  RANKS_YOU: 'Ta rezultat vas uvršča med',
+  PERCENTILE: 'percentilov',
+  YOUR_RESULT: 'Vaš rezultat'
+}

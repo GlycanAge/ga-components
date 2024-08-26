@@ -1,4 +1,4 @@
-import {english, polish} from '../consts/languages.const';
+import {english, polish, slovenian} from '../consts/languages.const';
 
 export function suffix(perc: number) {
   if (perc === 11 || perc === 12 || perc === 13) {
@@ -20,7 +20,8 @@ export function suffix(perc: number) {
 export function getHeaderMessage(percentile: number, lang: string = 'english') {
   const translations = {
     english,
-    polish
+    polish,
+    slovenian
   };
 
   if (percentile < 32) {
@@ -37,7 +38,8 @@ export function getHeaderMessage(percentile: number, lang: string = 'english') {
 export function getTranslation(language: string = 'english', key: string) {
   const translations = {
     english,
-    polish
+    polish,
+    slovenian
   };
 
   return translations[language][key];
@@ -108,7 +110,6 @@ export function getColorBlueToRed(min: number, mid: number, max: number, result:
 
 export function getColorMedian(min: number, mid: number, max: number, result: number) {
   const position = calculateSliderPosition(min, mid, max, result);
-  console.log('position:', position);
 
   if (position < 9.5) {
     return '#DF2120';
