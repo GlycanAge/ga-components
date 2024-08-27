@@ -113,7 +113,7 @@
             </div>
         </div>
         <div style="width: 70%; display: flex; align-items: center;">
-            <Arrow type="left" {percentile} />
+            <Arrow type="left" {percentile} {lang}/>
         </div>
     </div>
 {/if}

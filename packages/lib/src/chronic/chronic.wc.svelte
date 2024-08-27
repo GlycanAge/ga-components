@@ -21,9 +21,9 @@
         if (glycanAge === chronoAge) {
             return 50;
         } else if (glycanAge > chronoAge) {
-            return diff > 35 ? 86 : 52 + diff;
+            return diff > 35 ? 86 : 54 + diff;
         } else if (glycanAge < chronoAge) {
-            return diff > 35 ? 14 : 48 - diff;
+            return diff > 35 ? 14 : 46 - diff;
         }
     }
 

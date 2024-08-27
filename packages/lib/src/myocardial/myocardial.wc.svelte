@@ -145,13 +145,14 @@
     <div class="summaryHeader">
       <div style="transform: translate(-50%);">
         {#if overlap || minorOverlap}
-          <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"><path fill="#F2590D" d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45ZM12 17q.425 0 .713-.288T13 16q0-.425-.288-.713T12 15q-.425 0-.713.288T11 16q0 .425.288.713T12 17Zm-1-4h2V7h-2v6Z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"><path
+                  fill={minorOverlap ? '#FFAA00' : '#F2590D'} d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45ZM12 17q.425 0 .713-.288T13 16q0-.425-.288-.713T12 15q-.425 0-.713.288T11 16q0 .425.288.713T12 17Zm-1-4h2V7h-2v6Z"/></svg>
         {:else}
           <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"><path fill="#12A195" d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"/></svg>
         {/if}
       </div>
       <div>
-        <b style="color: {overlap || minorOverlap ? '#F2590D' : '#12A195'}">
+        <b style="color: {overlap ? '#F2590D' : minorOverlap ? '#FFAA00' : '#12A195'}">
           {#if overlap}
             {getTranslation(lang, 'SOME_OVERLAP_LONG')}
           {:else if minorOverlap}
@@ -194,7 +195,7 @@
         </div>
       </div>
       <div style="width: 70%; display: flex; align-items: center;">
-        <Arrow type="right" {percentile} />
+        <Arrow type="right" {percentile} {lang} />
       </div>
     </div>
   {/if}
@@ -208,7 +209,7 @@
         </div>
       </div>
       <div style="width: 70%; display: flex; align-items: center;">
-        <Arrow type="left" {percentile} />
+        <Arrow type="left" {percentile} {lang} />
       </div>
     </div>
   {/if}
@@ -222,7 +223,7 @@
         </div>
       </div>
       <div style="width: 70%; display: flex; align-items: center;">
-        <Arrow type="left" {percentile} />
+        <Arrow type="left" {percentile} {lang} />
       </div>
     </div>
   {/if}
@@ -236,7 +237,7 @@
         </div>
       </div>
       <div style="width: 70%; display: flex; align-items: center;">
-        <Arrow type="right" {percentile} />
+        <Arrow type="right" {percentile} {lang} />
       </div>
     </div>
   {/if}
@@ -250,7 +251,7 @@
         </div>
       </div>
       <div style="width: 70%; display: flex; align-items: center;">
-        <Arrow type="left" {percentile} />
+        <Arrow type="left" {percentile} {lang} />
       </div>
     </div>
   {/if}

@@ -78,7 +78,9 @@
                 {/if}
             </div>
             <div>
-                <b style="color: {overlap ? '#F2590D' : '#12A195'}">{percentile > 68 ? getTranslation(lang, 'SOME_OVERLAP_LONG') : getTranslation(lang, 'NO_OVERLAP_LONG')}</b> {getTranslation(lang, 'OVERLAP_TEXT')}
+                <b style="color: {overlap ? '#F2590D' : '#12A195'}">
+                    {percentile > 68 ? getTranslation(lang, 'SOME_OVERLAP_LONG') : getTranslation(lang, 'NO_OVERLAP_LONG')}
+                </b> {getTranslation(lang, 'OVERLAP_TEXT')}
             </div>
         </div>
         <hr>
@@ -111,7 +113,7 @@
             </div>
         </div>
         <div style="width: 70%; display: flex; align-items: center;">
-            <Arrow type="right" {percentile} />
+            <Arrow type="right" {percentile} {lang} />
         </div>
     </div>
 {/if}

@@ -64,6 +64,7 @@ export let english = {
   POSSIBLE_FOLLOW_UP_TWENTYTWO: 'Blood tests: full blood count, rheumatoid factor, anti-CCP antibodies, CRP',
   POSSIBLE_FOLLOW_UP_TWENTYTHREE: 'Joint imaging (X-rays, MRI)',
   PERCENTILE: 'percentile',
+  SINGLE_PERCENTILE: 'percentile',
   RISK_FACTORS: 'Risk factors',
   RISK_FACTOR_ONE: 'Past medical history (cardiometabolic syndrome, autoimmune disease)',
   RISK_FACTOR_TWO: 'Medication history (e.g., statins, blood thinners)',
@@ -139,6 +140,7 @@ export let polish = {
   POSSIBLE_FOLLOW_UP_TWENTYTWO: 'Badania krwi: pełna morfologia krwi, czynnik reumatoidalny, przeciwciała anty-CCP, CRP',
   POSSIBLE_FOLLOW_UP_TWENTYTHREE: 'Obrazowanie stawów (zdjęcia rentgenowskie, rezonans magnetyczny)',
   PERCENTILE: 'percentylu',
+  SINGLE_PERCENTILE: 'percentyl',
   RISK_FACTORS: 'Czynniki ryzyka',
   RISK_FACTOR_ONE: 'Historia chorób (np. zespół kardiometaboliczny, choroby autoimmunologiczne)',
   RISK_FACTOR_TWO: 'Historia przyjmowania leków (np. statyn, leków przeciwzakrzepowych)',
@@ -153,6 +155,7 @@ export let slovenian = {
   CHRONOLOGICAL_AGE: 'Kronološka starost',
   RANKS_YOU: 'Ta rezultat vas uvršča med',
   PERCENTILE: 'percentilov',
+  SINGLE_PERCENTILE: 'percentil',
   YOUR_RESULT: 'Vaš rezultat'
 }
 
