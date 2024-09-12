@@ -146,9 +146,9 @@
     <div class="summaryBody">
       <h5>{getTranslation(lang, 'SYMPTOMS')}</h5>
       <ul>
-        <li>{getTranslation(lang, 'SYMPTOM_TWENTY')}</li>
-        <li>{getTranslation(lang, 'SYMPTOM_TWENTYONE')}</li>
-        <li>{getTranslation(lang, 'SYMPTOM_TWENTYTWO')}</li>
+        <li>{getTranslation(lang, 'SYMPTOM_TWENTYTHREE')}</li>
+        <li>{getTranslation(lang, 'SYMPTOM_TWENTYFOUR')}</li>
+        <li>{getTranslation(lang, 'SYMPTOM_TWENTYFIVE')}</li>
       </ul>
       <h5>{getTranslation(lang,'POSSIBLE_FOLLOW_UP')}</h5>
       <ul>

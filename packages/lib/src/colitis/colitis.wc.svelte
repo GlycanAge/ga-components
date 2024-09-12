@@ -147,8 +147,8 @@
       <h5>{getTranslation(lang, 'SYMPTOMS')}</h5>
       <ul>
         <li>{getTranslation(lang, 'SYMPTOM_NINE')}</li>
+        <li>{getTranslation(lang, 'SYMPTOM_TEN_B')}</li>
         <li>{getTranslation(lang, 'SYMPTOM_TEN')}</li>
-        <li>{getTranslation(lang, 'SYMPTOM_ELEVEN')}</li>
       </ul>
 
       <h5>{getTranslation(lang,'POSSIBLE_FOLLOW_UP')}</h5>

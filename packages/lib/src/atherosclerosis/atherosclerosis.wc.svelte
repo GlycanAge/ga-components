@@ -165,7 +165,7 @@
         <li>{getTranslation(lang,'POSSIBLE_FOLLOW_UP_FOUR')}</li>
         <li>{getTranslation(lang,'POSSIBLE_FOLLOW_UP_FIVE')}</li>
         <li>{getTranslation(lang,'POSSIBLE_FOLLOW_UP_SIX')}</li>
-        <li>{getTranslation(lang,'POSSIBLE_FOLLOW_UP_SEVEN')}</li>
+        <li>{getTranslation(lang,'POSSIBLE_FOLLOW_UP_SEVEN_B')}</li>
       </ul>
       <h5>{getTranslation(lang,'RELATED_RESEARCH_PAPERS')}</h5>
       <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5970566/pdf/res-122-1555.pdf">Glycosylation Profile of Immunoglobulin G Is Cross-Sectionally Associated With Cardiovascular Disease Risk Score and Subclinical Atherosclerosis in Two Independent Cohorts</a>

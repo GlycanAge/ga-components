@@ -138,7 +138,7 @@
         <li>{getTranslation(lang,'POSSIBLE_FOLLOW_UP_FOUR')}</li>
         <li>{getTranslation(lang,'POSSIBLE_FOLLOW_UP_FIVE')}</li>
         <li>{getTranslation(lang,'POSSIBLE_FOLLOW_UP_SIX')}</li>
-        <li>{getTranslation(lang,'POSSIBLE_FOLLOW_UP_SEVEN')}</li>
+        <li>{getTranslation(lang,'POSSIBLE_FOLLOW_UP_SEVEN_C')}</li>
       </ul>
       <h5>{getTranslation(lang,'RELATED_RESEARCH_PAPERS')}</h5>
       <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9953309/pdf/biomolecules-13-00375.pdf">IgG N-Glycosylation Is Altered in Coronary Artery Disease</a>
