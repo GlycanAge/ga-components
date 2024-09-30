@@ -6,6 +6,7 @@
   import Arrow from '../shared/components/Arrow.svelte';
   import {getHeaderMessage, getTranslation} from '../shared/functions/helpers';
 
+  export let brand: '' | 'clp';
   export let lang: string;
   export let report: string;
   export let type: string;
@@ -164,7 +165,7 @@
       </div>
     </div>
     <hr>
-    <div class="summaryBody">
+    <div class="summaryBody" class:clp={brand === 'clp'}>
       <h5>{getTranslation(lang, 'RISK_FACTORS')}</h5>
       <ul>
         <li>{getTranslation(lang, 'RISK_FACTOR_ONE')}</li>
@@ -310,6 +311,10 @@
         font-weight: bold;
         font-size: 12px;
         margin-top: 12px;
+    }
+
+    .summaryBody.clp a {
+        color: #0086A1;
     }
 
     .summaryBody svg {
