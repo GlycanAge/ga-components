@@ -74,7 +74,19 @@ export let english = {
   RISK_FACTOR_THREE: 'Current/previous smoking history',
   RANKS_YOU: 'This result ranks you in the',
   RELATED_RESEARCH_PAPERS: 'Related research papers',
-  YOUR_RESULT: 'Your result'
+  YOUR_RESULT: 'Your result',
+  CHRONIC_INFLAMMATION: 'Chronic inflammation',
+  ANTI_INFLAMMATORY: 'Anti-inflammatory',
+  PRO_INFLAMMATORY: 'Pro-inflammatory',
+  SUPPORTIVE_INDEX: 'Supportive index',
+  GLYCAN_SHIELD: 'Glycan Shield (S)',
+  GLYCAN_YOUTH: 'Glycan Youth (G2)',
+  GLYCAN_MATURE: 'Glycan Mature (G0)',
+  GLYCAN_MEDIAN: 'Glycan Median (G1)',
+  GLYCAN_LIFESTYLE: 'Glycan Lifestyle (B)',
+  WORSE: 'Worse',
+  BETTER: 'Better',
+  AVERAGE: 'Average',
 };
 
 export let polish = {
@@ -153,7 +165,19 @@ export let polish = {
   RISK_FACTOR_THREE: 'Palenie tytoniu',
   RANKS_YOU: 'Twoj wynik klasyfikuje Cię w',
   RELATED_RESEARCH_PAPERS: 'Publikacje naukowe',
-  YOUR_RESULT: 'Twój wynik'
+  YOUR_RESULT: 'Twój wynik',
+  CHRONIC_INFLAMMATION: 'TempText POLISH1',
+  ANTI_INFLAMMATORY: 'TempText POLISH2',
+  PRO_INFLAMMATORY: 'TempText POLISH3',
+  SUPPORTIVE_INDEX: 'TempText POLISH4',
+  GLYCAN_SHIELD: 'TempText Shield (S)',
+  GLYCAN_YOUTH: 'TempText Youth (G2)',
+  GLYCAN_MATURE: 'TempText Mature (G0)',
+  GLYCAN_MEDIAN: 'TempText Median (G1)',
+  GLYCAN_LIFESTYLE: 'TempText Lifestyle (B)',
+  WORSE: 'TempText Worse',
+  BETTER: 'TempText Better',
+  AVERAGE: 'TempText Average',
 };
 
 export let slovenian = {

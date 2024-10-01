@@ -23,4 +23,5 @@ export default () => {
   import('./src/median-graph/median-graph.wc.svelte');
   import('./src/median-graph-japanese/median-graph-japanese.wc.svelte');
   import('./src/index-graph-japanese/index-graph-japanese.wc.svelte');
+  import('./src/results-overview/results-overview.wc.svelte');
 };

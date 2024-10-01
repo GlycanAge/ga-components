@@ -6,7 +6,6 @@
     import Arrow from '../shared/components/Arrow.svelte';
     import {getHeaderMessage} from '../shared/functions/helpers';
 
-    export let brand: '' | 'clp';
     export let report: string;
     export let type: string;
     export let subtype: string;
@@ -136,7 +135,7 @@
             </div>
         </div>
         <hr>
-        <div class="summaryBody" class:clp={brand === 'clp'}>
+        <div class="summaryBody">
             <h5>Signs and symptoms</h5>
             <ul>
                 <li>Abnormal vaginal bleeding</li>
@@ -281,10 +280,6 @@
         font-weight: bold;
         font-size: 12px;
         margin-top: 12px;
-    }
-
-    .summaryBody.clp a {
-        color: #0086A1;
     }
 
     .summaryBody svg {

@@ -133,3 +133,63 @@ export function getColorMedian(min: number, mid: number, max: number, result: nu
     return '#DF2120';
   }
 }
+
+export function calculateSliderPositionWithPercentile(perc: number) {
+  if (perc === 50) {
+    return 50;
+  } else if (perc < 2) {
+    return 2.8;
+  } else if (perc > 98) {
+    return 97.2;
+  } else if (perc >= 2 && perc < 50) {
+    return scale(perc, 3, 50, 7, 50);
+  } else if (perc > 50 && perc <= 98) {
+    return scale(perc, 50, 97, 50, 93);
+  }
+}
+
+export function getColorRedToBlueWithPercentile(percentile: number) {
+  if (percentile < 18) {
+    return '#DF2120';
+  } else if (percentile >= 18 && percentile < 34) {
+    return '#F2800D';
+  } else if (percentile >= 34 && percentile < 67) {
+    return '#66CCAA';
+  } else if (percentile >= 67 && percentile <= 82) {
+    return '#13A195';
+  } else if (percentile > 82) {
+    return '#015566';
+  }
+}
+
+export function getColorBlueToRedWithPercentile(percentile: number) {
+  if (percentile < 18) {
+    return '#015566';
+  } else if (percentile >= 18 && percentile < 34) {
+    return '#13A195';
+  } else if (percentile >= 34 && percentile < 67) {
+    return '#66CCAA';
+  } else if (percentile >= 67 && percentile <= 82) {
+    return '#F2800D';
+  } else if (percentile > 82) {
+    return '#DF2120';
+  }
+}
+
+export function getColorMedianWithPercentile(percentile: number) {
+  if (percentile < 2) {
+    return '#DF2120';
+  } else if (percentile >= 2 && percentile < 18) {
+    return '#F2800D';
+  } else if (percentile >= 18 && percentile < 34) {
+    return '#13A195';
+  } else if (percentile >= 34 && percentile < 67) {
+    return '#66CCAA';
+  } else if (percentile >= 67 && percentile <= 82) {
+    return '#13A195';
+  } else if (percentile > 82 && percentile <= 98) {
+    return '#F2800D';
+  } else if (percentile > 98) {
+    return '#DF2120';
+  }
+}
