@@ -79,6 +79,9 @@
 
 {#if show}
     <div class="main">
+        <div class="glycanage" style="color: {getColor()};">
+            {glycanage}
+        </div>
         <div class="graph-container">
             <div class="colorBoxShort" style="background-color: #015566;"></div>
             <div class="colorBox" style="background-color: #015566;"></div>
@@ -134,12 +137,11 @@
 
     .graph-container {
         width: 100%;
-        height: 100%;
+        height: 30%;
         display: flex;
         align-items: center;
         justify-content: space-between;
         position: relative;
-        flex: 1;
     }
 
     .colorBox {
@@ -184,8 +186,8 @@
         width: 24%;
         color: #09341F80;
         font-weight: 500;
-        z-index: 99;}
-
+        z-index: 99;
+    }
 
     .text-left {
         position: absolute;
@@ -230,19 +232,19 @@
     }
 
     .msg-parent {
-        flex: 1;
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 2rem;
         color: #09341FCC;
         flex-direction: column;
+        height: 20%;
     }
 
     .result-text {
         width: 100%;
         text-align: center;
-        height: 28%;
+        height: 35%;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -251,9 +253,18 @@
     .chrono-text {
         width: 100%;
         text-align: center;
-        height: 28%;
+        height: 35%;
         display: flex;
         align-items: center;
         justify-content: center;
+    }
+
+    .glycanage {
+        display: flex;
+        font-size: 15rem;
+        justify-content: center;
+        align-items: center;
+        height: 50%;
+        margin-bottom: 1rem;
     }
 </style>
