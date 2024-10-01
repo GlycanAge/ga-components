@@ -17,42 +17,9 @@
     export let service: Service = window.GaReportService;
 
     let reportData: any;
-
-    let label = '';
-    let description = '';
     let percentile = 0;
 
     let show = false;
-
-    let subtypes = [
-        {
-            name: 'shield',
-            label: 'GLYCAN_SHIELD',
-            description: 'ANTI_INFLAMMATORY'
-        },
-        {
-            name: 'youth',
-            label: 'GLYCAN_YOUTH',
-            description: 'ANTI_INFLAMMATORY'
-        },
-        {
-            name: 'mature',
-            label: 'GLYCAN_MATURE',
-            description: 'PRO_INFLAMMATORY'
-        },
-        {
-            name: 'median',
-            label: 'GLYCAN_MEDIAN',
-            description: 'SUPPORTIVE_INDEX'
-        },
-        {
-            name: 'lifestyle',
-            label: 'GLYCAN_LIFESTYLE',
-            description: 'SUPPORTIVE_INDEX'
-        }
-    ];
-
-    const details = subtypes.find(x => x.name === type);
 
     onMount(async () => {
         reportData = await service.getReport(report);
@@ -78,11 +45,6 @@
             percentile = percentile === 100 ? 99 : 1;
         }
 
-        if (details) {
-            label = details.label;
-            description = details.description;
-        }
-
         show = true;
     });
 </script>
@@ -91,13 +53,13 @@
     <div class="main">
         <div class="label">
             This result ranks in the&nbsp;
-            <span style="color: {type === 'shield' || type === 'youth' ? getColorRedToBlueWithPercentile(percentile) : type === 'median' ? getColorMedianWithPercentile(percentile) : getColorBlueToRedWithPercentile(percentile)}; border: 1px solid green; height: 80%; display: flex; align-items: center;">
+            <span style="color: {type === 'shield' || type === 'youth' ? getColorRedToBlueWithPercentile(percentile) : type === 'median' ? getColorMedianWithPercentile(percentile) : getColorBlueToRedWithPercentile(percentile)}; height: 80%; display: flex;">
                 <b>{percentile}</b>
             </span>
-            <sup style="color: {type === 'shield' || type === 'youth' ? getColorRedToBlueWithPercentile(percentile) : type === 'median' ? getColorMedianWithPercentile(percentile) : getColorBlueToRedWithPercentile(percentile)};"><b>{suffix(percentile, lang)}</b></sup>
+            <sup style="color: {type === 'shield' || type === 'youth' ? getColorRedToBlueWithPercentile(percentile) : type === 'median' ? getColorMedianWithPercentile(percentile) : getColorBlueToRedWithPercentile(percentile)}; font-size: 0.65rem;"><b>{suffix(percentile, lang)}</b></sup>
             &nbsp;percentile:
         </div>
-        <div style="height: 85%; width: 100%; display: flex; align-items: center; justify-content: center; border: 2px solid #09341F33; border-radius: 10px;">
+        <div class="graph">
             <div class="graph-container">
                 {#if type === 'mature' || type === 'lifestyle'}
                     <div class="colorBoxShort" style="background-color: #015566;"></div>
@@ -166,6 +128,16 @@
         width: 100%;
         display: flex;
         justify-content: center;
+    }
+
+    .graph {
+        height: 85%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #09341F33;
+        border-radius: 10px;
     }
 
     .graph-container {
