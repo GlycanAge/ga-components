@@ -340,6 +340,7 @@
         border-top: 1px solid #09341F33;
         display: flex;
         padding-top: 0.8rem;
+        margin-bottom: 1.1rem;
     }
 
     .diseases {
