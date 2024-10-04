@@ -26,4 +26,5 @@ export default () => {
   import('./src/results-overview/results-overview.wc.svelte');
   import('./src/single-overview/single-overview.wc.svelte');
   import('./src/main-result/main-result.wc.svelte');
+  import('./src/insights-overview/insights-overview.wc.svelte');
 };
