@@ -33,15 +33,23 @@
 
   let stuff1 = false;
   let stuff2 = true;
+  let stuff3 = false;
+  let stuff4 = false;
+  let stuff5 = false;
 
   onMount(() => {
     window.GaReportService = new MockService();
   });
 </script>
 
-<div style="width: 100%; height: 100px; display: flex; justify-content: start; gap: 1rem; border-bottom: 3px solid #E76538; align-items: center; position: fixed; overflow: hidden; top: 0; z-index: 1000; background-color: #ffefe7; padding: 0.6rem;">
-  <div on:click={() => {stuff1 = true; stuff2 = false;}} role="button" style="width: 150px; height: 60px; border-radius: 10px; border: 2px solid #E76538; color: {stuff1 ? 'white' : '#E76538'}; display:  flex; align-items: center; justify-content: center; font-size: 1.5rem; background-color: {stuff1 ? '#E76538' : ''};">b2b v1.4</div>
-  <div on:click={() => {stuff1 = false; stuff2 = true;}} role="button" style="width: 150px; height: 60px; border-radius: 10px; border: 2px solid #E76538; color: {stuff2 ? 'white' : '#E76538'}; display:  flex; align-items: center; justify-content: center; font-size: 1.5rem; background-color: {stuff2 ? '#E76538' : ''};">b2b v2.0</div>
+<div style="width: 100%; height: 120px; display: flex; flex-direction: column; gap: 0.1rem; border-bottom: 3px solid #E76538; position: fixed; overflow: hidden; top: 0; z-index: 1000; background-color: #ffefe7;">
+  <div style="display: flex;">
+    <div on:click={() => {stuff1 = true; stuff2 = false;}} role="button" style="width: 150px; height: 28px; border-radius: 10px; border: 2px solid #E76538; color: {stuff1 ? 'white' : '#E76538'}; display:  flex; align-items: center; justify-content: center; background-color: {stuff1 ? '#E76538' : ''};">b2b v1.4</div>
+    <div on:click={() => {stuff1 = false; stuff2 = true;}} role="button" style="width: 150px; height: 28px; border-radius: 10px; border: 2px solid #E76538; color: {stuff2 ? 'white' : '#E76538'}; display:  flex; align-items: center; justify-content: center; background-color: {stuff2 ? '#E76538' : ''};">b2b v2.0</div>
+  </div>
+  <div role="button" style="width: 150px; height: 28px; border-radius: 10px; border: 2px solid #E76538; color: {stuff3 ? 'white' : '#E76538'}; display:  flex; align-items: center; justify-content: center; background-color: {stuff3 ? '#E76538' : ''};">b2b2c v1.2</div>
+  <div role="button" style="width: 150px; height: 28px; border-radius: 10px; border: 2px solid #E76538; color: {stuff4 ? 'white' : '#E76538'}; display:  flex; align-items: center; justify-content: center; background-color: {stuff4 ? '#E76538' : ''};">b2c v1.2</div>
+  <div role="button" style="width: 150px; height: 28px; border-radius: 10px; border: 2px solid #E76538; color: {stuff5 ? 'white' : '#E76538'}; display:  flex; align-items: center; justify-content: center; background-color: {stuff5 ? '#E76538' : ''};">SLE v1.0</div>
 </div>
 
 {#if stuff1}
