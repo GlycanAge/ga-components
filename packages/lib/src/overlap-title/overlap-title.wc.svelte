@@ -334,6 +334,6 @@
     }
 
     p {
-        max-width: 36ch;
+        max-width: 40ch;
     }
 </style>
