@@ -3,7 +3,7 @@ import { Service } from '../../lib/src/shared/utils/service';
 export class MockService implements Service {
   getReport(id: string) {
     return Promise.resolve({
-      Bpercentile: '11',
+      Bpercentile: '78',
       Bxaverage: '0.107',
       Bxmax: '0.176',
       Bxmin: '0.074',
