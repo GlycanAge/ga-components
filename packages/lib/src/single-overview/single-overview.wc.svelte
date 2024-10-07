@@ -11,7 +11,6 @@
     } from '../shared/functions/helpers';
     import {Service} from '../shared/utils/service';
 
-    export let report: string;
     export let type: string;
     export let lang: string;
     export let service: Service = window.GaReportService;
@@ -22,7 +21,7 @@
     let show = false;
 
     onMount(async () => {
-        reportData = await service.getReport(report);
+        reportData = await service.getReport();
 
         switch (type) {
             case 'shield':

@@ -4,7 +4,6 @@
     import {onMount} from 'svelte';
     import {Service} from '../shared/utils/service';
 
-    export let report: string;
     export let lang: string;
     export let service: Service = window.GaReportService;
 
@@ -38,11 +37,10 @@
     let p23Percentile = 0; // p23percentile
     let p26Percentile = 0; // p26percentile
 
-
     let show = false;
 
     onMount(async () => {
-        reportData = await service.getReport(report);
+        reportData = await service.getReport();
         gender = reportData.sex;
 
         bPercentile = Number(reportData.Bpercentile);

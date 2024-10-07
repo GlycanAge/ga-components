@@ -5,7 +5,6 @@
     import {getTranslation} from '../shared/functions/helpers';
     import {Service} from '../shared/utils/service';
 
-    export let report: string;
     export let lang: string;
     export let service: Service = window.GaReportService;
 
@@ -67,7 +66,7 @@
     let show = false;
 
     onMount(async () => {
-        reportData = await service.getReport(report);
+        reportData = await service.getReport();
         glycanage = Number(reportData.glycanage);
         chronoage = Number(reportData.chronologicalage);
 

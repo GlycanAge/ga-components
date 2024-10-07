@@ -8,7 +8,6 @@
 
     export let lang: string;
     export let subtype: string;
-    export let report: string;
     export let direction: string;
     export let service: Service = window.GaReportService;
 
@@ -81,7 +80,7 @@
     }
 
     onMount(async () => {
-        reportData = await service.getReport(report);
+        reportData = await service.getReport();
 
         if (details) {
             percentile = Number(reportData[details.csvName]);
