@@ -31,8 +31,8 @@
 <div style="position: relative; width: 92%; height: 4px; display: flex; justify-content: space-between; gap: 4px;">
     <div style="position: relative; height: 100%; flex: 1; background-color: {direction === 'left' ? '#DD2222' : '#CADBD1'}; border-radius: 4px;">
         {#if direction === 'left'}
-            <div style="position: absolute; right: 4px; bottom: 8px; height: 3px; width: 24px; background-color: #DD2222; border-radius: 4px; transform: rotate(135deg);"></div>
-            <div style="position: absolute; right: 4px; top: 8px; height: 3px; width: 24px; background-color: #DD2222; border-radius: 4px; transform: rotate(-135deg);"></div>
+            <div style="position: absolute; right: 10px; bottom: 5px; height: 3px; width: 14px; background-color: #DD2222; border-radius: 4px; transform: rotate(135deg);"></div>
+            <div style="position: absolute; right: 10px; top: 5px; height: 3px; width: 14px; background-color: #DD2222; border-radius: 4px; transform: rotate(-135deg);"></div>
         {/if}
     </div>
     <div style="height: 100%; flex: 2; background-color: {direction === 'left' ? '#DD2222' : '#CADBD1'}; border-radius: 4px;"></div>
@@ -43,8 +43,8 @@
     <div style="height: 100%; flex: 2; background-color: {direction === 'left' ? '#CADBD1' : '#DD2222'}; border-radius: 4px;"></div>
     <div style="position: relative; height: 100%; flex: 1; background-color: {direction === 'left' ? '#CADBD1' : '#DD2222'}; border-radius: 4px;">
         {#if direction === 'right'}
-            <div style="position: absolute; left: 4px; bottom: 8px; height: 3px; width: 24px; background-color: #DD2222; border-radius: 4px; transform: rotate(45deg);"></div>
-            <div style="position: absolute; left: 4px; top: 8px; height: 3px; width: 24px; background-color: #DD2222; border-radius: 4px; transform: rotate(-45deg);"></div>
+            <div style="position: absolute; left: 11px; bottom: 5px; height: 3px; width: 14px; background-color: #DD2222; border-radius: 4px; transform: rotate(45deg);"></div>
+            <div style="position: absolute; left: 11px; top: 5px; height: 3px; width: 14px; background-color: #DD2222; border-radius: 4px; transform: rotate(-45deg);"></div>
         {/if}
     </div>
 
