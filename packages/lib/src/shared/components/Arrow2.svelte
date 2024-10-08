@@ -36,10 +36,10 @@
         {/if}
     </div>
     <div style="height: 100%; flex: 2; background-color: {direction === 'left' ? '#DD2222' : '#CADBD1'}; border-radius: 4px;"></div>
-    <div style="height: 100%; flex: 2; background-color: {direction === 'left' ? '#F2800D' : '#CADBD1'}; border-radius: 4px;"></div>
+    <div style="height: 100%; flex: 2; background-color: {direction === 'left' ? '#EE6600' : '#CADBD1'}; border-radius: 4px;"></div>
     <div style="position: relative; height: 100%; flex: 2; background-color: #CADBD1; border-radius: 4px;"></div>
     <div style="height: 100%; flex: 2; background-color: #CADBD1; border-radius: 4px;"></div>
-    <div style="height: 100%; flex: 2; background-color: {direction === 'left' ? '#CADBD1' : '#F2800D'}; border-radius: 4px;"></div>
+    <div style="height: 100%; flex: 2; background-color: {direction === 'left' ? '#CADBD1' : '#EE6600'}; border-radius: 4px;"></div>
     <div style="height: 100%; flex: 2; background-color: {direction === 'left' ? '#CADBD1' : '#DD2222'}; border-radius: 4px;"></div>
     <div style="position: relative; height: 100%; flex: 1; background-color: {direction === 'left' ? '#CADBD1' : '#DD2222'}; border-radius: 4px;">
         {#if direction === 'right'}
