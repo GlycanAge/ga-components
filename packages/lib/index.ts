@@ -31,4 +31,6 @@ export default () => {
   import('./src/overlap-title/overlap-title.wc.svelte');
   import('./src/scatter-plot/scatter-plot.wc.svelte');
   import('./src/results-overview-clp/results-overview-clp.wc.svelte');
+  import('./src/insights-overview-clp/insights-overview-clp.wc.svelte');
+  import('./src/main-result-clp/main-result-clp.wc.svelte');
 };

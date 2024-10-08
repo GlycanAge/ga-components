@@ -31,6 +31,8 @@
   import '../../../dist/overlap-title.wc.js';
   import '../../../dist/scatter-plot.wc.js';
   import '../../../dist/results-overview-clp.wc.js';
+  import '../../../dist/insights-overview-clp.wc.js';
+  import '../../../dist/main-result-clp.wc.js';
   import { MockService } from './mock-service';
 
   let stuff1 = false;
@@ -470,7 +472,7 @@
         <div style="height: 588px; width: 550px; border: 1px dashed lightcoral;">
           <ga-insights-overview lang="english"></ga-insights-overview>
         </div>
-      </div>
+    </div>
     <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
         <b>5. single-overview.wc.svelte (also used in b2b2c(v1.2) , b2c(v1.2))</b>
         <div style="width: 550px; height: 200px; border: 1px dashed lightcoral;">
@@ -637,12 +639,12 @@
 
 {#if stuff5}
   <div style="width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; margin-top: 120px;">
-<!--    <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">-->
-<!--      <b>1. main-result.wc.svelte (also used in b2b(v2.0) , b2b2c(v1.2))</b>-->
-<!--      <div style="border: 1px dashed lightcoral; width: 550px; height: 30rem;">-->
-<!--        <ga-main-result lang="english"></ga-main-result>-->
-<!--      </div>-->
-<!--    </div>-->
+    <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
+      <b>1. main-result-clp.wc.svelte</b>
+      <div style="border: 1px dashed lightcoral; width: 550px; height: 30rem;">
+        <ga-main-result-clp lang="english"></ga-main-result-clp>
+      </div>
+    </div>
 
     <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
       <b>2. results-overview-clp.wc.svelte</b>
@@ -665,6 +667,13 @@
         <div style="width: 100%; height: 98px; border-top: 2px solid #09341F33;">
           <ga-results-overview-clp type="lifestyle" lang="english"></ga-results-overview-clp>
         </div>
+      </div>
+    </div>
+
+    <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
+      <b>4. insights-overview-clp.wc.svelte</b>
+      <div style="height: 588px; width: 550px; border: 1px dashed lightcoral;">
+        <ga-insights-overview-clp lang="english"></ga-insights-overview-clp>
       </div>
     </div>
 
