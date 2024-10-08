@@ -63,7 +63,16 @@
 
         switch (type) {
             case 'score':
-                percentile = Number(reportData.glycanage);
+                let G = Number(reportData.glycanage);
+                let C = Number(reportData.chronologicalage);
+
+                if (G < C) {
+                    percentile = Math.round(50 - (C - G) / (C - 20) * 50);
+                } else if (G > C) {
+                    percentile = Math.round(50 + (G - C) / (80 - C) * 50);
+                } else {
+                    percentile = 50;
+                }
                 break;
             case 'shield':
                 percentile = Number(reportData.Spercentile);
