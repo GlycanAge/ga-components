@@ -1,6 +1,7 @@
 export let english = {
   BIOLOGICAL_AGE: 'Biological age',
   CHRONOLOGICAL_AGE: 'Chronological age',
+  SI_SCORE: 'SI score',
   GLYCAN: 'Glycan',
   PEAK: 'Peak',
   LOWER_THAN_AVERAGE: 'Lower than average',
@@ -78,6 +79,7 @@ export let english = {
   RELATED_RESEARCH_PAPERS: 'Related research papers',
   YOUR_RESULT: 'Your result',
   CHRONIC_INFLAMMATION: 'Chronic inflammation',
+  SYSTEMIC_INFLAMMATION: 'Systemic inflammation',
   ANTI_INFLAMMATORY: 'Anti-inflammatory',
   PRO_INFLAMMATORY: 'Pro-inflammatory',
   SUPPORTIVE_INDEX: 'Supportive index',

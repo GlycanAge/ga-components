@@ -30,13 +30,14 @@
   import '../../../dist/arrow-graph.wc.js';
   import '../../../dist/overlap-title.wc.js';
   import '../../../dist/scatter-plot.wc.js';
+  import '../../../dist/results-overview-clp.wc.js';
   import { MockService } from './mock-service';
 
   let stuff1 = false;
-  let stuff2 = true;
+  let stuff2 = false;
   let stuff3 = false;
   let stuff4 = false;
-  let stuff5 = false;
+  let stuff5 = true;
 
   function navbar(id: string) {
     stuff1 = false;
@@ -75,7 +76,7 @@
   </div>
   <div on:click={() => navbar('stuff3')} role="button" style="width: 140px; height: 25px; border-radius: 10px; border: 2px solid #E76538; color: {stuff3 ? 'white' : '#E76538'}; display:  flex; align-items: center; justify-content: center; background-color: {stuff3 ? '#E76538' : ''};">b2b2c v1.2</div>
   <div on:click={() => navbar('stuff4')} role="button" style="width: 140px; height: 25px; border-radius: 10px; border: 2px solid #E76538; color: {stuff4 ? 'white' : '#E76538'}; display:  flex; align-items: center; justify-content: center; background-color: {stuff4 ? '#E76538' : ''};">b2c v1.2</div>
-  <div on:click={() => navbar('stuff5')} role="button" style="width: 140px; height: 25px; border-radius: 10px; border: 2px solid #E76538; color: {stuff5 ? 'white' : '#E76538'}; display:  flex; align-items: center; justify-content: center; background-color: {stuff5 ? '#E76538' : ''};">SLE v1.0</div>
+  <div on:click={() => navbar('stuff5')} role="button" style="width: 140px; height: 25px; border-radius: 10px; border: 2px solid #E76538; color: {stuff5 ? 'white' : '#E76538'}; display:  flex; align-items: center; justify-content: center; background-color: {stuff5 ? '#E76538' : ''};">CLP v1.0</div>
 </div>
 
 {#if stuff1}
@@ -632,6 +633,64 @@
         </div>
       </div>
     </div>
+{/if}
+
+{#if stuff5}
+  <div style="width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; margin-top: 120px;">
+<!--    <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">-->
+<!--      <b>1. main-result.wc.svelte (also used in b2b(v2.0) , b2b2c(v1.2))</b>-->
+<!--      <div style="border: 1px dashed lightcoral; width: 550px; height: 30rem;">-->
+<!--        <ga-main-result lang="english"></ga-main-result>-->
+<!--      </div>-->
+<!--    </div>-->
+
+    <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
+      <b>2. results-overview-clp.wc.svelte</b>
+      <div style="display: flex; flex-direction: column; height: 588px; width: 550px; border: 1px dashed lightcoral;">
+        <div style="width: 100%; height: 98px;">
+          <ga-results-overview-clp type="score" lang="english"></ga-results-overview-clp>
+        </div>
+        <div style="width: 100%; height: 98px; border-top: 2px solid #09341F33;">
+          <ga-results-overview-clp type="shield" lang="english"></ga-results-overview-clp>
+        </div>
+        <div style="width: 100%; height: 98px; border-top: 2px solid #09341F33;">
+          <ga-results-overview-clp type="youth" lang="english"></ga-results-overview-clp>
+        </div>
+        <div style="width: 100%; height: 98px; border-top: 2px solid #09341F33;">
+          <ga-results-overview-clp type="mature" lang="english"></ga-results-overview-clp>
+        </div>
+        <div style="width: 100%; height: 98px; border-top: 2px solid #09341F33;">
+          <ga-results-overview-clp type="median" lang="english"></ga-results-overview-clp>
+        </div>
+        <div style="width: 100%; height: 98px; border-top: 2px solid #09341F33;">
+          <ga-results-overview-clp type="lifestyle" lang="english"></ga-results-overview-clp>
+        </div>
+      </div>
+    </div>
+
+<!--    <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">-->
+<!--      <b>3. single-overview.wc.svelte (also used in b2b(v2.0) , b2b2c(v1.2))</b>-->
+<!--      <div style="width: 550px; height: 200px; border: 1px dashed lightcoral;">-->
+<!--        <ga-single-overview type="shield" lang="english"></ga-single-overview>-->
+<!--      </div>-->
+<!--      <div style="margin: 5px;"></div>-->
+<!--      <div style="width: 550px; height: 200px; border: 1px dashed lightcoral;">-->
+<!--        <ga-single-overview type="youth" lang="english"></ga-single-overview>-->
+<!--      </div>-->
+<!--      <div style="margin: 5px;"></div>-->
+<!--      <div style="width: 550px; height: 200px; border: 1px dashed lightcoral;">-->
+<!--        <ga-single-overview type="mature" lang="english"></ga-single-overview>-->
+<!--      </div>-->
+<!--      <div style="margin: 5px;"></div>-->
+<!--      <div style="width: 550px; height: 200px; border: 1px dashed lightcoral;">-->
+<!--        <ga-single-overview type="median" lang="english"></ga-single-overview>-->
+<!--      </div>-->
+<!--      <div style="margin: 5px;"></div>-->
+<!--      <div style="width: 550px; height: 200px; border: 1px dashed lightcoral;">-->
+<!--        <ga-single-overview type="lifestyle" lang="english"></ga-single-overview>-->
+<!--      </div>-->
+<!--    </div>-->
+  </div>
 {/if}
 
 
