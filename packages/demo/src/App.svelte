@@ -29,6 +29,7 @@
   import '../../../dist/insights-overview.wc.js';
   import '../../../dist/arrow-graph.wc.js';
   import '../../../dist/overlap-title.wc.js';
+  import '../../../dist/scatter-plot.wc.js';
   import { MockService } from './mock-service';
 
   let stuff1 = false;
@@ -42,21 +43,22 @@
   });
 </script>
 
-<div style="width: 100%; height: 120px; display: flex; flex-direction: column; gap: 0.1rem; border-bottom: 3px solid #E76538; position: fixed; overflow: hidden; top: 0; z-index: 1000; background-color: #ffefe7;">
+<div style="width: 100%; height: 120px; display: flex; flex-direction: column; gap: 0.3rem; border-bottom: 3px solid #E76538; position: fixed; overflow: hidden; top: 0; z-index: 1000; background-color: #ffefe7;">
   <div style="display: flex;">
-    <div on:click={() => {stuff1 = true; stuff2 = false;}} role="button" style="width: 150px; height: 28px; border-radius: 10px; border: 2px solid #E76538; color: {stuff1 ? 'white' : '#E76538'}; display:  flex; align-items: center; justify-content: center; background-color: {stuff1 ? '#E76538' : ''};">b2b v1.4</div>
-    <div on:click={() => {stuff1 = false; stuff2 = true;}} role="button" style="width: 150px; height: 28px; border-radius: 10px; border: 2px solid #E76538; color: {stuff2 ? 'white' : '#E76538'}; display:  flex; align-items: center; justify-content: center; background-color: {stuff2 ? '#E76538' : ''};">b2b v2.0</div>
+    <div on:click={() => {stuff1 = true; stuff2 = false;}} role="button" style="width: 140px; height: 25px; border-radius: 10px; border: 2px solid #E76538; color: {stuff1 ? 'white' : '#E76538'}; display:  flex; align-items: center; justify-content: center; background-color: {stuff1 ? '#E76538' : ''};">b2b v1.4</div>
+    <div on:click={() => {stuff1 = false; stuff2 = true;}} role="button" style="width: 140px; height: 25px; border-radius: 10px; border: 2px solid #E76538; color: {stuff2 ? 'white' : '#E76538'}; display:  flex; align-items: center; justify-content: center; background-color: {stuff2 ? '#E76538' : ''};">b2b v2.0</div>
   </div>
-  <div role="button" style="width: 150px; height: 28px; border-radius: 10px; border: 2px solid #E76538; color: {stuff3 ? 'white' : '#E76538'}; display:  flex; align-items: center; justify-content: center; background-color: {stuff3 ? '#E76538' : ''};">b2b2c v1.2</div>
-  <div role="button" style="width: 150px; height: 28px; border-radius: 10px; border: 2px solid #E76538; color: {stuff4 ? 'white' : '#E76538'}; display:  flex; align-items: center; justify-content: center; background-color: {stuff4 ? '#E76538' : ''};">b2c v1.2</div>
-  <div role="button" style="width: 150px; height: 28px; border-radius: 10px; border: 2px solid #E76538; color: {stuff5 ? 'white' : '#E76538'}; display:  flex; align-items: center; justify-content: center; background-color: {stuff5 ? '#E76538' : ''};">SLE v1.0</div>
+  <div role="button" style="width: 140px; height: 25px; border-radius: 10px; border: 2px solid #E76538; color: {stuff3 ? 'white' : '#E76538'}; display:  flex; align-items: center; justify-content: center; background-color: {stuff3 ? '#E76538' : ''};">b2b2c v1.2</div>
+  <div role="button" style="width: 140px; height: 25px; border-radius: 10px; border: 2px solid #E76538; color: {stuff4 ? 'white' : '#E76538'}; display:  flex; align-items: center; justify-content: center; background-color: {stuff4 ? '#E76538' : ''};">b2c v1.2</div>
+  <div role="button" style="width: 140px; height: 25px; border-radius: 10px; border: 2px solid #E76538; color: {stuff5 ? 'white' : '#E76538'}; display:  flex; align-items: center; justify-content: center; background-color: {stuff5 ? '#E76538' : ''};">SLE v1.0</div>
 </div>
 
 {#if stuff1}
   <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; margin-top: 120px">
-    <div class="flex flex-col items-center" style="width: 80%; border-bottom: 2px dashed black; padding: 2rem 0 2rem 0;">
+    <div class="flex flex-col items-center" style="width: 80%; border-bottom: 2px dashed black; border-top: 1px dashed black; padding: 2rem 0 2rem 0;">
+      <p>* Some of these are also used in b2b2c(v1.0, v1.1) and b2c(v1.1) *</p>
       <b>1. age-graph.wc.svelte</b>
-      <div style="margin: 50px;"></div>
+      <div style="margin: 60px;"></div>
       <div style="width: 34rem; border: 1px dashed lightcoral;">
         <!-- width is set to 34rem to match the width from handlebars for easier development-->
         <ga-age-graph lang="english"></ga-age-graph>
@@ -65,12 +67,12 @@
     </div>
     <div class="flex flex-col items-center" style="width: 80%; border-bottom: 2px dashed black; padding: 2rem 0 2rem 0;">
       <b>2. index-graph.wc.svelte</b>
-      <div style="margin: 40px;"></div>
+      <div style="margin: 60px;"></div>
       <div style="width: 70ch; border: 1px dashed lightcoral;">
         <!-- width is set to 78ch to match the width from handlebars for easier development-->
         <ga-index-graph type="shield" lang="english"></ga-index-graph>
       </div>
-      <div style="margin: 50px;"></div>
+      <div style="margin: 60px;"></div>
     </div>
     <div class="flex flex-col items-center" style="width: 80%; border-bottom: 2px dashed black; padding: 2rem 0 2rem 0;">
       <b>3. median-graph.wc.svelte</b>
@@ -96,7 +98,7 @@
       </div>
     </div>
     <div class="flex flex-col">
-      <div style="margin: 50px;"></div>
+      <div style="margin: 60px;"></div>
       <div class="flex">
         HYPERTENSION RISK &nbsp;
         <div class="flex flex-col">
@@ -389,6 +391,12 @@
 {#if stuff2}
   <div style="width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; margin-top: 120px;">
     <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
+      <b>0. scatter-plot.wc.svelte</b>
+      <div style="border: 1px solid #09341F33; border-radius: 10px; width: 550px; height: 30rem;">
+        <ga-scatter-plot type="median"></ga-scatter-plot>
+      </div>
+    </div>
+    <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
         <b>1. main-result.wc.svelte</b>
         <div style="border: 1px dashed lightcoral; width: 550px; height: 30rem;">
             <ga-main-result lang="english"></ga-main-result>
@@ -396,15 +404,15 @@
       </div>
     <div style="border-bottom: 2px dashed black; display: flex; flex-direction: column; align-items: center; width: 80%; padding: 2rem 0 2rem 0;">
       <b>2. overlap-title.wc.svelte</b>
-      <div style="width: 66ch;height: 11ch; border: 1px dashed lightcoral;">
+      <div style="width: 71.3ch;height: 11ch; border: 1px dashed lightcoral;">
         <ga-overlap-title disease="dyslipidemia"></ga-overlap-title>
       </div>
       <div style="margin: 4px;"></div>
-      <div style="width: 66ch;height: 11ch; border: 1px dashed lightcoral;">
+      <div style="width: 71.3ch;height: 11ch; border: 1px dashed lightcoral;">
         <ga-overlap-title disease="coronary"></ga-overlap-title>
       </div>
       <div style="margin: 4px;"></div>
-      <div style="width: 66ch;height: 11ch; border: 1px dashed lightcoral;">
+      <div style="width: 71.3ch;height: 11ch; border: 1px dashed lightcoral;">
         <ga-overlap-title disease="risk"></ga-overlap-title>
       </div>
     </div>
@@ -466,7 +474,7 @@
       </div>
       <div style="margin: 5px;"></div>
       <div style="width: 550px; height: 82px; border: 1px dashed lightcoral;">
-        <ga-arrow-graph subtype="youth" direction="left"></ga-arrow-graph>
+        <ga-arrow-graph subtype="youth" direction="right"></ga-arrow-graph>
       </div>
       <div style="margin: 5px;"></div>
       <div style="width: 550px; height: 82px; border: 1px dashed lightcoral;">

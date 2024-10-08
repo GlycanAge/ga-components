@@ -1,7 +1,7 @@
 import { Service } from '../../lib/src/shared/utils/service';
 
 export class MockService implements Service {
-  getReport(id: string) {
+  getReport() {
     return Promise.resolve({
       Bpercentile: '78',
       Bxaverage: '0.107',
@@ -119,6 +119,53 @@ export class MockService implements Service {
       type: 'regular',
       userId: 'some-id',
       sex: 'F'
+    });
+  }
+
+  getScatterData() {
+    return Promise.resolve({
+      data: [
+        {
+          x: 0.1,
+          y: 0.2
+        },
+        {
+          x: 0.2,
+          y: 0.3
+        },
+        {
+          x: 0.3,
+          y: 0.4
+        },
+        {
+          x: 0.4,
+          y: 0.5
+        },
+        {
+          x: 0.5,
+          y: 0.6
+        },
+        {
+          x: 0.6,
+          y: 0.7
+        },
+        {
+          x: 0.7,
+          y: 0.8
+        },
+        {
+          x: 0.8,
+          y: 0.9
+        },
+        {
+          x: 0.9,
+          y: 1.0
+        },
+        {
+          x: 1.0,
+          y: 1.1
+        }
+      ]
     });
   }
 }

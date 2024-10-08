@@ -29,4 +29,5 @@ export default () => {
   import('./src/insights-overview/insights-overview.wc.svelte');
   import('./src/arrow-graph/arrow-graph.wc.svelte');
   import('./src/overlap-title/overlap-title.wc.svelte');
+  import('./src/scatter-plot/scatter-plot.wc.svelte');
 };
