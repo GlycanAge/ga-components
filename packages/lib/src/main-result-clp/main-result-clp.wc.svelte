@@ -96,7 +96,7 @@
     @font-face {
         font-family: "mercury";
         src: url("https://dev.back-office.ga-internals-91.com/assets/reports/b2b/clp/1.0/fonts/MercuryDisplay.otf") format("truetype");
-        font-weight: 400;
+        font-weight: 500;
         font-display: swap;
     }
 
@@ -205,11 +205,12 @@
 
     .glycanage {
         display: flex;
-        font-size: 15rem;
+        font-size: 240px;
         justify-content: center;
-        align-items: center;
+        align-items: end;
         height: 50%;
         margin-bottom: 1rem;
+        margin-top: 1.4rem;
         font-family: 'mercury', serif;
     }
 </style>
