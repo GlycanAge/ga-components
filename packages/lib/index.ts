@@ -33,4 +33,5 @@ export default () => {
   import('./src/results-overview-clp/results-overview-clp.wc.svelte');
   import('./src/insights-overview-clp/insights-overview-clp.wc.svelte');
   import('./src/main-result-clp/main-result-clp.wc.svelte');
+  import('./src/single-overview-clp/single-overview-clp.wc.svelte');
 };

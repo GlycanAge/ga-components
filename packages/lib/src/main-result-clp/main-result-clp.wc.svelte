@@ -196,24 +196,6 @@
         color: #09341F80;
     }
 
-    .result-text {
-        width: 100%;
-        text-align: center;
-        height: 35%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .chrono-text {
-        width: 100%;
-        text-align: center;
-        height: 35%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
     .glycanage {
         display: flex;
         font-size: 15rem;

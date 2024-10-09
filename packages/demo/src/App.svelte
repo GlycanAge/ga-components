@@ -33,6 +33,7 @@
   import '../../../dist/results-overview-clp.wc.js';
   import '../../../dist/insights-overview-clp.wc.js';
   import '../../../dist/main-result-clp.wc.js';
+  import '../../../dist/single-overview-clp.wc.js';
   import { MockService } from './mock-service';
 
   let stuff1 = false;
@@ -671,34 +672,34 @@
     </div>
 
     <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
+      <b>3. single-overview.wc.svelte (also used in b2b(v2.0) , b2b2c(v1.2))</b>
+      <div style="width: 550px; height: 200px; border: 1px dashed lightcoral;">
+        <ga-single-overview-clp type="shield" lang="english"></ga-single-overview-clp>
+      </div>
+      <div style="margin: 5px;"></div>
+      <div style="width: 550px; height: 200px; border: 1px dashed lightcoral;">
+        <ga-single-overview-clp type="youth" lang="english"></ga-single-overview-clp>
+      </div>
+      <div style="margin: 5px;"></div>
+      <div style="width: 550px; height: 200px; border: 1px dashed lightcoral;">
+        <ga-single-overview-clp type="mature" lang="english"></ga-single-overview-clp>
+      </div>
+      <div style="margin: 5px;"></div>
+      <div style="width: 550px; height: 200px; border: 1px dashed lightcoral;">
+        <ga-single-overview-clp type="median" lang="english"></ga-single-overview-clp>
+      </div>
+      <div style="margin: 5px;"></div>
+      <div style="width: 550px; height: 200px; border: 1px dashed lightcoral;">
+        <ga-single-overview-clp type="lifestyle" lang="english"></ga-single-overview-clp>
+      </div>
+    </div>
+
+    <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
       <b>4. insights-overview-clp.wc.svelte</b>
       <div style="height: 588px; width: 550px; border: 1px dashed lightcoral;">
         <ga-insights-overview-clp lang="english"></ga-insights-overview-clp>
       </div>
     </div>
-
-<!--    <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">-->
-<!--      <b>3. single-overview.wc.svelte (also used in b2b(v2.0) , b2b2c(v1.2))</b>-->
-<!--      <div style="width: 550px; height: 200px; border: 1px dashed lightcoral;">-->
-<!--        <ga-single-overview type="shield" lang="english"></ga-single-overview>-->
-<!--      </div>-->
-<!--      <div style="margin: 5px;"></div>-->
-<!--      <div style="width: 550px; height: 200px; border: 1px dashed lightcoral;">-->
-<!--        <ga-single-overview type="youth" lang="english"></ga-single-overview>-->
-<!--      </div>-->
-<!--      <div style="margin: 5px;"></div>-->
-<!--      <div style="width: 550px; height: 200px; border: 1px dashed lightcoral;">-->
-<!--        <ga-single-overview type="mature" lang="english"></ga-single-overview>-->
-<!--      </div>-->
-<!--      <div style="margin: 5px;"></div>-->
-<!--      <div style="width: 550px; height: 200px; border: 1px dashed lightcoral;">-->
-<!--        <ga-single-overview type="median" lang="english"></ga-single-overview>-->
-<!--      </div>-->
-<!--      <div style="margin: 5px;"></div>-->
-<!--      <div style="width: 550px; height: 200px; border: 1px dashed lightcoral;">-->
-<!--        <ga-single-overview type="lifestyle" lang="english"></ga-single-overview>-->
-<!--      </div>-->
-<!--    </div>-->
   </div>
 {/if}
 

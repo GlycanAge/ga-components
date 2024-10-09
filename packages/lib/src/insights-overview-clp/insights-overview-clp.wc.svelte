@@ -392,7 +392,7 @@
     .overlap-row {
         display: flex;
         align-items: center;
-        margin-bottom: 0.3rem;
+        margin-bottom: 0.26rem;
         font-size: 0.85rem;
     }
 
