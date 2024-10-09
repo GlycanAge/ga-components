@@ -2,7 +2,7 @@
 
 <script lang="ts">
     import {onMount} from 'svelte';
-    import {getColorBlueToRedWithPercentile, getTranslation} from '../shared/functions/helpers';
+    import {getTranslation} from '../shared/functions/helpers';
     import {Service} from '../shared/utils/service';
 
     export let lang: string;
@@ -95,7 +95,7 @@
 <style>
     @font-face {
         font-family: "mercury";
-        src: url("https://{{dev}}back-office.ga-internals-91.com/assets/reports/b2b/{{language}}/{{version}}/fonts/MercuryDisplay.otf") format("truetype");
+        src: url("https://dev.back-office.ga-internals-91.com/assets/reports/b2b/clp/1.0/fonts/MercuryDisplay.otf") format("truetype");
         font-weight: 400;
         font-display: swap;
     }

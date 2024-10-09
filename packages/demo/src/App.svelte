@@ -35,6 +35,7 @@
   import '../../../dist/main-result-clp.wc.js';
   import '../../../dist/single-overview-clp.wc.js';
   import '../../../dist/arrow-graph-clp.wc.js';
+  import '../../../dist/overlap-title-clp.wc.js';
   import { MockService } from './mock-service';
 
   let stuff1 = false;
@@ -699,6 +700,21 @@
       <b>4. insights-overview-clp.wc.svelte</b>
       <div style="height: 588px; width: 550px; border: 1px dashed lightcoral;">
         <ga-insights-overview-clp lang="english"></ga-insights-overview-clp>
+      </div>
+    </div>
+
+    <div style="border-bottom: 2px dashed black; display: flex; flex-direction: column; align-items: center; width: 80%; padding: 2rem 0 2rem 0;">
+      <b>5. overlap-title-clp.wc.svelte</b>
+      <div style="width: 71.3ch;height: 11ch; border: 1px dashed lightcoral;">
+        <ga-overlap-title-clp disease="dyslipidemia"></ga-overlap-title-clp>
+      </div>
+      <div style="margin: 4px;"></div>
+      <div style="width: 71.3ch;height: 11ch; border: 1px dashed lightcoral;">
+        <ga-overlap-title-clp disease="coronary"></ga-overlap-title-clp>
+      </div>
+      <div style="margin: 4px;"></div>
+      <div style="width: 71.3ch;height: 11ch; border: 1px dashed lightcoral;">
+        <ga-overlap-title-clp disease="risk"></ga-overlap-title-clp>
       </div>
     </div>
 
