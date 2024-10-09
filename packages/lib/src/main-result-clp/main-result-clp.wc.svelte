@@ -93,6 +93,13 @@
 {/if}
 
 <style>
+    @font-face {
+        font-family: "mercury";
+        src: url("https://{{dev}}back-office.ga-internals-91.com/assets/reports/b2b/{{language}}/{{version}}/fonts/MercuryDisplay.otf") format("truetype");
+        font-weight: 400;
+        font-display: swap;
+    }
+
     .main {
         height: 100%;
         width: 100%;
@@ -203,5 +210,6 @@
         align-items: center;
         height: 50%;
         margin-bottom: 1rem;
+        font-family: 'mercury', serif;
     }
 </style>
