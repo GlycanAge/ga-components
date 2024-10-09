@@ -34,6 +34,7 @@
   import '../../../dist/insights-overview-clp.wc.js';
   import '../../../dist/main-result-clp.wc.js';
   import '../../../dist/single-overview-clp.wc.js';
+  import '../../../dist/arrow-graph-clp.wc.js';
   import { MockService } from './mock-service';
 
   let stuff1 = false;
@@ -698,6 +699,29 @@
       <b>4. insights-overview-clp.wc.svelte</b>
       <div style="height: 588px; width: 550px; border: 1px dashed lightcoral;">
         <ga-insights-overview-clp lang="english"></ga-insights-overview-clp>
+      </div>
+    </div>
+
+    <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
+      <b>6. arrow-graph-clp.wc.svelte</b>
+      <div style="width: 550px; height: 82px; border: 1px dashed lightcoral;">
+        <ga-arrow-graph-clp subtype="mature" direction="right"></ga-arrow-graph-clp>
+      </div>
+      <div style="margin: 5px;"></div>
+      <div style="width: 550px; height: 82px; border: 1px dashed lightcoral;">
+        <ga-arrow-graph-clp subtype="youth" direction="right"></ga-arrow-graph-clp>
+      </div>
+      <div style="margin: 5px;"></div>
+      <div style="width: 550px; height: 82px; border: 1px dashed lightcoral;">
+        <ga-arrow-graph-clp subtype="shield" direction="left"></ga-arrow-graph-clp>
+      </div>
+      <div style="margin: 5px;"></div>
+      <div style="width: 550px; height: 82px; border: 1px dashed lightcoral;">
+        <ga-arrow-graph-clp subtype="lifestyle" direction="right"></ga-arrow-graph-clp>
+      </div>
+      <div style="margin: 5px;"></div>
+      <div style="width: 550px; height: 82px; border: 1px dashed lightcoral;">
+        <ga-arrow-graph-clp subtype="median" direction="left"></ga-arrow-graph-clp>
       </div>
     </div>
   </div>
