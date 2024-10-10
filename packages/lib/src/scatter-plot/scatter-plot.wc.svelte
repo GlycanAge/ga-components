@@ -4,10 +4,9 @@
     import {onMount} from 'svelte';
     import {Service} from '../shared/utils/service';
     import * as echarts from 'echarts';
-
     import * as ecStat from 'echarts-stat';
     import {getColorRedToBlueWithPercentile, getColorMedianWithPercentile, getColorBlueToRedWithPercentile} from '../shared/functions/helpers';
-  
+
     export let type: string;
     export let service: Service = window.GaReportService;
 
@@ -43,7 +42,6 @@
     let scatterData: any;
     let percentile = 0;
     let score = 0;
-    let show = false;
     let chart: any = {};
     let gender = '';
     let glycanAge = 0;
@@ -67,20 +65,7 @@
         const chartElement = document.getElementById('chart') as HTMLElement;
         if (chartElement) {
             chart = echarts.init(chartElement);
-        } else {
-            console.error("Chart element not found.");
         }
-<<<<<<< HEAD
-=======
-        
-        //var wanted_score = 45;
-        //var selectedIndex = scatterData.data.findIndex(subarray => subarray.x === wanted_age);
-        
-        
-        var age = glycanAge
-        var indexScore = score
-
->>>>>>> 465d92a80a8f3d5b628e58f791ec6bbd77f954f8
 
         echarts.registerTransform(ecStat['transform'].regression);
 
@@ -89,15 +74,15 @@
             backgroundColor: 'transparent',
             dataset: [{
                 source: scatterData.data.map(item => [item.x, item.y])
-            }, 
-            {
-                transform: {
-                    type: 'ecStat:regression',
-                    config: { method: 'polynomial', order: 3 }
-                }
-            }],
+            },
+                {
+                    transform: {
+                        type: 'ecStat:regression',
+                        config: { method: 'polynomial', order: 3 }
+                    }
+                }],
             tooltip: {
-                show: false 
+                show: false
             },
             xAxis: {
                 min: 0,
@@ -105,7 +90,7 @@
                 interval: 20,
                 name: 'Age',
                 axisLine: {
-                    show: true, 
+                    show: true,
                     symbol: ['none', 'arrow'],
                     symbolSize: [5, 10]
                 },
@@ -156,39 +141,39 @@
                 },
                 showInLegend: false
             },
-            {
-                name: 'Measured result',
-                type: 'scatter',
-                data: [{ x: glycanAge, y: score }], 
-                symbolSize: 10, 
-                itemStyle: {
-                    color: getColor(), 
+                {
+                    name: 'Measured result',
+                    type: 'scatter',
+                    data: [{ x: glycanAge, y: score }],
+                    symbolSize: 10,
+                    itemStyle: {
+                        color: getColor(),
+                    },
+                    showSymbol:true
                 },
-                showSymbol:true
-            },
-            {
-                name: 'Population average',
-                type: 'line',
-                smooth: true, 
-                datasetIndex: 1,
-                symbol: 'none',
-                color: '#D3D3D3', 
-                z: 5, 
-                lineStyle: {
-                    name: 'line',
-                    type: 'line', 
-                    color: '#808080',
-                    symbol:'none',
-                    width: 5, 
-                    opacity: 0.7,
-            },
-            showSymbol: false,
-            }],
+                {
+                    name: 'Population average',
+                    type: 'line',
+                    smooth: true,
+                    datasetIndex: 1,
+                    symbol: 'none',
+                    color: '#D3D3D3',
+                    z: 5,
+                    lineStyle: {
+                        name: 'line',
+                        type: 'line',
+                        color: '#808080',
+                        symbol:'none',
+                        width: 5,
+                        opacity: 0.7,
+                    },
+                    showSymbol: false,
+                }],
             graphic: [],
             legend: {
                 show: true,
-                right: '50%', 
-                top: '5%',    
+                right: '50%',
+                top: '5%',
                 left: '70%',
                 textStyle: {
                     color: 'black'
@@ -196,7 +181,7 @@
                 selected: {
                     'Measured result': true,
                     'Population average': true,
-                    },
+                },
                 inactiveColor: '#fff',
             }
         };
@@ -206,15 +191,15 @@
         option.graphic.push({
             type: 'line',
             shape: {
-            x1: chart.convertToPixel('xAxis', glycanAge),
-            y1: chart.convertToPixel('yAxis', 0),
-            x2: chart.convertToPixel('xAxis', glycanAge),
-            y2: chart.convertToPixel('yAxis', score)
+                x1: chart.convertToPixel('xAxis', glycanAge),
+                y1: chart.convertToPixel('yAxis', 0),
+                x2: chart.convertToPixel('xAxis', glycanAge),
+                y2: chart.convertToPixel('yAxis', score)
             },
             style: {
-            stroke: getColor(),
-            lineDash: [8, 8],
-            lineWidth: 3
+                stroke: getColor(),
+                lineDash: [8, 8],
+                lineWidth: 3
             },
             z: 8
         });
@@ -222,15 +207,15 @@
         option.graphic.push({
             type: 'line',
             shape: {
-            x1: chart.convertToPixel('xAxis', 0),
-            y1: chart.convertToPixel('yAxis', score),
-            x2: chart.convertToPixel('xAxis', glycanAge),
-            y2: chart.convertToPixel('yAxis', score)
+                x1: chart.convertToPixel('xAxis', 0),
+                y1: chart.convertToPixel('yAxis', score),
+                x2: chart.convertToPixel('xAxis', glycanAge),
+                y2: chart.convertToPixel('yAxis', score)
             },
             style: {
-            stroke: getColor(),
-            lineDash: [8, 8],
-            lineWidth: 3
+                stroke: getColor(),
+                lineDash: [8, 8],
+                lineWidth: 3
             },
             z: 8
         });
@@ -238,22 +223,15 @@
         option.graphic.push({
             type: 'text',
             style: {
-<<<<<<< HEAD
-            x: chart.convertToPixel('xAxis', glycanAge) + 25, 
-            y: chart.convertToPixel('yAxis', score) - 10, 
-            text: `${Number.parseFloat(score).toFixed(5)}`, 
-            fill: 'white', 
-=======
-            x: chart.convertToPixel('xAxis', age) + 25,
-            y: chart.convertToPixel('yAxis', indexScore) - 10,
-            text: `${Number.parseFloat(indexScore).toFixed(5)}`,
-            fill: 'white', // Text color
->>>>>>> 465d92a80a8f3d5b628e58f791ec6bbd77f954f8
-            font: 'bold 17px sans-serif',
-            borderColor: getColor(),
-            borderWidth: 10,
-            borderRadius: 2,
-            backgroundColor: getColor(),
+                x: chart.convertToPixel('xAxis', glycanAge) + 25,
+                y: chart.convertToPixel('yAxis', score) - 10,
+                text: `${Number.parseFloat(score).toFixed(5)}`,
+                fill: 'white',
+                font: 'bold 17px sans-serif',
+                borderColor: getColor(),
+                borderWidth: 10,
+                borderRadius: 2,
+                backgroundColor: getColor(),
             },
             z: 10
         });
@@ -267,13 +245,13 @@
                 r: 7
             },
             style: {
-                fill: getColor(), 
+                fill: getColor(),
             },
             z: 15
         });
 
-    chart.setOption(option); 
-}
+        chart.setOption(option);
+    }
 
     onMount(async () => {
         reportData = await service.getReport();
@@ -281,14 +259,8 @@
         scatterData = await service.getScatterData(type, gender);
         glycanAge = Number(reportData.glycanage);
 
-<<<<<<< HEAD
-=======
-        console.log('reportData:', reportData);
-        console.log('scatterData', scatterData['data']);
-
->>>>>>> 465d92a80a8f3d5b628e58f791ec6bbd77f954f8
         if (details) {
-            percentile = Number(reportData[details.csvPerc]);            
+            percentile = Number(reportData[details.csvPerc]);
             score = Number(reportData[details.csvScore]);
         }
 
@@ -296,4 +268,4 @@
     })
 </script>
 
-<div id="chart" style="width: 100%; height: 100%; border: 1px solid red;"></div>
+<div id="chart" style="width: 100%; height: 100%;"></div>
