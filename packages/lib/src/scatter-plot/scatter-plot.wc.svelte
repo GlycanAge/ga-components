@@ -173,7 +173,7 @@
             legend: {
                 show: true,
                 right: '50%',
-                top: '5%',
+                top: '3%',
                 left: '70%',
                 textStyle: {
                     color: 'black'
