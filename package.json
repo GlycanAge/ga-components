@@ -54,5 +54,9 @@
   },
   "engines": {
     "node": ">=16.14"
+  },
+  "dependencies": {
+    "echarts": "5.4.3",
+    "echarts-stat": "^1.2.0"
   }
 }
