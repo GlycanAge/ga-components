@@ -2,10 +2,10 @@
 
 <script lang="ts">
     import {onMount} from 'svelte';
-    import {Service} from '../shared/utils/service'; 
+    import {Service} from '../shared/utils/service';
     import * as echarts from 'echarts';
     import * as ecStat from 'echarts-stat'
-    
+
     export let type: string;
     export let service: Service = window.GaReportService;
 
@@ -48,7 +48,7 @@
     const details = types.find(x => x.name === type);
 
     function drawGraph() {
-        
+
         const chartElement = document.getElementById('chart') as HTMLElement;
         if (chartElement) {
             chart = echarts.init(chartElement);
@@ -59,14 +59,14 @@
 
         var wanted_age = 44;
         var selectedIndex = scatterData.data.findIndex(subarray => subarray.x === wanted_age);
-        
-        
+
+
         var age = scatterData.data[selectedIndex].x;
         var indexScore = scatterData.data[selectedIndex].y;
 
-        
+
         echarts.registerTransform(ecStat['transform'].regression);
-        
+
         var option = {
     animation: false,
     backgroundColor: 'transparent',
@@ -134,65 +134,65 @@
             color: '#D3D3D3',
             opacity: 0.5,
             borderWidth: 1,
-            
+
         },
-        showInLegend: false // 
-        
+        showInLegend: false //
+
     },
     {
             name: 'Measured result',
             type: 'scatter',
-            data: [{ x: age, y: indexScore }], 
-            symbolSize: 10, 
+            data: [{ x: age, y: indexScore }],
+            symbolSize: 10,
             itemStyle: {
-                color: 'rgb(17,153,153)', 
+                color: 'rgb(17,153,153)',
             },
             showSymbol:true
         },
     {
         name: 'Population average',
         type: 'line',
-        smooth: true, 
+        smooth: true,
         datasetIndex: 1,
         symbol: 'none',
-        color: '#D3D3D3', 
-        z: 5, 
+        color: '#D3D3D3',
+        z: 5,
         lineStyle: {
             name: 'line',
-            type: 'line', 
+            type: 'line',
             color: '#808080',
             symbol:'none',
-            width: 5, 
+            width: 5,
             opacity: 0.7,
     },
-    
+
     showSymbol: false,
     },
-    
+
 ],
     graphic: [],
     legend: {
         show: true,
-        right: '50%', 
-        top: '5%',    
+        right: '50%',
+        top: '5%',
         left: '70%',
         textStyle: {
             color: 'black'
         },
-       
+
     selected: {
         'Measured result': true,
         'Population average': true,
     },
     inactiveColor: '#fff',
-    
-    
+
+
 }
         };
 
 
         chart.setOption(option);
-                
+
         option.graphic.push({
             type: 'line',
             shape: {
@@ -208,7 +208,7 @@
             },
             z: 8
         });
-        
+
         option.graphic.push({
             type: 'line',
             shape: {
@@ -227,9 +227,9 @@
         option.graphic.push({
             type: 'text',
             style: {
-            x: chart.convertToPixel('xAxis', age) + 25, 
-            y: chart.convertToPixel('yAxis', indexScore) - 10, 
-            text: `${Number.parseFloat(indexScore).toFixed(5)}`, 
+            x: chart.convertToPixel('xAxis', age) + 25,
+            y: chart.convertToPixel('yAxis', indexScore) - 10,
+            text: `${Number.parseFloat(indexScore).toFixed(5)}`,
             fill: 'white', // Text color
             font: 'bold 17px sans-serif',
             //width:'5px',
@@ -238,7 +238,7 @@
             borderRadius: 2,
             backgroundColor: 'rgb(17,153,153)',
             },
-            z: 10 
+            z: 10
         });
         const largerDotSize = 7; // Adjust the size as needed
         option.graphic.push({
@@ -264,11 +264,10 @@
         reportData = await service.getReport();
         gender= reportData.sex;
         scatterData = await service.getScatterData(type, gender);
-        
+
         console.log('reportData:', reportData);
         console.log('scatterData', scatterData['data']);
-        
-        // Ensure the correct data is assigned to percentile and score
+
         if (details) {
             percentile = Number(reportData[details.csvPerc]);
             score = Number(reportData[details.csvScore]);
