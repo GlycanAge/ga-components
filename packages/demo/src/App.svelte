@@ -39,10 +39,10 @@
   import { MockService } from './mock-service';
 
   let stuff1 = false;
-  let stuff2 = false;
+  let stuff2 = true;
   let stuff3 = false;
   let stuff4 = false;
-  let stuff5 = true;
+  let stuff5 = false;
 
   function navbar(id: string) {
     stuff1 = false;

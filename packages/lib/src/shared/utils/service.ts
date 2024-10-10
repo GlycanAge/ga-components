@@ -3,7 +3,7 @@ export class Service {
     return Promise.resolve(true);
   }
 
-  getScatterData(): Promise<any> {
+  getScatterData(type: string, gender: string): Promise<any> {
     return Promise.resolve(true);
   }
 }
