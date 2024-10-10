@@ -424,7 +424,7 @@
     <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
       <b>0. scatter-plot.wc.svelte</b>
       <div style="border: 1px solid #09341F33; border-radius: 10px; width: 550px; height: 30rem;">
-        <ga-scatter-plot type="median"></ga-scatter-plot>
+        <ga-scatter-plot type="lifestyle"></ga-scatter-plot>
       </div>
     </div>
     <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">

@@ -4,7 +4,8 @@
     import {onMount} from 'svelte';
     import {Service} from '../shared/utils/service'; 
     import * as echarts from 'echarts';
-    import * as ecStat from 'echarts-stat'
+    import * as ecStat from 'echarts-stat';
+    import {getColorRedToBlueWithPercentile, getColorMedianWithPercentile, getColorBlueToRedWithPercentile} from '../shared/functions/helpers';
     
     export let type: string;
     export let service: Service = window.GaReportService;
@@ -44,8 +45,22 @@
     let show = false;
     let chart: any = {};
     let gender = ''  ;
+    let glycanAge = 0;
 
     const details = types.find(x => x.name === type);
+
+    function ChooseColor(){
+        if (type == 'median') {
+            return getColorMedianWithPercentile(percentile);
+        }
+        if (type == 'shield' || type == 'youth'){
+            return getColorRedToBlueWithPercentile(percentile);
+        }
+        if (type == 'mature' || type == 'lifestyle'){
+            return getColorBlueToRedWithPercentile(percentile);
+        }
+
+    }
 
     function drawGraph() {
         
@@ -57,137 +72,141 @@
             console.error("Chart element not found.");
         }
 
-        var wanted_age = 44;
-        var selectedIndex = scatterData.data.findIndex(subarray => subarray.x === wanted_age);
+        
+        //var wanted_score = 45;
+        //var selectedIndex = scatterData.data.findIndex(subarray => subarray.x === wanted_age);
         
         
-        var age = scatterData.data[selectedIndex].x;
-        var indexScore = scatterData.data[selectedIndex].y;
+        var age = glycanAge
+        var indexScore = score
 
         
         echarts.registerTransform(ecStat['transform'].regression);
         
         var option = {
-    animation: false,
-    backgroundColor: 'transparent',
-    dataset: [{
-        source: scatterData.data.map(item => [item.x, item.y])
-    }, {
-        transform: {
-            type: 'ecStat:regression',
-            config: { method: 'polynomial', order: 3 }
-        }
-    }],
-    tooltip: {
-        show: false // Hide tooltips for all points
-    },
-    xAxis: {
-        min: 0,           // Minimum value of the X-axis
-        max: 100,         // Maximum value of the X-axis
-        interval: 20,
-        name: 'Age',
-        axisLine: {
-            show: false // Hide the X axis line
-        },
-        axisTick: {
-            show: false // Hide the X axis ticks
-        },
-        axisLabel: {
-            show: true, // Show the X axis labels
-            color: 'black', // Optional: Customize label color
-            formatter: function(value) {
-                // Only show labels for 20, 40, 60, and 80
-                return value === 0 || value === 100 ? '' : value;
-            }
-        },
-        splitLine: {
-            show: false
-        }
-    },
-    yAxis: {
-        min:0,
-        max:0.5,
-        name: 'Index score',
-        axisLine: {
-            show: false // Hide the Y axis line
-        },
-        axisTick: {
-            show: false // Hide the Y axis ticks
-        },
-        axisLabel: {
-            show: true, // Show the Y axis labels
-            color: 'black', // Optional: Customize label color
-            formatter: function(value) {
-                // Only show labels for 20, 40, 60, and 80
-                return value === 0 ? '' : value;
-            }
-        },
-        splitLine: {
-            show: false
-        }
-    },
-    series: [{
-        //name: 'scatter', // Scatter series for dots, appears first
-        type: 'scatter',
-        tooltip: {}, // Enable tooltip for scatter points if needed
-        itemStyle: {
-            color: '#D3D3D3',
-            opacity: 0.5,
-            borderWidth: 1,
-            
-        },
-        showInLegend: false // 
-        
-    },
-    {
-            name: 'Measured result',
-            type: 'scatter',
-            data: [{ x: age, y: indexScore }], 
-            symbolSize: 10, 
-            itemStyle: {
-                color: 'rgb(17,153,153)', 
+            animation: false,
+            backgroundColor: 'transparent',
+            dataset: [{
+                source: scatterData.data.map(item => [item.x, item.y])
+            }, {
+                transform: {
+                    type: 'ecStat:regression',
+                    config: { method: 'polynomial', order: 3 }
+                }
+            }],
+            tooltip: {
+                show: false // Hide tooltips for all points
             },
-            showSymbol:true
-        },
-    {
-        name: 'Population average',
-        type: 'line',
-        smooth: true, 
-        datasetIndex: 1,
-        symbol: 'none',
-        color: '#D3D3D3', 
-        z: 5, 
-        lineStyle: {
-            name: 'line',
-            type: 'line', 
-            color: '#808080',
-            symbol:'none',
-            width: 5, 
-            opacity: 0.7,
-    },
-    
-    showSymbol: false,
-    },
-    
-],
-    graphic: [],
-    legend: {
-        show: true,
-        right: '50%', 
-        top: '5%',    
-        left: '70%',
-        textStyle: {
-            color: 'black'
-        },
-       
-    selected: {
-        'Measured result': true,
-        'Population average': true,
-    },
-    inactiveColor: '#fff',
-    
-    
-}
+            xAxis: {
+                min: 0,           // Minimum value of the X-axis
+                max: 100,         // Maximum value of the X-axis
+                interval: 20,
+                name: 'Age',
+                axisLine: {
+                    show: true, // Show the X axis line
+                    symbol: ['none', 'arrow'], // Add arrow at the end
+                    symbolSize: [5, 10], // Size of the arrows
+                    
+                },
+                axisTick: {
+                    show: false // Hide the X axis ticks
+                },
+                axisLabel: {
+                    show: true, // Show the X axis labels
+                    color: 'black', // Optional: Customize label color
+                    formatter: function(value) {
+                        // Only show labels for 20, 40, 60, and 80
+                        return value === 0 || value === 100 ? '' : value;
+                    }
+                },
+                splitLine: {
+                    show: true,
+                }
+            },
+            yAxis: {
+                min:0,
+                max:0.6,
+                name: 'Index score',
+                axisLine: {
+                    show: true, // Show the Y axis line
+                    symbol: ['none', 'arrow'], // Add arrow at the end
+                    symbolSize: [5, 10], // Size of the arrows
+                },
+                axisTick: {
+                    show: false // Hide the Y axis ticks
+                },
+                axisLabel: {
+                    show: true, // Show the Y axis labels
+                    color: 'black', // Optional: Customize label color
+                    formatter: function(value) {
+                        // Only show labels for 20, 40, 60, and 80
+                        return value === 0|| value === 0.6 ? '' : value;
+                    }
+                },
+                splitLine: {
+                    
+                    show: true
+                }
+            },
+            series: [{
+                //name: 'scatter', // Scatter series for dots, appears first
+                type: 'scatter',
+                tooltip: {}, // Enable tooltip for scatter points if needed
+                itemStyle: {
+                    color: '#D3D3D3',
+                    opacity: 0.5,
+                    borderWidth: 1,
+                    
+                },
+                showInLegend: false // 
+                
+            },
+            {
+                    name: 'Measured result',
+                    type: 'scatter',
+                    data: [{ x: age, y: indexScore }], 
+                    symbolSize: 10, 
+                    itemStyle: {
+                        color: ChooseColor(), 
+                    },
+                    showSymbol:true
+                },
+            {
+                name: 'Population average',
+                type: 'line',
+                smooth: true, 
+                datasetIndex: 1,
+                symbol: 'none',
+                color: '#D3D3D3', 
+                z: 5, 
+                lineStyle: {
+                    name: 'line',
+                    type: 'line', 
+                    color: '#808080',
+                    symbol:'none',
+                    width: 5, 
+                    opacity: 0.7,
+            },
+            
+            showSymbol: false,
+            },
+            
+        ],
+            graphic: [],
+            legend: {
+                show: true,
+                right: '50%', 
+                top: '5%',    
+                left: '70%',
+                textStyle: {
+                    color: 'black'
+                },
+            selected: {
+                'Measured result': true,
+                'Population average': true,
+                },
+                inactiveColor: '#fff',
+            }
         };
 
 
@@ -202,7 +221,7 @@
             y2: chart.convertToPixel('yAxis', indexScore)
             },
             style: {
-            stroke: 'rgb(17,153,153)',
+            stroke: ChooseColor(),
             lineDash: [8, 8],
             lineWidth: 3
             },
@@ -218,7 +237,7 @@
             y2: chart.convertToPixel('yAxis', indexScore)
             },
             style: {
-            stroke: 'rgb(17,153,153)',
+            stroke: ChooseColor(),
             lineDash: [8, 8],
             lineWidth: 3
             },
@@ -233,10 +252,10 @@
             fill: 'white', // Text color
             font: 'bold 17px sans-serif',
             //width:'5px',
-            borderColor: 'rgb(17,153,153)',
+            borderColor: ChooseColor(),
             borderWidth: 10,
             borderRadius: 2,
-            backgroundColor: 'rgb(17,153,153)',
+            backgroundColor: ChooseColor(),
             },
             z: 10 
         });
@@ -250,7 +269,7 @@
                 r: largerDotSize // Set the radius of the larger dot
             },
             style: {
-                fill: 'rgb(17,153,153)', // Color of the larger dot
+                fill: ChooseColor(), // Color of the larger dot
                 //stroke: 'white',
                 //lineWidth: 2
             },
@@ -264,6 +283,7 @@
         reportData = await service.getReport();
         gender= reportData.sex;
         scatterData = await service.getScatterData(type, gender);
+        glycanAge = Number(reportData.glycanage);
         
         console.log('reportData:', reportData);
         console.log('scatterData', scatterData['data']);
@@ -271,6 +291,10 @@
         // Ensure the correct data is assigned to percentile and score
         if (details) {
             percentile = Number(reportData[details.csvPerc]);
+            console.log(type);
+            
+            console.log('perc:', percentile);
+            
             score = Number(reportData[details.csvScore]);
         }
 
