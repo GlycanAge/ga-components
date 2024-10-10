@@ -2,11 +2,12 @@
 
 <script lang="ts">
     import {onMount} from 'svelte';
-    import {Service} from '../shared/utils/service'; 
+    import {Service} from '../shared/utils/service';
     import * as echarts from 'echarts';
+
     import * as ecStat from 'echarts-stat';
     import {getColorRedToBlueWithPercentile, getColorMedianWithPercentile, getColorBlueToRedWithPercentile} from '../shared/functions/helpers';
-    
+  
     export let type: string;
     export let service: Service = window.GaReportService;
 
@@ -62,16 +63,27 @@
     }
 
     function drawGraph() {
-        
+
         const chartElement = document.getElementById('chart') as HTMLElement;
         if (chartElement) {
             chart = echarts.init(chartElement);
         } else {
             console.error("Chart element not found.");
         }
+<<<<<<< HEAD
+=======
+        
+        //var wanted_score = 45;
+        //var selectedIndex = scatterData.data.findIndex(subarray => subarray.x === wanted_age);
+        
+        
+        var age = glycanAge
+        var indexScore = score
+
+>>>>>>> 465d92a80a8f3d5b628e58f791ec6bbd77f954f8
 
         echarts.registerTransform(ecStat['transform'].regression);
-        
+
         var option = {
             animation: false,
             backgroundColor: 'transparent',
@@ -190,7 +202,7 @@
         };
 
         chart.setOption(option);
-                
+
         option.graphic.push({
             type: 'line',
             shape: {
@@ -206,7 +218,7 @@
             },
             z: 8
         });
-        
+
         option.graphic.push({
             type: 'line',
             shape: {
@@ -226,17 +238,24 @@
         option.graphic.push({
             type: 'text',
             style: {
+<<<<<<< HEAD
             x: chart.convertToPixel('xAxis', glycanAge) + 25, 
             y: chart.convertToPixel('yAxis', score) - 10, 
             text: `${Number.parseFloat(score).toFixed(5)}`, 
             fill: 'white', 
+=======
+            x: chart.convertToPixel('xAxis', age) + 25,
+            y: chart.convertToPixel('yAxis', indexScore) - 10,
+            text: `${Number.parseFloat(indexScore).toFixed(5)}`,
+            fill: 'white', // Text color
+>>>>>>> 465d92a80a8f3d5b628e58f791ec6bbd77f954f8
             font: 'bold 17px sans-serif',
             borderColor: getColor(),
             borderWidth: 10,
             borderRadius: 2,
             backgroundColor: getColor(),
             },
-            z: 10 
+            z: 10
         });
 
         option.graphic.push({
@@ -262,6 +281,12 @@
         scatterData = await service.getScatterData(type, gender);
         glycanAge = Number(reportData.glycanage);
 
+<<<<<<< HEAD
+=======
+        console.log('reportData:', reportData);
+        console.log('scatterData', scatterData['data']);
+
+>>>>>>> 465d92a80a8f3d5b628e58f791ec6bbd77f954f8
         if (details) {
             percentile = Number(reportData[details.csvPerc]);            
             score = Number(reportData[details.csvScore]);
@@ -271,4 +296,4 @@
     })
 </script>
 
-<div id="chart" style="width: 100%; height: 100%;"></div>
+<div id="chart" style="width: 100%; height: 100%; border: 1px solid red;"></div>
