@@ -107,7 +107,7 @@ export class MockService implements Service {
       dob: '19910717',
       dos: '20231005',
       ethnicity: 'Any other White background',
-      glycanage: '20',
+      glycanage: '44',
       kind: '',
       name: 'Test Test',
       patient: '',
