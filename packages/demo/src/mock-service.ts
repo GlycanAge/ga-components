@@ -118,7 +118,7 @@ export class MockService implements Service {
       trrd: '20231017',
       type: 'regular',
       userId: 'some-id',
-      sex: 'F'
+      sex: 'M'
     });
   }
 
