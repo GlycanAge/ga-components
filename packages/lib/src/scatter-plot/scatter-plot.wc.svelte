@@ -64,23 +64,35 @@
 
         const chartElement = document.getElementById('chart') as HTMLElement;
         if (chartElement) {
-            chart = echarts.init(chartElement);
+            chart = echarts.init(chartElement, null, {
+                devicePixelRatio: 4
+            });
         }
 
         echarts.registerTransform(ecStat['transform'].regression);
 
         var option = {
+            textStyle: {
+                fontFamily: 'Sen',
+                fontStyle: 'normal',
+                fontSize: 12,
+                fontWeight: 400,
+                lineHeight: 19.2,
+                letterSpacing: 0.06
+            },
             animation: false,
             backgroundColor: 'transparent',
-            dataset: [{
-                source: scatterData.data.map(item => [item.x, item.y])
-            },
+            dataset: [
+                {
+                    source: scatterData.data.map(item => [item.x, item.y])
+                },
                 {
                     transform: {
                         type: 'ecStat:regression',
                         config: { method: 'polynomial', order: 3 }
                     }
-                }],
+                }
+            ],
             tooltip: {
                 show: false
             },
@@ -89,17 +101,24 @@
                 max: 100,
                 interval: 20,
                 name: 'Age',
+                nameTextStyle: {
+                    color: '#09341F',
+                    opacity: 0.8
+                },
                 axisLine: {
                     show: true,
-                    symbol: ['none', 'arrow'],
-                    symbolSize: [5, 10]
+                    lineStyle: {
+                        color: '#09341F',
+                        opacity: 0.1,
+                    }
                 },
                 axisTick: {
                     show: false
                 },
                 axisLabel: {
                     show: true,
-                    color: 'black',
+                    color: '#09341F',
+                    opacity: 0.8,
                     formatter: function(value) {
                         return value === 0 || value === 100 ? '' : value;
                     }
@@ -112,17 +131,24 @@
                 min:0,
                 max:0.6,
                 name: 'Index score',
+                nameTextStyle: {
+                    color: '#09341F',
+                    opacity: 0.8
+                },
                 axisLine: {
                     show: true,
-                    symbol: ['none', 'arrow'],
-                    symbolSize: [5, 10],
+                    lineStyle: {
+                        color: '#09341F',
+                        opacity: 0.1
+                    }
                 },
                 axisTick: {
                     show: false
                 },
                 axisLabel: {
                     show: true,
-                    color: 'black',
+                    color: '#09341F',
+                    opacity: 0.8,
                     formatter: function(value) {
                         return value === 0|| value === 0.6 ? '' : value;
                     }
@@ -135,8 +161,8 @@
                 type: 'scatter',
                 tooltip: {},
                 itemStyle: {
-                    color: '#D3D3D3',
-                    opacity: 0.5,
+                    color: '#09341F',
+                    opacity: 0.2,
                     borderWidth: 1
                 },
                 showInLegend: false
@@ -156,27 +182,26 @@
                     type: 'line',
                     smooth: true,
                     datasetIndex: 1,
-                    symbol: 'none',
-                    color: '#D3D3D3',
-                    z: 5,
+                    symbol: 'line',
                     lineStyle: {
                         name: 'line',
                         type: 'line',
-                        color: '#808080',
+                        color: '#B5C2BD',
                         symbol:'none',
                         width: 5,
-                        opacity: 0.7,
                     },
                     showSymbol: false,
-                }],
+                }
+            ],
             graphic: [],
             legend: {
                 show: true,
                 right: '50%',
-                top: '3%',
+                top: '1%',
                 left: '70%',
                 textStyle: {
-                    color: 'black'
+                    color: '#09341F',
+                    opacity: 0.8,
                 },
                 selected: {
                     'Measured result': true,
@@ -253,6 +278,21 @@
         chart.setOption(option);
     }
 
+    function downloadChart() {
+        const imageURL = chart.getDataURL({
+            type: 'png',
+            pixelRatio: 4,
+            backgroundColor: '#fff'
+        });
+        const link = document.createElement('a');
+        link.href = imageURL;
+        link.download = 'chart.png';
+
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+
     onMount(async () => {
         reportData = await service.getReport();
         gender= reportData.sex;
@@ -268,4 +308,53 @@
     })
 </script>
 
-<div id="chart" style="width: 100%; height: 100%;"></div>
+<div id="chart" style="width: 100%; height: 100%; position: relative;"></div>
+<div class="top-left"></div>
+<div class="top-right"></div>
+<div class="bottom-down"></div>
+<div class="bottom-up"></div>
+<button on:click={downloadChart} style="border: 1px solid black; border-radius: 10px;">Download chart image</button>
+
+<style>
+    @font-face {
+        font-family: "Sen";
+        src: url("https://dev.back-office.ga-internals-91.com/assets/fonts/Sen-Regular.ttf") format("truetype");
+        font-weight: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: "Sen";
+        src: url("https://dev.back-office.ga-internals-91.com/assets/fonts/Sen-Bold.ttf") format("truetype");
+        font-weight: bold;
+        font-display: swap;
+    }
+
+    .top-left {
+        position: absolute;
+        top: 26%;
+        left: 37.65%;
+        height: 1px; width: 8px; background-color: #09341F1A; border-radius: 4px; transform: rotate(-135deg);
+    }
+
+    .top-right {
+        position: absolute;
+        top: 26%;
+        left: 37.35%;
+        height: 1px; width: 8px; background-color: #09341F1A; border-radius: 4px; transform: rotate(135deg);
+    }
+
+    .bottom-up {
+        position: absolute;
+        top: 63.51%;
+        left: 61.9%;
+        height: 1px; width: 8px; background-color: #09341F1A; border-radius: 4px; transform: rotate(45deg);
+    }
+
+    .bottom-down {
+        position: absolute;
+        top: 64.1%;
+        left: 61.9%;
+        height: 1px; width: 8px; background-color: #09341F1A; border-radius: 4px; transform: rotate(-45deg);
+    }
+</style>
