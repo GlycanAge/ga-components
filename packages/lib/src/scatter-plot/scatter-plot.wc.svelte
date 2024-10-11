@@ -170,8 +170,7 @@
                         color: '#09341F',
                         opacity: 0.2,
                         borderWidth: 1
-                     },
-                     showInLegend: false
+                     }
                 },
                 {
                     name: 'Measured result',
@@ -287,16 +286,17 @@
         newSvg.appendChild(path2);
         newSvg.style.position = 'absolute';
         newSvg.style.left = `${chartRect.left + xPixel + 10}px`;
-        newSvg.style.top = `${chartRect.top + yPixel - 8}px`;
+        newSvg.style.top = `${chartRect.top + yPixel - 15}px`;
         newSvg.style.zIndex = '8';
 
         scoreHolder.innerText = `${Number.parseFloat(score).toFixed(3)}`;
         scoreHolder.style.position = 'absolute';
         scoreHolder.style.left = `${chartRect.left + xPixel + 28}px`
-        scoreHolder.style.top = `${chartRect.top + yPixel - 1}px`;
+        scoreHolder.style.top = `${chartRect.top + yPixel - 8}px`;
         scoreHolder.style.font = 'bold 16px sans-serif';
         scoreHolder.style.color = 'white';
         scoreHolder.style.zIndex = '999';
+        scoreHolder.style.fontFamily = 'Sen';
 
         document.body.appendChild(scoreHolder);
         document.body.appendChild(newSvg);
@@ -319,7 +319,7 @@
     })
 </script>
 
-<div bind:this={el} style="width: 100%; height: 100%; position: relative;"></div>
+<div bind:this={el} style="width: 100%; height: 110%; position: relative;"></div>
 
 <style>
     @font-face {
