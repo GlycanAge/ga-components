@@ -3,8 +3,8 @@
 <script lang="ts">
     import {onMount} from 'svelte';
     import {Service} from '../shared/utils/service';
-    import * as echarts from 'echarts';
-    import * as ecStat from 'echarts-stat';
+    // import * as echarts from 'echarts';
+    // import * as ecStat from 'echarts-stat';
     import {getColorRedToBlueWithPercentile, getColorMedianWithPercentile, getColorBlueToRedWithPercentile} from '../shared/functions/helpers';
 
     export let type: string;
@@ -295,7 +295,7 @@
 
     onMount(async () => {
         reportData = await service.getReport();
-        gender= reportData.sex;
+        gender = reportData.sex;
         scatterData = await service.getScatterData(type, gender);
         glycanAge = Number(reportData.glycanage);
 
