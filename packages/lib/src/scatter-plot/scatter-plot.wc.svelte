@@ -45,10 +45,11 @@
     let chart: any = {};
     let gender = '';
     let glycanAge = 0;
+    let el: HTMLElement;
 
     const details = types.find(x => x.name === type);
 
-    function getColor(){
+    function getColor() {
         if (type == 'median') {
             return getColorMedianWithPercentile(percentile);
         }
@@ -61,14 +62,12 @@
     }
 
     function drawGraph() {
-
-        const chartElement = document.getElementById('chart') as HTMLElement;
-        if (chartElement) {
-            chart = echarts.init(chartElement, null, {
+        if (el) {
+            chart = echarts.init(el, null, {
                 devicePixelRatio: 4
             });
         }
-
+        const chartRect = el.getBoundingClientRect();
         echarts.registerTransform(ecStat['transform'].regression);
 
         var option = {
@@ -109,8 +108,11 @@
                     show: true,
                     lineStyle: {
                         color: '#09341F',
-                        opacity: 0.1,
-                    }
+                        opacity: 0.1
+                    },
+                    symbol: ['none', 'arrow'],
+                    symbolSize: [5, 10],
+                    symbolOffset: [8]
                 },
                 axisTick: {
                     show: false
@@ -124,7 +126,7 @@
                     }
                 },
                 splitLine: {
-                    show: true,
+                    show: true
                 }
             },
             yAxis: {
@@ -140,7 +142,10 @@
                     lineStyle: {
                         color: '#09341F',
                         opacity: 0.1
-                    }
+                    },
+                    symbol: ['none', 'arrow'],
+                    symbolSize: [5, 10],
+                    symbolOffset: [5]
                 },
                 axisTick: {
                     show: false
@@ -157,23 +162,24 @@
                     show: true
                 }
             },
-            series: [{
-                type: 'scatter',
-                tooltip: {},
-                itemStyle: {
-                    color: '#09341F',
-                    opacity: 0.2,
-                    borderWidth: 1
+            series: [
+                {
+                    type: 'scatter',
+                    tooltip: {},
+                    itemStyle: {
+                        color: '#09341F',
+                        opacity: 0.2,
+                        borderWidth: 1
+                     },
+                     showInLegend: false
                 },
-                showInLegend: false
-            },
                 {
                     name: 'Measured result',
                     type: 'scatter',
                     data: [{ x: glycanAge, y: score }],
                     symbolSize: 10,
                     itemStyle: {
-                        color: getColor(),
+                        color: getColor()
                     },
                     showSymbol:true
                 },
@@ -188,9 +194,9 @@
                         type: 'line',
                         color: '#B5C2BD',
                         symbol:'none',
-                        width: 5,
+                        width: 5
                     },
-                    showSymbol: false,
+                    showSymbol: false
                 }
             ],
             graphic: [],
@@ -201,13 +207,13 @@
                 left: '70%',
                 textStyle: {
                     color: '#09341F',
-                    opacity: 0.8,
+                    opacity: 0.8
                 },
                 selected: {
                     'Measured result': true,
-                    'Population average': true,
+                    'Population average': true
                 },
-                inactiveColor: '#fff',
+                inactiveColor: '#fff'
             }
         };
 
@@ -246,22 +252,6 @@
         });
 
         option.graphic.push({
-            type: 'text',
-            style: {
-                x: chart.convertToPixel('xAxis', glycanAge) + 25,
-                y: chart.convertToPixel('yAxis', score) - 10,
-                text: `${Number.parseFloat(score).toFixed(5)}`,
-                fill: 'white',
-                font: 'bold 17px sans-serif',
-                borderColor: getColor(),
-                borderWidth: 10,
-                borderRadius: 2,
-                backgroundColor: getColor(),
-            },
-            z: 10
-        });
-
-        option.graphic.push({
             name: 'Measured result',
             type: 'circle',
             shape: {
@@ -270,27 +260,48 @@
                 r: 7
             },
             style: {
-                fill: getColor(),
+                fill: getColor()
             },
             z: 15
         });
 
+        // Using position absolute we create result since we need SVG
+        const xPixel = chart.convertToPixel('xAxis', glycanAge);
+        const yPixel = chart.convertToPixel('yAxis', score);
+
+        const newSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        const scoreHolder = document.createElement('div');
+
+        newSvg.setAttribute("width", "71");
+        newSvg.setAttribute("height", "32");
+        newSvg.setAttribute("viewBox", "0 0 71 32");
+        newSvg.setAttribute("fill", "none");
+        newSvg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+        const path1 = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        path1.setAttribute("d", "M7 4C7 1.79086 8.79086 0 11 0H67C69.2091 0 71 1.79086 71 4V28C71 30.2091 69.2091 32 67 32H11C8.79086 32 7 30.2091 7 28V4Z");
+        path1.setAttribute("fill", getColor());
+        const path2 = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        path2.setAttribute("d", "M1.13333 17.6C0.0666666 16.8 0.0666666 15.2 1.13333 14.4L7 10L7 22L1.13333 17.6Z");
+        path2.setAttribute("fill", getColor());
+        newSvg.appendChild(path1);
+        newSvg.appendChild(path2);
+        newSvg.style.position = 'absolute';
+        newSvg.style.left = `${chartRect.left + xPixel + 10}px`;
+        newSvg.style.top = `${chartRect.top + yPixel - 8}px`;
+        newSvg.style.zIndex = '8';
+
+        scoreHolder.innerText = `${Number.parseFloat(score).toFixed(3)}`;
+        scoreHolder.style.position = 'absolute';
+        scoreHolder.style.left = `${chartRect.left + xPixel + 28}px`
+        scoreHolder.style.top = `${chartRect.top + yPixel - 1}px`;
+        scoreHolder.style.font = 'bold 16px sans-serif';
+        scoreHolder.style.color = 'white';
+        scoreHolder.style.zIndex = '999';
+
+        document.body.appendChild(scoreHolder);
+        document.body.appendChild(newSvg);
+
         chart.setOption(option);
-    }
-
-    function downloadChart() {
-        const imageURL = chart.getDataURL({
-            type: 'png',
-            pixelRatio: 4,
-            backgroundColor: '#fff'
-        });
-        const link = document.createElement('a');
-        link.href = imageURL;
-        link.download = 'chart.png';
-
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
     }
 
     onMount(async () => {
@@ -308,12 +319,7 @@
     })
 </script>
 
-<div id="chart" style="width: 100%; height: 100%; position: relative;"></div>
-<div class="top-left"></div>
-<div class="top-right"></div>
-<div class="bottom-down"></div>
-<div class="bottom-up"></div>
-<button on:click={downloadChart} style="border: 1px solid black; border-radius: 10px;">Download chart image</button>
+<div bind:this={el} style="width: 100%; height: 32rem; position: relative; padding-top: 0.5rem;"></div>
 
 <style>
     @font-face {
@@ -328,33 +334,5 @@
         src: url("https://dev.back-office.ga-internals-91.com/assets/fonts/Sen-Bold.ttf") format("truetype");
         font-weight: bold;
         font-display: swap;
-    }
-
-    .top-left {
-        position: absolute;
-        top: 26%;
-        left: 37.65%;
-        height: 1px; width: 8px; background-color: #09341F1A; border-radius: 4px; transform: rotate(-135deg);
-    }
-
-    .top-right {
-        position: absolute;
-        top: 26%;
-        left: 37.35%;
-        height: 1px; width: 8px; background-color: #09341F1A; border-radius: 4px; transform: rotate(135deg);
-    }
-
-    .bottom-up {
-        position: absolute;
-        top: 63.51%;
-        left: 61.9%;
-        height: 1px; width: 8px; background-color: #09341F1A; border-radius: 4px; transform: rotate(45deg);
-    }
-
-    .bottom-down {
-        position: absolute;
-        top: 64.1%;
-        left: 61.9%;
-        height: 1px; width: 8px; background-color: #09341F1A; border-radius: 4px; transform: rotate(-45deg);
     }
 </style>

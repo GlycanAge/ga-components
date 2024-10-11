@@ -428,6 +428,30 @@
       </div>
     </div>
     <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
+      <b>0. scatter-plot.wc.svelte</b>
+      <div style="border: 1px solid #09341F33; border-radius: 10px; width: 550px; height: 30rem;">
+        <ga-scatter-plot type="shield"></ga-scatter-plot>
+      </div>
+    </div>
+    <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
+      <b>0. scatter-plot.wc.svelte</b>
+      <div style="border: 1px solid #09341F33; border-radius: 10px; width: 550px; height: 30rem;">
+        <ga-scatter-plot type="median"></ga-scatter-plot>
+      </div>
+    </div>
+    <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
+      <b>0. scatter-plot.wc.svelte</b>
+      <div style="border: 1px solid #09341F33; border-radius: 10px; width: 550px; height: 30rem;">
+        <ga-scatter-plot type="mature"></ga-scatter-plot>
+      </div>
+    </div>
+    <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
+      <b>0. scatter-plot.wc.svelte</b>
+      <div style="border: 1px solid #09341F33; border-radius: 10px; width: 550px; height: 30rem;">
+        <ga-scatter-plot type="lifestyle"></ga-scatter-plot>
+      </div>
+    </div>
+    <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
         <b>1. main-result.wc.svelte (also used in b2b2c(v1.2) , b2c(v1.2))</b>
         <div style="border: 1px dashed lightcoral; width: 550px; height: 30rem;">
             <ga-main-result lang="english"></ga-main-result>
