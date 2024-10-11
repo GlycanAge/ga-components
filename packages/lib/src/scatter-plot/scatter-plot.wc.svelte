@@ -319,7 +319,7 @@
     })
 </script>
 
-<div bind:this={el} style="width: 100%; height: 32rem; position: relative; padding-top: 0.5rem;"></div>
+<div bind:this={el} style="width: 100%; height: 100%; position: relative;"></div>
 
 <style>
     @font-face {
