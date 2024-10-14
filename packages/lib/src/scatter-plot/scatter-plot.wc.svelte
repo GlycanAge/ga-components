@@ -81,6 +81,12 @@
             },
             animation: false,
             backgroundColor: 'transparent',
+            grid: {
+                top: '65px',
+                left: '50px',
+                right: '55px',
+                bottom: '40px'
+            },
             dataset: [
                 {
                     source: scatterData.data.map(item => [item.x, item.y])
@@ -168,7 +174,7 @@
                     tooltip: {},
                     itemStyle: {
                         color: '#09341F',
-                        opacity: 0.2,
+                        opacity: 0.1,
                         borderWidth: 1
                      }
                 },
@@ -202,8 +208,9 @@
             legend: {
                 show: true,
                 right: '50%',
-                top: '1%',
+                top: '3%',
                 left: '70%',
+                itemGap: 0.2,
                 textStyle: {
                     color: '#09341F',
                     opacity: 0.8
@@ -319,7 +326,7 @@
     })
 </script>
 
-<div bind:this={el} style="width: 100%; height: 110%; position: relative;"></div>
+<div bind:this={el} style="width: 100%; height: 100%; position: relative;"></div>
 
 <style>
     @font-face {
