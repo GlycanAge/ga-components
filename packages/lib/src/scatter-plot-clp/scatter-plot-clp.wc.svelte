@@ -1,4 +1,4 @@
-<svelte:options customElement={{ tag: 'ga-scatter-plot', shadow: 'none' }}/>
+<svelte:options customElement={{ tag: 'ga-scatter-plot-clp', shadow: 'none' }}/>
 
 <script lang="ts">
     import {onMount} from 'svelte';
@@ -172,7 +172,7 @@
                         color: '#09341F',
                         opacity: 0.1,
                         borderWidth: 1
-                     }
+                    }
                 },
                 {
                     name: 'Measured result',
@@ -308,13 +308,13 @@
         chart.setOption(option);
     }
 
-
     onMount(async () => {
         reportData = await service.getReport();
         gender = reportData.sex;
         scatterData = await service.getScatterData(type, gender);
         lineData = await service.getLineData(type, gender);
         chronoAge = Number(reportData.chronologicalage);
+        console.log('lineData:', lineData);
 
         if (details) {
             percentile = Number(reportData[details.csvPerc]);

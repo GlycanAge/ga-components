@@ -36,6 +36,7 @@
   import '../../../dist/single-overview-clp.wc.js';
   import '../../../dist/arrow-graph-clp.wc.js';
   import '../../../dist/overlap-title-clp.wc.js';
+  import '../../../dist/scatter-plot-clp.wc.js';
   import { MockService } from './mock-service';
 
   let stuff1 = false;
@@ -424,13 +425,7 @@
     <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
       <b>0. scatter-plot.wc.svelte</b>
       <div style="border: 1px solid #09341F33; border-radius: 10px; width: 550px; height: 30rem;">
-        <ga-scatter-plot type="youth"></ga-scatter-plot>
-      </div>
-    </div>
-    <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
-      <b>0. scatter-plot.wc.svelte</b>
-      <div style="border: 1px solid #09341F33; border-radius: 10px; width: 550px; height: 30rem;">
-        <ga-scatter-plot type="shield"></ga-scatter-plot>
+        <ga-scatter-plot type="mature"></ga-scatter-plot>
       </div>
     </div>
     <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
@@ -442,7 +437,13 @@
     <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
       <b>0. scatter-plot.wc.svelte</b>
       <div style="border: 1px solid #09341F33; border-radius: 10px; width: 550px; height: 30rem;">
-        <ga-scatter-plot type="mature"></ga-scatter-plot>
+        <ga-scatter-plot type="youth"></ga-scatter-plot>
+      </div>
+    </div>
+    <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
+      <b>0. scatter-plot.wc.svelte</b>
+      <div style="border: 1px solid #09341F33; border-radius: 10px; width: 550px; height: 30rem;">
+        <ga-scatter-plot type="shield"></ga-scatter-plot>
       </div>
     </div>
     <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
@@ -667,6 +668,37 @@
 {#if stuff5}
   <div style="width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; margin-top: 120px;">
     <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
+      <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
+        <b>0. scatter-plot-clp.wc.svelte</b>
+        <div style="border: 1px solid #09341F33; border-radius: 10px; width: 550px; height: 30rem;">
+          <ga-scatter-plot-clp type="mature"></ga-scatter-plot-clp>
+        </div>
+      </div>
+      <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
+        <b>0. scatter-plot-clp.wc.svelte</b>
+        <div style="border: 1px solid #09341F33; border-radius: 10px; width: 550px; height: 30rem;">
+          <ga-scatter-plot-clp type="median"></ga-scatter-plot-clp>
+        </div>
+      </div>
+      <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
+        <b>0. scatter-plot-clp.wc.svelte</b>
+        <div style="border: 1px solid #09341F33; border-radius: 10px; width: 550px; height: 30rem;">
+          <ga-scatter-plot-clp type="youth"></ga-scatter-plot-clp>
+        </div>
+      </div>
+      <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
+        <b>0. scatter-plot-clp.wc.svelte</b>
+        <div style="border: 1px solid #09341F33; border-radius: 10px; width: 550px; height: 30rem;">
+          <ga-scatter-plot-clp type="shield"></ga-scatter-plot-clp>
+        </div>
+      </div>
+      <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
+        <b>0. scatter-plot-clp.wc.svelte</b>
+        <div style="border: 1px solid #09341F33; border-radius: 10px; width: 550px; height: 30rem;">
+          <ga-scatter-plot-clp type="lifestyle"></ga-scatter-plot-clp>
+        </div>
+      </div>
+
       <b>1. main-result-clp.wc.svelte</b>
       <div style="border: 1px dashed lightcoral; width: 550px; height: 30rem;">
         <ga-main-result-clp lang="english"></ga-main-result-clp>

@@ -142,7 +142,7 @@
             </div>
 
             <div class="slider-number" style="left: {calculateSliderPositionWithPercentile(percentile)}%;">
-                {percentile}
+                <b>{percentile}</b>
             </div>
 
             <div class="text-left" style="width: {type === 'median' ? '19.7' : '34.7'}%;">
@@ -212,11 +212,10 @@
         flex-direction: column;
         align-items: center;
         position: absolute;
-        transform: translate(-50%, -125%);
+        transform: translate(-50%, -120%);
         width: 24%;
-        font-size: 0.74rem;
+        font-size: 0.80rem;
         color: white;
-        font-weight: 500;
     }
 
     .text-left {
