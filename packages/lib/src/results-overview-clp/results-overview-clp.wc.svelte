@@ -222,7 +222,7 @@
         flex-direction: column;
         align-items: center;
         position: absolute;
-        transform: translate(-50%, -125%);
+        transform: translate(-50%, -120%);
         width: 24%;
         font-size: 0.74rem;
         color: white;

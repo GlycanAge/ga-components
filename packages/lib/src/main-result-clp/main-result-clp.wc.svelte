@@ -143,7 +143,7 @@
         flex-direction: column;
         align-items: center;
         position: absolute;
-        transform: translate(-50%, -140%);
+        transform: translate(-50%, -150%);
         width: 24%;
         color: white;
         font-weight: 500;
@@ -154,7 +154,7 @@
         flex-direction: column;
         align-items: center;
         position: absolute;
-        transform: translate(-50%, 150%);
+        transform: translate(-50%, 155%);
         width: 24%;
         color: #09341F80;
         font-weight: 500;
@@ -205,7 +205,7 @@
 
     .glycanage {
         display: flex;
-        font-size: 240px;
+        font-size: 192px;
         justify-content: center;
         align-items: end;
         height: 50%;
