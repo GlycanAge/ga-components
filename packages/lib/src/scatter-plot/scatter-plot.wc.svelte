@@ -71,12 +71,7 @@
 
         var option = {
             textStyle: {
-                fontFamily: 'Sen',
-                fontStyle: 'normal',
-                fontSize: 12,
-                fontWeight: 400,
-                lineHeight: 19.2,
-                letterSpacing: 0.06
+              fontFamily: "Sen, sans serif"
             },
             animation: false,
             backgroundColor: 'transparent',
@@ -325,7 +320,7 @@
     })
 </script>
 
-<div class="targeting-class" bind:this={el} style="width: 100%; height: 100%; position: relative;"></div>
+<div bind:this={el} style="width: 100%; height: 100%; position: relative;"></div>
 
 <svelte:head>
   <link href="https://fonts.googleapis.com/css2?family=Sen:wght@400..800&display=swap" rel="stylesheet">

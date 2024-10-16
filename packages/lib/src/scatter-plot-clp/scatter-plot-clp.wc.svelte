@@ -71,12 +71,7 @@
 
         var option = {
             textStyle: {
-                fontFamily: 'Sen',
-                fontStyle: 'normal',
-                fontSize: 12,
-                fontWeight: 400,
-                lineHeight: 19.2,
-                letterSpacing: 0.06
+              fontFamily: "Sen, sans serif"
             },
             animation: false,
             backgroundColor: 'transparent',
