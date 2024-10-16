@@ -300,7 +300,7 @@
         scoreHolder.style.font = 'bold 16px sans-serif';
         scoreHolder.style.color = 'white';
         scoreHolder.style.zIndex = '999';
-        scoreHolder.style.fontFamily = 'Sen';
+        scoreHolder.style.fontFamily = '"Sen", sans-serif';
 
         document.body.appendChild(scoreHolder);
         document.body.appendChild(newSvg);
@@ -325,7 +325,7 @@
     })
 </script>
 
-<div bind:this={el} style="width: 100%; height: 100%; position: relative;"></div>
+<div class="targeting-class" bind:this={el} style="width: 100%; height: 100%; position: relative;"></div>
 
 <style>
     @font-face {
@@ -340,5 +340,9 @@
         src: url("https://dev.back-office.ga-internals-91.com/assets/fonts/Sen-Bold.ttf") format("truetype");
         font-weight: bold;
         font-display: swap;
+    }
+
+    .targeting-class, .targeting-class * {
+        font-family: "Sen", sans-serif;
     }
 </style>
