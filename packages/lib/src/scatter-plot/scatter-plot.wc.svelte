@@ -64,7 +64,8 @@
     function drawGraph() {
         if (el) {
             chart = echarts.init(el, null, {
-                devicePixelRatio: 4
+                devicePixelRatio: 4,
+                renderer: 'svg'
             });
         }
         const chartRect = el.getBoundingClientRect();
