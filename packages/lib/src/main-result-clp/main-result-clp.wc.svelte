@@ -73,7 +73,7 @@
             </div>
 
             <div class="fixed-chrono" style="left: 50%;">
-                {chronoage}
+                50
             </div>
 
             <div class="text-left">
