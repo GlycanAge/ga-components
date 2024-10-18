@@ -3,7 +3,7 @@
 <script lang="ts">
     import {onMount} from 'svelte';
     import {Service} from '../shared/utils/service';
-    import * as echarts from 'echarts';
+    // import * as echarts from 'echarts';
 
     export let service: Service = window.GaReportService;
 
