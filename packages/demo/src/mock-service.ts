@@ -122,6 +122,21 @@ export class MockService implements Service {
     });
   }
 
+  getOverTimeData() {
+    // X is chronoAge, Y is glycanAge
+    return Promise.resolve({
+      data: [
+        {x: 28, y: 30, result: false},
+        {x: 29, y: 27, result: false},
+        {x: 30, y: 32, result: false},
+        {x: 31, y: 29, result: true},
+        {x: 31, y: 36, result: false},
+        {x: 31, y: 37, result: false},
+        {x: 32, y: 37, result: false},
+      ]
+    });
+  }
+
   getScatterData(type: string, gender: string) {
 
     switch (type) {

@@ -10,4 +10,8 @@ export class Service {
   getLineData(type: string, gender: string): Promise<any> {
     return Promise.resolve(true);
   }
+
+  getOverTimeData(): Promise<any> {
+    return Promise.resolve(true);
+  }
 }

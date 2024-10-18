@@ -37,6 +37,7 @@
   import '../../../dist/arrow-graph-clp.wc.js';
   import '../../../dist/overlap-title-clp.wc.js';
   import '../../../dist/scatter-plot-clp.wc.js';
+  import '../../../dist/over-time.wc.js';
   import { MockService } from './mock-service';
 
   let stuff1 = false;
@@ -422,10 +423,10 @@
 
 {#if stuff2}
   <div style="width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; margin-top: 120px;">
-    <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
-      <b>0. scatter-plot.wc.svelte</b>
-      <div style="border: 1px solid #09341F33; border-radius: 10px; width: 550px; height: 30rem;">
-        <ga-scatter-plot type="mature"></ga-scatter-plot>
+    <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%;">
+      <b>0. over-time.wc.svelte</b>
+      <div style="border-radius: 10px; width: 650px; height: 32rem;">
+        <ga-over-time type="mature"></ga-over-time>
       </div>
     </div>
     <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
