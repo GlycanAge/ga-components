@@ -79,8 +79,8 @@
             backgroundColor: 'transparent',
             grid: {
                 top: '65px',
-                left: lang === 'slovenian' ? '55px' : '50px',
-                right: '55px',
+                left: lang === 'slovenian' ? '62px' : '50px',
+                right: lang === 'slovenian' ? '50px' : '55px',
                 bottom: '40px'
             },
             dataset: [
@@ -201,7 +201,7 @@
                 show: true,
                 right: '50%',
                 top: '3%',
-                left: lang === 'slovenian' ? '66%' : '70%',
+                left: lang === 'slovenian' ? '67%' : '70%',
                 itemGap: 0.2,
                 textStyle: {
                     color: '#09341F',
