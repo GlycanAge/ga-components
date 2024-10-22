@@ -135,10 +135,10 @@
             {:else if type === 'median'}
                 <div class="colorBoxShort" style="background-color: #DF2120;"></div>
                 <div class="colorBox" style="background-color: #F2800D;"></div>
-                <div class="colorBox" style="background-color: #13A195;"></div>
-                <div class="colorBox" style="background-color: #66CCAA;"></div>
                 <div class="colorBox" style="background-color: #66CCAA;"></div>
                 <div class="colorBox" style="background-color: #13A195;"></div>
+                <div class="colorBox" style="background-color: #13A195;"></div>
+                <div class="colorBox" style="background-color: #66CCAA;"></div>
                 <div class="colorBox" style="background-color: #F2800D;"></div>
                 <div class="colorBoxShort" style="background-color: #DF2120;"></div>
             {/if}
