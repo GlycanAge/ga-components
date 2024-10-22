@@ -98,7 +98,7 @@
     <div class="main">
         <div class="label">
             <div class="label-container">
-                <b style="font-size: {lang === 'slovenian' ? 0.68 : 0.8}rem;">{getTranslation(lang, label)}</b>
+                <b style="font-size: {lang === 'slovenian' ? 0.70 : 0.8}rem;">{getTranslation(lang, label)}</b>
                 <div style="font-size: 0.7rem;">
                     {getTranslation(lang, description)}
                 </div>
@@ -126,10 +126,10 @@
             {:else if type === 'median'}
                 <div class="colorBoxShort" style="background-color: #DF2120;"></div>
                 <div class="colorBox" style="background-color: #F2800D;"></div>
-                <div class="colorBox" style="background-color: #13A195;"></div>
-                <div class="colorBox" style="background-color: #66CCAA;"></div>
                 <div class="colorBox" style="background-color: #66CCAA;"></div>
                 <div class="colorBox" style="background-color: #13A195;"></div>
+                <div class="colorBox" style="background-color: #13A195;"></div>
+                <div class="colorBox" style="background-color: #66CCAA;"></div>
                 <div class="colorBox" style="background-color: #F2800D;"></div>
                 <div class="colorBoxShort" style="background-color: #DF2120;"></div>
             {/if}
@@ -148,7 +148,7 @@
             <div class="text-left" style="width: {type === 'median' ? '19.7' : '34.7'}%;">
                 {type === 'shield' || type === 'youth' || type === 'median' ? getTranslation(lang, 'WORSE') : getTranslation(lang, 'BETTER')}
             </div>
-            <div class="text-middle" style="width: 30%;">
+            <div class="text-middle" style="width: {type === 'median' ? 35 : 30}%; left: {type === 'median' ? 32.4 : 35}%;">
                 {type === 'age' ? '' : type === 'median' ? getTranslation(lang, 'AROUND_AVERAGE') : getTranslation(lang, 'AVERAGE')}
             </div>
             <div class="text-right" style="width: {type === 'median' ? '19.8' : '34.7'}%;">
@@ -236,7 +236,6 @@
         position: absolute;
         height: 15%;
         top: 62%;
-        left: 35%;
         display: flex;
         align-items: center;
         justify-content: center;

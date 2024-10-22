@@ -182,11 +182,11 @@ export function getColorMedianWithPercentile(percentile: number) {
   } else if (percentile >= 2 && percentile < 18) {
     return '#F2800D';
   } else if (percentile >= 18 && percentile < 34) {
-    return '#13A195';
-  } else if (percentile >= 34 && percentile < 67) {
     return '#66CCAA';
-  } else if (percentile >= 67 && percentile <= 82) {
+  } else if (percentile >= 34 && percentile < 67) {
     return '#13A195';
+  } else if (percentile >= 67 && percentile <= 82) {
+    return '#66CCAA';
   } else if (percentile > 82 && percentile <= 98) {
     return '#F2800D';
   } else if (percentile > 98) {

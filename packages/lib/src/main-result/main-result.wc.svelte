@@ -29,11 +29,11 @@
 
     function getText() {
         if (glycanage === chronoage) {
-            return 'Same as';
+            return getTranslation(lang, 'SAME_AS');
         } else if (glycanage < chronoage) {
-            return diff === 1 ? `${diff} year younger` : `${diff} years younger`;
+            return diff === 1 ? `${diff} ${getTranslation(lang, 'YEAR_YOUNGER')}` : `${diff} ${getTranslation(lang, 'YEARS_YOUNGER')}`;
         } else if (glycanage > chronoage) {
-            return diff === 1 ? `${diff} year older` : `${diff} years older`;
+            return diff === 1 ? `${diff} ${getTranslation(lang, 'YEAR_OLDER')}` : `${diff} ${getTranslation(lang, 'YEARS_OLDER')}`;
         }
     }
 
@@ -120,8 +120,12 @@
             </div>
         </div>
         <div class="msg-parent">
-            <div class="result-text" style="color: {getColor()};"><b>{getText()} {#if diff !== 0}than{/if}</b></div>
-            <div class="chrono-text">chronological age</div>
+            <div class="result-text" style="color: {getColor()};"><b>{getText()} {#if diff !== 0}{getTranslation(lang, 'THAN')}{/if}</b></div>
+            {#if diff === 0 && lang === 'slovenian'}
+                <div class="chrono-text">kronološka starost</div>
+            {:else}
+                <div class="chrono-text">{getTranslation(lang, 'CHRONOLOGICAL_AGE_TWO')}</div>
+            {/if}
         </div>
     </div>
 {/if}

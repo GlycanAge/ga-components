@@ -1,6 +1,7 @@
 export let english = {
   BIOLOGICAL_AGE: 'Biological age',
   CHRONOLOGICAL_AGE: 'Chronological age',
+  CHRONOLOGICAL_AGE_TWO: 'chronological age',
   SI_SCORE: 'SI score',
   GLYCAN: 'Glycan',
   PEAK: 'Peak',
@@ -96,6 +97,12 @@ export let english = {
   MEASURED_RESULT: 'Measured result',
   POPULATION_AVERAGE: 'Population average',
   AGE: 'Age',
+  SAME_AS: 'Same as',
+  THAN: 'than',
+  YEAR_OLDER: 'year older',
+  YEARS_OLDER: 'years older',
+  YEAR_YOUNGER: 'year younger',
+  YEARS_YOUNGER: 'years younger',
 };
 
 export let polish = {
@@ -192,6 +199,7 @@ export let polish = {
 export let slovenian = {
   BIOLOGICAL_AGE: 'Biološka starost',
   CHRONOLOGICAL_AGE: 'Kronološka starost',
+  CHRONOLOGICAL_AGE_TWO: 'kronološke starosti',
   RANKS_YOU: 'Ta rezultat vas uvršča med',
   PERCENTILE: 'percentilov',
   SINGLE_PERCENTILE: 'percentil',
@@ -214,6 +222,12 @@ export let slovenian = {
   MEASURED_RESULT: 'Vaš rezultat',
   POPULATION_AVERAGE: 'Povprečje prebivalstva',
   AGE: 'Dob',
+  SAME_AS: 'Enako kot',
+  THAN: 'od',
+  YEAR_OLDER: 'starejši',
+  YEARS_OLDER: 'starejši',
+  YEAR_YOUNGER: 'let mlajši',
+  YEARS_YOUNGER: 'let mlajši'
 };
 
 export let japanese = {
