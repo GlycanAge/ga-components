@@ -51,7 +51,7 @@
 {#if show}
     <div class="main">
         <div class="label">
-            This result ranks in the&nbsp;
+            {getTranslation(lang, 'THIS_RESULT_RANKS_IN_THE')}&nbsp;
             <span style="color: {type === 'shield' || type === 'youth' ? getColorRedToBlueWithPercentile(percentile) : type === 'median' ? getColorMedianWithPercentile(percentile) : getColorBlueToRedWithPercentile(percentile)}; height: 80%; display: flex;">
                 <b>{percentile}</b>
             </span>

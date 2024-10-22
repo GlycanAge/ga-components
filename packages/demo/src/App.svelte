@@ -81,8 +81,8 @@
     <div on:click={() => navbar('stuff1')} role="button" style="width: 140px; height: 25px; border-radius: 10px; border: 2px solid #E76538; color: {stuff1 ? 'white' : '#E76538'}; display:  flex; align-items: center; justify-content: center; background-color: {stuff1 ? '#E76538' : ''};">b2b v1.4</div>
     <div on:click={() => navbar('stuff2')} role="button" style="width: 140px; height: 25px; border-radius: 10px; border: 2px solid #E76538; color: {stuff2 ? 'white' : '#E76538'}; display:  flex; align-items: center; justify-content: center; background-color: {stuff2 ? '#E76538' : ''};">b2b v2.0</div>
   </div>
-  <div on:click={() => navbar('stuff3')} role="button" style="width: 140px; height: 25px; border-radius: 10px; border: 2px solid #E76538; color: {stuff3 ? 'white' : '#E76538'}; display:  flex; align-items: center; justify-content: center; background-color: {stuff3 ? '#E76538' : ''};">b2b2c v1.2</div>
-  <div on:click={() => navbar('stuff4')} role="button" style="width: 140px; height: 25px; border-radius: 10px; border: 2px solid #E76538; color: {stuff4 ? 'white' : '#E76538'}; display:  flex; align-items: center; justify-content: center; background-color: {stuff4 ? '#E76538' : ''};">b2c v1.2</div>
+  <div on:click={() => navbar('stuff3')} role="button" style="width: 140px; height: 25px; border-radius: 10px; border: 2px solid #E76538; color: {stuff3 ? 'white' : '#E76538'}; display:  flex; align-items: center; justify-content: center; background-color: {stuff3 ? '#E76538' : ''};">b2b2c v2.0</div>
+  <div on:click={() => navbar('stuff4')} role="button" style="width: 140px; height: 25px; border-radius: 10px; border: 2px solid #E76538; color: {stuff4 ? 'white' : '#E76538'}; display:  flex; align-items: center; justify-content: center; background-color: {stuff4 ? '#E76538' : ''};">b2c v2.0</div>
   <div on:click={() => navbar('stuff5')} role="button" style="width: 140px; height: 25px; border-radius: 10px; border: 2px solid #E76538; color: {stuff5 ? 'white' : '#E76538'}; display:  flex; align-items: center; justify-content: center; background-color: {stuff5 ? '#E76538' : ''};">CLP v1.0</div>
 </div>
 
@@ -432,7 +432,7 @@
     <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
       <b>0. scatter-plot.wc.svelte</b>
       <div style="border: 1px solid #09341F33; border-radius: 10px; width: 550px; height: 30rem;">
-        <ga-scatter-plot type="median"></ga-scatter-plot>
+        <ga-scatter-plot type="median" lang="slovenian"></ga-scatter-plot>
       </div>
     </div>
     <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
@@ -454,7 +454,7 @@
       </div>
     </div>
     <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
-        <b>1. main-result.wc.svelte (also used in b2b2c(v1.2) , b2c(v1.2))</b>
+        <b>1. main-result.wc.svelte (also used in b2b2c(v2.0, slovenian v2.0) , b2c(v2.0))</b>
         <div style="border: 1px dashed lightcoral; width: 550px; height: 30rem;">
             <ga-main-result lang="english"></ga-main-result>
         </div>
@@ -474,7 +474,7 @@
       </div>
     </div>
     <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
-        <b>3. results-overview.wc.svelte (also used in b2b2c(v1.2) , b2c(v1.2))</b>
+        <b>3. results-overview.wc.svelte (also used in b2b2c(v2.0 + slovenski v2.0) , b2c(v2.0))</b>
         <div style="display: flex; flex-direction: column; height: 588px; width: 550px; border: 1px dashed lightcoral;">
           <div style="width: 100%; height: 98px;">
             <ga-results-overview type="age" lang="english"></ga-results-overview>
@@ -503,7 +503,7 @@
         </div>
     </div>
     <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
-        <b>5. single-overview.wc.svelte (also used in b2b2c(v1.2) , b2c(v1.2))</b>
+        <b>5. single-overview.wc.svelte (also used in b2b2c(v2.0, slovenian v2.0) , b2c(v2.0))</b>
         <div style="width: 550px; height: 200px; border: 1px dashed lightcoral;">
           <ga-single-overview type="shield" lang="english"></ga-single-overview>
         </div>
@@ -553,14 +553,14 @@
 {#if stuff3}
   <div style="width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; margin-top: 120px;">
     <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
-      <b>1. main-result.wc.svelte (also used in b2b(v2.0) , b2c(v1.2))</b>
+      <b>1. main-result.wc.svelte (also used in b2b(v2.0) , b2c(v2.0))</b>
       <div style="border: 1px dashed lightcoral; width: 550px; height: 30rem;">
         <ga-main-result lang="english"></ga-main-result>
       </div>
     </div>
 
     <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
-      <b>2. results-overview.wc.svelte (also used in b2b(v2.0) , b2c(v1.2))</b>
+      <b>2. results-overview.wc.svelte (also used in b2b(v2.0) , b2c(v2.0))</b>
       <div style="display: flex; flex-direction: column; height: 588px; width: 550px; border: 1px dashed lightcoral;">
         <div style="width: 100%; height: 98px;">
           <ga-results-overview type="age" lang="english"></ga-results-overview>
@@ -584,7 +584,7 @@
     </div>
 
     <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
-      <b>3. single-overview.wc.svelte (also used in b2b(v2.0) , b2c(v1.2))</b>
+      <b>3. single-overview.wc.svelte (also used in b2b(v2.0) , b2c(v2.0))</b>
       <div style="width: 550px; height: 200px; border: 1px dashed lightcoral;">
         <ga-single-overview type="shield" lang="english"></ga-single-overview>
       </div>
@@ -611,14 +611,14 @@
 {#if stuff4}
     <div style="width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; margin-top: 120px;">
       <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
-        <b>1. main-result.wc.svelte (also used in b2b(v2.0) , b2b2c(v1.2))</b>
+        <b>1. main-result.wc.svelte (also used in b2b(v2.0) , b2b2c(v2.0, slovenian v2.0))</b>
         <div style="border: 1px dashed lightcoral; width: 550px; height: 30rem;">
           <ga-main-result lang="english"></ga-main-result>
         </div>
       </div>
 
       <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
-        <b>2. results-overview.wc.svelte (also used in b2b(v2.0) , b2b2c(v1.2))</b>
+        <b>2. results-overview.wc.svelte (also used in b2b(v2.0) , b2b2c(v2.0, slovenian v2.0))</b>
         <div style="display: flex; flex-direction: column; height: 588px; width: 550px; border: 1px dashed lightcoral;">
           <div style="width: 100%; height: 98px;">
             <ga-results-overview type="age" lang="english"></ga-results-overview>
@@ -642,7 +642,7 @@
       </div>
 
       <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
-        <b>3. single-overview.wc.svelte (also used in b2b(v2.0) , b2b2c(v1.2))</b>
+        <b>3. single-overview.wc.svelte (also used in b2b(v2.0) , b2b2c(v2.0, slovenian v2.0))</b>
         <div style="width: 550px; height: 200px; border: 1px dashed lightcoral;">
           <ga-single-overview type="shield" lang="english"></ga-single-overview>
         </div>
@@ -731,7 +731,7 @@
     </div>
 
     <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
-      <b>3. single-overview.wc.svelte (also used in b2b(v2.0) , b2b2c(v1.2))</b>
+      <b>3. single-overview.wc.svelte (also used in b2b(v2.0) , b2b2c(v2.0, slovenian v2.0))</b>
       <div style="width: 550px; height: 200px; border: 1px dashed lightcoral;">
         <ga-single-overview-clp type="shield" lang="english"></ga-single-overview-clp>
       </div>

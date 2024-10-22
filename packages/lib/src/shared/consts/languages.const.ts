@@ -76,6 +76,7 @@ export let english = {
   RISK_FACTOR_TWO: 'Medication history (e.g., statins, blood thinners)',
   RISK_FACTOR_THREE: 'Current/previous smoking history',
   RANKS_YOU: 'This result ranks you in the',
+  THIS_RESULT_RANKS_IN_THE: 'This result ranks in the',
   RELATED_RESEARCH_PAPERS: 'Related research papers',
   YOUR_RESULT: 'Your result',
   CHRONIC_INFLAMMATION: 'Chronic inflammation',
@@ -91,6 +92,10 @@ export let english = {
   WORSE: 'Worse',
   BETTER: 'Better',
   AVERAGE: 'Average',
+  INDEX_SCORE: 'Index score',
+  MEASURED_RESULT: 'Measured result',
+  POPULATION_AVERAGE: 'Population average',
+  AGE: 'Age',
 };
 
 export let polish = {
@@ -190,8 +195,26 @@ export let slovenian = {
   RANKS_YOU: 'Ta rezultat vas uvršča med',
   PERCENTILE: 'percentilov',
   SINGLE_PERCENTILE: 'percentil',
-  YOUR_RESULT: 'Vaš rezultat'
-}
+  YOUR_RESULT: 'Vaš rezultat',
+  GLYCAN_SHIELD: 'Glikanski ščit (S)',
+  GLYCAN_YOUTH: 'Mladost glikanov (G2)',
+  GLYCAN_MATURE: 'Zrelost glikanov (G0)',
+  GLYCAN_MEDIAN: 'Povprečje glikanov (G1)',
+  GLYCAN_LIFESTYLE: 'Življenjski slog glikanov (B)',
+  CHRONIC_INFLAMMATION: 'Kronično vnetje',
+  ANTI_INFLAMMATORY: 'Protivnetni',
+  PRO_INFLAMMATORY: 'Pro-vnetni',
+  SUPPORTIVE_INDEX: 'Podporni kazalnik',
+  WORSE: 'Slabše',
+  BETTER: 'Boljše',
+  AVERAGE: 'Povprečje',
+  AROUND_AVERAGE: 'Približno povprečje',
+  THIS_RESULT_RANKS_IN_THE: 'Ta rezultat se uvršča med',
+  INDEX_SCORE: 'Rezultat kazalnika',
+  MEASURED_RESULT: 'Vaš rezultat',
+  POPULATION_AVERAGE: 'Povprečje prebivalstva',
+  AGE: 'Dob',
+};
 
 export let japanese = {
   BIOLOGICAL_AGE: '生物学的年齢',

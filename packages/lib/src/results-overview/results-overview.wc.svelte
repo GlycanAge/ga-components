@@ -98,7 +98,7 @@
     <div class="main">
         <div class="label">
             <div class="label-container">
-                <b>{getTranslation(lang, label)}</b>
+                <b style="font-size: {lang === 'slovenian' ? 0.68 : 0.8}rem;">{getTranslation(lang, label)}</b>
                 <div style="font-size: 0.7rem;">
                     {getTranslation(lang, description)}
                 </div>
@@ -148,7 +148,7 @@
             <div class="text-left" style="width: {type === 'median' ? '19.7' : '34.7'}%;">
                 {type === 'shield' || type === 'youth' || type === 'median' ? getTranslation(lang, 'WORSE') : getTranslation(lang, 'BETTER')}
             </div>
-            <div class="text-middle" style="width: 29.5%;">
+            <div class="text-middle" style="width: 30%;">
                 {type === 'age' ? '' : type === 'median' ? getTranslation(lang, 'AROUND_AVERAGE') : getTranslation(lang, 'AVERAGE')}
             </div>
             <div class="text-right" style="width: {type === 'median' ? '19.8' : '34.7'}%;">

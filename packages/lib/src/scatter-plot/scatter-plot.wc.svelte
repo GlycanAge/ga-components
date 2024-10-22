@@ -4,9 +4,10 @@
     import {onMount} from 'svelte';
     import {Service} from '../shared/utils/service';
     // import * as echarts from 'echarts';
-    import {getColorRedToBlueWithPercentile, getColorMedianWithPercentile, getColorBlueToRedWithPercentile} from '../shared/functions/helpers';
+    import {getColorRedToBlueWithPercentile, getColorMedianWithPercentile, getColorBlueToRedWithPercentile, getTranslation} from '../shared/functions/helpers';
 
     export let type: string;
+    export let lang: string;
     export let service: Service = window.GaReportService;
 
     let types = [
@@ -78,7 +79,7 @@
             backgroundColor: 'transparent',
             grid: {
                 top: '65px',
-                left: '50px',
+                left: lang === 'slovenian' ? '55px' : '50px',
                 right: '55px',
                 bottom: '40px'
             },
@@ -97,7 +98,7 @@
                 min: 0,
                 max: 100,
                 interval: 20,
-                name: 'Age',
+                name: getTranslation(lang, 'AGE'),
                 nameTextStyle: {
                     color: '#09341F',
                     opacity: 0.8
@@ -130,7 +131,7 @@
             yAxis: {
                 min:0,
                 max:0.6,
-                name: 'Index score',
+                name: getTranslation(lang, 'INDEX_SCORE'),
                 nameTextStyle: {
                     color: '#09341F',
                     opacity: 0.8
@@ -171,7 +172,7 @@
                      }
                 },
                 {
-                    name: 'Measured result',
+                    name: getTranslation(lang, 'MEASURED_RESULT'),
                     type: 'scatter',
                     data: [{ x: chronoAge, y: score }],
                     itemStyle: {
@@ -179,7 +180,7 @@
                     }
                 },
                 {
-                    name: 'Population average',
+                    name: getTranslation(lang, 'POPULATION_AVERAGE'),
                     type: 'line',
                     smooth: true,
                     datasetIndex: 1,
@@ -200,7 +201,7 @@
                 show: true,
                 right: '50%',
                 top: '3%',
-                left: '70%',
+                left: lang === 'slovenian' ? '66%' : '70%',
                 itemGap: 0.2,
                 textStyle: {
                     color: '#09341F',
