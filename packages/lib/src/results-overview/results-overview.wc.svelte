@@ -20,8 +20,51 @@
     let label = '';
     let description = '';
     let percentile = 0;
+    let glycanage = 0;
+    let chronoage = 0;
+    let diff = 0;
 
     let show = false;
+
+    function getColor() {
+        if (glycanage === chronoage || diff <= 6) {
+            return '#66CCAA';
+        } else if (glycanage < chronoage && diff <= 12) {
+            return '#13A195';
+        } else if (glycanage < chronoage && diff > 12) {
+            return '#015566';
+        }  else if (glycanage > chronoage && diff <= 12) {
+            return '#F2800D';
+        } else if (glycanage > chronoage && diff > 12) {
+            return '#DF2120';
+        }
+    }
+
+    function calc() {
+        if (glycanage === chronoage) {
+            return 50;
+        } else if (glycanage > chronoage) {
+            if (diff <= 6) {
+                return 51 + (2*diff + (diff*0.3));
+            } else if (diff <= 12) {
+                return 52 + (diff + (2 * diff * 0.65));
+            } else if (diff <= 18) {
+                return 55 + (2*diff + (diff*0.20));
+            } else {
+                return 97.2;
+            }
+        } else if (glycanage < chronoage) {
+            if (diff <= 6) {
+                return 49 - (2*diff + (diff*0.3));
+            } else if (diff <= 12) {
+                return 48 - (diff + (2 * diff * 0.65));
+            } else if (diff <= 18) {
+                return 45 - (2*diff + (diff*0.20));
+            } else {
+                return 2.8;
+            }
+        }
+    }
 
     let subtypes = [
         {
@@ -60,6 +103,9 @@
 
     onMount(async () => {
         reportData = await service.getReport();
+        glycanage = Number(reportData.glycanage);
+        chronoage = Number(reportData.chronologicalage);
+        diff = Math.abs(glycanage - chronoage);
 
         switch (type) {
             case 'age':
@@ -134,14 +180,14 @@
                 <div class="colorBoxShort" style="background-color: #DF2120;"></div>
             {/if}
 
-            <div class="slider" style="left: {calculateSliderPositionWithPercentile(percentile)}%;">
+            <div class="slider" style="left: {type === 'age' ? calc() : calculateSliderPositionWithPercentile(percentile)}%;">
                 <svg style="position: relative;" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M20.0001 35.5418C19.6112 35.5418 19.2223 35.4724 18.8334 35.3335C18.4445 35.1946 18.0973 34.9863 17.7917 34.7085C15.9862 33.0418 14.389 31.4168 13.0001 29.8335C11.6112 28.2502 10.4515 26.7154 9.52091 25.2293C8.59036 23.7432 7.88203 22.3127 7.39591 20.9377C6.9098 19.5627 6.66675 18.2502 6.66675 17.0002C6.66675 12.8335 8.00703 9.51405 10.6876 7.04183C13.3681 4.56961 16.4723 3.3335 20.0001 3.3335C23.5279 3.3335 26.632 4.56961 29.3126 7.04183C31.9931 9.51405 33.3334 12.8335 33.3334 17.0002C33.3334 18.2502 33.0904 19.5627 32.6042 20.9377C32.1181 22.3127 31.4098 23.7432 30.4792 25.2293C29.5487 26.7154 28.389 28.2502 27.0001 29.8335C25.6112 31.4168 24.014 33.0418 22.2084 34.7085C21.9029 34.9863 21.5556 35.1946 21.1667 35.3335C20.7779 35.4724 20.389 35.5418 20.0001 35.5418Z"
-                          fill="{type === 'shield' || type === 'youth' ? getColorRedToBlueWithPercentile(percentile) : type === 'mature' || type === 'lifestyle' || type === 'age' ? getColorBlueToRedWithPercentile(percentile) : getColorMedianWithPercentile(percentile)}"/>
+                          fill="{type === 'shield' || type === 'youth' ? getColorRedToBlueWithPercentile(percentile) : type === 'mature' || type === 'lifestyle' ? getColorBlueToRedWithPercentile(percentile) : type === 'age' ? getColor() : getColorMedianWithPercentile(percentile)}"/>
                 </svg>
             </div>
 
-            <div class="slider-number" style="left: {calculateSliderPositionWithPercentile(percentile)}%;">
+            <div class="slider-number" style="left: {type === 'age' ? calc() : calculateSliderPositionWithPercentile(percentile)}%;">
                 <b>{percentile}</b>
             </div>
 
