@@ -4,7 +4,6 @@
     import {onMount} from 'svelte';
     import {Service} from '../shared/utils/service';
 
-    export let lang: string;
     export let service: Service = window.GaReportService;
 
     let reportData: any;
@@ -22,6 +21,7 @@
     let colitisCounter = 0;
     let sleCounter = 0;
     let periCounter = 0;
+    let copdCounter = 0;
 
     let bPercentile = 0; // Bpercentile
     let sPercentile = 0; // Spercentile
@@ -53,6 +53,7 @@
             dyslipidemiaCounter++;
             arthritisCounter++;
             periCounter++;
+            copdCounter++;
         }
 
         if (bPercentile < 32) {
@@ -86,6 +87,7 @@
             diabetesCounter++;
             arthritisCounter++;
             colitisCounter++;
+            copdCounter++;
         }
 
         if (g2Percentile < 32) {
@@ -316,6 +318,29 @@
                             </svg>
                         {/if}
                         {sleCounter < 3 ? 'No significant overlap' : sleCounter === 3 ? 'Minor overlap' : 'Some overlap'}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div style="flex: 1;"><b>Respiratory</b></div>
+                <div class="diseases">
+                    <span class="mbtm">COPD</span>
+                </div>
+                <div class="overlaps">
+                    <div class="overlap-row">
+                        <div style="width: 30px;"><b>{copdCounter}/2</b></div>
+                        {#if copdCounter === 0}
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="margin-right: 8px;">
+                                <path d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z"
+                                      fill="#119999" />
+                            </svg>
+                        {:else}
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="margin-right: 8px;">
+                                <path d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45ZM12 17q.425 0 .713-.288T13 16q0-.425-.288-.713T12 15q-.425 0-.713.288T11 16q0 .425.288.713T12 17Zm-1-4h2V7h-2v6Z"
+                                      fill="{copdCounter === 1 ? '#FFAA00' : '#EE6600'}" />
+                            </svg>
+                        {/if}
+                        {copdCounter === 0 ? 'No significant overlap' : copdCounter === 1 ? 'Minor overlap' : 'Some overlap'}
                     </div>
                 </div>
             </div>
