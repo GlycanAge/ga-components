@@ -122,11 +122,11 @@ export function getColorMedian(min: number, mid: number, max: number, result: nu
   } else if (position >= 9.5 && position <= 23) {
     return '#F2800D';
   } else if (position > 23 && position < 37) {
-    return '#13A195';
-  } else if (position >= 37 && position <= 63) {
     return '#66CCAA';
-  } else if (position > 63 && position < 77) {
+  } else if (position >= 37 && position <= 63) {
     return '#13A195';
+  } else if (position > 63 && position < 77) {
+    return '#66CCAA';
   } else if (position >= 77 && position <= 90.5) {
     return '#F2800D';
   } else if (position > 90.5) {
