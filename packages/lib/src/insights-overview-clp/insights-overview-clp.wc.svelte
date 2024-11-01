@@ -44,14 +44,16 @@
         g0Percentile = Number(reportData.G0percentile);
         g1Percentile = Number(reportData.G1percentile);
         g2Percentile = Number(reportData.G2percentile);
+        p18Percentile = Number(reportData.P18percentile);
         p22Percentile = Number(reportData.P22percentile);
+        p23Percentile = Number(reportData.P23percentile);
+        p26Percentile = Number(reportData.P26percentile);
 
         if (bPercentile > 68) {
             cvaCounter++;
             atheroCounter++;
             diabetesCounter++;
             dyslipidemiaCounter++;
-            arthritisCounter++;
             periCounter++;
             copdCounter++;
         }
@@ -79,6 +81,7 @@
             dyslipidemiaCounter++;
             colitisCounter++;
             periCounter++;
+            arthritisCounter++;
         }
 
         if (g1Percentile < 32) {
