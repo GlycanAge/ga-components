@@ -4,7 +4,6 @@
     import {onMount} from 'svelte';
     import {Service} from '../shared/utils/service';
 
-    export let lang: string;
     export let disease: string;
     export let service: Service = window.GaReportService;
 
@@ -140,7 +139,7 @@
         p23Percentile = Number(reportData.P23percentile);
         p26Percentile = Number(reportData.P26percentile);
 
-        if (bPercentile > 68) {
+        if (bPercentile >= 67) {
             riskCounter++;
             cvaCounter++;
             atheroCounter++;
@@ -151,11 +150,11 @@
             periCounter++;
         }
 
-        if (bPercentile < 32) {
+        if (bPercentile <= 33) {
             colitisCounter++;
         }
 
-        if (sPercentile < 32) {
+        if (sPercentile <= 33) {
             cvaCounter++;
             atheroCounter++;
             coronaryCounter++;
@@ -166,7 +165,7 @@
             periCounter++;
         }
 
-        if (g0Percentile > 68) {
+        if (g0Percentile >= 67) {
             hyperCounter++;
             cvaCounter++;
             atheroCounter++;
@@ -179,7 +178,7 @@
             arthritisCounter++;
         }
 
-        if (g1Percentile < 32) {
+        if (g1Percentile <= 33) {
             hyperCounter++;
             atheroCounter++;
             diabetesCounter++;
@@ -189,7 +188,7 @@
             arthritisCounter++;
         }
 
-        if (g2Percentile < 32) {
+        if (g2Percentile <= 33) {
             preCounter++;
             hyperCounter++;
             cvaCounter++;
@@ -202,23 +201,23 @@
             arthritisCounter++;
         }
 
-        if (p18Percentile > 68) {
+        if (p18Percentile >= 67) {
             sleCounter++;
         }
 
-        if (p22Percentile < 32) {
+        if (p22Percentile <= 33) {
             sleCounter++;
         }
 
-        if (p23Percentile > 68) {
+        if (p23Percentile >= 67) {
             sleCounter++;
         }
 
-        if (p26Percentile < 32) {
+        if (p26Percentile <= 33) {
             sleCounter++;
         }
 
-        if (p22Percentile < 32 && gender === 'F') {
+        if (p22Percentile <= 33 && gender === 'F') {
             cvaFCounter++;
         }
 
