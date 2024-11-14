@@ -39,22 +39,22 @@
         },
         {
             name: 'peak18',
-            label: 'Glycan 18',
+            label: '18',
             csvName: 'P18percentile',
         },
         {
             name: 'peak22',
-            label: 'Glycan 22',
+            label: '22',
             csvName: 'P22percentile',
         },
         {
             name: 'peak23',
-            label: 'Glycan 23',
+            label: '23',
             csvName: 'P23percentile',
         },
         {
             name: 'peak26',
-            label: 'Glycan 26',
+            label: '26',
             csvName: 'P26percentile',
         }
 
