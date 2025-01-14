@@ -555,7 +555,7 @@
     <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
       <b>1. main-result.wc.svelte (also used in b2b(v2.0) , b2c(v2.0))</b>
       <div style="border: 1px dashed lightcoral; width: 550px; height: 30rem;">
-        <ga-main-result lang="english"></ga-main-result>
+        <ga-main-result lang="japanese"></ga-main-result>
       </div>
     </div>
 
@@ -563,22 +563,22 @@
       <b>2. results-overview.wc.svelte (also used in b2b(v2.0) , b2c(v2.0))</b>
       <div style="display: flex; flex-direction: column; height: 588px; width: 550px; border: 1px dashed lightcoral;">
         <div style="width: 100%; height: 98px;">
-          <ga-results-overview type="age" lang="english"></ga-results-overview>
+          <ga-results-overview type="age" lang="japanese"></ga-results-overview>
         </div>
         <div style="width: 100%; height: 98px; border-top: 2px solid #09341F33;">
-          <ga-results-overview type="shield" lang="english"></ga-results-overview>
+          <ga-results-overview type="shield" lang="japanese"></ga-results-overview>
         </div>
         <div style="width: 100%; height: 98px; border-top: 2px solid #09341F33;">
-          <ga-results-overview type="youth" lang="english"></ga-results-overview>
+          <ga-results-overview type="youth" lang="japanese"></ga-results-overview>
         </div>
         <div style="width: 100%; height: 98px; border-top: 2px solid #09341F33;">
-          <ga-results-overview type="mature" lang="english"></ga-results-overview>
+          <ga-results-overview type="mature" lang="japanese"></ga-results-overview>
         </div>
         <div style="width: 100%; height: 98px; border-top: 2px solid #09341F33;">
-          <ga-results-overview type="median" lang="english"></ga-results-overview>
+          <ga-results-overview type="median" lang="japanese"></ga-results-overview>
         </div>
         <div style="width: 100%; height: 98px; border-top: 2px solid #09341F33;">
-          <ga-results-overview type="lifestyle" lang="english"></ga-results-overview>
+          <ga-results-overview type="lifestyle" lang="japanese"></ga-results-overview>
         </div>
       </div>
     </div>
@@ -586,23 +586,23 @@
     <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
       <b>3. single-overview.wc.svelte (also used in b2b(v2.0) , b2c(v2.0))</b>
       <div style="width: 550px; height: 200px; border: 1px dashed lightcoral;">
-        <ga-single-overview type="shield" lang="english"></ga-single-overview>
+        <ga-single-overview type="shield" lang="japanese"></ga-single-overview>
       </div>
       <div style="margin: 5px;"></div>
       <div style="width: 550px; height: 200px; border: 1px dashed lightcoral;">
-        <ga-single-overview type="youth" lang="english"></ga-single-overview>
+        <ga-single-overview type="youth" lang="japanese"></ga-single-overview>
       </div>
       <div style="margin: 5px;"></div>
       <div style="width: 550px; height: 200px; border: 1px dashed lightcoral;">
-        <ga-single-overview type="mature" lang="english"></ga-single-overview>
+        <ga-single-overview type="mature" lang="japanese"></ga-single-overview>
       </div>
       <div style="margin: 5px;"></div>
       <div style="width: 550px; height: 200px; border: 1px dashed lightcoral;">
-        <ga-single-overview type="median" lang="english"></ga-single-overview>
+        <ga-single-overview type="median" lang="japanese"></ga-single-overview>
       </div>
       <div style="margin: 5px;"></div>
       <div style="width: 550px; height: 200px; border: 1px dashed lightcoral;">
-        <ga-single-overview type="lifestyle" lang="english"></ga-single-overview>
+        <ga-single-overview type="lifestyle" lang="japanese"></ga-single-overview>
       </div>
     </div>
   </div>

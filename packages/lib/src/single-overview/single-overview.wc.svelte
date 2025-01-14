@@ -51,12 +51,16 @@
 {#if show}
     <div class="main">
         <div class="label">
-            {getTranslation(lang, 'THIS_RESULT_RANKS_IN_THE')}&nbsp;
+            {getTranslation(lang, 'RANKS_YOU')}&nbsp;
             <span style="color: {type === 'shield' || type === 'youth' ? getColorRedToBlueWithPercentile(percentile) : type === 'median' ? getColorMedianWithPercentile(percentile) : getColorBlueToRedWithPercentile(percentile)}; height: 80%; display: flex;">
-                <b>{percentile}</b>
+                <b>{percentile}{#if lang === 'japanese'}パーセンタイル{/if}</b>
             </span>
             <sup style="color: {type === 'shield' || type === 'youth' ? getColorRedToBlueWithPercentile(percentile) : type === 'median' ? getColorMedianWithPercentile(percentile) : getColorBlueToRedWithPercentile(percentile)}; font-size: 0.65rem;"><b>{suffix(percentile, lang)}</b></sup>
-            &nbsp;percentile:
+            {#if lang === 'japanese'}
+                にランク付けされました。
+            {:else if lang === 'english'}
+                &nbsp;percentile
+            {/if}
         </div>
         <div class="graph">
             <div class="graph-container">
