@@ -455,7 +455,7 @@
     </div>
     <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
         <b>1. main-result.wc.svelte (also used in b2b2c(v2.0, slovenian v2.0) , b2c(v2.0))</b>
-        <div style="border: 1px dashed lightcoral; width: 550px; height: 30rem;">
+        <div style="border: 1px dashed lightcoral; width: 550px;">
             <ga-main-result lang="english"></ga-main-result>
         </div>
     </div>
@@ -554,7 +554,7 @@
   <div style="width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; margin-top: 120px;">
     <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
       <b>1. main-result.wc.svelte (also used in b2b(v2.0) , b2c(v2.0))</b>
-      <div style="border: 1px dashed lightcoral; width: 550px; height: 30rem;">
+      <div style="border: 1px dashed lightcoral; width: 550px;">
         <ga-main-result lang="japanese"></ga-main-result>
       </div>
     </div>
@@ -612,7 +612,7 @@
     <div style="width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; margin-top: 120px;">
       <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
         <b>1. main-result.wc.svelte (also used in b2b(v2.0) , b2b2c(v2.0, slovenian v2.0))</b>
-        <div style="border: 1px dashed lightcoral; width: 550px; height: 30rem;">
+        <div style="border: 1px dashed lightcoral; width: 550px;">
           <ga-main-result lang="english"></ga-main-result>
         </div>
       </div>
@@ -701,7 +701,7 @@
       </div>
 
       <b>1. main-result-clp.wc.svelte</b>
-      <div style="border: 1px dashed lightcoral; width: 550px; height: 30rem;">
+      <div style="border: 1px dashed lightcoral; width: 550px;">
         <ga-main-result-clp lang="english"></ga-main-result-clp>
       </div>
     </div>
