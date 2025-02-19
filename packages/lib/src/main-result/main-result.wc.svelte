@@ -79,7 +79,7 @@
 {#if show}
     <div class="main">
         <div class="glycanage" style="color: {getColor()};">
-            {glycanage} testing
+            {glycanage}
         </div>
         <div class="graph-container">
             <div class="slider">
@@ -96,22 +96,17 @@
                     <b class="slider-number">{glycanage}</b>
                 </div>
             </div>
-            testing
-            testing
 
             <div class="slider-bar">
                 <div class="colorBoxShort" style="background-color: #015566;"></div>
                 <div class="colorBox" style="background-color: #015566;"></div>
                 <div class="colorBox" style="background-color: #13A195;"></div>
                 <div class="colorBox" style="background-color: #66CCAA;"></div>
-                testing
                 <div class="colorBox" style="background-color: #66CCAA;"></div>
                 <div class="colorBox" style="background-color: #F2800D;"></div>
                 <div class="colorBox" style="background-color: #DF2120;"></div>
                 <div class="colorBoxShort" style="background-color: #DF2120;"></div>
             </div>
-
-            asdf
 
             <div class="texts">
                 <div class="text-left">
@@ -141,7 +136,6 @@
                     {/if}
                 </div>
             {:else}
-                testing
                 <div class="result-text" style="color: {getColor()};"><b>{getText()} {#if diff !== 0}{getTranslation(lang, 'THAN')}{/if}</b></div>
                 {#if diff === 0 && lang === 'slovenian'}
                     <div class="chrono-text">kronološka starost</div>
@@ -315,6 +309,5 @@
         font-size: 15rem;
         justify-content: center;
         align-items: center;
-        margin-bottom: 1rem;
     }
 </style>
