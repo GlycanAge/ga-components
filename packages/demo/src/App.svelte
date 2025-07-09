@@ -38,6 +38,7 @@
   import '../../../dist/overlap-title-clp.wc.js';
   import '../../../dist/scatter-plot-clp.wc.js';
   import '../../../dist/over-time.wc.js';
+  import '../../../dist/main-result-three.wc.js';
   import { MockService } from './mock-service';
 
   let stuff1 = false;
@@ -457,6 +458,9 @@
         <b>1. main-result.wc.svelte (also used in b2b2c(v2.0, slovenian v2.0) , b2c(v2.0))</b>
         <div style="border: 1px dashed lightcoral; width: 550px;">
             <ga-main-result lang="english"></ga-main-result>
+        </div>
+        <div style="border: 1px dashed lightcoral; width: 550px;">
+          <ga-main-result-three lang="english"></ga-main-result-three>
         </div>
     </div>
     <div style="border-bottom: 2px dashed black; display: flex; flex-direction: column; align-items: center; width: 80%; padding: 2rem 0 2rem 0;">
