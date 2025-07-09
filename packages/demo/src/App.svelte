@@ -31,6 +31,7 @@
   import '../../../dist/overlap-title.wc.js';
   import '../../../dist/scatter-plot.wc.js';
   import '../../../dist/results-overview-clp.wc.js';
+  import '../../../dist/results-overview-three.wc.js';
   import '../../../dist/insights-overview-clp.wc.js';
   import '../../../dist/main-result-clp.wc.js';
   import '../../../dist/single-overview-clp.wc.js';
@@ -499,6 +500,26 @@
             <ga-results-overview type="lifestyle" lang="english"></ga-results-overview>
           </div>
         </div>
+    </div>
+    <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
+      <b>3. results-overview-three.wc.svelte</b>
+      <div style="display: flex; flex-direction: column; height: 588px; width: 550px; border: 1px dashed lightcoral;">
+        <div style="width: 100%; height: 98px; border-top: 2px solid #09341F33;">
+          <ga-results-overview-three type="shield" lang="english"></ga-results-overview-three>
+        </div>
+        <div style="width: 100%; height: 98px; border-top: 2px solid #09341F33;">
+          <ga-results-overview-three type="youth" lang="english"></ga-results-overview-three>
+        </div>
+        <div style="width: 100%; height: 98px; border-top: 2px solid #09341F33;">
+          <ga-results-overview-three type="mature" lang="english"></ga-results-overview-three>
+        </div>
+        <div style="width: 100%; height: 98px; border-top: 2px solid #09341F33;">
+          <ga-results-overview-three type="median" lang="english"></ga-results-overview-three>
+        </div>
+        <div style="width: 100%; height: 98px; border-top: 2px solid #09341F33;">
+          <ga-results-overview-three type="lifestyle" lang="english"></ga-results-overview-three>
+        </div>
+      </div>
     </div>
     <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
         <b>4. insights-overview.wc.svelte</b>

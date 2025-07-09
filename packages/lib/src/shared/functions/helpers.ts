@@ -193,3 +193,21 @@ export function getColorMedianWithPercentile(percentile: number) {
     return '#DF2120';
   }
 }
+
+export function getColorMedianWithPercentileV3(percentile: number) {
+  if (percentile < 2) {
+    return '#DF2120';
+  } else if (percentile >= 2 && percentile < 18) {
+    return '#F2800D';
+  } else if (percentile >= 18 && percentile < 34) {
+    return '#13A195';
+  } else if (percentile >= 34 && percentile < 67) {
+    return '#015566';
+  } else if (percentile >= 67 && percentile <= 82) {
+    return '#13A195';
+  } else if (percentile > 82 && percentile <= 98) {
+    return '#F2800D';
+  } else if (percentile > 98) {
+    return '#DF2120';
+  }
+}
