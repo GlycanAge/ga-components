@@ -96,7 +96,7 @@
 
       <div class="texts">
         <div class="text-left">
-          {getTranslation(lang, 'BETTER')}
+          {getTranslation(lang, 'OPTIMAL')}
         </div>
         <div class="text-middle">
           <svg width="44" height="52" viewBox="0 0 44 52" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -106,7 +106,7 @@
           <b class="text-middle-number">{chronoage}</b>
         </div>
         <div class="text-right">
-          {getTranslation(lang, 'WORSE')}
+          {getTranslation(lang, 'SUBOPTIMAL')}
         </div>
       </div>
     </div>
