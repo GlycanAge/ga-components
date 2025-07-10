@@ -530,7 +530,7 @@
     </div>
     <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
       <b>4. insights-overview-three.wc.svelte</b>
-      <div style="height: 380px; width: 550px; border: 1px dashed lightcoral;">
+      <div style="height: 500px; width: 550px; border: 1px dashed lightcoral;">
         <ga-insights-overview-three lang="english" type="long"></ga-insights-overview-three>
       </div>
     </div>

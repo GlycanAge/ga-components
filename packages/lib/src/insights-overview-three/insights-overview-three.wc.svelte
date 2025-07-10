@@ -260,7 +260,7 @@
         Dyslipidemia
       </div>
     </div>
-    <p class="x-small"><b>Please note</b>: While certain patterns may show similarities to those observed in specific conditions, this does not confirm the presence of a disease or any of its subclinical forms.</p>
+    <p class="x-small"><b>Please note</b>: While certain patterns may show similarities to those observed in specific conditions, this does not confirm the presence <br> of a disease or any of its subclinical forms.</p>
     {/if}
 {/if}
 
@@ -276,7 +276,7 @@
         border-top: 1px solid #09341F33;
         display: flex;
         align-items: center;
-        height: 20%;
+        height: 90px;
     }
 
     .indication-chip {
