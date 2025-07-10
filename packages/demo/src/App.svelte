@@ -33,6 +33,7 @@
   import '../../../dist/results-overview-clp.wc.js';
   import '../../../dist/results-overview-three.wc.js';
   import '../../../dist/insights-overview-clp.wc.js';
+  import '../../../dist/insights-overview-three.wc.js';
   import '../../../dist/main-result-clp.wc.js';
   import '../../../dist/single-overview-clp.wc.js';
   import '../../../dist/arrow-graph-clp.wc.js';
@@ -526,6 +527,18 @@
         <div style="height: 588px; width: 550px; border: 1px dashed lightcoral;">
           <ga-insights-overview lang="english"></ga-insights-overview>
         </div>
+    </div>
+    <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
+      <b>4. insights-overview-three.wc.svelte</b>
+      <div style="height: 380px; width: 550px; border: 1px dashed lightcoral;">
+        <ga-insights-overview-three lang="english" type="long"></ga-insights-overview-three>
+      </div>
+    </div>
+    <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
+      <b>4. insights-overview-three.wc.svelte</b>
+      <div style="height: 588px; width: 550px; border: 1px dashed lightcoral;">
+        <ga-insights-overview-three lang="english" type="short"></ga-insights-overview-three>
+      </div>
     </div>
     <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
         <b>5. single-overview.wc.svelte (also used in b2b2c(v2.0, slovenian v2.0) , b2c(v2.0))</b>
