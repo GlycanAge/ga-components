@@ -41,6 +41,7 @@
   import '../../../dist/scatter-plot-clp.wc.js';
   import '../../../dist/over-time.wc.js';
   import '../../../dist/main-result-three.wc.js';
+  import '../../../dist/action-steps-three.wc.js';
   import { MockService } from './mock-service';
 
   let stuff1 = false;
@@ -538,6 +539,12 @@
       <b>4. insights-overview-three.wc.svelte</b>
       <div style="height: 588px; width: 550px; border: 1px dashed lightcoral;">
         <ga-insights-overview-three lang="english" type="short"></ga-insights-overview-three>
+      </div>
+    </div>
+    <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
+      <b>44. action-steps-three.wc.svelte</b>
+      <div style="height: 650px; width: 550px; border: 1px dashed lightcoral;">
+        <ga-action-steps-three></ga-action-steps-three>
       </div>
     </div>
     <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">

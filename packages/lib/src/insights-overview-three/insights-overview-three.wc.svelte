@@ -523,7 +523,7 @@
         border-top: 1px solid #09341F33;
         display: flex;
         align-items: center;
-        height: 73px;
+        height: 70px;
     }
 
     .indication-chip {
