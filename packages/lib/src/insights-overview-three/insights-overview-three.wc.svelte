@@ -39,6 +39,100 @@
 
   let show = false;
 
+  let cardioGreen = false;
+  let cardioOrange = false;
+  let cardioRed = false;
+  let cardioFinalGreen = false;
+  let cardioFinalOrange = false;
+  let cardioFinalRed = false;
+
+  let metabolicGreen = false;
+  let metabolicOrange = false;
+  let metabolicRed = false;
+  let metabolicFinalGreen = false;
+  let metabolicFinalOrange = false;
+  let metabolicFinalRed = false;
+
+  let autoGreen = false;
+  let autoOrange = false;
+  let autoRed = false;
+  let autoFinalGreen = false;
+  let autoFinalOrange = false;
+  let autoFinalRed = false;
+
+  let respGreen = false;
+  let respOrange = false;
+  let respRed = false;
+
+  let femaleGreen = false;
+  let femaleOrange = false;
+  let femaleRed = false;
+
+  let badAreas = [];
+
+  function calculateCardiovascular() {
+    if (riskCounter === 1) {cardioRed = true; badAreas.push({label: 'Inc. risk of hypertension', color: 'red'});} else {cardioGreen = true;}
+    if (preCounter === 1) {cardioRed = true; badAreas.push({label: 'Pre-hypertension', color: 'red'});} else {cardioGreen = true;}
+    if (hyperCounter < 2) {cardioGreen = true;} else if (hyperCounter === 2) {cardioOrange = true; badAreas.push({label: 'Hypertension', color: 'orange'});} else if (hyperCounter === 3) {cardioRed = true; badAreas.push({label: 'Hypertension', color: 'red'});}
+    if (gender === 'F') {if (cvaFCounter === 0) {cardioGreen = true} else if (cvaFCounter === 1) {cardioRed = true; badAreas.push({label: 'MI & CVA', color: 'red'});}} else {if (cvaCounter < 3) {cardioGreen = true} else if (cvaCounter === 3) {cardioOrange = true; badAreas.push({label: 'MI & CVA', color: 'orange'});} else if (cvaCounter === 4) {cardioRed = true; badAreas.push({label: 'MI & CVA', color: 'red'});}}
+    if (gender === 'F') {if (atheroCounter < 3) {cardioGreen = true;} else if (atheroCounter === 5) {cardioRed = true; badAreas.push({label: 'Atherosclerosis', color: 'red'});} else {cardioOrange = true; badAreas.push({label: 'Atherosclerosis', color: 'orange'});}}
+    if (gender === 'F') {if (coronaryCounter === 0) {cardioGreen = true} else if (coronaryCounter === 1) {cardioOrange = true; badAreas.push({label: 'Coronary artery disease', color: 'orange'});} else if (coronaryCounter === 2) {cardioRed = true; badAreas.push({label: 'Coronary artery disease', color: 'red'});}}
+
+    if (cardioGreen && !cardioOrange && !cardioRed) {cardioFinalGreen = true;}
+
+    if ((!cardioGreen && cardioOrange && !cardioRed) || (cardioGreen && cardioOrange && !cardioRed) || (cardioGreen && !cardioOrange && cardioRed) || (cardioGreen && cardioOrange && cardioRed)) {
+      cardioFinalOrange = true;
+    }
+
+    if ((!cardioGreen && !cardioOrange && cardioRed) || (!cardioGreen && cardioOrange && cardioRed)) {
+      cardioFinalRed = true;
+    }
+  }
+
+  function calculateMetabolic() {
+    if (diabetesCounter < 3) {metabolicGreen = true;} else if (diabetesCounter === 5) {metabolicRed = true; badAreas.push({label: 'Type 2 diabetes', color: 'red'});} else {metabolicOrange = true; badAreas.push({label: 'Type 2 diabetes', color: 'orange'});}
+    if (dyslipidemiaCounter < 3) {metabolicGreen = true;} else if (dyslipidemiaCounter === 3) {metabolicOrange = true; badAreas.push({label: 'Dyslipidemia', color: 'orange'});} else {metabolicRed = true; badAreas.push({label: 'Dyslipidemia', color: 'red'});}
+
+    if (metabolicGreen && !metabolicOrange && !metabolicRed) {
+      metabolicFinalGreen = true;
+    }
+
+    if ((!metabolicGreen && metabolicOrange && !metabolicRed) || (metabolicGreen && metabolicOrange && !metabolicRed) || (metabolicGreen && !metabolicOrange && metabolicRed) || (metabolicGreen && metabolicOrange && metabolicRed)) {
+      metabolicFinalOrange = true;
+    }
+
+    if ((!metabolicGreen && !metabolicOrange && metabolicRed) || (!metabolicGreen && metabolicOrange && metabolicRed)) {
+      metabolicFinalRed = true;
+    }
+  }
+
+  function calculateAutoimmunity() {
+    if (arthritisCounter < 3) {autoGreen = true;} else if (arthritisCounter === 3) {autoOrange = true; badAreas.push({label: 'Rheumatoid arthritis', color: 'orange'});} else {autoRed = true; badAreas.push({label: 'Rheumatoid arthritis', color: 'red'});}
+    if (colitisCounter < 3) {autoGreen = true;} else if (colitisCounter === 3) {autoOrange = true; badAreas.push({label: 'Ulcerative colitis', color: 'orange'});} else {autoRed = true; badAreas.push({label: 'Ulcerative colitis', color: 'red'});}
+    if (crohnCounter < 3) {autoGreen = true;} else if (crohnCounter === 5) {autoRed = true; badAreas.push({label: "Crohn's disease", color: 'red'});} else {autoOrange = true; badAreas.push({label: "Crohn's disease", color: 'orange'});}
+    if (sleCounter < 3) {autoGreen = true;} else if (sleCounter === 3) {autoOrange = true; badAreas.push({label: 'SLE', color: 'orange'});} else {autoRed = true; badAreas.push({label: 'SLE', color: 'red'});}
+
+    if (autoGreen && !autoOrange && !autoRed) {
+      autoFinalGreen = true;
+    }
+
+    if ((!autoGreen && autoOrange && !autoRed) || (autoGreen && autoOrange && !autoRed) || (autoGreen && !autoOrange && autoRed) || (autoGreen && autoOrange && autoRed)) {
+      autoFinalOrange = true;
+    }
+
+    if ((!autoGreen && !autoOrange && autoRed) || (!autoGreen && autoOrange && autoRed)){
+      autoFinalRed = true;
+    }
+  }
+
+  function calculateResp() {
+    if (copdCounter === 0) {respGreen = true;} else if (copdCounter === 1) {respOrange = true; badAreas.push({label: 'COPD', color: 'orange'});} else {respRed = true; badAreas.push({label: 'COPD', color: 'red'});}
+  }
+
+  function calculateFemale() {
+    if (periCounter < 3) {femaleGreen = true;} else if (periCounter === 3) {femaleOrange = true; badAreas.push({label: 'Perimenopause', color: 'orange'});} else {femaleRed = true; badAreas.push({label: 'Perimenopause', color: 'red'});}
+  }
+
   onMount(async () => {
     reportData = await service.getReport();
     gender = reportData.sex;
@@ -135,6 +229,14 @@
       cvaFCounter++;
     }
 
+    calculateCardiovascular();
+    calculateMetabolic();
+    calculateAutoimmunity();
+    calculateResp();
+    if (gender === 'F') {
+      calculateFemale();
+    }
+
     show = true;
   });
 </script>
@@ -144,123 +246,268 @@
     <div class="main">
       <div class="row">
         <div style="flex: 1;"><b>Cardiovascular health</b></div>
-        <div class="cause-chip good">
-          <div class="cause-chip-dot"></div>
-          Optimal
-        </div>
-      </div>
-      <div class="row">
-        <div style="flex: 1;"><b>Metabolic health</b></div>
-        <div class="cause-chip slightly-bad">
-          <div class="cause-chip-dot"></div>
-          Slightly out of range
-        </div>
-      </div>
-      <div class="row">
-        <div style="flex: 1;"><b>Autoimmunity</b></div>
-        <div class="cause-chip bad">
-          <div class="cause-chip-dot"></div>
-          Significantly out of range
-        </div>
-      </div>
-      <div class="row">
-        <div style="flex: 1;"><b>Respiratory health</b></div>
-        <div class="cause-chip good">
-          <div class="cause-chip-dot"></div>
-          Optimal
-        </div>
-      </div>
-      {#if gender === 'F'}
-        <div class="row" style="border-bottom: 1px solid #09341F33;">
-          <div style="flex: 1;"><b>Female health</b></div>
+        {#if cardioFinalGreen}
+          <div class="cause-chip good">
+            <div class="cause-chip-dot"></div>
+            Optimal
+          </div>
+        {/if}
+        {#if cardioFinalOrange}
           <div class="cause-chip slightly-bad">
             <div class="cause-chip-dot"></div>
             Slightly out of range
           </div>
+        {/if}
+        {#if cardioFinalRed}
+          <div class="cause-chip bad">
+            <div class="cause-chip-dot"></div>
+            Significantly out of range
+          </div>
+        {/if}
+      </div>
+      <div class="row">
+        <div style="flex: 1;"><b>Metabolic health</b></div>
+        {#if metabolicFinalGreen}
+          <div class="cause-chip good">
+            <div class="cause-chip-dot"></div>
+            Optimal
+          </div>
+        {/if}
+        {#if metabolicFinalOrange}
+          <div class="cause-chip slightly-bad">
+            <div class="cause-chip-dot"></div>
+            Slightly out of range
+          </div>
+        {/if}
+        {#if metabolicFinalRed}
+          <div class="cause-chip bad">
+            <div class="cause-chip-dot"></div>
+            Significantly out of range
+          </div>
+        {/if}
+      </div>
+      <div class="row">
+        <div style="flex: 1;"><b>Autoimmunity</b></div>
+        {#if autoFinalGreen}
+          <div class="cause-chip good">
+            <div class="cause-chip-dot"></div>
+            Optimal
+          </div>
+        {/if}
+        {#if autoFinalOrange}
+          <div class="cause-chip slightly-bad">
+            <div class="cause-chip-dot"></div>
+            Slightly out of range
+          </div>
+        {/if}
+        {#if autoFinalRed}
+          <div class="cause-chip bad">
+            <div class="cause-chip-dot"></div>
+            Significantly out of range
+          </div>
+        {/if}
+      </div>
+      <div class="row">
+        <div style="flex: 1;"><b>Respiratory health</b></div>
+        {#if respGreen}
+          <div class="cause-chip good">
+            <div class="cause-chip-dot"></div>
+            Optimal
+          </div>
+        {/if}
+        {#if respOrange}
+          <div class="cause-chip slightly-bad">
+            <div class="cause-chip-dot"></div>
+            Slightly out of range
+          </div>
+        {/if}
+        {#if respRed}
+          <div class="cause-chip bad">
+            <div class="cause-chip-dot"></div>
+            Significantly out of range
+          </div>
+        {/if}
+      </div>
+      {#if gender === 'F'}
+        <div class="row" style="border-bottom: 1px solid #09341F33;">
+          <div style="flex: 1;"><b>Female health</b></div>
+          {#if femaleGreen}
+            <div class="cause-chip good">
+              <div class="cause-chip-dot"></div>
+              Optimal
+            </div>
+          {/if}
+          {#if femaleOrange}
+            <div class="cause-chip slightly-bad">
+              <div class="cause-chip-dot"></div>
+              Slightly out of range
+            </div>
+          {/if}
+          {#if femaleRed}
+            <div class="cause-chip bad">
+              <div class="cause-chip-dot"></div>
+              Significantly out of range
+            </div>
+          {/if}
         </div>
       {/if}
     </div>
     {:else if type === 'short'}
-<!--      <div style="display: flex;">-->
-<!--        <div class="indication-chip good">-->
-<!--          <svg width="30" height="28" viewBox="0 0 30 28" fill="none" xmlns="http://www.w3.org/2000/svg">-->
-<!--            <path d="M13.5999 14.9333L11.6666 13.0333C11.4222 12.7889 11.1166 12.6666 10.7499 12.6666C10.3833 12.6666 10.0666 12.8 9.79993 13.0666C9.55549 13.3111 9.43327 13.6222 9.43327 14C9.43327 14.3778 9.55549 14.6889 9.79993 14.9333L12.6666 17.8C12.9333 18.0666 13.2444 18.2 13.5999 18.2C13.9555 18.2 14.2666 18.0666 14.5333 17.8L20.1999 12.1333C20.4666 11.8666 20.5944 11.5555 20.5833 11.2C20.5722 10.8444 20.4444 10.5333 20.1999 10.2666C19.9333 9.99998 19.6166 9.86109 19.2499 9.84998C18.8833 9.83887 18.5666 9.96664 18.2999 10.2333L13.5999 14.9333ZM9.8666 27L7.93327 23.7333L4.2666 22.9333C3.93327 22.8666 3.6666 22.6944 3.4666 22.4166C3.2666 22.1389 3.18882 21.8333 3.23327 21.5L3.59993 17.7333L1.09993 14.8666C0.877713 14.6222 0.766602 14.3333 0.766602 14C0.766602 13.6666 0.877713 13.3778 1.09993 13.1333L3.59993 10.2666L3.23327 6.49998C3.18882 6.16664 3.2666 5.86109 3.4666 5.58331C3.6666 5.30553 3.93327 5.13331 4.2666 5.06664L7.93327 4.26664L9.8666 0.999975C10.0444 0.711086 10.2888 0.516642 10.5999 0.416642C10.911 0.316642 11.2222 0.333308 11.5333 0.466642L14.9999 1.93331L18.4666 0.466642C18.7777 0.333308 19.0888 0.316642 19.3999 0.416642C19.711 0.516642 19.9555 0.711086 20.1333 0.999975L22.0666 4.26664L25.7333 5.06664C26.0666 5.13331 26.3333 5.30553 26.5333 5.58331C26.7333 5.86109 26.811 6.16664 26.7666 6.49998L26.3999 10.2666L28.8999 13.1333C29.1222 13.3778 29.2333 13.6666 29.2333 14C29.2333 14.3333 29.1222 14.6222 28.8999 14.8666L26.3999 17.7333L26.7666 21.5C26.811 21.8333 26.7333 22.1389 26.5333 22.4166C26.3333 22.6944 26.0666 22.8666 25.7333 22.9333L22.0666 23.7333L20.1333 27C19.9555 27.2889 19.711 27.4833 19.3999 27.5833C19.0888 27.6833 18.7777 27.6666 18.4666 27.5333L14.9999 26.0666L11.5333 27.5333C11.2222 27.6666 10.911 27.6833 10.5999 27.5833C10.2888 27.4833 10.0444 27.2889 9.8666 27Z" fill="#119999"/>-->
-<!--          </svg>-->
-<!--          No significant areas for attention-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      <div style="display: flex;">-->
-<!--        <div class="indication-chip slightly-bad">-->
-<!--          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">-->
-<!--            <path d="M10.8666 29L8.93327 25.7334L5.2666 24.9334C4.93327 24.8667 4.6666 24.6945 4.4666 24.4167C4.2666 24.1389 4.18882 23.8334 4.23327 23.5L4.59994 19.7334L2.09993 16.8667C1.87771 16.6223 1.7666 16.3334 1.7666 16C1.7666 15.6667 1.87771 15.3778 2.09993 15.1334L4.59994 12.2667L4.23327 8.50004C4.18882 8.1667 4.2666 7.86115 4.4666 7.58337C4.6666 7.30559 4.93327 7.13337 5.2666 7.0667L8.93327 6.2667L10.8666 3.00004C11.0444 2.71115 11.2888 2.5167 11.5999 2.4167C11.911 2.3167 12.2222 2.33337 12.5333 2.4667L15.9999 3.93337L19.4666 2.4667C19.7777 2.33337 20.0888 2.3167 20.3999 2.4167C20.711 2.5167 20.9555 2.71115 21.1333 3.00004L23.0666 6.2667L26.7333 7.0667C27.0666 7.13337 27.3333 7.30559 27.5333 7.58337C27.7333 7.86115 27.811 8.1667 27.7666 8.50004L27.3999 12.2667L29.8999 15.1334C30.1222 15.3778 30.2333 15.6667 30.2333 16C30.2333 16.3334 30.1222 16.6223 29.8999 16.8667L27.3999 19.7334L27.7666 23.5C27.811 23.8334 27.7333 24.1389 27.5333 24.4167C27.3333 24.6945 27.0666 24.8667 26.7333 24.9334L23.0666 25.7334L21.1333 29C20.9555 29.2889 20.711 29.4834 20.3999 29.5834C20.0888 29.6834 19.7777 29.6667 19.4666 29.5334L15.9999 28.0667L12.5333 29.5334C12.2222 29.6667 11.911 29.6834 11.5999 29.5834C11.2888 29.4834 11.0444 29.2889 10.8666 29ZM15.9999 22.6667C16.3777 22.6667 16.6944 22.5389 16.9499 22.2834C17.2055 22.0278 17.3333 21.7111 17.3333 21.3334C17.3333 20.9556 17.2055 20.6389 16.9499 20.3834C16.6944 20.1278 16.3777 20 15.9999 20C15.6222 20 15.3055 20.1278 15.0499 20.3834C14.7944 20.6389 14.6666 20.9556 14.6666 21.3334C14.6666 21.7111 14.7944 22.0278 15.0499 22.2834C15.3055 22.5389 15.6222 22.6667 15.9999 22.6667ZM15.9999 17.3334C16.3777 17.3334 16.6944 17.2056 16.9499 16.95C17.2055 16.6945 17.3333 16.3778 17.3333 16V10.6667C17.3333 10.2889 17.2055 9.97226 16.9499 9.7167C16.6944 9.46115 16.3777 9.33337 15.9999 9.33337C15.6222 9.33337 15.3055 9.46115 15.0499 9.7167C14.7944 9.97226 14.6666 10.2889 14.6666 10.6667V16C14.6666 16.3778 14.7944 16.6945 15.0499 16.95C15.3055 17.2056 15.6222 17.3334 15.9999 17.3334Z" fill="#EE6600"/>-->
-<!--          </svg>-->
-<!--          Review Glycan Bisection-->
-<!--        </div>-->
-<!--      </div>-->
-      <div style="display: flex; margin-bottom: 3rem;">
-        <div class="indication-chip bad">
-          <svg width="30" height="28" viewBox="0 0 30 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M9.8666 26.9999L7.93327 23.7332L4.2666 22.9332C3.93327 22.8666 3.6666 22.6944 3.4666 22.4166C3.2666 22.1388 3.18882 21.8332 3.23327 21.4999L3.59994 17.7332L1.09993 14.8666C0.877713 14.6221 0.766602 14.3332 0.766602 13.9999C0.766602 13.6666 0.877713 13.3777 1.09993 13.1332L3.59994 10.2666L3.23327 6.49991C3.18882 6.16658 3.2666 5.86102 3.4666 5.58325C3.6666 5.30547 3.93327 5.13325 4.2666 5.06658L7.93327 4.26658L9.8666 0.999914C10.0444 0.711025 10.2888 0.516581 10.5999 0.416581C10.911 0.316581 11.2222 0.333247 11.5333 0.466581L14.9999 1.93325L18.4666 0.466581C18.7777 0.333247 19.0888 0.316581 19.3999 0.416581C19.711 0.516581 19.9555 0.711025 20.1333 0.999914L22.0666 4.26658L25.7333 5.06658C26.0666 5.13325 26.3333 5.30547 26.5333 5.58325C26.7333 5.86102 26.811 6.16658 26.7666 6.49991L26.3999 10.2666L28.8999 13.1332C29.1222 13.3777 29.2333 13.6666 29.2333 13.9999C29.2333 14.3332 29.1222 14.6221 28.8999 14.8666L26.3999 17.7332L26.7666 21.4999C26.811 21.8332 26.7333 22.1388 26.5333 22.4166C26.3333 22.6944 26.0666 22.8666 25.7333 22.9332L22.0666 23.7332L20.1333 26.9999C19.9555 27.2888 19.711 27.4832 19.3999 27.5832C19.0888 27.6832 18.7777 27.6666 18.4666 27.5332L14.9999 26.0666L11.5333 27.5332C11.2222 27.6666 10.911 27.6832 10.5999 27.5832C10.2888 27.4832 10.0444 27.2888 9.8666 26.9999ZM14.9999 20.6666C15.3777 20.6666 15.6944 20.5388 15.9499 20.2832C16.2055 20.0277 16.3333 19.711 16.3333 19.3332C16.3333 18.9555 16.2055 18.6388 15.9499 18.3832C15.6944 18.1277 15.3777 17.9999 14.9999 17.9999C14.6222 17.9999 14.3055 18.1277 14.0499 18.3832C13.7944 18.6388 13.6666 18.9555 13.6666 19.3332C13.6666 19.711 13.7944 20.0277 14.0499 20.2832C14.3055 20.5388 14.6222 20.6666 14.9999 20.6666ZM14.9999 15.3332C15.3777 15.3332 15.6944 15.2055 15.9499 14.9499C16.2055 14.6944 16.3333 14.3777 16.3333 13.9999V8.66658C16.3333 8.2888 16.2055 7.97214 15.9499 7.71658C15.6944 7.46102 15.3777 7.33325 14.9999 7.33325C14.6222 7.33325 14.3055 7.46102 14.0499 7.71658C13.7944 7.97214 13.6666 8.2888 13.6666 8.66658V13.9999C13.6666 14.3777 13.7944 14.6944 14.0499 14.9499C14.3055 15.2055 14.6222 15.3332 14.9999 15.3332Z" fill="#DD2222"/>
-          </svg>
-          Significant areas for attention
-        </div>
+     {#if gender === 'F'}
+       {#if cardioFinalGreen && metabolicFinalGreen && autoFinalGreen && respGreen && femaleGreen && !cardioFinalOrange && !metabolicFinalOrange && !autoFinalOrange && !respOrange && !femaleOrange && !cardioFinalRed && !metabolicFinalRed && !autoFinalRed && !respRed && !femaleRed}
+         <div style="display: flex; margin-bottom: 3rem;">
+           <div class="indication-chip good">
+             <svg width="30" height="28" viewBox="0 0 30 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+               <path d="M13.5999 14.9333L11.6666 13.0333C11.4222 12.7889 11.1166 12.6666 10.7499 12.6666C10.3833 12.6666 10.0666 12.8 9.79993 13.0666C9.55549 13.3111 9.43327 13.6222 9.43327 14C9.43327 14.3778 9.55549 14.6889 9.79993 14.9333L12.6666 17.8C12.9333 18.0666 13.2444 18.2 13.5999 18.2C13.9555 18.2 14.2666 18.0666 14.5333 17.8L20.1999 12.1333C20.4666 11.8666 20.5944 11.5555 20.5833 11.2C20.5722 10.8444 20.4444 10.5333 20.1999 10.2666C19.9333 9.99998 19.6166 9.86109 19.2499 9.84998C18.8833 9.83887 18.5666 9.96664 18.2999 10.2333L13.5999 14.9333ZM9.8666 27L7.93327 23.7333L4.2666 22.9333C3.93327 22.8666 3.6666 22.6944 3.4666 22.4166C3.2666 22.1389 3.18882 21.8333 3.23327 21.5L3.59993 17.7333L1.09993 14.8666C0.877713 14.6222 0.766602 14.3333 0.766602 14C0.766602 13.6666 0.877713 13.3778 1.09993 13.1333L3.59993 10.2666L3.23327 6.49998C3.18882 6.16664 3.2666 5.86109 3.4666 5.58331C3.6666 5.30553 3.93327 5.13331 4.2666 5.06664L7.93327 4.26664L9.8666 0.999975C10.0444 0.711086 10.2888 0.516642 10.5999 0.416642C10.911 0.316642 11.2222 0.333308 11.5333 0.466642L14.9999 1.93331L18.4666 0.466642C18.7777 0.333308 19.0888 0.316642 19.3999 0.416642C19.711 0.516642 19.9555 0.711086 20.1333 0.999975L22.0666 4.26664L25.7333 5.06664C26.0666 5.13331 26.3333 5.30553 26.5333 5.58331C26.7333 5.86109 26.811 6.16664 26.7666 6.49998L26.3999 10.2666L28.8999 13.1333C29.1222 13.3778 29.2333 13.6666 29.2333 14C29.2333 14.3333 29.1222 14.6222 28.8999 14.8666L26.3999 17.7333L26.7666 21.5C26.811 21.8333 26.7333 22.1389 26.5333 22.4166C26.3333 22.6944 26.0666 22.8666 25.7333 22.9333L22.0666 23.7333L20.1333 27C19.9555 27.2889 19.711 27.4833 19.3999 27.5833C19.0888 27.6833 18.7777 27.6666 18.4666 27.5333L14.9999 26.0666L11.5333 27.5333C11.2222 27.6666 10.911 27.6833 10.5999 27.5833C10.2888 27.4833 10.0444 27.2889 9.8666 27Z" fill="#119999"/>
+             </svg>
+             No significant areas for attention
+           </div>
+         </div>
+       {/if}
+       {#if !cardioFinalGreen && !metabolicFinalGreen && !autoFinalGreen && !respGreen && !femaleGreen && cardioFinalOrange && metabolicFinalOrange && autoFinalOrange && respOrange && femaleOrange && !cardioFinalRed && !metabolicFinalRed && !autoFinalRed && !respRed && !femaleRed}
+         <div style="display: flex; margin-bottom: 3rem;">
+           <div class="indication-chip slightly-bad">
+             <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+               <path d="M10.8666 29L8.93327 25.7334L5.2666 24.9334C4.93327 24.8667 4.6666 24.6945 4.4666 24.4167C4.2666 24.1389 4.18882 23.8334 4.23327 23.5L4.59994 19.7334L2.09993 16.8667C1.87771 16.6223 1.7666 16.3334 1.7666 16C1.7666 15.6667 1.87771 15.3778 2.09993 15.1334L4.59994 12.2667L4.23327 8.50004C4.18882 8.1667 4.2666 7.86115 4.4666 7.58337C4.6666 7.30559 4.93327 7.13337 5.2666 7.0667L8.93327 6.2667L10.8666 3.00004C11.0444 2.71115 11.2888 2.5167 11.5999 2.4167C11.911 2.3167 12.2222 2.33337 12.5333 2.4667L15.9999 3.93337L19.4666 2.4667C19.7777 2.33337 20.0888 2.3167 20.3999 2.4167C20.711 2.5167 20.9555 2.71115 21.1333 3.00004L23.0666 6.2667L26.7333 7.0667C27.0666 7.13337 27.3333 7.30559 27.5333 7.58337C27.7333 7.86115 27.811 8.1667 27.7666 8.50004L27.3999 12.2667L29.8999 15.1334C30.1222 15.3778 30.2333 15.6667 30.2333 16C30.2333 16.3334 30.1222 16.6223 29.8999 16.8667L27.3999 19.7334L27.7666 23.5C27.811 23.8334 27.7333 24.1389 27.5333 24.4167C27.3333 24.6945 27.0666 24.8667 26.7333 24.9334L23.0666 25.7334L21.1333 29C20.9555 29.2889 20.711 29.4834 20.3999 29.5834C20.0888 29.6834 19.7777 29.6667 19.4666 29.5334L15.9999 28.0667L12.5333 29.5334C12.2222 29.6667 11.911 29.6834 11.5999 29.5834C11.2888 29.4834 11.0444 29.2889 10.8666 29ZM15.9999 22.6667C16.3777 22.6667 16.6944 22.5389 16.9499 22.2834C17.2055 22.0278 17.3333 21.7111 17.3333 21.3334C17.3333 20.9556 17.2055 20.6389 16.9499 20.3834C16.6944 20.1278 16.3777 20 15.9999 20C15.6222 20 15.3055 20.1278 15.0499 20.3834C14.7944 20.6389 14.6666 20.9556 14.6666 21.3334C14.6666 21.7111 14.7944 22.0278 15.0499 22.2834C15.3055 22.5389 15.6222 22.6667 15.9999 22.6667ZM15.9999 17.3334C16.3777 17.3334 16.6944 17.2056 16.9499 16.95C17.2055 16.6945 17.3333 16.3778 17.3333 16V10.6667C17.3333 10.2889 17.2055 9.97226 16.9499 9.7167C16.6944 9.46115 16.3777 9.33337 15.9999 9.33337C15.6222 9.33337 15.3055 9.46115 15.0499 9.7167C14.7944 9.97226 14.6666 10.2889 14.6666 10.6667V16C14.6666 16.3778 14.7944 16.6945 15.0499 16.95C15.3055 17.2056 15.6222 17.3334 15.9999 17.3334Z" fill="#EE6600"/>
+             </svg>
+             Some areas for attention
+           </div>
+         </div>
+       {/if}
+       {#if !cardioFinalGreen && !metabolicFinalGreen && !autoFinalGreen && !respGreen && !femaleGreen && !cardioFinalOrange && !metabolicFinalOrange && !autoFinalOrange && !respOrange && !femaleOrange && cardioFinalRed && metabolicFinalRed && autoFinalRed && respRed && femaleRed}
+         <div style="display: flex; margin-bottom: 3rem;">
+           <div class="indication-chip bad">
+             <svg width="30" height="28" viewBox="0 0 30 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+               <path d="M9.8666 26.9999L7.93327 23.7332L4.2666 22.9332C3.93327 22.8666 3.6666 22.6944 3.4666 22.4166C3.2666 22.1388 3.18882 21.8332 3.23327 21.4999L3.59994 17.7332L1.09993 14.8666C0.877713 14.6221 0.766602 14.3332 0.766602 13.9999C0.766602 13.6666 0.877713 13.3777 1.09993 13.1332L3.59994 10.2666L3.23327 6.49991C3.18882 6.16658 3.2666 5.86102 3.4666 5.58325C3.6666 5.30547 3.93327 5.13325 4.2666 5.06658L7.93327 4.26658L9.8666 0.999914C10.0444 0.711025 10.2888 0.516581 10.5999 0.416581C10.911 0.316581 11.2222 0.333247 11.5333 0.466581L14.9999 1.93325L18.4666 0.466581C18.7777 0.333247 19.0888 0.316581 19.3999 0.416581C19.711 0.516581 19.9555 0.711025 20.1333 0.999914L22.0666 4.26658L25.7333 5.06658C26.0666 5.13325 26.3333 5.30547 26.5333 5.58325C26.7333 5.86102 26.811 6.16658 26.7666 6.49991L26.3999 10.2666L28.8999 13.1332C29.1222 13.3777 29.2333 13.6666 29.2333 13.9999C29.2333 14.3332 29.1222 14.6221 28.8999 14.8666L26.3999 17.7332L26.7666 21.4999C26.811 21.8332 26.7333 22.1388 26.5333 22.4166C26.3333 22.6944 26.0666 22.8666 25.7333 22.9332L22.0666 23.7332L20.1333 26.9999C19.9555 27.2888 19.711 27.4832 19.3999 27.5832C19.0888 27.6832 18.7777 27.6666 18.4666 27.5332L14.9999 26.0666L11.5333 27.5332C11.2222 27.6666 10.911 27.6832 10.5999 27.5832C10.2888 27.4832 10.0444 27.2888 9.8666 26.9999ZM14.9999 20.6666C15.3777 20.6666 15.6944 20.5388 15.9499 20.2832C16.2055 20.0277 16.3333 19.711 16.3333 19.3332C16.3333 18.9555 16.2055 18.6388 15.9499 18.3832C15.6944 18.1277 15.3777 17.9999 14.9999 17.9999C14.6222 17.9999 14.3055 18.1277 14.0499 18.3832C13.7944 18.6388 13.6666 18.9555 13.6666 19.3332C13.6666 19.711 13.7944 20.0277 14.0499 20.2832C14.3055 20.5388 14.6222 20.6666 14.9999 20.6666ZM14.9999 15.3332C15.3777 15.3332 15.6944 15.2055 15.9499 14.9499C16.2055 14.6944 16.3333 14.3777 16.3333 13.9999V8.66658C16.3333 8.2888 16.2055 7.97214 15.9499 7.71658C15.6944 7.46102 15.3777 7.33325 14.9999 7.33325C14.6222 7.33325 14.3055 7.46102 14.0499 7.71658C13.7944 7.97214 13.6666 8.2888 13.6666 8.66658V13.9999C13.6666 14.3777 13.7944 14.6944 14.0499 14.9499C14.3055 15.2055 14.6222 15.3332 14.9999 15.3332Z" fill="#DD2222"/>
+             </svg>
+             Significant areas for attention
+           </div>
+         </div>
+       {/if}
+       {#if (cardioFinalGreen || metabolicFinalGreen || autoFinalGreen || respGreen || femaleGreen) && (cardioFinalOrange || metabolicFinalOrange || autoFinalOrange || respOrange || femaleOrange) && !cardioFinalRed && !metabolicFinalRed && !autoFinalRed && !respRed && !femaleRed}
+         <div style="display: flex; margin-bottom: 3rem;">
+           <div class="indication-chip slightly-bad">
+             <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+               <path d="M10.8666 29L8.93327 25.7334L5.2666 24.9334C4.93327 24.8667 4.6666 24.6945 4.4666 24.4167C4.2666 24.1389 4.18882 23.8334 4.23327 23.5L4.59994 19.7334L2.09993 16.8667C1.87771 16.6223 1.7666 16.3334 1.7666 16C1.7666 15.6667 1.87771 15.3778 2.09993 15.1334L4.59994 12.2667L4.23327 8.50004C4.18882 8.1667 4.2666 7.86115 4.4666 7.58337C4.6666 7.30559 4.93327 7.13337 5.2666 7.0667L8.93327 6.2667L10.8666 3.00004C11.0444 2.71115 11.2888 2.5167 11.5999 2.4167C11.911 2.3167 12.2222 2.33337 12.5333 2.4667L15.9999 3.93337L19.4666 2.4667C19.7777 2.33337 20.0888 2.3167 20.3999 2.4167C20.711 2.5167 20.9555 2.71115 21.1333 3.00004L23.0666 6.2667L26.7333 7.0667C27.0666 7.13337 27.3333 7.30559 27.5333 7.58337C27.7333 7.86115 27.811 8.1667 27.7666 8.50004L27.3999 12.2667L29.8999 15.1334C30.1222 15.3778 30.2333 15.6667 30.2333 16C30.2333 16.3334 30.1222 16.6223 29.8999 16.8667L27.3999 19.7334L27.7666 23.5C27.811 23.8334 27.7333 24.1389 27.5333 24.4167C27.3333 24.6945 27.0666 24.8667 26.7333 24.9334L23.0666 25.7334L21.1333 29C20.9555 29.2889 20.711 29.4834 20.3999 29.5834C20.0888 29.6834 19.7777 29.6667 19.4666 29.5334L15.9999 28.0667L12.5333 29.5334C12.2222 29.6667 11.911 29.6834 11.5999 29.5834C11.2888 29.4834 11.0444 29.2889 10.8666 29ZM15.9999 22.6667C16.3777 22.6667 16.6944 22.5389 16.9499 22.2834C17.2055 22.0278 17.3333 21.7111 17.3333 21.3334C17.3333 20.9556 17.2055 20.6389 16.9499 20.3834C16.6944 20.1278 16.3777 20 15.9999 20C15.6222 20 15.3055 20.1278 15.0499 20.3834C14.7944 20.6389 14.6666 20.9556 14.6666 21.3334C14.6666 21.7111 14.7944 22.0278 15.0499 22.2834C15.3055 22.5389 15.6222 22.6667 15.9999 22.6667ZM15.9999 17.3334C16.3777 17.3334 16.6944 17.2056 16.9499 16.95C17.2055 16.6945 17.3333 16.3778 17.3333 16V10.6667C17.3333 10.2889 17.2055 9.97226 16.9499 9.7167C16.6944 9.46115 16.3777 9.33337 15.9999 9.33337C15.6222 9.33337 15.3055 9.46115 15.0499 9.7167C14.7944 9.97226 14.6666 10.2889 14.6666 10.6667V16C14.6666 16.3778 14.7944 16.6945 15.0499 16.95C15.3055 17.2056 15.6222 17.3334 15.9999 17.3334Z" fill="#EE6600"/>
+             </svg>
+             Some areas for attention
+           </div>
+         </div>
+       {/if}
+       {#if (cardioFinalGreen || metabolicFinalGreen || autoFinalGreen || respGreen || femaleGreen) && !cardioFinalOrange && !metabolicFinalOrange && !autoFinalOrange && !respOrange && !femaleOrange && (cardioFinalRed || metabolicFinalRed || autoFinalRed || respRed || femaleRed)}
+         <div style="display: flex; margin-bottom: 3rem;">
+           <div class="indication-chip slightly-bad">
+             <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+               <path d="M10.8666 29L8.93327 25.7334L5.2666 24.9334C4.93327 24.8667 4.6666 24.6945 4.4666 24.4167C4.2666 24.1389 4.18882 23.8334 4.23327 23.5L4.59994 19.7334L2.09993 16.8667C1.87771 16.6223 1.7666 16.3334 1.7666 16C1.7666 15.6667 1.87771 15.3778 2.09993 15.1334L4.59994 12.2667L4.23327 8.50004C4.18882 8.1667 4.2666 7.86115 4.4666 7.58337C4.6666 7.30559 4.93327 7.13337 5.2666 7.0667L8.93327 6.2667L10.8666 3.00004C11.0444 2.71115 11.2888 2.5167 11.5999 2.4167C11.911 2.3167 12.2222 2.33337 12.5333 2.4667L15.9999 3.93337L19.4666 2.4667C19.7777 2.33337 20.0888 2.3167 20.3999 2.4167C20.711 2.5167 20.9555 2.71115 21.1333 3.00004L23.0666 6.2667L26.7333 7.0667C27.0666 7.13337 27.3333 7.30559 27.5333 7.58337C27.7333 7.86115 27.811 8.1667 27.7666 8.50004L27.3999 12.2667L29.8999 15.1334C30.1222 15.3778 30.2333 15.6667 30.2333 16C30.2333 16.3334 30.1222 16.6223 29.8999 16.8667L27.3999 19.7334L27.7666 23.5C27.811 23.8334 27.7333 24.1389 27.5333 24.4167C27.3333 24.6945 27.0666 24.8667 26.7333 24.9334L23.0666 25.7334L21.1333 29C20.9555 29.2889 20.711 29.4834 20.3999 29.5834C20.0888 29.6834 19.7777 29.6667 19.4666 29.5334L15.9999 28.0667L12.5333 29.5334C12.2222 29.6667 11.911 29.6834 11.5999 29.5834C11.2888 29.4834 11.0444 29.2889 10.8666 29ZM15.9999 22.6667C16.3777 22.6667 16.6944 22.5389 16.9499 22.2834C17.2055 22.0278 17.3333 21.7111 17.3333 21.3334C17.3333 20.9556 17.2055 20.6389 16.9499 20.3834C16.6944 20.1278 16.3777 20 15.9999 20C15.6222 20 15.3055 20.1278 15.0499 20.3834C14.7944 20.6389 14.6666 20.9556 14.6666 21.3334C14.6666 21.7111 14.7944 22.0278 15.0499 22.2834C15.3055 22.5389 15.6222 22.6667 15.9999 22.6667ZM15.9999 17.3334C16.3777 17.3334 16.6944 17.2056 16.9499 16.95C17.2055 16.6945 17.3333 16.3778 17.3333 16V10.6667C17.3333 10.2889 17.2055 9.97226 16.9499 9.7167C16.6944 9.46115 16.3777 9.33337 15.9999 9.33337C15.6222 9.33337 15.3055 9.46115 15.0499 9.7167C14.7944 9.97226 14.6666 10.2889 14.6666 10.6667V16C14.6666 16.3778 14.7944 16.6945 15.0499 16.95C15.3055 17.2056 15.6222 17.3334 15.9999 17.3334Z" fill="#EE6600"/>
+             </svg>
+             Some areas for attention
+           </div>
+         </div>
+       {/if}
+       {#if !cardioFinalGreen && !metabolicFinalGreen && !autoFinalGreen && !respGreen && !femaleGreen && (cardioFinalOrange || metabolicFinalOrange || autoFinalOrange || respOrange || femaleOrange) && (cardioFinalRed || metabolicFinalRed || autoFinalRed || respRed || femaleRed)}
+         <div style="display: flex; margin-bottom: 3rem;">
+           <div class="indication-chip bad">
+             <svg width="30" height="28" viewBox="0 0 30 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+               <path d="M9.8666 26.9999L7.93327 23.7332L4.2666 22.9332C3.93327 22.8666 3.6666 22.6944 3.4666 22.4166C3.2666 22.1388 3.18882 21.8332 3.23327 21.4999L3.59994 17.7332L1.09993 14.8666C0.877713 14.6221 0.766602 14.3332 0.766602 13.9999C0.766602 13.6666 0.877713 13.3777 1.09993 13.1332L3.59994 10.2666L3.23327 6.49991C3.18882 6.16658 3.2666 5.86102 3.4666 5.58325C3.6666 5.30547 3.93327 5.13325 4.2666 5.06658L7.93327 4.26658L9.8666 0.999914C10.0444 0.711025 10.2888 0.516581 10.5999 0.416581C10.911 0.316581 11.2222 0.333247 11.5333 0.466581L14.9999 1.93325L18.4666 0.466581C18.7777 0.333247 19.0888 0.316581 19.3999 0.416581C19.711 0.516581 19.9555 0.711025 20.1333 0.999914L22.0666 4.26658L25.7333 5.06658C26.0666 5.13325 26.3333 5.30547 26.5333 5.58325C26.7333 5.86102 26.811 6.16658 26.7666 6.49991L26.3999 10.2666L28.8999 13.1332C29.1222 13.3777 29.2333 13.6666 29.2333 13.9999C29.2333 14.3332 29.1222 14.6221 28.8999 14.8666L26.3999 17.7332L26.7666 21.4999C26.811 21.8332 26.7333 22.1388 26.5333 22.4166C26.3333 22.6944 26.0666 22.8666 25.7333 22.9332L22.0666 23.7332L20.1333 26.9999C19.9555 27.2888 19.711 27.4832 19.3999 27.5832C19.0888 27.6832 18.7777 27.6666 18.4666 27.5332L14.9999 26.0666L11.5333 27.5332C11.2222 27.6666 10.911 27.6832 10.5999 27.5832C10.2888 27.4832 10.0444 27.2888 9.8666 26.9999ZM14.9999 20.6666C15.3777 20.6666 15.6944 20.5388 15.9499 20.2832C16.2055 20.0277 16.3333 19.711 16.3333 19.3332C16.3333 18.9555 16.2055 18.6388 15.9499 18.3832C15.6944 18.1277 15.3777 17.9999 14.9999 17.9999C14.6222 17.9999 14.3055 18.1277 14.0499 18.3832C13.7944 18.6388 13.6666 18.9555 13.6666 19.3332C13.6666 19.711 13.7944 20.0277 14.0499 20.2832C14.3055 20.5388 14.6222 20.6666 14.9999 20.6666ZM14.9999 15.3332C15.3777 15.3332 15.6944 15.2055 15.9499 14.9499C16.2055 14.6944 16.3333 14.3777 16.3333 13.9999V8.66658C16.3333 8.2888 16.2055 7.97214 15.9499 7.71658C15.6944 7.46102 15.3777 7.33325 14.9999 7.33325C14.6222 7.33325 14.3055 7.46102 14.0499 7.71658C13.7944 7.97214 13.6666 8.2888 13.6666 8.66658V13.9999C13.6666 14.3777 13.7944 14.6944 14.0499 14.9499C14.3055 15.2055 14.6222 15.3332 14.9999 15.3332Z" fill="#DD2222"/>
+             </svg>
+             Significant areas for attention
+           </div>
+         </div>
+       {/if}
+       {#if (cardioFinalGreen || metabolicFinalGreen || autoFinalGreen || respGreen || femaleGreen) && (cardioFinalOrange || metabolicFinalOrange || autoFinalOrange || respOrange || femaleOrange) && (cardioFinalRed || metabolicFinalRed || autoFinalRed || respRed || femaleRed)}
+         <div style="display: flex; margin-bottom: 3rem;">
+           <div class="indication-chip slightly-bad">
+             <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+               <path d="M10.8666 29L8.93327 25.7334L5.2666 24.9334C4.93327 24.8667 4.6666 24.6945 4.4666 24.4167C4.2666 24.1389 4.18882 23.8334 4.23327 23.5L4.59994 19.7334L2.09993 16.8667C1.87771 16.6223 1.7666 16.3334 1.7666 16C1.7666 15.6667 1.87771 15.3778 2.09993 15.1334L4.59994 12.2667L4.23327 8.50004C4.18882 8.1667 4.2666 7.86115 4.4666 7.58337C4.6666 7.30559 4.93327 7.13337 5.2666 7.0667L8.93327 6.2667L10.8666 3.00004C11.0444 2.71115 11.2888 2.5167 11.5999 2.4167C11.911 2.3167 12.2222 2.33337 12.5333 2.4667L15.9999 3.93337L19.4666 2.4667C19.7777 2.33337 20.0888 2.3167 20.3999 2.4167C20.711 2.5167 20.9555 2.71115 21.1333 3.00004L23.0666 6.2667L26.7333 7.0667C27.0666 7.13337 27.3333 7.30559 27.5333 7.58337C27.7333 7.86115 27.811 8.1667 27.7666 8.50004L27.3999 12.2667L29.8999 15.1334C30.1222 15.3778 30.2333 15.6667 30.2333 16C30.2333 16.3334 30.1222 16.6223 29.8999 16.8667L27.3999 19.7334L27.7666 23.5C27.811 23.8334 27.7333 24.1389 27.5333 24.4167C27.3333 24.6945 27.0666 24.8667 26.7333 24.9334L23.0666 25.7334L21.1333 29C20.9555 29.2889 20.711 29.4834 20.3999 29.5834C20.0888 29.6834 19.7777 29.6667 19.4666 29.5334L15.9999 28.0667L12.5333 29.5334C12.2222 29.6667 11.911 29.6834 11.5999 29.5834C11.2888 29.4834 11.0444 29.2889 10.8666 29ZM15.9999 22.6667C16.3777 22.6667 16.6944 22.5389 16.9499 22.2834C17.2055 22.0278 17.3333 21.7111 17.3333 21.3334C17.3333 20.9556 17.2055 20.6389 16.9499 20.3834C16.6944 20.1278 16.3777 20 15.9999 20C15.6222 20 15.3055 20.1278 15.0499 20.3834C14.7944 20.6389 14.6666 20.9556 14.6666 21.3334C14.6666 21.7111 14.7944 22.0278 15.0499 22.2834C15.3055 22.5389 15.6222 22.6667 15.9999 22.6667ZM15.9999 17.3334C16.3777 17.3334 16.6944 17.2056 16.9499 16.95C17.2055 16.6945 17.3333 16.3778 17.3333 16V10.6667C17.3333 10.2889 17.2055 9.97226 16.9499 9.7167C16.6944 9.46115 16.3777 9.33337 15.9999 9.33337C15.6222 9.33337 15.3055 9.46115 15.0499 9.7167C14.7944 9.97226 14.6666 10.2889 14.6666 10.6667V16C14.6666 16.3778 14.7944 16.6945 15.0499 16.95C15.3055 17.2056 15.6222 17.3334 15.9999 17.3334Z" fill="#EE6600"/>
+             </svg>
+             Some areas for attention
+           </div>
+         </div>
+       {/if}
+     {:else}
+       {#if cardioFinalGreen && metabolicFinalGreen && autoFinalGreen && respGreen && !cardioFinalOrange && !metabolicFinalOrange && !autoFinalOrange && !respOrange && !cardioFinalRed && !metabolicFinalRed && !autoFinalRed && !respRed}
+         <div style="display: flex; margin-bottom: 3rem;">
+           <div class="indication-chip good">
+             <svg width="30" height="28" viewBox="0 0 30 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+               <path d="M13.5999 14.9333L11.6666 13.0333C11.4222 12.7889 11.1166 12.6666 10.7499 12.6666C10.3833 12.6666 10.0666 12.8 9.79993 13.0666C9.55549 13.3111 9.43327 13.6222 9.43327 14C9.43327 14.3778 9.55549 14.6889 9.79993 14.9333L12.6666 17.8C12.9333 18.0666 13.2444 18.2 13.5999 18.2C13.9555 18.2 14.2666 18.0666 14.5333 17.8L20.1999 12.1333C20.4666 11.8666 20.5944 11.5555 20.5833 11.2C20.5722 10.8444 20.4444 10.5333 20.1999 10.2666C19.9333 9.99998 19.6166 9.86109 19.2499 9.84998C18.8833 9.83887 18.5666 9.96664 18.2999 10.2333L13.5999 14.9333ZM9.8666 27L7.93327 23.7333L4.2666 22.9333C3.93327 22.8666 3.6666 22.6944 3.4666 22.4166C3.2666 22.1389 3.18882 21.8333 3.23327 21.5L3.59993 17.7333L1.09993 14.8666C0.877713 14.6222 0.766602 14.3333 0.766602 14C0.766602 13.6666 0.877713 13.3778 1.09993 13.1333L3.59993 10.2666L3.23327 6.49998C3.18882 6.16664 3.2666 5.86109 3.4666 5.58331C3.6666 5.30553 3.93327 5.13331 4.2666 5.06664L7.93327 4.26664L9.8666 0.999975C10.0444 0.711086 10.2888 0.516642 10.5999 0.416642C10.911 0.316642 11.2222 0.333308 11.5333 0.466642L14.9999 1.93331L18.4666 0.466642C18.7777 0.333308 19.0888 0.316642 19.3999 0.416642C19.711 0.516642 19.9555 0.711086 20.1333 0.999975L22.0666 4.26664L25.7333 5.06664C26.0666 5.13331 26.3333 5.30553 26.5333 5.58331C26.7333 5.86109 26.811 6.16664 26.7666 6.49998L26.3999 10.2666L28.8999 13.1333C29.1222 13.3778 29.2333 13.6666 29.2333 14C29.2333 14.3333 29.1222 14.6222 28.8999 14.8666L26.3999 17.7333L26.7666 21.5C26.811 21.8333 26.7333 22.1389 26.5333 22.4166C26.3333 22.6944 26.0666 22.8666 25.7333 22.9333L22.0666 23.7333L20.1333 27C19.9555 27.2889 19.711 27.4833 19.3999 27.5833C19.0888 27.6833 18.7777 27.6666 18.4666 27.5333L14.9999 26.0666L11.5333 27.5333C11.2222 27.6666 10.911 27.6833 10.5999 27.5833C10.2888 27.4833 10.0444 27.2889 9.8666 27Z" fill="#119999"/>
+             </svg>
+             No significant areas for attention
+           </div>
+         </div>
+       {/if}
+       {#if !cardioFinalGreen && !metabolicFinalGreen && !autoFinalGreen && !respGreen && cardioFinalOrange && metabolicFinalOrange && autoFinalOrange && respOrange && !cardioFinalRed && !metabolicFinalRed && !autoFinalRed && !respRed}
+         <div style="display: flex; margin-bottom: 3rem;">
+           <div class="indication-chip slightly-bad">
+             <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+               <path d="M10.8666 29L8.93327 25.7334L5.2666 24.9334C4.93327 24.8667 4.6666 24.6945 4.4666 24.4167C4.2666 24.1389 4.18882 23.8334 4.23327 23.5L4.59994 19.7334L2.09993 16.8667C1.87771 16.6223 1.7666 16.3334 1.7666 16C1.7666 15.6667 1.87771 15.3778 2.09993 15.1334L4.59994 12.2667L4.23327 8.50004C4.18882 8.1667 4.2666 7.86115 4.4666 7.58337C4.6666 7.30559 4.93327 7.13337 5.2666 7.0667L8.93327 6.2667L10.8666 3.00004C11.0444 2.71115 11.2888 2.5167 11.5999 2.4167C11.911 2.3167 12.2222 2.33337 12.5333 2.4667L15.9999 3.93337L19.4666 2.4667C19.7777 2.33337 20.0888 2.3167 20.3999 2.4167C20.711 2.5167 20.9555 2.71115 21.1333 3.00004L23.0666 6.2667L26.7333 7.0667C27.0666 7.13337 27.3333 7.30559 27.5333 7.58337C27.7333 7.86115 27.811 8.1667 27.7666 8.50004L27.3999 12.2667L29.8999 15.1334C30.1222 15.3778 30.2333 15.6667 30.2333 16C30.2333 16.3334 30.1222 16.6223 29.8999 16.8667L27.3999 19.7334L27.7666 23.5C27.811 23.8334 27.7333 24.1389 27.5333 24.4167C27.3333 24.6945 27.0666 24.8667 26.7333 24.9334L23.0666 25.7334L21.1333 29C20.9555 29.2889 20.711 29.4834 20.3999 29.5834C20.0888 29.6834 19.7777 29.6667 19.4666 29.5334L15.9999 28.0667L12.5333 29.5334C12.2222 29.6667 11.911 29.6834 11.5999 29.5834C11.2888 29.4834 11.0444 29.2889 10.8666 29ZM15.9999 22.6667C16.3777 22.6667 16.6944 22.5389 16.9499 22.2834C17.2055 22.0278 17.3333 21.7111 17.3333 21.3334C17.3333 20.9556 17.2055 20.6389 16.9499 20.3834C16.6944 20.1278 16.3777 20 15.9999 20C15.6222 20 15.3055 20.1278 15.0499 20.3834C14.7944 20.6389 14.6666 20.9556 14.6666 21.3334C14.6666 21.7111 14.7944 22.0278 15.0499 22.2834C15.3055 22.5389 15.6222 22.6667 15.9999 22.6667ZM15.9999 17.3334C16.3777 17.3334 16.6944 17.2056 16.9499 16.95C17.2055 16.6945 17.3333 16.3778 17.3333 16V10.6667C17.3333 10.2889 17.2055 9.97226 16.9499 9.7167C16.6944 9.46115 16.3777 9.33337 15.9999 9.33337C15.6222 9.33337 15.3055 9.46115 15.0499 9.7167C14.7944 9.97226 14.6666 10.2889 14.6666 10.6667V16C14.6666 16.3778 14.7944 16.6945 15.0499 16.95C15.3055 17.2056 15.6222 17.3334 15.9999 17.3334Z" fill="#EE6600"/>
+             </svg>
+             Some areas for attention
+           </div>
+         </div>
+       {/if}
+       {#if !cardioFinalGreen && !metabolicFinalGreen && !autoFinalGreen && !respGreen && !cardioFinalOrange && !metabolicFinalOrange && !autoFinalOrange && !respOrange && cardioFinalRed && metabolicFinalRed && autoFinalRed && respRed}
+         <div style="display: flex; margin-bottom: 3rem;">
+           <div class="indication-chip bad">
+             <svg width="30" height="28" viewBox="0 0 30 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+               <path d="M9.8666 26.9999L7.93327 23.7332L4.2666 22.9332C3.93327 22.8666 3.6666 22.6944 3.4666 22.4166C3.2666 22.1388 3.18882 21.8332 3.23327 21.4999L3.59994 17.7332L1.09993 14.8666C0.877713 14.6221 0.766602 14.3332 0.766602 13.9999C0.766602 13.6666 0.877713 13.3777 1.09993 13.1332L3.59994 10.2666L3.23327 6.49991C3.18882 6.16658 3.2666 5.86102 3.4666 5.58325C3.6666 5.30547 3.93327 5.13325 4.2666 5.06658L7.93327 4.26658L9.8666 0.999914C10.0444 0.711025 10.2888 0.516581 10.5999 0.416581C10.911 0.316581 11.2222 0.333247 11.5333 0.466581L14.9999 1.93325L18.4666 0.466581C18.7777 0.333247 19.0888 0.316581 19.3999 0.416581C19.711 0.516581 19.9555 0.711025 20.1333 0.999914L22.0666 4.26658L25.7333 5.06658C26.0666 5.13325 26.3333 5.30547 26.5333 5.58325C26.7333 5.86102 26.811 6.16658 26.7666 6.49991L26.3999 10.2666L28.8999 13.1332C29.1222 13.3777 29.2333 13.6666 29.2333 13.9999C29.2333 14.3332 29.1222 14.6221 28.8999 14.8666L26.3999 17.7332L26.7666 21.4999C26.811 21.8332 26.7333 22.1388 26.5333 22.4166C26.3333 22.6944 26.0666 22.8666 25.7333 22.9332L22.0666 23.7332L20.1333 26.9999C19.9555 27.2888 19.711 27.4832 19.3999 27.5832C19.0888 27.6832 18.7777 27.6666 18.4666 27.5332L14.9999 26.0666L11.5333 27.5332C11.2222 27.6666 10.911 27.6832 10.5999 27.5832C10.2888 27.4832 10.0444 27.2888 9.8666 26.9999ZM14.9999 20.6666C15.3777 20.6666 15.6944 20.5388 15.9499 20.2832C16.2055 20.0277 16.3333 19.711 16.3333 19.3332C16.3333 18.9555 16.2055 18.6388 15.9499 18.3832C15.6944 18.1277 15.3777 17.9999 14.9999 17.9999C14.6222 17.9999 14.3055 18.1277 14.0499 18.3832C13.7944 18.6388 13.6666 18.9555 13.6666 19.3332C13.6666 19.711 13.7944 20.0277 14.0499 20.2832C14.3055 20.5388 14.6222 20.6666 14.9999 20.6666ZM14.9999 15.3332C15.3777 15.3332 15.6944 15.2055 15.9499 14.9499C16.2055 14.6944 16.3333 14.3777 16.3333 13.9999V8.66658C16.3333 8.2888 16.2055 7.97214 15.9499 7.71658C15.6944 7.46102 15.3777 7.33325 14.9999 7.33325C14.6222 7.33325 14.3055 7.46102 14.0499 7.71658C13.7944 7.97214 13.6666 8.2888 13.6666 8.66658V13.9999C13.6666 14.3777 13.7944 14.6944 14.0499 14.9499C14.3055 15.2055 14.6222 15.3332 14.9999 15.3332Z" fill="#DD2222"/>
+             </svg>
+             Significant areas for attention
+           </div>
+         </div>
+       {/if}
+       {#if (cardioFinalGreen || metabolicFinalGreen || autoFinalGreen || respGreen) && (cardioFinalOrange || metabolicFinalOrange || autoFinalOrange || respOrange) && !cardioFinalRed && !metabolicFinalRed && !autoFinalRed && !respRed}
+         <div style="display: flex; margin-bottom: 3rem;">
+           <div class="indication-chip slightly-bad">
+             <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+               <path d="M10.8666 29L8.93327 25.7334L5.2666 24.9334C4.93327 24.8667 4.6666 24.6945 4.4666 24.4167C4.2666 24.1389 4.18882 23.8334 4.23327 23.5L4.59994 19.7334L2.09993 16.8667C1.87771 16.6223 1.7666 16.3334 1.7666 16C1.7666 15.6667 1.87771 15.3778 2.09993 15.1334L4.59994 12.2667L4.23327 8.50004C4.18882 8.1667 4.2666 7.86115 4.4666 7.58337C4.6666 7.30559 4.93327 7.13337 5.2666 7.0667L8.93327 6.2667L10.8666 3.00004C11.0444 2.71115 11.2888 2.5167 11.5999 2.4167C11.911 2.3167 12.2222 2.33337 12.5333 2.4667L15.9999 3.93337L19.4666 2.4667C19.7777 2.33337 20.0888 2.3167 20.3999 2.4167C20.711 2.5167 20.9555 2.71115 21.1333 3.00004L23.0666 6.2667L26.7333 7.0667C27.0666 7.13337 27.3333 7.30559 27.5333 7.58337C27.7333 7.86115 27.811 8.1667 27.7666 8.50004L27.3999 12.2667L29.8999 15.1334C30.1222 15.3778 30.2333 15.6667 30.2333 16C30.2333 16.3334 30.1222 16.6223 29.8999 16.8667L27.3999 19.7334L27.7666 23.5C27.811 23.8334 27.7333 24.1389 27.5333 24.4167C27.3333 24.6945 27.0666 24.8667 26.7333 24.9334L23.0666 25.7334L21.1333 29C20.9555 29.2889 20.711 29.4834 20.3999 29.5834C20.0888 29.6834 19.7777 29.6667 19.4666 29.5334L15.9999 28.0667L12.5333 29.5334C12.2222 29.6667 11.911 29.6834 11.5999 29.5834C11.2888 29.4834 11.0444 29.2889 10.8666 29ZM15.9999 22.6667C16.3777 22.6667 16.6944 22.5389 16.9499 22.2834C17.2055 22.0278 17.3333 21.7111 17.3333 21.3334C17.3333 20.9556 17.2055 20.6389 16.9499 20.3834C16.6944 20.1278 16.3777 20 15.9999 20C15.6222 20 15.3055 20.1278 15.0499 20.3834C14.7944 20.6389 14.6666 20.9556 14.6666 21.3334C14.6666 21.7111 14.7944 22.0278 15.0499 22.2834C15.3055 22.5389 15.6222 22.6667 15.9999 22.6667ZM15.9999 17.3334C16.3777 17.3334 16.6944 17.2056 16.9499 16.95C17.2055 16.6945 17.3333 16.3778 17.3333 16V10.6667C17.3333 10.2889 17.2055 9.97226 16.9499 9.7167C16.6944 9.46115 16.3777 9.33337 15.9999 9.33337C15.6222 9.33337 15.3055 9.46115 15.0499 9.7167C14.7944 9.97226 14.6666 10.2889 14.6666 10.6667V16C14.6666 16.3778 14.7944 16.6945 15.0499 16.95C15.3055 17.2056 15.6222 17.3334 15.9999 17.3334Z" fill="#EE6600"/>
+             </svg>
+             Some areas for attention
+           </div>
+         </div>
+       {/if}
+       {#if (cardioFinalGreen || metabolicFinalGreen || autoFinalGreen || respGreen) && !cardioFinalOrange && !metabolicFinalOrange && !autoFinalOrange && !respOrange && (cardioFinalRed || metabolicFinalRed || autoFinalRed || respRed)}
+         <div style="display: flex; margin-bottom: 3rem;">
+           <div class="indication-chip slightly-bad">
+             <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+               <path d="M10.8666 29L8.93327 25.7334L5.2666 24.9334C4.93327 24.8667 4.6666 24.6945 4.4666 24.4167C4.2666 24.1389 4.18882 23.8334 4.23327 23.5L4.59994 19.7334L2.09993 16.8667C1.87771 16.6223 1.7666 16.3334 1.7666 16C1.7666 15.6667 1.87771 15.3778 2.09993 15.1334L4.59994 12.2667L4.23327 8.50004C4.18882 8.1667 4.2666 7.86115 4.4666 7.58337C4.6666 7.30559 4.93327 7.13337 5.2666 7.0667L8.93327 6.2667L10.8666 3.00004C11.0444 2.71115 11.2888 2.5167 11.5999 2.4167C11.911 2.3167 12.2222 2.33337 12.5333 2.4667L15.9999 3.93337L19.4666 2.4667C19.7777 2.33337 20.0888 2.3167 20.3999 2.4167C20.711 2.5167 20.9555 2.71115 21.1333 3.00004L23.0666 6.2667L26.7333 7.0667C27.0666 7.13337 27.3333 7.30559 27.5333 7.58337C27.7333 7.86115 27.811 8.1667 27.7666 8.50004L27.3999 12.2667L29.8999 15.1334C30.1222 15.3778 30.2333 15.6667 30.2333 16C30.2333 16.3334 30.1222 16.6223 29.8999 16.8667L27.3999 19.7334L27.7666 23.5C27.811 23.8334 27.7333 24.1389 27.5333 24.4167C27.3333 24.6945 27.0666 24.8667 26.7333 24.9334L23.0666 25.7334L21.1333 29C20.9555 29.2889 20.711 29.4834 20.3999 29.5834C20.0888 29.6834 19.7777 29.6667 19.4666 29.5334L15.9999 28.0667L12.5333 29.5334C12.2222 29.6667 11.911 29.6834 11.5999 29.5834C11.2888 29.4834 11.0444 29.2889 10.8666 29ZM15.9999 22.6667C16.3777 22.6667 16.6944 22.5389 16.9499 22.2834C17.2055 22.0278 17.3333 21.7111 17.3333 21.3334C17.3333 20.9556 17.2055 20.6389 16.9499 20.3834C16.6944 20.1278 16.3777 20 15.9999 20C15.6222 20 15.3055 20.1278 15.0499 20.3834C14.7944 20.6389 14.6666 20.9556 14.6666 21.3334C14.6666 21.7111 14.7944 22.0278 15.0499 22.2834C15.3055 22.5389 15.6222 22.6667 15.9999 22.6667ZM15.9999 17.3334C16.3777 17.3334 16.6944 17.2056 16.9499 16.95C17.2055 16.6945 17.3333 16.3778 17.3333 16V10.6667C17.3333 10.2889 17.2055 9.97226 16.9499 9.7167C16.6944 9.46115 16.3777 9.33337 15.9999 9.33337C15.6222 9.33337 15.3055 9.46115 15.0499 9.7167C14.7944 9.97226 14.6666 10.2889 14.6666 10.6667V16C14.6666 16.3778 14.7944 16.6945 15.0499 16.95C15.3055 17.2056 15.6222 17.3334 15.9999 17.3334Z" fill="#EE6600"/>
+             </svg>
+             Some areas for attention
+           </div>
+         </div>
+       {/if}
+       {#if !cardioFinalGreen && !metabolicFinalGreen && !autoFinalGreen && !respGreen && (cardioFinalOrange || metabolicFinalOrange || autoFinalOrange || respOrange) && (cardioFinalRed || metabolicFinalRed || autoFinalRed || respRed)}
+         <div style="display: flex; margin-bottom: 3rem;">
+           <div class="indication-chip bad">
+             <svg width="30" height="28" viewBox="0 0 30 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+               <path d="M9.8666 26.9999L7.93327 23.7332L4.2666 22.9332C3.93327 22.8666 3.6666 22.6944 3.4666 22.4166C3.2666 22.1388 3.18882 21.8332 3.23327 21.4999L3.59994 17.7332L1.09993 14.8666C0.877713 14.6221 0.766602 14.3332 0.766602 13.9999C0.766602 13.6666 0.877713 13.3777 1.09993 13.1332L3.59994 10.2666L3.23327 6.49991C3.18882 6.16658 3.2666 5.86102 3.4666 5.58325C3.6666 5.30547 3.93327 5.13325 4.2666 5.06658L7.93327 4.26658L9.8666 0.999914C10.0444 0.711025 10.2888 0.516581 10.5999 0.416581C10.911 0.316581 11.2222 0.333247 11.5333 0.466581L14.9999 1.93325L18.4666 0.466581C18.7777 0.333247 19.0888 0.316581 19.3999 0.416581C19.711 0.516581 19.9555 0.711025 20.1333 0.999914L22.0666 4.26658L25.7333 5.06658C26.0666 5.13325 26.3333 5.30547 26.5333 5.58325C26.7333 5.86102 26.811 6.16658 26.7666 6.49991L26.3999 10.2666L28.8999 13.1332C29.1222 13.3777 29.2333 13.6666 29.2333 13.9999C29.2333 14.3332 29.1222 14.6221 28.8999 14.8666L26.3999 17.7332L26.7666 21.4999C26.811 21.8332 26.7333 22.1388 26.5333 22.4166C26.3333 22.6944 26.0666 22.8666 25.7333 22.9332L22.0666 23.7332L20.1333 26.9999C19.9555 27.2888 19.711 27.4832 19.3999 27.5832C19.0888 27.6832 18.7777 27.6666 18.4666 27.5332L14.9999 26.0666L11.5333 27.5332C11.2222 27.6666 10.911 27.6832 10.5999 27.5832C10.2888 27.4832 10.0444 27.2888 9.8666 26.9999ZM14.9999 20.6666C15.3777 20.6666 15.6944 20.5388 15.9499 20.2832C16.2055 20.0277 16.3333 19.711 16.3333 19.3332C16.3333 18.9555 16.2055 18.6388 15.9499 18.3832C15.6944 18.1277 15.3777 17.9999 14.9999 17.9999C14.6222 17.9999 14.3055 18.1277 14.0499 18.3832C13.7944 18.6388 13.6666 18.9555 13.6666 19.3332C13.6666 19.711 13.7944 20.0277 14.0499 20.2832C14.3055 20.5388 14.6222 20.6666 14.9999 20.6666ZM14.9999 15.3332C15.3777 15.3332 15.6944 15.2055 15.9499 14.9499C16.2055 14.6944 16.3333 14.3777 16.3333 13.9999V8.66658C16.3333 8.2888 16.2055 7.97214 15.9499 7.71658C15.6944 7.46102 15.3777 7.33325 14.9999 7.33325C14.6222 7.33325 14.3055 7.46102 14.0499 7.71658C13.7944 7.97214 13.6666 8.2888 13.6666 8.66658V13.9999C13.6666 14.3777 13.7944 14.6944 14.0499 14.9499C14.3055 15.2055 14.6222 15.3332 14.9999 15.3332Z" fill="#DD2222"/>
+             </svg>
+             Significant areas for attention
+           </div>
+         </div>
+       {/if}
+       {#if (cardioFinalGreen || metabolicFinalGreen || autoFinalGreen || respGreen) && (cardioFinalOrange || metabolicFinalOrange || autoFinalOrange || respOrange) && (cardioFinalRed || metabolicFinalRed || autoFinalRed || respRed)}
+         <div style="display: flex; margin-bottom: 3rem;">
+           <div class="indication-chip slightly-bad">
+             <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+               <path d="M10.8666 29L8.93327 25.7334L5.2666 24.9334C4.93327 24.8667 4.6666 24.6945 4.4666 24.4167C4.2666 24.1389 4.18882 23.8334 4.23327 23.5L4.59994 19.7334L2.09993 16.8667C1.87771 16.6223 1.7666 16.3334 1.7666 16C1.7666 15.6667 1.87771 15.3778 2.09993 15.1334L4.59994 12.2667L4.23327 8.50004C4.18882 8.1667 4.2666 7.86115 4.4666 7.58337C4.6666 7.30559 4.93327 7.13337 5.2666 7.0667L8.93327 6.2667L10.8666 3.00004C11.0444 2.71115 11.2888 2.5167 11.5999 2.4167C11.911 2.3167 12.2222 2.33337 12.5333 2.4667L15.9999 3.93337L19.4666 2.4667C19.7777 2.33337 20.0888 2.3167 20.3999 2.4167C20.711 2.5167 20.9555 2.71115 21.1333 3.00004L23.0666 6.2667L26.7333 7.0667C27.0666 7.13337 27.3333 7.30559 27.5333 7.58337C27.7333 7.86115 27.811 8.1667 27.7666 8.50004L27.3999 12.2667L29.8999 15.1334C30.1222 15.3778 30.2333 15.6667 30.2333 16C30.2333 16.3334 30.1222 16.6223 29.8999 16.8667L27.3999 19.7334L27.7666 23.5C27.811 23.8334 27.7333 24.1389 27.5333 24.4167C27.3333 24.6945 27.0666 24.8667 26.7333 24.9334L23.0666 25.7334L21.1333 29C20.9555 29.2889 20.711 29.4834 20.3999 29.5834C20.0888 29.6834 19.7777 29.6667 19.4666 29.5334L15.9999 28.0667L12.5333 29.5334C12.2222 29.6667 11.911 29.6834 11.5999 29.5834C11.2888 29.4834 11.0444 29.2889 10.8666 29ZM15.9999 22.6667C16.3777 22.6667 16.6944 22.5389 16.9499 22.2834C17.2055 22.0278 17.3333 21.7111 17.3333 21.3334C17.3333 20.9556 17.2055 20.6389 16.9499 20.3834C16.6944 20.1278 16.3777 20 15.9999 20C15.6222 20 15.3055 20.1278 15.0499 20.3834C14.7944 20.6389 14.6666 20.9556 14.6666 21.3334C14.6666 21.7111 14.7944 22.0278 15.0499 22.2834C15.3055 22.5389 15.6222 22.6667 15.9999 22.6667ZM15.9999 17.3334C16.3777 17.3334 16.6944 17.2056 16.9499 16.95C17.2055 16.6945 17.3333 16.3778 17.3333 16V10.6667C17.3333 10.2889 17.2055 9.97226 16.9499 9.7167C16.6944 9.46115 16.3777 9.33337 15.9999 9.33337C15.6222 9.33337 15.3055 9.46115 15.0499 9.7167C14.7944 9.97226 14.6666 10.2889 14.6666 10.6667V16C14.6666 16.3778 14.7944 16.6945 15.0499 16.95C15.3055 17.2056 15.6222 17.3334 15.9999 17.3334Z" fill="#EE6600"/>
+             </svg>
+             Some areas for attention
+           </div>
+         </div>
+       {/if}
+     {/if}
+    {#if badAreas.length}
+      <h2>Areas for attention</h2>
+      <div class="causes mb-6">
+        {#each badAreas as area}
+          <div class="cause-chip {area.color === 'red' ? 'bad' : 'slightly-bad'}">
+            <div class="cause-chip-dot"></div>
+            {area.label}
+          </div>
+        {/each}
       </div>
-    <h2>Areas for attention</h2>
-    <div class="causes mb-6">
-      <div class="cause-chip bad">
-        <div class="cause-chip-dot"></div>
-        Inc. risk of hypertension
-      </div>
-      <div class="cause-chip bad">
-        <div class="cause-chip-dot"></div>
-        MI & CVA
-      </div>
-      <div class="cause-chip slightly-bad">
-        <div class="cause-chip-dot"></div>
-        COPD
-      </div>
-      <div class="cause-chip slightly-bad">
-        <div class="cause-chip-dot"></div>
-        COPD
-      </div>
-      <div class="cause-chip slightly-bad">
-        <div class="cause-chip-dot"></div>
-        Type 2 diabetes
-      </div>
-      <div class="cause-chip bad">
-        <div class="cause-chip-dot"></div>
-        MI & CVA
-      </div>
-      <div class="cause-chip bad">
-        <div class="cause-chip-dot"></div>
-        Dyslipidemia
-      </div>
-      <div class="cause-chip bad">
-        <div class="cause-chip-dot"></div>
-        MI & CVA
-      </div>
-      <div class="cause-chip slightly-bad">
-        <div class="cause-chip-dot"></div>
-        COPD
-      </div>
-      <div class="cause-chip slightly-bad">
-        <div class="cause-chip-dot"></div>
-        COPD
-      </div>
-      <div class="cause-chip slightly-bad">
-        <div class="cause-chip-dot"></div>
-        Type 2 diabetes
-      </div>
-      <div class="cause-chip bad">
-        <div class="cause-chip-dot"></div>
-        MI & CVA
-      </div>
-      <div class="cause-chip bad">
-        <div class="cause-chip-dot"></div>
-        Dyslipidemia
-      </div>
-    </div>
-    <p class="x-small"><b>Please note</b>: While certain patterns may show similarities to those observed in specific conditions, this does not confirm the presence <br> of a disease or any of its subclinical forms.</p>
+      <p class="x-small"><b>Please note</b>: While certain patterns may show similarities to those observed in specific conditions, this does not confirm the presence <br> of a disease or any of its subclinical forms.</p>
+    {/if}
     {/if}
 {/if}
 
@@ -276,7 +523,7 @@
         border-top: 1px solid #09341F33;
         display: flex;
         align-items: center;
-        height: 90px;
+        height: 80px;
     }
 
     .indication-chip {
