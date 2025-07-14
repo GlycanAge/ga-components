@@ -31,6 +31,7 @@
   import '../../../dist/insights-overview-latest.wc.js';
   import '../../../dist/arrow-graph.wc.js';
   import '../../../dist/overlap-title.wc.js';
+  import '../../../dist/overlap-title-three.wc.js';
   import '../../../dist/scatter-plot.wc.js';
   import '../../../dist/results-overview-clp.wc.js';
   import '../../../dist/results-overview-three.wc.js';
@@ -469,7 +470,7 @@
         </div>
     </div>
     <div style="border-bottom: 2px dashed black; display: flex; flex-direction: column; align-items: center; width: 80%; padding: 2rem 0 2rem 0;">
-      <b>2. overlap-title.wc.svelte</b>
+      <b>2. overlap-title.wc.svelte (b2b v2.0.0)</b>
       <div style="width: 71.3ch;height: 11ch; border: 1px dashed lightcoral;">
         <ga-overlap-title disease="dyslipidemia"></ga-overlap-title>
       </div>
@@ -480,6 +481,20 @@
       <div style="margin: 4px;"></div>
       <div style="width: 71.3ch;height: 11ch; border: 1px dashed lightcoral;">
         <ga-overlap-title disease="risk"></ga-overlap-title>
+      </div>
+    </div>
+    <div style="border-bottom: 2px dashed black; display: flex; flex-direction: column; align-items: center; width: 80%; padding: 2rem 0 2rem 0;">
+      <b>2. overlap-title-three.wc.svelte (b2b v3.0.0)</b>
+      <div style="width: 71.3ch;height: 11ch; border: 1px dashed lightcoral;">
+        <ga-overlap-title-three disease="dyslipidemia"></ga-overlap-title-three>
+      </div>
+      <div style="margin: 4px;"></div>
+      <div style="width: 71.3ch;height: 11ch; border: 1px dashed lightcoral;">
+        <ga-overlap-title-three disease="coronary"></ga-overlap-title-three>
+      </div>
+      <div style="margin: 4px;"></div>
+      <div style="width: 71.3ch;height: 11ch; border: 1px dashed lightcoral;">
+        <ga-overlap-title-three disease="risk"></ga-overlap-title-three>
       </div>
     </div>
     <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
