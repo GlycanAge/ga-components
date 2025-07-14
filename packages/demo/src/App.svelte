@@ -28,6 +28,7 @@
   import '../../../dist/single-overview-three.wc.js';
   import '../../../dist/main-result.wc.js';
   import '../../../dist/insights-overview.wc.js';
+  import '../../../dist/insights-overview-latest.wc.js';
   import '../../../dist/arrow-graph.wc.js';
   import '../../../dist/overlap-title.wc.js';
   import '../../../dist/scatter-plot.wc.js';
@@ -531,13 +532,19 @@
         </div>
     </div>
     <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
-      <b>4. insights-overview-three.wc.svelte</b>
+      <b>4. insights-overview-latest.wc.svelte</b>
+      <div style="height: 588px; width: 550px; border: 1px dashed lightcoral;">
+        <ga-insights-overview-latest lang="english"></ga-insights-overview-latest>
+      </div>
+    </div>
+    <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
+      <b>4. insights-overview-three.wc.svelte (ovaj je samo izveden iz originalnog insights-overview)</b>
       <div style="height: 500px; width: 550px; border: 1px dashed lightcoral;">
         <ga-insights-overview-three lang="english" type="long"></ga-insights-overview-three>
       </div>
     </div>
     <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
-      <b>4. insights-overview-three.wc.svelte</b>
+      <b>4. insights-overview-three.wc.svelte (ovaj je samo izveden iz originalnog insights-overview)</b>
       <div style="height: 588px; width: 550px; border: 1px dashed lightcoral;">
         <ga-insights-overview-three lang="english" type="short"></ga-insights-overview-three>
       </div>
