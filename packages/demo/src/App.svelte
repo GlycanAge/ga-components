@@ -25,6 +25,7 @@
   import '../../../dist/median-graph-japanese.wc.js';
   import '../../../dist/results-overview.wc.js';
   import '../../../dist/single-overview.wc.js';
+  import '../../../dist/single-overview-three.wc.js';
   import '../../../dist/main-result.wc.js';
   import '../../../dist/insights-overview.wc.js';
   import '../../../dist/arrow-graph.wc.js';
@@ -568,6 +569,28 @@
         <div style="width: 550px; height: 200px; border: 1px dashed lightcoral;">
           <ga-single-overview type="lifestyle" lang="english"></ga-single-overview>
         </div>
+    </div>
+    <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
+      <b>5. single-overview-THREE.wc.svelte (also used in b2b2c(v2.0, slovenian v2.0) , b2c(v2.0))</b>
+      <div style="width: 550px; height: 200px; border: 1px dashed lightcoral;">
+        <ga-single-overview-three type="shield" lang="english"></ga-single-overview-three>
+      </div>
+      <div style="margin: 5px;"></div>
+      <div style="width: 550px; height: 200px; border: 1px dashed lightcoral;">
+        <ga-single-overview-three type="youth" lang="english"></ga-single-overview-three>
+      </div>
+      <div style="margin: 5px;"></div>
+      <div style="width: 550px; height: 200px; border: 1px dashed lightcoral;">
+        <ga-single-overview-three type="mature" lang="english"></ga-single-overview-three>
+      </div>
+      <div style="margin: 5px;"></div>
+      <div style="width: 550px; height: 200px; border: 1px dashed lightcoral;">
+        <ga-single-overview-three type="median" lang="english"></ga-single-overview-three>
+      </div>
+      <div style="margin: 5px;"></div>
+      <div style="width: 550px; height: 200px; border: 1px dashed lightcoral;">
+        <ga-single-overview-three type="lifestyle" lang="english"></ga-single-overview-three>
+      </div>
     </div>
     <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
       <b>6. arrow-graph.wc.svelte</b>

@@ -38,6 +38,7 @@ export default () => {
   import('./src/insights-overview-clp/insights-overview-clp.wc.svelte');
   import('./src/main-result-clp/main-result-clp.wc.svelte');
   import('./src/single-overview-clp/single-overview-clp.wc.svelte');
+  import('./src/single-overview-three/single-overview-three.wc.svelte');
   import('./src/arrow-graph-clp/arrow-graph-clp.wc.svelte');
   import('./src/overlap-title-clp/overlap-title-clp.wc.svelte');
   import('./src/scatter-plot-clp/scatter-plot-clp.wc.svelte');
