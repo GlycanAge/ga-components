@@ -30,6 +30,7 @@
   import '../../../dist/insights-overview.wc.js';
   import '../../../dist/insights-overview-latest.wc.js';
   import '../../../dist/arrow-graph.wc.js';
+  import '../../../dist/arrow-graph-three.wc.js';
   import '../../../dist/overlap-title.wc.js';
   import '../../../dist/overlap-title-three.wc.js';
   import '../../../dist/scatter-plot.wc.js';
@@ -634,6 +635,28 @@
       <div style="margin: 5px;"></div>
       <div style="width: 550px; height: 82px; border: 1px dashed lightcoral;">
         <ga-arrow-graph subtype="median" direction="left"></ga-arrow-graph>
+      </div>
+    </div>
+    <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
+      <b>6. arrow-graph-three.wc.svelte</b>
+      <div style="width: 550px; height: 82px; border: 1px dashed lightcoral;">
+        <ga-arrow-graph-three subtype="mature" direction="right"></ga-arrow-graph-three>
+      </div>
+      <div style="margin: 5px;"></div>
+      <div style="width: 550px; height: 82px; border: 1px dashed lightcoral;">
+        <ga-arrow-graph-three subtype="youth" direction="right"></ga-arrow-graph-three>
+      </div>
+      <div style="margin: 5px;"></div>
+      <div style="width: 550px; height: 82px; border: 1px dashed lightcoral;">
+        <ga-arrow-graph-three subtype="shield" direction="left"></ga-arrow-graph-three>
+      </div>
+      <div style="margin: 5px;"></div>
+      <div style="width: 550px; height: 82px; border: 1px dashed lightcoral;">
+        <ga-arrow-graph-three subtype="lifestyle" direction="right"></ga-arrow-graph-three>
+      </div>
+      <div style="margin: 5px;"></div>
+      <div style="width: 550px; height: 82px; border: 1px dashed lightcoral;">
+        <ga-arrow-graph-three subtype="median" direction="left"></ga-arrow-graph-three>
       </div>
     </div>
     <div style="margin: 200px;"></div>
