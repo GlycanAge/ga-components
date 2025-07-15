@@ -212,7 +212,7 @@
       verticalLines.style.width = '2px';
       verticalLines.style.display = 'flex';
       verticalLines.style.flexDirection = 'column';
-      verticalLines.style.zIndex = '0';
+      verticalLines.style.zIndex = '-5';
 
         // Create 8 small divs for the dashed line
         for (let i = 0; i < 8; i++) {
@@ -305,7 +305,7 @@
         if (type === 'lifestyle' && overTimeData.data[k].result) {
           messageHolder.style.position = 'absolute';
           messageHolder.style.left = `${chartRect.left + chart.convertToPixel('xAxis', k) - 60}px`;
-          messageHolder.style.top = `${chartRect.top + chart.convertToPixel('yAxis', glycanData[k][1]) + 70}px`;
+          messageHolder.style.top = `${chartRect.top + 86}px`;
           messageHolder.style.font = 'bold 12px sans-serif';
           messageHolder.style.color = 'black';
           messageHolder.style.zIndex = '19';
@@ -328,7 +328,6 @@
           messageDiv.innerText = `Results from this test`;
           messageHolder.appendChild(arrowSvg);
           messageHolder.appendChild(messageDiv);
-
 
           document.body.appendChild(messageHolder);
         }
