@@ -441,19 +441,19 @@
     <div class="flex flex-col items-center" style="padding: 4rem 0 2rem 0; width: 80%;">
       <b>0. over-time-indexes.wc.svelte</b>
       <div style="border-radius: 10px; height: 588px; width: 650px;">
-        <div style="width: 100%; height: 102px; border-top: 2px solid #09341F33;">
+        <div style="width: 100%; height: 115px; border-top: 2px solid #09341F33;">
           <ga-over-time-indexes type="shield" lang="english"></ga-over-time-indexes>
         </div>
-        <div style="width: 100%; height: 102px; border-top: 2px solid #09341F33;">
+        <div style="width: 100%; height: 115px; border-top: 2px solid #09341F33;">
           <ga-over-time-indexes type="youth" lang="english"></ga-over-time-indexes>
         </div>
-        <div style="width: 100%; height: 102px; border-top: 2px solid #09341F33;">
+        <div style="width: 100%; height: 115px; border-top: 2px solid #09341F33;">
           <ga-over-time-indexes type="mature" lang="english"></ga-over-time-indexes>
         </div>
-        <div style="width: 100%; height: 102px; border-top: 2px solid #09341F33;">
+        <div style="width: 100%; height: 115px; border-top: 2px solid #09341F33;">
           <ga-over-time-indexes type="median" lang="english"></ga-over-time-indexes>
         </div>
-        <div style="width: 100%; height: 102px; border-top: 2px solid #09341F33; border-bottom: 2px solid #09341F33;">
+        <div style="width: 100%; height: 115px; border-top: 2px solid #09341F33; border-bottom: 2px solid #09341F33;">
           <ga-over-time-indexes type="lifestyle" lang="english"></ga-over-time-indexes>
         </div>
       </div>

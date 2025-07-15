@@ -159,8 +159,8 @@
         }
       },
       yAxis: {
-        min: Math.min(...overTimeData.data.map(item => Math.min(item[cur]))) - 5,
-        max: Math.max(...overTimeData.data.map(item => Math.max(item[cur]))) + 5,
+        min: 0,
+        max: 100,
         name: '',
         axisLine: {
           show: false,
