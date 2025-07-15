@@ -3,7 +3,7 @@
 <script lang="ts">
   import {onMount} from 'svelte';
   import {Service} from '../shared/utils/service';
-  // import * as echarts from 'echarts';
+  import * as echarts from 'echarts';
   import { getTranslation } from '../shared/functions/helpers';
 
   export let service: Service = window.GaReportService;
@@ -199,9 +199,83 @@
     chart.setOption(option);
 
     for (let k = 0; k < overTimeData.data.length; k++) {
-      if (overTimeData.data[k].x < overTimeData.data[k].y || overTimeData.data[k].x === overTimeData.data[k].y) {
         const newSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
         const scoreHolder = document.createElement('div');
+        const verticalLines = document.createElement('div');
+        const messageHolder =  document.createElement('div');
+
+      // Create the vertical dashed line
+      verticalLines.style.position = 'absolute';
+      verticalLines.style.left = `${chartRect.left + chart.convertToPixel('xAxis', k)}px`;
+      verticalLines.style.top = `${chartRect.top}px`;
+      verticalLines.style.height = `${chartRect.height}px`;
+      verticalLines.style.width = '2px';
+      verticalLines.style.display = 'flex';
+      verticalLines.style.flexDirection = 'column';
+      verticalLines.style.zIndex = '0';
+
+        // Create 8 small divs for the dashed line
+        for (let i = 0; i < 8; i++) {
+          const dashDiv = document.createElement('div');
+          dashDiv.style.width = '2px';
+          dashDiv.style.height = '8px';
+          dashDiv.style.borderRadius = '99px';
+          dashDiv.style.marginBottom = '2px';
+          dashDiv.style.opacity = overTimeData.data[k].result ? '1' : '0.5';
+
+          if (type === 'mature' || type === 'lifestyle') {
+            if (i < 2) {
+              dashDiv.style.backgroundColor = '#DD2222';
+            }
+            if (i === 2) {
+              dashDiv.style.backgroundColor = '#EE6600';
+            }
+            if (i === 3 || i === 4) {
+              dashDiv.style.backgroundColor = '#66CCAA';
+            }
+            if (i === 5) {
+              dashDiv.style.backgroundColor = '#119999';
+            }
+            if (i > 5) {
+              dashDiv.style.backgroundColor = '#005566';
+            }
+          }
+
+          if (type === 'shield' || type === 'youth') {
+            if (i < 2) {
+              dashDiv.style.backgroundColor = '#005566';
+            }
+            if (i === 2) {
+              dashDiv.style.backgroundColor = '#119999';
+            }
+            if (i === 3 || i === 4) {
+              dashDiv.style.backgroundColor = '#66CCAA';
+            }
+            if (i === 5) {
+              dashDiv.style.backgroundColor = '#EE6600';
+            }
+            if (i > 5) {
+              dashDiv.style.backgroundColor = '#DD2222';
+            }
+          }
+
+          if (type === 'median') {
+            if (i === 0 || i === 7) {
+              dashDiv.style.backgroundColor = '#DD2222';
+            }
+            if (i === 1 || i === 6) {
+              dashDiv.style.backgroundColor = '#EE6600';
+            }
+            if (i === 2 || i === 5) {
+              dashDiv.style.backgroundColor = '#119999';
+            }
+            if (i === 3 || i === 4) {
+              dashDiv.style.backgroundColor = '#005566';
+            }
+          }
+
+          verticalLines.appendChild(dashDiv);
+        }
 
         newSvg.setAttribute("width", "28");
         newSvg.setAttribute("height", "33");
@@ -216,7 +290,7 @@
         newSvg.style.left = `${chartRect.left + chart.convertToPixel('xAxis', k) - 14}px`;
         newSvg.style.top = `${chartRect.top + chart.convertToPixel('yAxis', glycanData[k][1]) - 37}px`;
         newSvg.style.zIndex = '8';
-        newSvg.style.opacity = overTimeData.data[k].result ? '1' : '0.5';
+        newSvg.style.opacity = overTimeData.data[k].result ? '1' : '0.4';
 
         scoreHolder.innerText = `${overTimeData.data[k][cur]}`;
         scoreHolder.style.position = 'absolute';
@@ -228,40 +302,40 @@
         scoreHolder.style.fontFamily = 'Sen';
         scoreHolder.style.opacity = overTimeData.data[k].result ? '1' : '0.8';
 
+        if (type === 'lifestyle' && overTimeData.data[k].result) {
+          messageHolder.style.position = 'absolute';
+          messageHolder.style.left = `${chartRect.left + chart.convertToPixel('xAxis', k) - 60}px`;
+          messageHolder.style.top = `${chartRect.top + chart.convertToPixel('yAxis', glycanData[k][1]) + 70}px`;
+          messageHolder.style.font = 'bold 12px sans-serif';
+          messageHolder.style.color = 'black';
+          messageHolder.style.zIndex = '19';
+          messageHolder.style.fontFamily = 'Sen';
+          messageHolder.style.display = 'flex';
+          messageHolder.style.flexDirection = 'column';
+          messageHolder.style.alignItems = 'center';
+          const arrowSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+          arrowSvg.setAttribute("width", "16");
+          arrowSvg.setAttribute("height", "18");
+          arrowSvg.setAttribute("viewBox", "0 0 16 18");
+          arrowSvg.setAttribute("fill", "none");
+          arrowSvg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+          const pathArrow = document.createElementNS("http://www.w3.org/2000/svg", "path");
+          pathArrow.setAttribute("d", "M7 17C7 17.5523 7.44772 18 8 18C8.55228 18 9 17.5523 9 17H7ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM8 17H9V1H8H7V17H8Z");
+          pathArrow.setAttribute("fill", '#09341F');
+          arrowSvg.appendChild(pathArrow);
+
+          const messageDiv = document.createElement('div');
+          messageDiv.innerText = `Results from this test`;
+          messageHolder.appendChild(arrowSvg);
+          messageHolder.appendChild(messageDiv);
+
+
+          document.body.appendChild(messageHolder);
+        }
+
         document.body.appendChild(scoreHolder);
         document.body.appendChild(newSvg);
-      } else {
-        const newSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-        const scoreHolder = document.createElement('div');
-
-        newSvg.setAttribute("width", "28");
-        newSvg.setAttribute("height", "33");
-        newSvg.setAttribute("viewBox", "0 0 28 33");
-        newSvg.setAttribute("fill", "none");
-        newSvg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
-        const path1 = document.createElementNS("http://www.w3.org/2000/svg", "path");
-        path1.setAttribute("d", "M13.9997 0.458167C14.3886 0.458167 14.7775 0.52761 15.1663 0.666499C15.5552 0.805388 15.9025 1.01372 16.208 1.2915C18.0136 2.95817 19.6108 4.58317 20.9997 6.1665C22.3886 7.74983 23.5483 9.28456 24.4788 10.7707C25.4094 12.2568 26.1177 13.6873 26.6038 15.0623C27.09 16.4373 27.333 17.7498 27.333 18.9998C27.333 23.1665 25.9927 26.4859 23.3122 28.9582C20.6316 31.4304 17.5275 32.6665 13.9997 32.6665C10.4719 32.6665 7.36773 31.4304 4.68717 28.9582C2.00662 26.4859 0.666341 23.1665 0.666341 18.9998C0.666341 17.7498 0.909397 16.4373 1.39551 15.0623C1.88162 13.6873 2.58995 12.2568 3.52051 10.7707C4.45107 9.28456 5.61079 7.74983 6.99968 6.1665C8.38857 4.58316 9.98579 2.95816 11.7913 1.2915C12.0969 1.01372 12.4441 0.805388 12.833 0.666499C13.2219 0.52761 13.6108 0.458167 13.9997 0.458167Z");
-        path1.setAttribute("fill", getColor(overTimeData.data[k].x, overTimeData.data[k].y));
-        newSvg.appendChild(path1);
-        newSvg.style.position = 'absolute';
-        newSvg.style.left = `${chartRect.left + chart.convertToPixel('xAxis', k) - 14}px`;
-        newSvg.style.top = `${chartRect.top + chart.convertToPixel('yAxis', glycanData[k][1]) + 8}px`;
-        newSvg.style.zIndex = '8';
-        newSvg.style.opacity = overTimeData.data[k].result ? '1' : '0.5';
-
-        scoreHolder.innerText = `${overTimeData.data[k].y}`;
-        scoreHolder.style.position = 'absolute';
-        scoreHolder.style.left = `${chartRect.left + chart.convertToPixel('xAxis', k) - 7}px`;
-        scoreHolder.style.top = `${chartRect.top + chart.convertToPixel('yAxis', glycanData[k][1]) + 18}px`;
-        scoreHolder.style.font = 'bold 12px sans-serif';
-        scoreHolder.style.color = 'white';
-        scoreHolder.style.zIndex = '999';
-        scoreHolder.style.fontFamily = 'Sen';
-        scoreHolder.style.opacity = overTimeData.data[k].result ? '1' : '0.8';
-
-        document.body.appendChild(scoreHolder);
-        document.body.appendChild(newSvg);
-      }
+        document.body.appendChild(verticalLines);
     }
 
     chart.setOption(option);
@@ -280,8 +354,6 @@
   });
 </script>
 
-<!--<div bind:this={el} style="width: 100%; height: 100%; position: relative;"></div>-->
-
 <div class="main">
   <div class="label">
     <div class="label-container">
@@ -291,7 +363,7 @@
       </div>
     </div>
   </div>
-  <div style="display: flex; align-items: center; margin-bottom: 1rem; height: 45%; width: 100%; position: relative;" bind:this={el}>
+  <div style="display: flex; align-items: center; margin-bottom: 1rem; height: 55%; width: 100%; position: relative;" bind:this={el}>
 
   </div>
 </div>
