@@ -44,6 +44,7 @@
   import '../../../dist/overlap-title-clp.wc.js';
   import '../../../dist/scatter-plot-clp.wc.js';
   import '../../../dist/over-time.wc.js';
+  import '../../../dist/over-time-indexes.wc.js';
   import '../../../dist/main-result-three.wc.js';
   import '../../../dist/action-steps-three.wc.js';
   import { MockService } from './mock-service';
@@ -434,7 +435,27 @@
     <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%;">
       <b>0. over-time.wc.svelte</b>
       <div style="border-radius: 10px; width: 650px; height: 32rem;">
-        <ga-over-time type="mature"></ga-over-time>
+        <ga-over-time></ga-over-time>
+      </div>
+    </div>
+    <div class="flex flex-col items-center" style="padding: 4rem 0 2rem 0; width: 80%;">
+      <b>0. over-time-indexes.wc.svelte</b>
+      <div style="border-radius: 10px; height: 588px; width: 650px;">
+        <div style="width: 100%; height: 115px; border-top: 2px solid #09341F33;">
+          <ga-over-time-indexes type="shield" lang="english"></ga-over-time-indexes>
+        </div>
+        <div style="width: 100%; height: 115px; border-top: 2px solid #09341F33;">
+          <ga-over-time-indexes type="youth" lang="english"></ga-over-time-indexes>
+        </div>
+        <div style="width: 100%; height: 115px; border-top: 2px solid #09341F33;">
+          <ga-over-time-indexes type="mature" lang="english"></ga-over-time-indexes>
+        </div>
+        <div style="width: 100%; height: 115px; border-top: 2px solid #09341F33;">
+          <ga-over-time-indexes type="median" lang="english"></ga-over-time-indexes>
+        </div>
+        <div style="width: 100%; height: 115px; border-top: 2px solid #09341F33; border-bottom: 2px solid #09341F33;">
+          <ga-over-time-indexes type="lifestyle" lang="english"></ga-over-time-indexes>
+        </div>
       </div>
     </div>
     <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">

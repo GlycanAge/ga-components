@@ -46,4 +46,5 @@ export default () => {
   import('./src/overlap-title-clp/overlap-title-clp.wc.svelte');
   import('./src/scatter-plot-clp/scatter-plot-clp.wc.svelte');
   import('./src/over-time/over-time.wc.svelte');
+  import('./src/over-time-indexes/over-time-indexes.wc.svelte');
 };

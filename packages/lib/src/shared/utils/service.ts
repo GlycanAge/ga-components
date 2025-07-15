@@ -14,4 +14,8 @@ export class Service {
   getOverTimeData(): Promise<any> {
     return Promise.resolve(true);
   }
+
+  getOverTimeDataIndexes(): Promise<any> {
+    return Promise.resolve(true);
+  }
 }
