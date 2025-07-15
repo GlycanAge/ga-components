@@ -212,7 +212,7 @@
       verticalLines.style.width = '2px';
       verticalLines.style.display = 'flex';
       verticalLines.style.flexDirection = 'column';
-      verticalLines.style.zIndex = '-5';
+      verticalLines.style.zIndex = '0';
 
         // Create 8 small divs for the dashed line
         for (let i = 0; i < 8; i++) {
