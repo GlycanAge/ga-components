@@ -304,7 +304,7 @@
 
         if (type === 'lifestyle' && overTimeData.data[k].result) {
           messageHolder.style.position = 'absolute';
-          messageHolder.style.left = `${chartRect.left + chart.convertToPixel('xAxis', k) - 60}px`;
+          messageHolder.style.left = k === overTimeData.data.length-1 ?  `${chartRect.left + chart.convertToPixel('xAxis', k) - 25}px` : `${chartRect.left + chart.convertToPixel('xAxis', k) - 60}px`;
           messageHolder.style.top = `${chartRect.top + 86}px`;
           messageHolder.style.font = 'bold 12px sans-serif';
           messageHolder.style.color = 'black';
@@ -325,7 +325,7 @@
           arrowSvg.appendChild(pathArrow);
 
           const messageDiv = document.createElement('div');
-          messageDiv.innerText = `Results from this test`;
+          messageDiv.innerText = k === overTimeData.data.length-1 ? `This test` : `Results from this test`;
           messageHolder.appendChild(arrowSvg);
           messageHolder.appendChild(messageDiv);
 
