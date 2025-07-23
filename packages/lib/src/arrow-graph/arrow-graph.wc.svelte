@@ -16,26 +16,31 @@
             name: 'mature',
             label: 'Mature',
             csvName: 'G0percentile',
+            chineseLabel: '老化糖链（G0)'
         },
         {
             name: 'youth',
             label: 'Youth',
             csvName: 'G2percentile',
+            chineseLabel: '青年糖链（G2)'
         },
         {
             name: 'shield',
             label: 'Shield',
             csvName: 'Spercentile',
+            chineseLabel: '少年糖链（S)'
         },
         {
             name: 'lifestyle',
             label: 'Lifestyle',
             csvName: 'Bpercentile',
+            chineseLabel: '受损糖链（B)'
         },
         {
             name: 'median',
             label: 'Median',
             csvName: 'G1percentile',
+            chineseLabel: '中性糖链（G1)'
         },
         {
             name: 'peak18',
@@ -110,7 +115,11 @@
 <div class="main">
     <div class="label" style="font-size: 0.8rem;">
         <div style="display: flex; flex-direction: column; padding-left: 0.3rem;">
-            <div style="font-size: 0.9rem;"><b>{getTranslation(lang, 'GLYCAN')}</b> <b>{details.label}</b></div>
+            {#if lang === 'chinese'}
+                <div style="font-size: 0.9rem;"><b>{details.chineseLabel}</b></div>
+            {:else}
+                <div style="font-size: 0.9rem;"><b>{getTranslation(lang, 'GLYCAN')}</b> <b>{details.label}</b></div>
+            {/if}
             <div>{message}</div>
         </div>
     </div>
