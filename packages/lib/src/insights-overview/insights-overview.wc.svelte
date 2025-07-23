@@ -3,8 +3,10 @@
 <script lang="ts">
     import {onMount} from 'svelte';
     import {Service} from '../shared/utils/service';
+    import { getTranslation } from '../shared/functions/helpers';
 
     export let service: Service = window.GaReportService;
+    export let lang: string;
 
     let reportData: any;
 
@@ -141,20 +143,20 @@
 {#if show}
     <div class="main">
         <div class="title">
-            <div style="flex: 1;">Area</div>
-            <div style="flex: 1.32;">Condition</div>
-            <div style="flex: 1.38;">Overlaps</div>
+            <div style="flex: 1;">{getTranslation(lang, 'AREA')}</div>
+            <div style="flex: 1.32;">{getTranslation(lang, 'CONDITION')}</div>
+            <div style="flex: 1.38;">{getTranslation(lang, 'OVERLAPS')}</div>
         </div>
         <div class="row">
-            <div style="flex: 1;"><b>Cardiovascular</b></div>
+            <div style="flex: 1;"><b>{getTranslation(lang, 'CARDIOVASCULAR')}</b></div>
             <div class="diseases">
-                <span class="mbtm">Inc. risk of hypertension</span>
-                <span class="mbtm">Pre-hypertension</span>
-                <span class="mbtm">Hypertension</span>
-                <span class="mbtm">MI & CVA</span>
+                <span class="mbtm">{getTranslation(lang, 'RISK_OF_HYPER')}</span>
+                <span class="mbtm">{getTranslation(lang, 'PRE_HYPERTENSION')}</span>
+                <span class="mbtm">{getTranslation(lang, 'HYPERTENSION')}</span>
+                <span class="mbtm">{getTranslation(lang, 'MI_CVA')}</span>
                 {#if gender === 'F'}
-                    <span class="mbtm">Atherosclerosis</span>
-                    <span class="mbtm">Coronary artery disease</span>
+                    <span class="mbtm">{getTranslation(lang, 'ATHEROSCLEROSIS')}</span>
+                    <span class="mbtm">{getTranslation(lang, 'CORONARY')}</span>
                 {/if}
             </div>
             <div class="overlaps">
@@ -171,7 +173,7 @@
                                   fill="#EE6600" />
                         </svg>
                     {/if}
-                    {riskCounter === 0 ? 'No significant overlap' : 'Some overlap'}
+                    {riskCounter === 0 ? getTranslation(lang, 'NO_SIGNIFICANT_OVERLAP') : getTranslation(lang, 'MINOR_OVERLAP_INSIGHTS')}
                 </div>
                 <div class="overlap-row">
                     <div style="width: 30px;"><b>{preCounter}/1</b></div>
@@ -186,7 +188,7 @@
                                   fill="#EE6600" />
                         </svg>
                     {/if}
-                    {preCounter === 0 ? 'No significant overlap' : 'Some overlap'}
+                    {preCounter === 0 ? getTranslation(lang, 'NO_SIGNIFICANT_OVERLAP') : getTranslation(lang, 'MINOR_OVERLAP_INSIGHTS')}
                 </div>
                 <div class="overlap-row">
                     <div style="width: 30px;"><b>{hyperCounter}/3</b></div>
@@ -201,7 +203,7 @@
                                   fill="{hyperCounter === 2 ? '#FFAA00' : '#EE6600'}" />
                         </svg>
                     {/if}
-                    {hyperCounter < 2 ? 'No significant overlap' : hyperCounter === 2 ? 'Minor overlap' : 'Some overlap'}
+                    {hyperCounter < 2 ? getTranslation(lang, 'NO_SIGNIFICANT_OVERLAP') : hyperCounter === 2 ? getTranslation(lang, 'MINOR_OVERLAP_INSIGHTS') : getTranslation(lang, 'MINOR_OVERLAP_INSIGHTS')}
                 </div>
                 <div class="overlap-row">
                     <div style="width: 30px;"><b>{gender === 'F' ? cvaFCounter : cvaCounter}/{gender === 'F' ? '1' : '4'}</b></div>
@@ -232,9 +234,9 @@
                         {/if}
                     {/if}
                     {#if gender === 'F'}
-                        {cvaFCounter === 0 ? 'No significant overlap' : 'Some overlap'}
+                        {cvaFCounter === 0 ? getTranslation(lang, 'NO_SIGNIFICANT_OVERLAP') : getTranslation(lang, 'MINOR_OVERLAP_INSIGHTS')}
                     {:else}
-                        {cvaCounter < 3 ? 'No significant overlap' : cvaCounter === 3 ? 'Minor overlap' : 'Some overlap'}
+                        {cvaCounter < 3 ? getTranslation(lang, 'NO_SIGNIFICANT_OVERLAP') : cvaCounter === 3 ? getTranslation(lang, 'MINOR_OVERLAP_INSIGHTS') : getTranslation(lang, 'MINOR_OVERLAP_INSIGHTS')}
                     {/if}
                 </div>
                 {#if gender === 'F'}
@@ -251,7 +253,7 @@
                                       fill="{atheroCounter === 5 ? '#EE6600' : '#FFAA00'}" />
                             </svg>
                         {/if}
-                        {atheroCounter < 3 ? 'No significant overlap' : atheroCounter === 5 ? 'Some overlap' : 'Minor overlap'}
+                        {atheroCounter < 3 ? getTranslation(lang, 'NO_SIGNIFICANT_OVERLAP') : atheroCounter === 5 ? getTranslation(lang, 'MINOR_OVERLAP_INSIGHTS') : getTranslation(lang, 'MINOR_OVERLAP_INSIGHTS')}
                     </div>
                     <div class="overlap-row">
                         <div style="width: 30px;"><b>{coronaryCounter}/2</b></div>
@@ -266,16 +268,16 @@
                                       fill="{coronaryCounter === 1 ? '#FFAA00' : '#EE6600'}" />
                             </svg>
                         {/if}
-                        {coronaryCounter === 0 ? 'No significant overlap' : coronaryCounter === 1 ? 'Minor overlap' : 'Some overlap'}
+                        {coronaryCounter === 0 ? getTranslation(lang, 'NO_SIGNIFICANT_OVERLAP') : coronaryCounter === 1 ? getTranslation(lang, 'MINOR_OVERLAP_INSIGHTS') : getTranslation(lang, 'MINOR_OVERLAP_INSIGHTS')}
                     </div>
                 {/if}
             </div>
         </div>
         <div class="row">
-            <div style="flex: 1;"><b>Metabolic</b></div>
+            <div style="flex: 1;"><b>{getTranslation(lang, 'METABOLIC')}</b></div>
             <div class="diseases">
-                <span class="mbtm">Type 2 diabetes</span>
-                <span class="mbtm">Dyslipidemia</span>
+                <span class="mbtm">{getTranslation(lang, 'TYPE_2_DIABETES')}</span>
+                <span class="mbtm">{getTranslation(lang, 'DYSLIPIDEMIA')}</span>
             </div>
             <div class="overlaps">
                 <div class="overlap-row">
@@ -291,7 +293,7 @@
                                   fill="{diabetesCounter === 5 ? '#EE6600' : '#FFAA00'}" />
                         </svg>
                     {/if}
-                    {diabetesCounter < 3 ? 'No significant overlap' : diabetesCounter === 5 ? 'Some overlap' : 'Minor overlap'}
+                    {diabetesCounter < 3 ? getTranslation(lang, 'NO_SIGNIFICANT_OVERLAP') : diabetesCounter === 5 ? getTranslation(lang, 'MINOR_OVERLAP_INSIGHTS') : getTranslation(lang, 'MINOR_OVERLAP_INSIGHTS')}
                 </div>
                 <div class="overlap-row">
                     <div style="width: 30px;"><b>{dyslipidemiaCounter}/4</b></div>
@@ -306,17 +308,17 @@
                                   fill="{dyslipidemiaCounter === 3 ? '#FFAA00' : '#EE6600'}" />
                         </svg>
                     {/if}
-                    {dyslipidemiaCounter < 3 ? 'No significant overlap' : dyslipidemiaCounter === 3 ? 'Minor overlap' : 'Some overlap'}
+                    {dyslipidemiaCounter < 3 ? getTranslation(lang, 'NO_SIGNIFICANT_OVERLAP') : dyslipidemiaCounter === 3 ? getTranslation(lang, 'MINOR_OVERLAP_INSIGHTS') : getTranslation(lang, 'MINOR_OVERLAP_INSIGHTS')}
                 </div>
             </div>
         </div>
         <div class="row">
-            <div style="flex: 1;"><b>Autoimmune</b></div>
+            <div style="flex: 1;"><b>{getTranslation(lang, 'AUTOIMMUNE')}</b></div>
             <div class="diseases">
-                <span class="mbtm">Rheumatoid arthritis</span>
-                <span class="mbtm">Ulcerative colitis</span>
-                <span class="mbtm">Crohn's disease</span>
-                <span class="mbtm">SLE</span>
+                <span class="mbtm">{getTranslation(lang, 'RHEUMATOID')}</span>
+                <span class="mbtm">{getTranslation(lang, 'ULCERATIVE_COLITIS')}</span>
+                <span class="mbtm">{getTranslation(lang, 'CROHN')}</span>
+                <span class="mbtm">{getTranslation(lang, 'SLE')}</span>
             </div>
             <div class="overlaps">
                 <div class="overlap-row">
@@ -332,7 +334,7 @@
                                   fill="{arthritisCounter === 3 ? '#FFAA00' : '#EE6600'}" />
                         </svg>
                     {/if}
-                    {arthritisCounter < 3 ? 'No significant overlap' : arthritisCounter === 3 ? 'Minor overlap' : 'Some overlap'}
+                    {arthritisCounter < 3 ? getTranslation(lang, 'NO_SIGNIFICANT_OVERLAP') : arthritisCounter === 3 ? getTranslation(lang, 'MINOR_OVERLAP_INSIGHTS') : getTranslation(lang, 'MINOR_OVERLAP_INSIGHTS')}
                 </div>
                 <div class="overlap-row">
                     <div style="width: 30px;"><b>{colitisCounter}/4</b></div>
@@ -347,7 +349,7 @@
                                   fill="{colitisCounter === 3 ? '#FFAA00' : '#EE6600'}" />
                         </svg>
                     {/if}
-                    {colitisCounter < 3 ? 'No significant overlap' : colitisCounter === 3 ? 'Minor overlap' : 'Some overlap'}
+                    {colitisCounter < 3 ? getTranslation(lang, 'NO_SIGNIFICANT_OVERLAP') : colitisCounter === 3 ? getTranslation(lang, 'MINOR_OVERLAP_INSIGHTS') : getTranslation(lang, 'MINOR_OVERLAP_INSIGHTS')}
                 </div>
                 <div class="overlap-row">
                     <div style="width: 30px;"><b>{crohnCounter}/5</b></div>
@@ -362,7 +364,7 @@
                                   fill="{crohnCounter === 5 ? '#EE6600' : '#FFAA00'}" />
                         </svg>
                     {/if}
-                    {crohnCounter < 3 ? 'No significant overlap' : crohnCounter === 5 ? 'Some overlap' : 'Minor overlap'}
+                    {crohnCounter < 3 ? getTranslation(lang, 'NO_SIGNIFICANT_OVERLAP') : crohnCounter === 5 ? getTranslation(lang, 'MINOR_OVERLAP_INSIGHTS') : getTranslation(lang, 'MINOR_OVERLAP_INSIGHTS')}
                 </div>
                 <div class="overlap-row">
                     <div style="width: 30px;"><b>{sleCounter}/4</b></div>
@@ -377,14 +379,14 @@
                                   fill="{sleCounter === 3 ? '#FFAA00' : '#EE6600'}" />
                         </svg>
                     {/if}
-                    {sleCounter < 3 ? 'No significant overlap' : sleCounter === 3 ? 'Minor overlap' : 'Some overlap'}
+                    {sleCounter < 3 ? getTranslation(lang, 'NO_SIGNIFICANT_OVERLAP') : sleCounter === 3 ? getTranslation(lang, 'MINOR_OVERLAP_INSIGHTS') : getTranslation(lang, 'SOME_OVERLAP_INSIGHTS')}
                 </div>
             </div>
         </div>
         <div class="row">
-            <div style="flex: 1;"><b>Respiratory</b></div>
+            <div style="flex: 1;"><b>{getTranslation(lang, 'RESPIRATORY')}</b></div>
             <div class="diseases">
-                <span class="mbtm">COPD</span>
+                <span class="mbtm">{getTranslation(lang, 'COPD')}</span>
             </div>
             <div class="overlaps">
                 <div class="overlap-row">
@@ -400,15 +402,15 @@
                                   fill="{copdCounter === 1 ? '#FFAA00' : '#EE6600'}" />
                         </svg>
                     {/if}
-                    {copdCounter === 0 ? 'No significant overlap' : copdCounter === 1 ? 'Minor overlap' : 'Some overlap'}
+                    {copdCounter === 0 ? getTranslation(lang, 'NO_SIGNIFICANT_OVERLAP') : copdCounter === 1 ? getTranslation(lang, 'MINOR_OVERLAP_INSIGHTS') : getTranslation(lang, 'MINOR_OVERLAP_INSIGHTS')}
                 </div>
             </div>
         </div>
         {#if gender === 'F'}
             <div class="row">
-                <div style="flex: 1;"><b>Female</b></div>
+                <div style="flex: 1;"><b>{getTranslation(lang, 'FEMALE')}</b></div>
                 <div class="diseases">
-                    <span class="mbtm">Perimenopause</span>
+                    <span class="mbtm">{getTranslation(lang, 'PERIMENOPAUSE')}</span>
                 </div>
                 <div class="overlaps">
                     <div class="overlap-row">
@@ -424,7 +426,7 @@
                                       fill="{periCounter === 3 ? '#FFAA00' : '#EE6600'}" />
                             </svg>
                         {/if}
-                        {periCounter < 3 ? 'No significant overlap' : periCounter === 3 ? 'Minor overlap' : 'Some overlap'}
+                        {periCounter < 3 ? getTranslation(lang, 'NO_SIGNIFICANT_OVERLAP') : periCounter === 3 ? getTranslation(lang, 'MINOR_OVERLAP_INSIGHTS') : getTranslation(lang, 'MINOR_OVERLAP_INSIGHTS')}
                     </div>
                 </div>
             </div>

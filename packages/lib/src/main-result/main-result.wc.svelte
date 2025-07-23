@@ -135,6 +135,16 @@
                         あなたの生物学的年齢は<br>暦年齢より<br><b style="color: #119999;">{diff}歳若い</b>です。
                     {/if}
                 </div>
+            {:else if lang === 'chinese'}
+                <div class="msg-japanese">
+                    {#if glycanage === chronoage}
+                        您和实际年龄一样
+                    {:else if glycanage > chronoage}
+                        您比实际年龄大{diff}岁
+                    {:else if glycanage < chronoage}
+                        您比实际年龄小{diff}岁
+                    {/if}
+                </div>
             {:else}
                 <div class="result-text" style="color: {getColor()};"><b>{getText()} {#if diff !== 0}{getTranslation(lang, 'THAN')}{/if}</b></div>
                 {#if diff === 0 && lang === 'slovenian'}
