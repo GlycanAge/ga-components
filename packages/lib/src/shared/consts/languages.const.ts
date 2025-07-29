@@ -108,6 +108,29 @@ export let english = {
   YEARS_OLDER: 'years older',
   YEAR_YOUNGER: 'year younger',
   YEARS_YOUNGER: 'years younger',
+  AREA: 'Area',
+  CONDITION: 'Condition',
+  OVERLAPS: 'Overlaps',
+  CARDIOVASCULAR: 'Cardiovascular',
+  METABOLIC: 'Metabolic',
+  AUTOIMMUNE: 'Autoimmune',
+  RESPIRATORY: 'Respiratory',
+  FEMALE: 'Female',
+  RISK_OF_HYPER: 'Inc. risk of hypertension',
+  PRE_HYPERTENSION: 'Pre-hypertension',
+  HYPERTENSION: 'Hypertension',
+  MI_CVA: 'MI & CVA',
+  ATHEROSCLEROSIS: 'Atherosclerosis',
+  CORONARY: 'Coronary artery disease',
+  TYPE_2_DIABETES: 'Type 2 diabetes',
+  DYSLIPIDEMIA: 'Dyslipidemia',
+  RHEUMATOID: 'Rheumatoid arthritis',
+  ULCERATIVE_COLITIS: 'Ulcerative colitis',
+  CROHN: 'Crohn\'s disease',
+  SLE: 'SLE',
+  COPD: 'COPD',
+  PERIMENOPAUSE: 'Perimenopause',
+  NO_SIGNIFICANT_OVERLAP: 'No significant overlap'
 };
 
 export let polish = {
@@ -485,8 +508,6 @@ export let chinese = {
   COPD: '慢阻肺（慢性阻塞性肺病）COPD',
   PERIMENOPAUSE: '临绝经期/更年前期',
   NO_SIGNIFICANT_OVERLAP: '无相关性',
-  MINOR_OVERLAP_INSIGHTS: '低相关性',
-  SOME_OVERLAP_INSIGHTS: '有一些相关性',
   RANKS_YOU_BEFORE: '您的结果优于',
   RANKS_YOU_AFTER: '的人'
 };
