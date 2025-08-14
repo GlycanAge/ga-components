@@ -253,7 +253,7 @@
                                       fill="{atheroCounter === 5 ? '#EE6600' : '#FFAA00'}" />
                             </svg>
                         {/if}
-                        {atheroCounter < 3 ? getTranslation(lang, 'NO_SIGNIFICANT_OVERLAP') : atheroCounter === 5 ? getTranslation(lang, 'MINOR_OVERLAP') : getTranslation(lang, 'SOME_OVERLAP')}
+                        {atheroCounter < 3 ? getTranslation(lang, 'NO_SIGNIFICANT_OVERLAP') : atheroCounter === 5 ? getTranslation(lang, 'SOME_OVERLAP') : getTranslation(lang, 'MINOR_OVERLAP')}
                     </div>
                     <div class="overlap-row">
                         <div style="width: 30px;"><b>{coronaryCounter}/2</b></div>
@@ -293,7 +293,7 @@
                                   fill="{diabetesCounter === 5 ? '#EE6600' : '#FFAA00'}" />
                         </svg>
                     {/if}
-                    {diabetesCounter < 3 ? getTranslation(lang, 'NO_SIGNIFICANT_OVERLAP') : diabetesCounter === 5 ? getTranslation(lang, 'MINOR_OVERLAP') : getTranslation(lang, 'SOME_OVERLAP')}
+                    {diabetesCounter < 3 ? getTranslation(lang, 'NO_SIGNIFICANT_OVERLAP') : diabetesCounter === 5 ? getTranslation(lang, 'SOME_OVERLAP') : getTranslation(lang, 'MINOR_OVERLAP')}
                 </div>
                 <div class="overlap-row">
                     <div style="width: 30px;"><b>{dyslipidemiaCounter}/4</b></div>
@@ -364,7 +364,7 @@
                                   fill="{crohnCounter === 5 ? '#EE6600' : '#FFAA00'}" />
                         </svg>
                     {/if}
-                    {crohnCounter < 3 ? getTranslation(lang, 'NO_SIGNIFICANT_OVERLAP') : crohnCounter === 5 ? getTranslation(lang, 'MINOR_OVERLAP') : getTranslation(lang, 'SOME_OVERLAP')}
+                    {crohnCounter < 3 ? getTranslation(lang, 'NO_SIGNIFICANT_OVERLAP') : crohnCounter === 5 ? getTranslation(lang, 'SOME_OVERLAP') : getTranslation(lang, 'MINOR_OVERLAP')}
                 </div>
                 <div class="overlap-row">
                     <div style="width: 30px;"><b>{sleCounter}/4</b></div>
