@@ -173,7 +173,7 @@
                                   fill="#EE6600" />
                         </svg>
                     {/if}
-                    {riskCounter === 0 ? getTranslation(lang, 'NO_SIGNIFICANT_OVERLAP') : getTranslation(lang, 'MINOR_OVERLAP_INSIGHTS')}
+                    {riskCounter === 0 ? getTranslation(lang, 'NO_SIGNIFICANT_OVERLAP') : getTranslation(lang, 'SOME_OVERLAP')}
                 </div>
                 <div class="overlap-row">
                     <div style="width: 30px;"><b>{preCounter}/1</b></div>
@@ -188,7 +188,7 @@
                                   fill="#EE6600" />
                         </svg>
                     {/if}
-                    {preCounter === 0 ? getTranslation(lang, 'NO_SIGNIFICANT_OVERLAP') : getTranslation(lang, 'MINOR_OVERLAP_INSIGHTS')}
+                    {preCounter === 0 ? getTranslation(lang, 'NO_SIGNIFICANT_OVERLAP') : getTranslation(lang, 'SOME_OVERLAP')}
                 </div>
                 <div class="overlap-row">
                     <div style="width: 30px;"><b>{hyperCounter}/3</b></div>
@@ -203,7 +203,7 @@
                                   fill="{hyperCounter === 2 ? '#FFAA00' : '#EE6600'}" />
                         </svg>
                     {/if}
-                    {hyperCounter < 2 ? getTranslation(lang, 'NO_SIGNIFICANT_OVERLAP') : hyperCounter === 2 ? getTranslation(lang, 'MINOR_OVERLAP_INSIGHTS') : getTranslation(lang, 'MINOR_OVERLAP_INSIGHTS')}
+                    {hyperCounter < 2 ? getTranslation(lang, 'NO_SIGNIFICANT_OVERLAP') : hyperCounter === 2 ? getTranslation(lang, 'MINOR_OVERLAP') : getTranslation(lang, 'SOME_OVERLAP')}
                 </div>
                 <div class="overlap-row">
                     <div style="width: 30px;"><b>{gender === 'F' ? cvaFCounter : cvaCounter}/{gender === 'F' ? '1' : '4'}</b></div>
@@ -234,9 +234,9 @@
                         {/if}
                     {/if}
                     {#if gender === 'F'}
-                        {cvaFCounter === 0 ? getTranslation(lang, 'NO_SIGNIFICANT_OVERLAP') : getTranslation(lang, 'MINOR_OVERLAP_INSIGHTS')}
+                        {cvaFCounter === 0 ? getTranslation(lang, 'NO_SIGNIFICANT_OVERLAP') : getTranslation(lang, 'SOME_OVERLAP')}
                     {:else}
-                        {cvaCounter < 3 ? getTranslation(lang, 'NO_SIGNIFICANT_OVERLAP') : cvaCounter === 3 ? getTranslation(lang, 'MINOR_OVERLAP_INSIGHTS') : getTranslation(lang, 'MINOR_OVERLAP_INSIGHTS')}
+                        {cvaCounter < 3 ? getTranslation(lang, 'NO_SIGNIFICANT_OVERLAP') : cvaCounter === 3 ? getTranslation(lang, 'MINOR_OVERLAP') : getTranslation(lang, 'SOME_OVERLAP')}
                     {/if}
                 </div>
                 {#if gender === 'F'}
@@ -253,7 +253,7 @@
                                       fill="{atheroCounter === 5 ? '#EE6600' : '#FFAA00'}" />
                             </svg>
                         {/if}
-                        {atheroCounter < 3 ? getTranslation(lang, 'NO_SIGNIFICANT_OVERLAP') : atheroCounter === 5 ? getTranslation(lang, 'MINOR_OVERLAP_INSIGHTS') : getTranslation(lang, 'MINOR_OVERLAP_INSIGHTS')}
+                        {atheroCounter < 3 ? getTranslation(lang, 'NO_SIGNIFICANT_OVERLAP') : atheroCounter === 5 ? getTranslation(lang, 'SOME_OVERLAP') : getTranslation(lang, 'MINOR_OVERLAP')}
                     </div>
                     <div class="overlap-row">
                         <div style="width: 30px;"><b>{coronaryCounter}/2</b></div>
@@ -268,7 +268,7 @@
                                       fill="{coronaryCounter === 1 ? '#FFAA00' : '#EE6600'}" />
                             </svg>
                         {/if}
-                        {coronaryCounter === 0 ? getTranslation(lang, 'NO_SIGNIFICANT_OVERLAP') : coronaryCounter === 1 ? getTranslation(lang, 'MINOR_OVERLAP_INSIGHTS') : getTranslation(lang, 'MINOR_OVERLAP_INSIGHTS')}
+                        {coronaryCounter === 0 ? getTranslation(lang, 'NO_SIGNIFICANT_OVERLAP') : coronaryCounter === 1 ? getTranslation(lang, 'MINOR_OVERLAP') : getTranslation(lang, 'SOME_OVERLAP')}
                     </div>
                 {/if}
             </div>
@@ -293,7 +293,7 @@
                                   fill="{diabetesCounter === 5 ? '#EE6600' : '#FFAA00'}" />
                         </svg>
                     {/if}
-                    {diabetesCounter < 3 ? getTranslation(lang, 'NO_SIGNIFICANT_OVERLAP') : diabetesCounter === 5 ? getTranslation(lang, 'MINOR_OVERLAP_INSIGHTS') : getTranslation(lang, 'MINOR_OVERLAP_INSIGHTS')}
+                    {diabetesCounter < 3 ? getTranslation(lang, 'NO_SIGNIFICANT_OVERLAP') : diabetesCounter === 5 ? getTranslation(lang, 'SOME_OVERLAP') : getTranslation(lang, 'MINOR_OVERLAP')}
                 </div>
                 <div class="overlap-row">
                     <div style="width: 30px;"><b>{dyslipidemiaCounter}/4</b></div>
@@ -308,7 +308,7 @@
                                   fill="{dyslipidemiaCounter === 3 ? '#FFAA00' : '#EE6600'}" />
                         </svg>
                     {/if}
-                    {dyslipidemiaCounter < 3 ? getTranslation(lang, 'NO_SIGNIFICANT_OVERLAP') : dyslipidemiaCounter === 3 ? getTranslation(lang, 'MINOR_OVERLAP_INSIGHTS') : getTranslation(lang, 'MINOR_OVERLAP_INSIGHTS')}
+                    {dyslipidemiaCounter < 3 ? getTranslation(lang, 'NO_SIGNIFICANT_OVERLAP') : dyslipidemiaCounter === 3 ? getTranslation(lang, 'MINOR_OVERLAP') : getTranslation(lang, 'SOME_OVERLAP')}
                 </div>
             </div>
         </div>
@@ -334,7 +334,7 @@
                                   fill="{arthritisCounter === 3 ? '#FFAA00' : '#EE6600'}" />
                         </svg>
                     {/if}
-                    {arthritisCounter < 3 ? getTranslation(lang, 'NO_SIGNIFICANT_OVERLAP') : arthritisCounter === 3 ? getTranslation(lang, 'MINOR_OVERLAP_INSIGHTS') : getTranslation(lang, 'MINOR_OVERLAP_INSIGHTS')}
+                    {arthritisCounter < 3 ? getTranslation(lang, 'NO_SIGNIFICANT_OVERLAP') : arthritisCounter === 3 ? getTranslation(lang, 'MINOR_OVERLAP') : getTranslation(lang, 'SOME_OVERLAP')}
                 </div>
                 <div class="overlap-row">
                     <div style="width: 30px;"><b>{colitisCounter}/4</b></div>
@@ -349,7 +349,7 @@
                                   fill="{colitisCounter === 3 ? '#FFAA00' : '#EE6600'}" />
                         </svg>
                     {/if}
-                    {colitisCounter < 3 ? getTranslation(lang, 'NO_SIGNIFICANT_OVERLAP') : colitisCounter === 3 ? getTranslation(lang, 'MINOR_OVERLAP_INSIGHTS') : getTranslation(lang, 'MINOR_OVERLAP_INSIGHTS')}
+                    {colitisCounter < 3 ? getTranslation(lang, 'NO_SIGNIFICANT_OVERLAP') : colitisCounter === 3 ? getTranslation(lang, 'MINOR_OVERLAP') : getTranslation(lang, 'SOME_OVERLAP')}
                 </div>
                 <div class="overlap-row">
                     <div style="width: 30px;"><b>{crohnCounter}/5</b></div>
@@ -364,7 +364,7 @@
                                   fill="{crohnCounter === 5 ? '#EE6600' : '#FFAA00'}" />
                         </svg>
                     {/if}
-                    {crohnCounter < 3 ? getTranslation(lang, 'NO_SIGNIFICANT_OVERLAP') : crohnCounter === 5 ? getTranslation(lang, 'MINOR_OVERLAP_INSIGHTS') : getTranslation(lang, 'MINOR_OVERLAP_INSIGHTS')}
+                    {crohnCounter < 3 ? getTranslation(lang, 'NO_SIGNIFICANT_OVERLAP') : crohnCounter === 5 ? getTranslation(lang, 'SOME_OVERLAP') : getTranslation(lang, 'MINOR_OVERLAP')}
                 </div>
                 <div class="overlap-row">
                     <div style="width: 30px;"><b>{sleCounter}/4</b></div>
@@ -379,7 +379,7 @@
                                   fill="{sleCounter === 3 ? '#FFAA00' : '#EE6600'}" />
                         </svg>
                     {/if}
-                    {sleCounter < 3 ? getTranslation(lang, 'NO_SIGNIFICANT_OVERLAP') : sleCounter === 3 ? getTranslation(lang, 'MINOR_OVERLAP_INSIGHTS') : getTranslation(lang, 'SOME_OVERLAP_INSIGHTS')}
+                    {sleCounter < 3 ? getTranslation(lang, 'NO_SIGNIFICANT_OVERLAP') : sleCounter === 3 ? getTranslation(lang, 'MINOR_OVERLAP') : getTranslation(lang, 'SOME_OVERLAP')}
                 </div>
             </div>
         </div>
@@ -402,7 +402,7 @@
                                   fill="{copdCounter === 1 ? '#FFAA00' : '#EE6600'}" />
                         </svg>
                     {/if}
-                    {copdCounter === 0 ? getTranslation(lang, 'NO_SIGNIFICANT_OVERLAP') : copdCounter === 1 ? getTranslation(lang, 'MINOR_OVERLAP_INSIGHTS') : getTranslation(lang, 'MINOR_OVERLAP_INSIGHTS')}
+                    {copdCounter === 0 ? getTranslation(lang, 'NO_SIGNIFICANT_OVERLAP') : copdCounter === 1 ? getTranslation(lang, 'MINOR_OVERLAP') : getTranslation(lang, 'SOME_OVERLAP')}
                 </div>
             </div>
         </div>
@@ -426,7 +426,7 @@
                                       fill="{periCounter === 3 ? '#FFAA00' : '#EE6600'}" />
                             </svg>
                         {/if}
-                        {periCounter < 3 ? getTranslation(lang, 'NO_SIGNIFICANT_OVERLAP') : periCounter === 3 ? getTranslation(lang, 'MINOR_OVERLAP_INSIGHTS') : getTranslation(lang, 'MINOR_OVERLAP_INSIGHTS')}
+                        {periCounter < 3 ? getTranslation(lang, 'NO_SIGNIFICANT_OVERLAP') : periCounter === 3 ? getTranslation(lang, 'MINOR_OVERLAP') : getTranslation(lang, 'SOME_OVERLAP')}
                     </div>
                 </div>
             </div>
