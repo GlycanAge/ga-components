@@ -5,7 +5,6 @@
   import {
     calculateSliderPositionWithPercentile,
     getColorBlueToRedWithPercentile,
-    getColorMedianWithPercentileV3,
     getColorRedToBlueWithPercentile,
     getTranslation, suffix
   } from '../shared/functions/helpers';
@@ -110,7 +109,7 @@
         <div class="colorBox" style="background-color: #F2800D;"></div>
         <div class="colorBox" style="background-color: #DF2120;"></div>
         <div class="colorBoxShort" style="background-color: #DF2120;"></div>
-      {:else if type === 'shield' || type === 'youth'}
+      {:else if type === 'shield' || type === 'youth' || type === 'median'}
         <div class="colorBoxShort" style="background-color: #DF2120;"></div>
         <div class="colorBox" style="background-color: #DF2120;"></div>
         <div class="colorBox" style="background-color: #F2800D;"></div>
@@ -119,20 +118,11 @@
         <div class="colorBox" style="background-color: #13A195;"></div>
         <div class="colorBox" style="background-color: #015566;"></div>
         <div class="colorBoxShort" style="background-color: #015566;"></div>
-      {:else if type === 'median'}
-        <div class="colorBoxShort" style="background-color: #DF2120;"></div>
-        <div class="colorBox" style="background-color: #F2800D;"></div>
-        <div class="colorBox" style="background-color: #13A195;"></div>
-        <div class="colorBox" style="background-color: #015566;"></div>
-        <div class="colorBox" style="background-color: #015566;"></div>
-        <div class="colorBox" style="background-color: #13A195;"></div>
-        <div class="colorBox" style="background-color: #F2800D;"></div>
-        <div class="colorBoxShort" style="background-color: #DF2120;"></div>
       {/if}
 
       <div class="slider" style="left: {calculateSliderPositionWithPercentile(percentile)}%;">
         <svg width="100" height="24" viewBox="0 0 100 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="100" height="24" rx="4" fill="{type === 'shield' || type === 'youth' ? getColorRedToBlueWithPercentile(percentile) : type === 'mature' || type === 'lifestyle' ? getColorBlueToRedWithPercentile(percentile) : getColorMedianWithPercentileV3(percentile)}"/>
+          <rect width="100" height="24" rx="4" fill="{type === 'shield' || type === 'youth' || type === 'median' ? getColorRedToBlueWithPercentile(percentile) : getColorBlueToRedWithPercentile(percentile)}"/>
         </svg>
       </div>
 
@@ -142,18 +132,18 @@
 
       <div class="slider-triangle" style="left: {calculateSliderPositionWithPercentile(percentile)}%;">
         <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M6.8 6.93333C6.4 7.46667 5.6 7.46667 5.2 6.93333L0 8.07577e-07L12 0L6.8 6.93333Z" fill="{type === 'shield' || type === 'youth' ? getColorRedToBlueWithPercentile(percentile) : type === 'mature' || type === 'lifestyle' ? getColorBlueToRedWithPercentile(percentile) : getColorMedianWithPercentileV3(percentile)}"/>
+          <path d="M6.8 6.93333C6.4 7.46667 5.6 7.46667 5.2 6.93333L0 8.07577e-07L12 0L6.8 6.93333Z" fill="{type === 'shield' || type === 'youth' || type === 'median' ? getColorRedToBlueWithPercentile(percentile) : getColorBlueToRedWithPercentile(percentile)}"/>
         </svg>
       </div>
 
-      <div class="text-left" style="width: {type === 'median' ? '19.7' : '34.7'}%;">
+      <div class="text-left" style="width: 34.7%;">
         {type === 'shield' || type === 'youth' || type === 'median' ? getTranslation(lang, 'SUBOPTIMAL') : getTranslation(lang, 'OPTIMAL')}
       </div>
-      <div class="text-middle" style="width: {type === 'median' ? 35 : 30}%; left: {type === 'median' ? 32.4 : 35}%;">
-        {type === 'median' ? getTranslation(lang, 'OPTIMAL') : getTranslation(lang, 'AVERAGE')}
+      <div class="text-middle" style="width: 30%; left: 35%;">
+        {getTranslation(lang, 'AVERAGE')}
       </div>
-      <div class="text-right" style="width: {type === 'median' ? '19.8' : '34.7'}%;">
-        {type === 'shield' || type === 'youth' ? getTranslation(lang, 'OPTIMAL') : getTranslation(lang, 'SUBOPTIMAL')}
+      <div class="text-right" style="width: 34.7%;">
+        {type === 'shield' || type === 'youth' || type === 'median' ? getTranslation(lang, 'OPTIMAL') : getTranslation(lang, 'SUBOPTIMAL')}
       </div>
     </div>
   </div>

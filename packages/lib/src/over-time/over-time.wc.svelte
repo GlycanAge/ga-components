@@ -318,6 +318,38 @@
                 document.body.appendChild(scoreHolder);
                 document.body.appendChild(newSvg);
             }
+
+            const messageHolder =  document.createElement('div');
+
+            if (overTimeData.data[k].result) {
+                messageHolder.style.position = 'absolute';
+                messageHolder.style.left = k === overTimeData.data.length-1 ?  `${chartRect.left + chart.convertToPixel('xAxis', k) - 25}px` : `${chartRect.left + chart.convertToPixel('xAxis', k) - 60}px`;
+                messageHolder.style.top = `76%`;
+                messageHolder.style.font = 'bold 12px sans-serif';
+                messageHolder.style.color = 'black';
+                messageHolder.style.zIndex = '19';
+                messageHolder.style.fontFamily = 'Sen';
+                messageHolder.style.display = 'flex';
+                messageHolder.style.flexDirection = 'column';
+                messageHolder.style.alignItems = 'center';
+                const arrowSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+                arrowSvg.setAttribute("width", "16");
+                arrowSvg.setAttribute("height", "18");
+                arrowSvg.setAttribute("viewBox", "0 0 16 18");
+                arrowSvg.setAttribute("fill", "none");
+                arrowSvg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+                const pathArrow = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                pathArrow.setAttribute("d", "M7 17C7 17.5523 7.44772 18 8 18C8.55228 18 9 17.5523 9 17H7ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM8 17H9V1H8H7V17H8Z");
+                pathArrow.setAttribute("fill", '#09341F');
+                arrowSvg.appendChild(pathArrow);
+
+                const messageDiv = document.createElement('div');
+                messageDiv.innerText = k === overTimeData.data.length-1 ? `This test` : `Results from this test`;
+                messageHolder.appendChild(arrowSvg);
+                messageHolder.appendChild(messageDiv);
+
+                document.body.appendChild(messageHolder);
+            }
         }
 
         chart.setOption(option);

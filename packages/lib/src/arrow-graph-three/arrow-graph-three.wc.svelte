@@ -39,22 +39,22 @@
     },
     {
       name: 'peak18',
-      label: '18',
+      label: 'P18',
       csvName: 'P18percentile',
     },
     {
       name: 'peak22',
-      label: '22',
+      label: 'P22',
       csvName: 'P22percentile',
     },
     {
       name: 'peak23',
-      label: '23',
+      label: 'P23',
       csvName: 'P23percentile',
     },
     {
       name: 'peak26',
-      label: '26',
+      label: 'P26',
       csvName: 'P26percentile',
     }
 
@@ -114,7 +114,8 @@
 <div class="main">
   <div class="label" style="font-size: 0.8rem;">
     <div style="display: flex; flex-direction: column; padding-left: 0.3rem;">
-      <div style="font-size: 0.9rem;"><b>{getTranslation(lang, 'GLYCAN')}</b> <b>{details.label}</b></div>
+      <div style="font-size: 0.9rem;">{#if details.name === 'shield' || details.name === 'mature' || details.name === 'median' || details.name === 'youth' || details.name === 'lifestyle'}<b>{getTranslation(lang, 'GLYCAN')}</b>{/if}
+        <b>{details.label}</b></div>
       <div>{message}</div>
     </div>
   </div>

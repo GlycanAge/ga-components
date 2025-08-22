@@ -56,7 +56,7 @@
 
   function getColor(percentile: number) {
 
-     if (type === 'shield' || type === 'youth') {
+     if (type === 'shield' || type === 'youth' || type === 'median') {
        if (percentile <= 17) {
          return '#DD2222';
        } else if (percentile > 17 && percentile <= 33) {
@@ -83,22 +83,6 @@
           return '#DD2222';
         }
     }
-
-      if (type === 'median') {
-        if (percentile === 1 || percentile === 100 || percentile === 0 || percentile === 99) {
-          return '#DD2222';
-        } else if (percentile >= 2 && percentile <= 17) {
-          return '#EE6600';
-        } else if (percentile >= 83 && percentile <= 98) {
-          return '#EE6600';
-        } else if (percentile >= 18 && percentile <= 33) {
-          return '#119999';
-        } else if (percentile >= 67 && percentile <= 82) {
-          return '#119999';
-        } else {
-          return '#005566';
-        }
-      }
   }
 
   function drawGraph() {
@@ -187,7 +171,7 @@
           symbol: 'line',
           lineStyle: {
             color: '#416D57',
-            width: 5,
+            width: 3,
           },
           showSymbol: false,
           z: 10
@@ -241,7 +225,7 @@
             }
           }
 
-          if (type === 'shield' || type === 'youth') {
+          if (type === 'shield' || type === 'youth' || type === 'median') {
             if (i < 2) {
               dashDiv.style.backgroundColor = '#005566';
             }
@@ -256,21 +240,6 @@
             }
             if (i > 5) {
               dashDiv.style.backgroundColor = '#DD2222';
-            }
-          }
-
-          if (type === 'median') {
-            if (i === 0 || i === 7) {
-              dashDiv.style.backgroundColor = '#DD2222';
-            }
-            if (i === 1 || i === 6) {
-              dashDiv.style.backgroundColor = '#EE6600';
-            }
-            if (i === 2 || i === 5) {
-              dashDiv.style.backgroundColor = '#119999';
-            }
-            if (i === 3 || i === 4) {
-              dashDiv.style.backgroundColor = '#005566';
             }
           }
 
