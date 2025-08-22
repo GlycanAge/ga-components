@@ -324,7 +324,7 @@
             if (overTimeData.data[k].result) {
                 messageHolder.style.position = 'absolute';
                 messageHolder.style.left = k === overTimeData.data.length-1 ?  `${chartRect.left + chart.convertToPixel('xAxis', k) - 25}px` : `${chartRect.left + chart.convertToPixel('xAxis', k) - 62}px`;
-                messageHolder.style.top = `72%`;
+                messageHolder.style.top = `${chartRect.top + 520}px`;
                 messageHolder.style.font = 'bold 12px sans-serif';
                 messageHolder.style.color = 'black';
                 messageHolder.style.zIndex = '19';
