@@ -234,7 +234,7 @@
     <div class="main">
         <div class="items-baseline" style="display: flex; background-color: #E4EDE9; height: auto; position: relative; border-radius: 12px;">
           <div class="number" style="background: #36624C; min-width: 15rem;">Primary focus — based on primary indexes</div>
-          <div style="padding: 1.5rem 2rem 2rem 2rem;">
+          <div style="padding: 1.5rem 2rem 1.1rem 2rem;">
             <div style="margin-bottom: 0.3rem; font-size: 12px;"><b>{primaryTitle}</b></div>
             <div style="font-size: 68%">{primaryDescription}</div>
             <div style="height: 24px"></div>
@@ -244,7 +244,7 @@
         </div>
         <div class="items-baseline" style="display: flex; background-color: #F2F6F4; border-radius: 12px; height: auto; position: relative;">
           <div class="number" style="background: #86AF9A; min-width: 17rem;">Secondary focus — based on secondary indexes</div>
-          <div style="padding: 1.5rem 2rem 2rem 2rem;">
+          <div style="padding: 1.5rem 2rem 1.1rem 2rem;">
             <div style="margin-bottom: 0.3rem; font-size: 12px;"><b>{supportiveTitle}</b></div>
             <div style="font-size: 68%">{supportiveDescription}</div>
             <div style="height: 24px"></div>
