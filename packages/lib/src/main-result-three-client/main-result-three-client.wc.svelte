@@ -123,7 +123,7 @@
         </div>
       {:else}
         <div style="text-align: center; font-size: 1.2rem; color: black;">
-          This means that your <br> immune system health resembles <br> <b>an average {glycanage} year old individual</b>
+          This means that your immune <br> system health resembles <b>an <br> average {glycanage} year old individual</b>
         </div>
       {/if}
     </div>
@@ -227,7 +227,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 0.8rem;
+        font-size: 0.9rem;
         flex: 2 2 0;
         color: #09341F80;
         transform: translateY(-1rem);

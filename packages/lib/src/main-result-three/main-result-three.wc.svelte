@@ -227,7 +227,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 0.8rem;
+        font-size: 0.9rem;
         flex: 2 2 0;
         color: #09341F80;
         transform: translateY(-1rem);
