@@ -23,9 +23,9 @@
 
   function color(perc: number, dir: string) {
     if (dir === 'left') {
-      return perc >= 34 ? '#119999' : perc > 18 && perc < 34 ? '#EE6600' : '#DD2222';
+      return perc >= 34 ? '#119999' : '#DD2222';
     } else {
-      return perc <= 66 ? '#119999' : perc > 66 && perc < 82 ? '#EE6600' : '#DD2222';
+      return perc <= 66 ? '#119999' : '#DD2222';
     }
   }
 </script>
@@ -51,16 +51,16 @@
     {/if}
   </div>
 
-  <div style="left: {calculate(percentile)}%; position: absolute; transform: translate(-50%, -100%); display: flex; align-items: center; flex-direction: column; width: 100px; height: 38px;">
+  <div style="left: {calculate(percentile)}%; position: absolute; transform: translate(-50%, -85%); display: flex; align-items: center; flex-direction: column; width: 100px; height: 38px;">
     <svg width="100" height="24" viewBox="0 0 100 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect width="100" height="24" rx="4" fill="{color(percentile, direction)}"/>
     </svg>
   </div>
-  <div style="left: {calculate(percentile)}%; position: absolute; transform: translate(-50%, -95%); display: flex; align-items: center; flex-direction: column; width: 100px; height: 38px; color: white; font-size: 0.75rem;">
+  <div style="left: {calculate(percentile)}%; position: absolute; transform: translate(-50%, -80%); display: flex; align-items: center; flex-direction: column; width: 100px; height: 38px; color: white; font-size: 0.75rem;">
     <b>{percentile}<sup style="font-size: 0.5rem;">{suffix(percentile)}</sup> percentile</b>
   </div>
 
-  <div style="left: {calculate(percentile)}%; position: absolute; transform: translate(-50%, -40%); display: flex; align-items: center; flex-direction: column; width: 100px; height: 38px; color: white; font-size: 0.75rem;">
+  <div style="left: {calculate(percentile)}%; position: absolute; transform: translate(-50%, -25%); display: flex; align-items: center; flex-direction: column; width: 100px; height: 38px; color: white; font-size: 0.75rem;">
     <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M6.8 6.93333C6.4 7.46667 5.6 7.46667 5.2 6.93333L0 8.07577e-07L12 0L6.8 6.93333Z" fill="{color(percentile, direction)}"/>
     </svg>
