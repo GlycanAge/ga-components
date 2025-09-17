@@ -34,11 +34,14 @@
   import '../../../dist/overlap-title.wc.js';
   import '../../../dist/overlap-title-three.wc.js';
   import '../../../dist/scatter-plot.wc.js';
+  import '../../../dist/scatter-plot-custom.wc.js';
   import '../../../dist/results-overview-clp.wc.js';
   import '../../../dist/results-overview-three.wc.js';
   import '../../../dist/insights-overview-clp.wc.js';
   import '../../../dist/insights-overview-three.wc.js';
+  import '../../../dist/insights-overview-three-client.wc.js';
   import '../../../dist/main-result-clp.wc.js';
+  import '../../../dist/main-result-three-client.wc.js';
   import '../../../dist/single-overview-clp.wc.js';
   import '../../../dist/arrow-graph-clp.wc.js';
   import '../../../dist/overlap-title-clp.wc.js';
@@ -47,6 +50,7 @@
   import '../../../dist/over-time-indexes.wc.js';
   import '../../../dist/main-result-three.wc.js';
   import '../../../dist/action-steps-three.wc.js';
+  import '../../../dist/action-steps-three-client.wc.js';
   import { MockService } from './mock-service';
 
   let stuff1 = false;
@@ -459,7 +463,7 @@
       </div>
     </div>
     <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
-      <b>0. scatter-plot.wc.svelte</b>
+      <b>0. scatter-plot.wc.svelte SLOVENSKI</b>
       <div style="border: 1px solid #09341F33; border-radius: 10px; width: 550px; height: 30rem;">
         <ga-scatter-plot type="median" lang="slovenian"></ga-scatter-plot>
       </div>
@@ -468,6 +472,12 @@
       <b>0. scatter-plot.wc.svelte</b>
       <div style="border: 1px solid #09341F33; border-radius: 10px; width: 550px; height: 30rem;">
         <ga-scatter-plot type="youth"></ga-scatter-plot>
+      </div>
+    </div>
+    <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
+      <b>0. scatter-plot-custom.wc.svelte (SV KATARINA)</b>
+      <div style="border: 1px solid #09341F33; border-radius: 10px; width: 320px; height: 200px;">
+        <ga-scatter-plot-custom type="shield"></ga-scatter-plot-custom>
       </div>
     </div>
     <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
@@ -485,39 +495,42 @@
     <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
         <b>1. main-result.wc.svelte (also used in b2b2c(v2.0, slovenian v2.0) , b2c(v2.0))</b>
         <div style="border: 1px dashed lightcoral; width: 550px;">
-            <ga-main-result lang="english"></ga-main-result>
+            <ga-main-result lang="chinese"></ga-main-result>
         </div>
         <div style="border: 1px dashed lightcoral; width: 550px;">
           <ga-main-result-three lang="english"></ga-main-result-three>
         </div>
+      <div style="border: 1px dashed lightcoral; width: 550px;">
+        <ga-main-result-three-client lang="english"></ga-main-result-three-client>
+      </div>
     </div>
     <div style="border-bottom: 2px dashed black; display: flex; flex-direction: column; align-items: center; width: 80%; padding: 2rem 0 2rem 0;">
       <b>2. overlap-title.wc.svelte (b2b v2.0.0)</b>
       <div style="width: 71.3ch;height: 11ch; border: 1px dashed lightcoral;">
-        <ga-overlap-title disease="dyslipidemia"></ga-overlap-title>
+        <ga-overlap-title disease="dyslipidemia" lang="chinese"></ga-overlap-title>
       </div>
       <div style="margin: 4px;"></div>
       <div style="width: 71.3ch;height: 11ch; border: 1px dashed lightcoral;">
-        <ga-overlap-title disease="coronary"></ga-overlap-title>
+        <ga-overlap-title disease="coronary" lang="chinese"></ga-overlap-title>
       </div>
       <div style="margin: 4px;"></div>
       <div style="width: 71.3ch;height: 11ch; border: 1px dashed lightcoral;">
-        <ga-overlap-title disease="risk"></ga-overlap-title>
+        <ga-overlap-title disease="risk" lang="chinese"></ga-overlap-title>
       </div>
     </div>
     <div style="border-bottom: 2px dashed black; display: flex; flex-direction: column; align-items: center; width: 80%; padding: 2rem 0 2rem 0;">
       <b>2. overlap-title-three.wc.svelte (b2b v3.0.0)</b>
       <div style="width: 71.3ch;height: 11ch; border: 1px dashed lightcoral;">
-        <ga-overlap-title-three disease="dyslipidemia"></ga-overlap-title-three>
+        <ga-overlap-title-three disease="sle"></ga-overlap-title-three>
       </div>
-      <div style="margin: 4px;"></div>
-      <div style="width: 71.3ch;height: 11ch; border: 1px dashed lightcoral;">
-        <ga-overlap-title-three disease="coronary"></ga-overlap-title-three>
-      </div>
-      <div style="margin: 4px;"></div>
-      <div style="width: 71.3ch;height: 11ch; border: 1px dashed lightcoral;">
-        <ga-overlap-title-three disease="risk"></ga-overlap-title-three>
-      </div>
+<!--      <div style="margin: 4px;"></div>-->
+<!--      <div style="width: 71.3ch;height: 11ch; border: 1px dashed lightcoral;">-->
+<!--        <ga-overlap-title-three disease="coronary"></ga-overlap-title-three>-->
+<!--      </div>-->
+<!--      <div style="margin: 4px;"></div>-->
+<!--      <div style="width: 71.3ch;height: 11ch; border: 1px dashed lightcoral;">-->
+<!--        <ga-overlap-title-three disease="risk"></ga-overlap-title-three>-->
+<!--      </div>-->
     </div>
     <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
         <b>3. results-overview.wc.svelte (also used in b2b2c(v2.0 + slovenski v2.0) , b2c(v2.0))</b>
@@ -565,7 +578,7 @@
     <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
         <b>4. insights-overview.wc.svelte</b>
         <div style="height: 588px; width: 550px; border: 1px dashed lightcoral;">
-          <ga-insights-overview lang="english"></ga-insights-overview>
+          <ga-insights-overview lang="chinese"></ga-insights-overview>
         </div>
     </div>
     <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
@@ -587,31 +600,43 @@
       </div>
     </div>
     <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
+      <b>4. insights-overview-three-client.wc.svelte (ovaj je samo izveden iz originalnog insights-overview)</b>
+      <div style="height: 588px; width: 550px; border: 1px dashed lightcoral;">
+        <ga-insights-overview-three-client lang="english" type="short"></ga-insights-overview-three-client>
+      </div>
+    </div>
+    <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
       <b>44. action-steps-three.wc.svelte</b>
-      <div style="height: 650px; width: 550px; border: 1px dashed lightcoral;">
+      <div style="height: 600px; width: 550px; border: 1px dashed lightcoral;">
         <ga-action-steps-three></ga-action-steps-three>
+      </div>
+    </div>
+    <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
+      <b>44. action-steps-three-client.wc.svelte</b>
+      <div style="height: 600px; width: 550px; border: 1px dashed lightcoral;">
+        <ga-action-steps-three-client></ga-action-steps-three-client>
       </div>
     </div>
     <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
         <b>5. single-overview.wc.svelte (also used in b2b2c(v2.0, slovenian v2.0) , b2c(v2.0))</b>
         <div style="width: 550px; height: 200px; border: 1px dashed lightcoral;">
-          <ga-single-overview type="shield" lang="english"></ga-single-overview>
+          <ga-single-overview type="shield" lang="chinese"></ga-single-overview>
         </div>
         <div style="margin: 5px;"></div>
         <div style="width: 550px; height: 200px; border: 1px dashed lightcoral;">
-          <ga-single-overview type="youth" lang="english"></ga-single-overview>
+          <ga-single-overview type="youth" lang="chinese"></ga-single-overview>
         </div>
         <div style="margin: 5px;"></div>
         <div style="width: 550px; height: 200px; border: 1px dashed lightcoral;">
-          <ga-single-overview type="mature" lang="english"></ga-single-overview>
+          <ga-single-overview type="mature" lang="chinese"></ga-single-overview>
         </div>
         <div style="margin: 5px;"></div>
         <div style="width: 550px; height: 200px; border: 1px dashed lightcoral;">
-          <ga-single-overview type="median" lang="english"></ga-single-overview>
+          <ga-single-overview type="median" lang="chinese"></ga-single-overview>
         </div>
         <div style="margin: 5px;"></div>
         <div style="width: 550px; height: 200px; border: 1px dashed lightcoral;">
-          <ga-single-overview type="lifestyle" lang="english"></ga-single-overview>
+          <ga-single-overview type="lifestyle" lang="chinese"></ga-single-overview>
         </div>
     </div>
     <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
@@ -639,23 +664,23 @@
     <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
       <b>6. arrow-graph.wc.svelte</b>
       <div style="width: 550px; height: 82px; border: 1px dashed lightcoral;">
-        <ga-arrow-graph subtype="mature" direction="right"></ga-arrow-graph>
+        <ga-arrow-graph subtype="mature" direction="right" lang="chinese"></ga-arrow-graph>
       </div>
       <div style="margin: 5px;"></div>
       <div style="width: 550px; height: 82px; border: 1px dashed lightcoral;">
-        <ga-arrow-graph subtype="youth" direction="right"></ga-arrow-graph>
+        <ga-arrow-graph subtype="youth" lang="chinese" direction="right"></ga-arrow-graph>
       </div>
       <div style="margin: 5px;"></div>
       <div style="width: 550px; height: 82px; border: 1px dashed lightcoral;">
-        <ga-arrow-graph subtype="shield" direction="left"></ga-arrow-graph>
+        <ga-arrow-graph subtype="shield" lang="chinese" direction="left"></ga-arrow-graph>
       </div>
       <div style="margin: 5px;"></div>
       <div style="width: 550px; height: 82px; border: 1px dashed lightcoral;">
-        <ga-arrow-graph subtype="lifestyle" direction="right"></ga-arrow-graph>
+        <ga-arrow-graph subtype="lifestyle" lang="chinese" direction="right"></ga-arrow-graph>
       </div>
       <div style="margin: 5px;"></div>
       <div style="width: 550px; height: 82px; border: 1px dashed lightcoral;">
-        <ga-arrow-graph subtype="median" direction="left"></ga-arrow-graph>
+        <ga-arrow-graph subtype="median" lang="chinese" direction="left"></ga-arrow-graph>
       </div>
     </div>
     <div class="flex flex-col items-center" style="padding: 2rem 0 2rem 0; width: 80%; border-bottom: 2px dashed black;">
