@@ -101,7 +101,8 @@
         name: getTranslation(lang, 'AGE'),
         nameTextStyle: {
           color: '#09341F',
-          opacity: 0.8
+          opacity: 0.8,
+          fontSize: 10
         },
         axisLine: {
           show: true,
@@ -134,7 +135,8 @@
         name: getTranslation(lang, 'INDEX_SCORE'),
         nameTextStyle: {
           color: '#09341F',
-          opacity: 0.8
+          opacity: 0.8,
+          fontSize: 10
         },
         axisLine: {
           show: true,
@@ -289,13 +291,13 @@
     newSvg.appendChild(path1);
     newSvg.appendChild(path2);
     newSvg.style.position = 'absolute';
-    newSvg.style.left = `${chartRect.left + xPixel + 10}px`;
+    newSvg.style.left = `${chartRect.left + xPixel - 70}px`;
     newSvg.style.top = `${chartRect.top + yPixel - 15}px`;
     newSvg.style.zIndex = '8';
 
     scoreHolder.innerText = `${Number.parseFloat(score).toFixed(3)}`;
     scoreHolder.style.position = 'absolute';
-    scoreHolder.style.left = `${chartRect.left + xPixel + 28}px`
+    scoreHolder.style.left = `${chartRect.left + xPixel - 52}px`
     scoreHolder.style.top = `${chartRect.top + yPixel - 8}px`;
     scoreHolder.style.font = 'bold 16px sans-serif';
     scoreHolder.style.color = 'white';
