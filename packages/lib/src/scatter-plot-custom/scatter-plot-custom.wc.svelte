@@ -277,8 +277,8 @@
     const newSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     const scoreHolder = document.createElement('div');
 
-    newSvg.setAttribute("width", "71");
-    newSvg.setAttribute("height", "32");
+    newSvg.setAttribute("width", "62");
+    newSvg.setAttribute("height", "26");
     newSvg.setAttribute("viewBox", "0 0 71 32");
     newSvg.setAttribute("fill", "none");
     newSvg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
@@ -291,15 +291,15 @@
     newSvg.appendChild(path1);
     newSvg.appendChild(path2);
     newSvg.style.position = 'absolute';
-    newSvg.style.left = `${chartRect.left + xPixel - 70}px`;
+    newSvg.style.left = `${chartRect.left + xPixel - 90}px`;
     newSvg.style.top = `${chartRect.top + yPixel - 15}px`;
     newSvg.style.zIndex = '8';
 
     scoreHolder.innerText = `${Number.parseFloat(score).toFixed(3)}`;
     scoreHolder.style.position = 'absolute';
-    scoreHolder.style.left = `${chartRect.left + xPixel - 52}px`
-    scoreHolder.style.top = `${chartRect.top + yPixel - 8}px`;
-    scoreHolder.style.font = 'bold 16px sans-serif';
+    scoreHolder.style.left = `${chartRect.left + xPixel - 73}px`
+    scoreHolder.style.top = `${chartRect.top + yPixel - 11}px`;
+    scoreHolder.style.font = 'bold 14px sans-serif';
     scoreHolder.style.color = 'white';
     scoreHolder.style.zIndex = '999';
     scoreHolder.style.fontFamily = 'Sen';
