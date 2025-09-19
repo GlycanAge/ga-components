@@ -5,7 +5,7 @@
   import {
     calculateSliderPositionWithPercentile,
     getColorBlueToRedWithPercentile,
-    getColorRedToBlueWithPercentile,
+    getColorRedToBlueWithPercentile
   } from '../shared/functions/helpers';
   import {Service} from '../shared/utils/service';
 
@@ -178,14 +178,19 @@
       {/if}
 
       <div class="slider" style="left: {calculateSliderPositionWithPercentile(percentile)}%;">
-        <svg style="position: relative;" width="27" height="27" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M20.0001 35.5418C19.6112 35.5418 19.2223 35.4724 18.8334 35.3335C18.4445 35.1946 18.0973 34.9863 17.7917 34.7085C15.9862 33.0418 14.389 31.4168 13.0001 29.8335C11.6112 28.2502 10.4515 26.7154 9.52091 25.2293C8.59036 23.7432 7.88203 22.3127 7.39591 20.9377C6.9098 19.5627 6.66675 18.2502 6.66675 17.0002C6.66675 12.8335 8.00703 9.51405 10.6876 7.04183C13.3681 4.56961 16.4723 3.3335 20.0001 3.3335C23.5279 3.3335 26.632 4.56961 29.3126 7.04183C31.9931 9.51405 33.3334 12.8335 33.3334 17.0002C33.3334 18.2502 33.0904 19.5627 32.6042 20.9377C32.1181 22.3127 31.4098 23.7432 30.4792 25.2293C29.5487 26.7154 28.389 28.2502 27.0001 29.8335C25.6112 31.4168 24.014 33.0418 22.2084 34.7085C21.9029 34.9863 21.5556 35.1946 21.1667 35.3335C20.7779 35.4724 20.389 35.5418 20.0001 35.5418Z"
-                fill="{type === 'shield' || type === 'youth' || type === 'median' ? getColorRedToBlueWithPercentile(percentile) :  getColorBlueToRedWithPercentile(percentile)}"/>
+        <svg width="55" height="24" viewBox="0 0 100 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="100" height="24" rx="4" fill="{type === 'shield' || type === 'youth' || type === 'median' ? getColorRedToBlueWithPercentile(percentile) : getColorBlueToRedWithPercentile(percentile)}"/>
         </svg>
       </div>
 
       <div class="slider-number" style="left: {calculateSliderPositionWithPercentile(percentile)}%;">
-        <b>{percentile}</b>
+        <b>{percentile}. percentil</b>
+      </div>
+
+      <div class="slider-triangle" style="left: {calculateSliderPositionWithPercentile(percentile)}%;">
+        <svg width="9" height="5" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6.8 6.93333C6.4 7.46667 5.6 7.46667 5.2 6.93333L0 8.07577e-07L12 0L6.8 6.93333Z" fill="{type === 'shield' || type === 'youth' || type === 'median' ? getColorRedToBlueWithPercentile(percentile) : getColorBlueToRedWithPercentile(percentile)}"/>
+        </svg>
       </div>
 
       <div class="text-left" style="width: 34.7%;">
@@ -246,7 +251,7 @@
         position: absolute;
         transform: translate(-50%, -55%);
         width: 24%;
-        max-height: 70px;
+          max-height: 70px;
     }
 
     .slider-number {
@@ -254,10 +259,19 @@
         flex-direction: column;
         align-items: center;
         position: absolute;
-        transform: translate(-50%, -130%);
+        transform: translate(-48%, -145%);
         width: 24%;
-        font-size: 0.55rem;
+        font-size: 0.38rem;
         color: white;
+    }
+
+    .slider-triangle {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        transform: translate(-50%, -95%);
+        width: 24%;
     }
 
     .text-left {
