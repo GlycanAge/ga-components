@@ -24,7 +24,9 @@ export default () => {
   import('./src/median-graph-japanese/median-graph-japanese.wc.svelte');
   import('./src/index-graph-japanese/index-graph-japanese.wc.svelte');
   import('./src/results-overview/results-overview.wc.svelte');
+  import('./src/results-overview-custom/results-overview-custom.wc.svelte');
   import('./src/single-overview/single-overview.wc.svelte');
+  import('./src/single-overview-custom/single-overview-custom.wc.svelte');
   import('./src/main-result/main-result.wc.svelte');
   import('./src/main-result-three/main-result-three.wc.svelte');
   import('./src/main-result-three-client/main-result-three-client.wc.svelte');
