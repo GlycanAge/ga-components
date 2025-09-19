@@ -150,7 +150,7 @@
     <div class="label">
       <div class="label-container">
         <span style="font-size: 0.7rem;">{label}</span>
-        <span style="font-size: 0.56rem;">{subtitle}</span>
+        <span style="font-size: 0.48rem;">{subtitle}</span>
         <div style="font-size: 0.44rem; color: {description === 'Protuupalni indeks' ? '#119999' : '#DD2222'};">
           <b>{description}</b>
         </div>
