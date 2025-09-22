@@ -192,7 +192,7 @@
         justify-content: center;
         font-size: 0.45rem;
         color: #09341F80;
-        max-height: 1rem;
+        max-height: 0.6rem;
     }
 
     .text-middle {
@@ -225,6 +225,6 @@
         justify-content: center;
         font-size: 0.45rem;
         color: #09341F80;
-        max-height: 1rem;
+        max-height: 0.6rem;
     }
 </style>

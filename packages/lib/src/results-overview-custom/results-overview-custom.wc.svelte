@@ -178,7 +178,7 @@
       {/if}
 
       <div class="slider" style="left: {calculateSliderPositionWithPercentile(percentile)}%;">
-        <svg width="55" height="24" viewBox="0 0 100 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg width="50" height="24" viewBox="0 0 100 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect width="100" height="24" rx="4" fill="{type === 'shield' || type === 'youth' || type === 'median' ? getColorRedToBlueWithPercentile(percentile) : getColorBlueToRedWithPercentile(percentile)}"/>
         </svg>
       </div>
@@ -259,7 +259,7 @@
         flex-direction: column;
         align-items: center;
         position: absolute;
-        transform: translate(-48%, -145%);
+        transform: translate(-48%, -140%);
         width: 24%;
         font-size: 0.38rem;
         color: white;
