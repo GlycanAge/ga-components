@@ -259,7 +259,7 @@
         flex-direction: column;
         align-items: center;
         position: absolute;
-        transform: translate(-48%, -140%);
+        transform: translate(-50%, -140%);
         width: 24%;
         font-size: 0.38rem;
         color: white;
@@ -270,7 +270,7 @@
         flex-direction: column;
         align-items: center;
         position: absolute;
-        transform: translate(-50%, -95%);
+        transform: translate(-50%, -105%);
         width: 24%;
     }
 
