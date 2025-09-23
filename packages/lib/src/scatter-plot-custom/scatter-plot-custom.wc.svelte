@@ -102,7 +102,7 @@
         nameTextStyle: {
           color: '#09341F',
           opacity: 0.8,
-          fontSize: 10
+          fontSize: 8
         },
         axisLine: {
           show: true,
@@ -120,6 +120,7 @@
         axisLabel: {
           show: true,
           color: '#09341F',
+          fontSize: 8,
           opacity: 0.8,
           formatter: function(value) {
             return value === 0 || value === 100 ? '' : value;
@@ -136,7 +137,7 @@
         nameTextStyle: {
           color: '#09341F',
           opacity: 0.8,
-          fontSize: 10
+          fontSize: 8
         },
         axisLine: {
           show: true,
@@ -154,6 +155,7 @@
         axisLabel: {
           show: true,
           color: '#09341F',
+          fontSize: 8,
           opacity: 0.8,
           formatter: function(value) {
             return value === 0|| value === 0.6 ? '' : value;
@@ -233,7 +235,7 @@
       style: {
         stroke: getColor(),
         lineDash: [8, 8],
-        lineWidth: 3
+        lineWidth: 1.7
       },
       z: 8
     });
@@ -249,7 +251,7 @@
       style: {
         stroke: getColor(),
         lineDash: [8, 8],
-        lineWidth: 3
+        lineWidth: 1.7
       },
       z: 8
     });
@@ -260,7 +262,7 @@
       shape: {
         cx: chart.convertToPixel('xAxis', chronoAge),
         cy: chart.convertToPixel('yAxis', score),
-        r: 6
+        r: 4
       },
       style: {
         fill: getColor(),
@@ -277,8 +279,8 @@
     const newSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     const scoreHolder = document.createElement('div');
 
-    newSvg.setAttribute("width", "62");
-    newSvg.setAttribute("height", "26");
+    newSvg.setAttribute("width", "52");
+    newSvg.setAttribute("height", "18");
     newSvg.setAttribute("viewBox", "0 0 71 32");
     newSvg.setAttribute("fill", "none");
     newSvg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
@@ -292,14 +294,14 @@
     newSvg.appendChild(path2);
     newSvg.style.position = 'absolute';
     newSvg.style.left = `${chartRect.left + xPixel - 90}px`;
-    newSvg.style.top = `${chartRect.top + yPixel - 15}px`;
+    newSvg.style.top = `${chartRect.top + yPixel - 10}px`;
     newSvg.style.zIndex = '8';
 
     scoreHolder.innerText = `${Number.parseFloat(score).toFixed(3)}`;
     scoreHolder.style.position = 'absolute';
-    scoreHolder.style.left = `${chartRect.left + xPixel - 73}px`
-    scoreHolder.style.top = `${chartRect.top + yPixel - 11}px`;
-    scoreHolder.style.font = 'bold 14px sans-serif';
+    scoreHolder.style.left = `${chartRect.left + xPixel - 74}px`
+    scoreHolder.style.top = `${chartRect.top + yPixel - 7}px`;
+    scoreHolder.style.font = 'bold 10px sans-serif';
     scoreHolder.style.color = 'white';
     scoreHolder.style.zIndex = '999';
     scoreHolder.style.fontFamily = 'Sen';
