@@ -4,7 +4,7 @@
     import {onMount} from 'svelte';
     import {Service} from '../shared/utils/service';
     // import * as echarts from 'echarts';
-    import {getColorRedToBlueWithPercentile, getColorMedianWithPercentile, getColorBlueToRedWithPercentile, getTranslation} from '../shared/functions/helpers';
+    import {getColorRedToBlueWithPercentile, getColorBlueToRedWithPercentile, getTranslation} from '../shared/functions/helpers';
 
     export let type: string;
     export let lang: string;
@@ -51,10 +51,7 @@
     const details = types.find(x => x.name === type);
 
     function getColor() {
-        if (type == 'median') {
-            return getColorMedianWithPercentile(percentile);
-        }
-        if (type == 'shield' || type == 'youth'){
+        if (type == 'shield' || type == 'youth' || type == 'median'){
             return getColorRedToBlueWithPercentile(percentile);
         }
         if (type == 'mature' || type == 'lifestyle'){

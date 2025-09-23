@@ -4,7 +4,7 @@
   import {onMount} from 'svelte';
   import {Service} from '../shared/utils/service';
   // import * as echarts from 'echarts';
-  import {getColorRedToBlueWithPercentile, getColorMedianWithPercentile, getColorBlueToRedWithPercentile, getTranslation} from '../shared/functions/helpers';
+  import {getColorRedToBlueWithPercentile, getColorBlueToRedWithPercentile, getTranslation} from '../shared/functions/helpers';
 
   export let type: string;
   export let lang: string;
@@ -51,10 +51,7 @@
   const details = types.find(x => x.name === type);
 
   function getColor() {
-    if (type == 'median') {
-      return getColorMedianWithPercentile(percentile);
-    }
-    if (type == 'shield' || type == 'youth'){
+    if (type == 'shield' || type == 'youth' || type == 'median'){
       return getColorRedToBlueWithPercentile(percentile);
     }
     if (type == 'mature' || type == 'lifestyle'){
@@ -293,13 +290,13 @@
     newSvg.appendChild(path1);
     newSvg.appendChild(path2);
     newSvg.style.position = 'absolute';
-    newSvg.style.left = `${chartRect.left + xPixel - 90}px`;
+    newSvg.style.left = `${chartRect.left + xPixel - 95}px`;
     newSvg.style.top = `${chartRect.top + yPixel - 10}px`;
     newSvg.style.zIndex = '8';
 
     scoreHolder.innerText = `${Number.parseFloat(score).toFixed(3)}`;
     scoreHolder.style.position = 'absolute';
-    scoreHolder.style.left = `${chartRect.left + xPixel - 74}px`
+    scoreHolder.style.left = `${chartRect.left + xPixel - 79}px`
     scoreHolder.style.top = `${chartRect.top + yPixel - 7}px`;
     scoreHolder.style.font = 'bold 10px sans-serif';
     scoreHolder.style.color = 'white';
