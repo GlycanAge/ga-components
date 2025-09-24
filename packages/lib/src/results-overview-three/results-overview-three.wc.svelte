@@ -127,7 +127,7 @@
       </div>
 
       <div class="slider-number" style="left: {calculateSliderPositionWithPercentile(percentile)}%;">
-        <b>{percentile}<sup style="font-size: 0.5rem;">{suffix(percentile, lang)}</sup> percentile</b>
+        <b>{percentile}<sup style="font-size: 0.5rem;">{suffix(percentile, lang)}</sup> {getTranslation(lang, 'PERCENTILE')}</b>
       </div>
 
       <div class="slider-triangle" style="left: {calculateSliderPositionWithPercentile(percentile)}%;">
