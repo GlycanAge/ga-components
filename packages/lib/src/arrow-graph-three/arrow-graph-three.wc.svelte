@@ -29,7 +29,7 @@
     },
     {
       name: 'lifestyle',
-      label: 'Lifestyle',
+      label: 'Bisection',
       csvName: 'Bpercentile',
     },
     {
