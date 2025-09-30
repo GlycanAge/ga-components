@@ -508,7 +508,7 @@
           </div>
         {/each}
       </div>
-      <p class="x-small" style="background-color: lightblue; max-width: 90%;"><b>{getTranslation(lang, 'PLEASE_NOTE')}</b>: {getTranslation(lang, 'PLEASE_NOTE_SENTENCE')}</p>
+      <p class="x-small" style="max-width: 90%;"><b>{getTranslation(lang, 'PLEASE_NOTE')}</b>: {getTranslation(lang, 'PLEASE_NOTE_SENTENCE')}</p>
     {/if}
     {/if}
 {/if}
