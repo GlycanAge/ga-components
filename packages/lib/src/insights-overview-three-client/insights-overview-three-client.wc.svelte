@@ -373,7 +373,7 @@
             Some health areas are slightly out of range
           </div>
         </div>
-        <p class="x-small">If a health area is flagged as <b style="color: #EE6600;">Slightly out of range</b>, it suggests an increased inflammatory state in that health area. <br/><br/>
+        <p class="x-small">If a health area is flagged as <b style="color: #119999;">Slightly out of range</b>, it suggests an increased inflammatory state in that health area. <br/><br/>
           This is not a diagnosis. Think of it as an early indicator, as glycan changes can reflect processes that occur years before symptoms may appear. <br/><br/>
           Since your glycan profile can change in response to lifestyle improvements, these insights help you focus on proactive adjustments for your long-term wellbeing.</p>
       {/if}
@@ -386,7 +386,7 @@
             Some health areas are significantly out of range
           </div>
         </div>
-        <p class="x-small">If a health area is flagged as <b style="color: #EE6600;">Slightly out of range</b> or <b style="color: #DD2222;">Significantly out of range</b>, it suggests an increased inflammatory state in that health area. <br/><br/>
+        <p class="x-small">If a health area is flagged as <b style="color: #119999;">Slightly out of range</b> or <b style="color: #EE6600;">Significantly out of range</b>, it suggests an increased inflammatory state in that health area. <br/><br/>
           This is not a diagnosis. Think of it as an early indicator, as glycan changes can reflect processes that occur years before symptoms may appear. <br/><br/>
           Since your glycan profile can change in response to lifestyle improvements, these insights help you focus on proactive adjustments for your long-term wellbeing.</p>
       {/if}
@@ -399,7 +399,7 @@
             Some health areas are slightly out of range
           </div>
         </div>
-        <p class="x-small">If a health area is flagged as <b style="color: #EE6600;">Slightly out of range</b>, it suggests an increased inflammatory state in that health area. <br/><br/>
+        <p class="x-small">If a health area is flagged as <b style="color: #119999;">Slightly out of range</b>, it suggests an increased inflammatory state in that health area. <br/><br/>
           This is not a diagnosis. Think of it as an early indicator, as glycan changes can reflect processes that occur years before symptoms may appear. <br/><br/>
           Since your glycan profile can change in response to lifestyle improvements, these insights help you focus on proactive adjustments for your long-term wellbeing.</p>
       {/if}
@@ -412,7 +412,7 @@
             Some health areas are slightly out of range
           </div>
         </div>
-        <p class="x-small">If a health area is flagged as <b style="color: #EE6600;">Slightly out of range</b>, it suggests an increased inflammatory state in that health area. <br/><br/>
+        <p class="x-small">If a health area is flagged as <b style="color: #119999;">Slightly out of range</b>, it suggests an increased inflammatory state in that health area. <br/><br/>
           This is not a diagnosis. Think of it as an early indicator, as glycan changes can reflect processes that occur years before symptoms may appear. <br/><br/>
           Since your glycan profile can change in response to lifestyle improvements, these insights help you focus on proactive adjustments for your long-term wellbeing.</p>
       {/if}
@@ -425,7 +425,7 @@
             Some health areas are significantly out of range
           </div>
         </div>
-        <p class="x-small">If a health area is flagged as <b style="color: #EE6600;">Slightly out of range</b> or <b style="color: #DD2222;">Significantly out of range</b>, it suggests an increased inflammatory state in that health area. <br/><br/>
+        <p class="x-small">If a health area is flagged as <b style="color: #119999;">Slightly out of range</b> or <b style="color: #EE6600;">Significantly out of range</b>, it suggests an increased inflammatory state in that health area. <br/><br/>
           This is not a diagnosis. Think of it as an early indicator, as glycan changes can reflect processes that occur years before symptoms may appear. <br/><br/>
           Since your glycan profile can change in response to lifestyle improvements, these insights help you focus on proactive adjustments for your long-term wellbeing.</p>
       {/if}
@@ -438,7 +438,7 @@
             Some health areas are slightly out of range
           </div>
         </div>
-        <p class="x-small">If a health area is flagged as <b style="color: #EE6600;">Slightly out of range</b>, it suggests an increased inflammatory state in that health area. <br/><br/>
+        <p class="x-small">If a health area is flagged as <b style="color: #119999;">Slightly out of range</b>, it suggests an increased inflammatory state in that health area. <br/><br/>
           This is not a diagnosis. Think of it as an early indicator, as glycan changes can reflect processes that occur years before symptoms may appear. <br/><br/>
           Since your glycan profile can change in response to lifestyle improvements, these insights help you focus on proactive adjustments for your long-term wellbeing.</p>
       {/if}
@@ -462,7 +462,7 @@
             Some health areas are slightly out of range
           </div>
         </div>
-        <p class="x-small">If a health area is flagged as <b style="color: #EE6600;">Slightly out of range</b>, it suggests an increased inflammatory state in that health area. <br/><br/>
+        <p class="x-small">If a health area is flagged as <b style="color: #119999;">Slightly out of range</b>, it suggests an increased inflammatory state in that health area. <br/><br/>
           This is not a diagnosis. Think of it as an early indicator, as glycan changes can reflect processes that occur years before symptoms may appear. <br/><br/>
           Since your glycan profile can change in response to lifestyle improvements, these insights help you focus on proactive adjustments for your long-term wellbeing.</p>
       {/if}
@@ -475,7 +475,7 @@
             Some health areas are significantly out of range
           </div>
         </div>
-        <p class="x-small">If a health area is flagged as <b style="color: #EE6600;">Slightly out of range</b> or <b style="color: #DD2222;">Significantly out of range</b>, it suggests an increased inflammatory state in that health area. <br/><br/>
+        <p class="x-small">If a health area is flagged as <b style="color: #119999;">Slightly out of range</b> or <b style="color: #EE6600;">Significantly out of range</b>, it suggests an increased inflammatory state in that health area. <br/><br/>
           This is not a diagnosis. Think of it as an early indicator, as glycan changes can reflect processes that occur years before symptoms may appear. <br/><br/>
           Since your glycan profile can change in response to lifestyle improvements, these insights help you focus on proactive adjustments for your long-term wellbeing.</p>
       {/if}
@@ -488,7 +488,7 @@
             Some health areas are slightly out of range
           </div>
         </div>
-        <p class="x-small">If a health area is flagged as <b style="color: #EE6600;">Slightly out of range</b>, it suggests an increased inflammatory state in that health area. <br/><br/>
+        <p class="x-small">If a health area is flagged as <b style="color: #119999;">Slightly out of range</b>, it suggests an increased inflammatory state in that health area. <br/><br/>
           This is not a diagnosis. Think of it as an early indicator, as glycan changes can reflect processes that occur years before symptoms may appear. <br/><br/>
           Since your glycan profile can change in response to lifestyle improvements, these insights help you focus on proactive adjustments for your long-term wellbeing.</p>
       {/if}
@@ -501,7 +501,7 @@
             Some health areas are slightly out of range
           </div>
         </div>
-        <p class="x-small">If a health area is flagged as <b style="color: #EE6600;">Slightly out of range</b>, it suggests an increased inflammatory state in that health area. <br/><br/>
+        <p class="x-small">If a health area is flagged as <b style="color: #119999;">Slightly out of range</b>, it suggests an increased inflammatory state in that health area. <br/><br/>
           This is not a diagnosis. Think of it as an early indicator, as glycan changes can reflect processes that occur years before symptoms may appear. <br/><br/>
           Since your glycan profile can change in response to lifestyle improvements, these insights help you focus on proactive adjustments for your long-term wellbeing.</p>
       {/if}
@@ -514,7 +514,7 @@
             Some health areas are significantly out of range
           </div>
         </div>
-        <p class="x-small">If a health area is flagged as <b style="color: #EE6600;">Slightly out of range</b> or <b style="color: #DD2222;">Significantly out of range</b>, it suggests an increased inflammatory state in that health area. <br/><br/>
+        <p class="x-small">If a health area is flagged as <b style="color: #119999;">Slightly out of range</b> or <b style="color: #EE6600;">Significantly out of range</b>, it suggests an increased inflammatory state in that health area. <br/><br/>
           This is not a diagnosis. Think of it as an early indicator, as glycan changes can reflect processes that occur years before symptoms may appear. <br/><br/>
           Since your glycan profile can change in response to lifestyle improvements, these insights help you focus on proactive adjustments for your long-term wellbeing.</p>
       {/if}
@@ -527,7 +527,7 @@
             Some health areas are slightly out of range
           </div>
         </div>
-        <p class="x-small">If a health area is flagged as <b style="color: #EE6600;">Slightly out of range</b>, it suggests an increased inflammatory state in that health area. <br/><br/>
+        <p class="x-small">If a health area is flagged as <b style="color: #119999;">Slightly out of range</b>, it suggests an increased inflammatory state in that health area. <br/><br/>
           This is not a diagnosis. Think of it as an early indicator, as glycan changes can reflect processes that occur years before symptoms may appear. <br/><br/>
           Since your glycan profile can change in response to lifestyle improvements, these insights help you focus on proactive adjustments for your long-term wellbeing.</p>
       {/if}
