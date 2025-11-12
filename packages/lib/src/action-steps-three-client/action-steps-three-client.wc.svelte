@@ -245,7 +245,7 @@
       </div>
     </div>
     <div class="items-baseline" style="display: flex; background-color: #F2F6F4; border-radius: 12px; height: auto; position: relative;">
-      <div class="number" style="background: #86AF9A; min-width: 17rem;">Secondary focus — based on secondary indexes</div>
+      <div class="number" style="background: #86AF9A; min-width: 17rem;">Secondary focus — based on supportive indexes</div>
       <div style="padding: 1.5rem 2rem 1.1rem 2rem;">
         <div style="margin-bottom: 0.3rem; font-size: 12px;"><b>{supportiveTitle}</b></div>
         <div style="font-size: 68%">{supportiveDescription}</div>

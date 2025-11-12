@@ -1,7 +1,7 @@
 export let english = {
   PRIMARY_FOCUS: 'Primary focus — based on primary indexes',
   FURTHER_TESTING: 'Further testing suggested',
-  SECONDARY_FOCUS: 'Secondary focus — based on secondary indexes',
+  SECONDARY_FOCUS: 'Secondary focus — based on supportive indexes',
   PRIMARY_TITLE_1: 'Maintain and protect current inflammation regulation and immune aging',
   PRIMARY_DESC_1: "Evaluate whether these optimal results are driven by pharmaceutical interventions (e.g., HRT, TRT, thyroxine, incretin therapies such as GLP-1 agonists, anti-inflammatories), favorable genetic traits (e.g., longevity-associated or glycan-beneficial variants), or lifestyle factors. If risk factors or chronic conditions are present, this profile confirms that current strategies are successfully controlling inflammation.",
   PRIMARY_FURTHER_1: 'None beyond standard annual preventive labs unless new symptoms emerge.',
