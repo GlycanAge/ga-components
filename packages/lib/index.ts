@@ -34,6 +34,7 @@ export default () => {
   import('./src/results-overview-three/results-overview-three.wc.svelte');
   import('./src/insights-overview/insights-overview.wc.svelte');
   import('./src/insights-overview-three/insights-overview-three.wc.svelte');
+  import('./src/insights-overview-three-clp/insights-overview-three-clp.wc.svelte');
   import('./src/insights-overview-custom/insights-overview-custom.wc.svelte');
   import('./src/insights-overview-three-client/insights-overview-three-client.wc.svelte');
   import('./src/insights-overview-latest/insights-overview-latest.wc.svelte');
