@@ -237,7 +237,7 @@
   {#if type === 'primary'}
     <div class="main">
         <div style="font-size: 14px;"><b>{primaryTitle}</b></div>
-        <div style="font-size: 68%">{primaryDescription}</div>
+        <div style="font-size: 78%">{primaryDescription}</div>
         <div style="height: 24px"></div>
         <div class="further">{getTranslation(lang, 'FURTHER_TESTING')}:</div>
         <div style="font-size: 68%">{primaryFurther}</div>
@@ -245,7 +245,7 @@
   {:else}
     <div class="main">
         <div style="font-size: 14px;"><b>{supportiveTitle}</b></div>
-        <div style="font-size: 68%">{supportiveDescription}</div>
+        <div style="font-size: 78%">{supportiveDescription}</div>
         <div style="height: 24px"></div>
         <div class="further">{getTranslation(lang, 'FURTHER_TESTING')}:</div>
         <div style="font-size: 68%">{supportiveFurther}</div>
@@ -264,7 +264,7 @@
 
     .further {
         font-weight: 700;
-        font-size: 12px;
+        font-size: 14px;
         line-height: 160%;
         letter-spacing: 0.005em;
     }
