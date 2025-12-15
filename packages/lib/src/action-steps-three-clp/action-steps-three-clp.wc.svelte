@@ -174,7 +174,7 @@
     if (sPerc <= 33 && g2Perc <= 33 && (g0Perc > 33 && g0Perc < 67)) {primaryTitle=getTranslation(lang, 'PRIMARY_TITLE_26');primaryDescription=getTranslation(lang, 'PRIMARY_DESC_26');primaryFurther=getTranslation(lang, 'PRIMARY_FURTHER_26');}
     if (sPerc <= 33 && g2Perc <= 33 && g0Perc >= 67) {primaryTitle=getTranslation(lang, 'PRIMARY_TITLE_27');primaryDescription=getTranslation(lang, 'PRIMARY_DESC_27');primaryFurther=getTranslation(lang, 'PRIMARY_FURTHER_27');}
 
-    // Supportive calc
+    // Supportive calculation
     if (g1Perc <= 33 && bPerc >= 67) {
       supportiveTitle = getTranslation(lang, 'SUPPORTIVE_TITLE_1');
       supportiveDescription = getTranslation(lang, 'SUPPORTIVE_DESC_1');
