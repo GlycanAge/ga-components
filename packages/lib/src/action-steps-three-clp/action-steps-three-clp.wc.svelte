@@ -37,7 +37,7 @@
   let p22Perc = 0; // p22percentile
   let p18Perc = 0; // p18percentile
   let p23Perc = 0; // p23percentile
-  let p26Perc = 0; // p26percentile
+  let p26Perc = 0;
 
   let primaryTitle = '';
   let primaryDescription = '';
