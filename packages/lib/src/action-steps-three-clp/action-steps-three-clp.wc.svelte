@@ -7,6 +7,7 @@
 
   export let service: Service = window.GaReportService;
   export let lang: string;
+  export let type: string;
 
   let reportData: any;
 
@@ -233,28 +234,23 @@
 </script>
 
 {#if show}
-  <div class="main">
-    <div class="items-baseline" style="display: flex; background-color: #EFEFEE; height: auto; position: relative; border-radius: 12px;">
-      <div class="number" style="background: #119999; width: auto; padding-left: 0.6rem;padding-right: 0.6rem;">{getTranslation(lang, 'PRIMARY_FOCUS')}</div>
-      <div style="padding: 1.5rem 2rem 1.1rem 2rem;">
-        <div style="margin-bottom: 0.3rem; font-size: 12px;"><b>{primaryTitle}</b></div>
+  {#if type === 'primary'}
+    <div class="main">
+        <div style="font-size: 14px;"><b>{primaryTitle}</b></div>
         <div style="font-size: 68%">{primaryDescription}</div>
         <div style="height: 24px"></div>
         <div class="further">{getTranslation(lang, 'FURTHER_TESTING')}:</div>
         <div style="font-size: 68%">{primaryFurther}</div>
-      </div>
     </div>
-    <div class="items-baseline" style="display: flex; background-color: #EFEFEE; border-radius: 12px; height: auto; position: relative;">
-      <div class="number" style="background: #66CCAA; width: auto; padding-left: 0.6rem;padding-right: 0.6rem;">{getTranslation(lang, 'SECONDARY_FOCUS')}</div>
-      <div style="padding: 1.5rem 2rem 1.1rem 2rem;">
-        <div style="margin-bottom: 0.3rem; font-size: 12px;"><b>{supportiveTitle}</b></div>
+  {:else}
+    <div class="main">
+        <div style="margin-bottom: 0.3rem; font-size: 14px;"><b>{supportiveTitle}</b></div>
         <div style="font-size: 68%">{supportiveDescription}</div>
         <div style="height: 24px"></div>
         <div class="further">{getTranslation(lang, 'FURTHER_TESTING')}:</div>
         <div style="font-size: 68%">{supportiveFurther}</div>
-      </div>
     </div>
-  </div>
+  {/if}
 {/if}
 
 <style>
@@ -263,32 +259,13 @@
         width: 100%;
         display: flex;
         flex-direction: column;
-        gap: 40px;
-    }
-
-    .number {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 10px;
-        color: white;
-        min-height: 1.7rem;
-        margin-right: 1rem;
-        border-radius: 48px;
-        position: absolute;
-        top: -5%;
-        font-weight: bold;
-        left: 3%;
-    }
-    .items-baseline {
-        align-items: baseline;
+        gap: 10px;
     }
 
     .further {
         font-weight: 700;
-        font-size: 10px;
+        font-size: 12px;
         line-height: 160%;
         letter-spacing: 0.005em;
-        color: rgba(9, 52, 31, 0.8);
     }
 </style>
