@@ -33,7 +33,7 @@
   let sPerc = 0; // Spercentile
   let g0Perc = 0; // g0percentile
   let g1Perc = 0; // g1percentile
-  let g2Perc = 0; // g2percentile
+  let g2Perc = 0;
   let p22Perc = 0;
   let p18Perc = 0;
   let p23Perc = 0;
