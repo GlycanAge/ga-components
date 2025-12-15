@@ -244,7 +244,7 @@
     </div>
   {:else}
     <div class="main">
-        <div style="margin-bottom: 0.3rem; font-size: 14px;"><b>{supportiveTitle}</b></div>
+        <div style="font-size: 14px;"><b>{supportiveTitle}</b></div>
         <div style="font-size: 68%">{supportiveDescription}</div>
         <div style="height: 24px"></div>
         <div class="further">{getTranslation(lang, 'FURTHER_TESTING')}:</div>
