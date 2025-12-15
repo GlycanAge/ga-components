@@ -144,7 +144,7 @@
       cvaFCounter++;
     }
 
-    // Primary calc
+    // Primary calculation
     if (sPerc >= 67 && g2Perc >= 67 && g0Perc <= 33) {primaryTitle = getTranslation(lang, 'PRIMARY_TITLE_1');primaryDescription = getTranslation(lang, 'PRIMARY_DESC_1'); primaryFurther = getTranslation(lang, 'PRIMARY_FURTHER_1');}
     if (sPerc >= 67 && g2Perc >= 67 && (g0Perc > 33 && g0Perc < 67)) {primaryTitle=getTranslation(lang, 'PRIMARY_TITLE_2');primaryDescription=getTranslation(lang, 'PRIMARY_DESC_2');primaryFurther=getTranslation(lang, 'PRIMARY_FURTHER_2');}
     if (sPerc >= 67 && (g2Perc > 33 && g2Perc < 67) && g0Perc <= 33) {primaryTitle=getTranslation(lang, 'PRIMARY_TITLE_3');primaryDescription=getTranslation(lang, 'PRIMARY_DESC_3');primaryFurther=getTranslation(lang, 'PRIMARY_FURTHER_3');}
