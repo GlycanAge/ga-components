@@ -34,7 +34,7 @@
   let g0Perc = 0; // g0percentile
   let g1Perc = 0; // g1percentile
   let g2Perc = 0; // g2percentile
-  let p22Perc = 0; // p22percentile
+  let p22Perc = 0;
   let p18Perc = 0;
   let p23Perc = 0;
   let p26Perc = 0;
