@@ -149,7 +149,7 @@
         width: 24%;
         color: white;
         font-weight: 500;
-        font-size: 0.38rem;
+        font-size: 0.4rem;
     }
 
     .text-left {

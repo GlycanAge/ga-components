@@ -259,9 +259,9 @@
         flex-direction: column;
         align-items: center;
         position: absolute;
-        transform: translate(-50%, -150%);
-        width: 24%;
-        font-size: 0.34rem;
+        transform: translate(-50%, -145%);
+        width: 26%;
+        font-size: 0.38rem;
         color: white;
     }
 
