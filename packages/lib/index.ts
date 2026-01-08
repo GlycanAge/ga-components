@@ -25,10 +25,13 @@ export default () => {
   import('./src/index-graph-japanese/index-graph-japanese.wc.svelte');
   import('./src/results-overview/results-overview.wc.svelte');
   import('./src/results-overview-custom/results-overview-custom.wc.svelte');
+  import('./src/results-overview-custom-clinical/results-overview-custom-clinical.wc.svelte');
   import('./src/single-overview/single-overview.wc.svelte');
   import('./src/single-overview-custom/single-overview-custom.wc.svelte');
+  import('./src/single-overview-custom-clinical/single-overview-custom-clinical.wc.svelte');
   import('./src/main-result/main-result.wc.svelte');
   import('./src/main-result-custom/main-result-custom.wc.svelte');
+  import('./src/main-result-custom-clinical/main-result-custom-clinical.wc.svelte');
   import('./src/main-result-three/main-result-three.wc.svelte');
   import('./src/main-result-three-client/main-result-three-client.wc.svelte');
   import('./src/results-overview-three/results-overview-three.wc.svelte');
@@ -36,6 +39,7 @@ export default () => {
   import('./src/insights-overview-three/insights-overview-three.wc.svelte');
   import('./src/insights-overview-three-clp/insights-overview-three-clp.wc.svelte');
   import('./src/insights-overview-custom/insights-overview-custom.wc.svelte');
+  import('./src/insights-overview-custom-clinical/insights-overview-custom-clinical.wc.svelte');
   import('./src/insights-overview-three-client/insights-overview-three-client.wc.svelte');
   import('./src/insights-overview-latest/insights-overview-latest.wc.svelte');
   import('./src/action-steps-three/action-steps-three.wc.svelte');
@@ -47,6 +51,7 @@ export default () => {
   import('./src/overlap-title-three/overlap-title-three.wc.svelte');
   import('./src/scatter-plot/scatter-plot.wc.svelte');
   import('./src/scatter-plot-custom/scatter-plot-custom.wc.svelte');
+  import('./src/scatter-plot-custom-clinical/scatter-plot-custom-clinical.wc.svelte');
   import('./src/results-overview-clp/results-overview-clp.wc.svelte');
   import('./src/insights-overview-clp/insights-overview-clp.wc.svelte');
   import('./src/main-result-clp/main-result-clp.wc.svelte');
