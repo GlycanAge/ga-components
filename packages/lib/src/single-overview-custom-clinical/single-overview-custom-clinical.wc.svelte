@@ -53,7 +53,7 @@
       <span style="height: 80%; display: flex;">
           <b>{percentile}</b>
       </span>
-      <sup style="font-size: 0.65rem;"><b>{suffix(percentile, lang)}</b></sup>
+      <sup><b>{suffix(percentile, lang)}</b></sup>
       &nbsp;percentile:
     </div>
 
