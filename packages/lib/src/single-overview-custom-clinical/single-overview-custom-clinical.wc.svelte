@@ -47,58 +47,84 @@
 </script>
 
 {#if show}
-  <div class="graph">
-    <div class="graph-container">
-      {#if type === 'mature' || type === 'lifestyle'}
-        <div class="colorBoxShort" style="background-color: #015566;"></div>
-        <div class="colorBox" style="background-color: #015566;"></div>
-        <div class="colorBox" style="background-color: #13A195;"></div>
-        <div class="colorBox" style="background-color: #66CCAA;"></div>
-        <div class="colorBox" style="background-color: #66CCAA;"></div>
-        <div class="colorBox" style="background-color: #F2800D;"></div>
-        <div class="colorBox" style="background-color: #DF2120;"></div>
-        <div class="colorBoxShort" style="background-color: #DF2120;"></div>
-      {:else if type === 'shield' || type === 'youth' || type === 'median'}
-        <div class="colorBoxShort" style="background-color: #DF2120;"></div>
-        <div class="colorBox" style="background-color: #DF2120;"></div>
-        <div class="colorBox" style="background-color: #F2800D;"></div>
-        <div class="colorBox" style="background-color: #66CCAA;"></div>
-        <div class="colorBox" style="background-color: #66CCAA;"></div>
-        <div class="colorBox" style="background-color: #13A195;"></div>
-        <div class="colorBox" style="background-color: #015566;"></div>
-        <div class="colorBoxShort" style="background-color: #015566;"></div>
-      {/if}
+  <div class="main">
+    <div class="label">
+      This result ranks in the&nbsp;
+      <span style="height: 80%; display: flex;">
+          <b>{percentile}</b>
+      </span>
+      <sup style="font-size: 0.65rem;"><b>{suffix(percentile, lang)}</b></sup>
+      &nbsp;percentile:
+    </div>
 
-      <div class="slider" style="left: {calculateSliderPositionWithPercentile(percentile)}%;">
-        <svg width="60" height="24" viewBox="0 0 100 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="100" height="24" rx="4" fill="{type === 'shield' || type === 'youth' || type === 'median' ? getColorRedToBlueWithPercentile(percentile) : getColorBlueToRedWithPercentile(percentile)}"/>
-        </svg>
-      </div>
+    <div class="graph">
+      <div class="graph-container">
+        {#if type === 'mature' || type === 'lifestyle'}
+          <div class="colorBoxShort" style="background-color: #015566;"></div>
+          <div class="colorBox" style="background-color: #015566;"></div>
+          <div class="colorBox" style="background-color: #13A195;"></div>
+          <div class="colorBox" style="background-color: #66CCAA;"></div>
+          <div class="colorBox" style="background-color: #66CCAA;"></div>
+          <div class="colorBox" style="background-color: #F2800D;"></div>
+          <div class="colorBox" style="background-color: #DF2120;"></div>
+          <div class="colorBoxShort" style="background-color: #DF2120;"></div>
+        {:else if type === 'shield' || type === 'youth' || type === 'median'}
+          <div class="colorBoxShort" style="background-color: #DF2120;"></div>
+          <div class="colorBox" style="background-color: #DF2120;"></div>
+          <div class="colorBox" style="background-color: #F2800D;"></div>
+          <div class="colorBox" style="background-color: #66CCAA;"></div>
+          <div class="colorBox" style="background-color: #66CCAA;"></div>
+          <div class="colorBox" style="background-color: #13A195;"></div>
+          <div class="colorBox" style="background-color: #015566;"></div>
+          <div class="colorBoxShort" style="background-color: #015566;"></div>
+        {/if}
 
-      <div class="slider-number" style="left: {calculateSliderPositionWithPercentile(percentile)}%;">
-        <b>{percentile}<sup>{suffix(percentile, lang)}</sup> percentile</b>
-      </div>
+        <div class="slider" style="left: {calculateSliderPositionWithPercentile(percentile)}%;">
+          <svg width="60" height="24" viewBox="0 0 100 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="100" height="24" rx="4" fill="{type === 'shield' || type === 'youth' || type === 'median' ? getColorRedToBlueWithPercentile(percentile) : getColorBlueToRedWithPercentile(percentile)}"/>
+          </svg>
+        </div>
 
-      <div class="slider-triangle" style="left: {calculateSliderPositionWithPercentile(percentile)}%;">
-        <svg width="9" height="5" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M6.8 6.93333C6.4 7.46667 5.6 7.46667 5.2 6.93333L0 8.07577e-07L12 0L6.8 6.93333Z" fill="{type === 'shield' || type === 'youth' || type === 'median' ? getColorRedToBlueWithPercentile(percentile) : getColorBlueToRedWithPercentile(percentile)}"/>
-        </svg>
-      </div>
+        <div class="slider-number" style="left: {calculateSliderPositionWithPercentile(percentile)}%;">
+          <b>{percentile}<sup>{suffix(percentile, lang)}</sup> percentile</b>
+        </div>
 
-      <div class="text-left" style="width: 34.7%;">
-        {type === 'shield' || type === 'youth' || type === 'median' ? 'Suboptimal' : 'Optimal'}
-      </div>
-      <div class="text-middle" style="width: 29.5%;">
-        Average
-      </div>
-      <div class="text-right" style="width: 34.7%;">
-        {type === 'shield' || type === 'youth' || type === 'median' ? 'Optimal' : 'Suboptimal'}
+        <div class="slider-triangle" style="left: {calculateSliderPositionWithPercentile(percentile)}%;">
+          <svg width="9" height="5" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6.8 6.93333C6.4 7.46667 5.6 7.46667 5.2 6.93333L0 8.07577e-07L12 0L6.8 6.93333Z" fill="{type === 'shield' || type === 'youth' || type === 'median' ? getColorRedToBlueWithPercentile(percentile) : getColorBlueToRedWithPercentile(percentile)}"/>
+          </svg>
+        </div>
+
+        <div class="text-left" style="width: 34.7%;">
+          {type === 'shield' || type === 'youth' || type === 'median' ? 'Suboptimal' : 'Optimal'}
+        </div>
+        <div class="text-middle" style="width: 29.5%;">
+          Average
+        </div>
+        <div class="text-right" style="width: 34.7%;">
+          {type === 'shield' || type === 'youth' || type === 'median' ? 'Optimal' : 'Suboptimal'}
+        </div>
       </div>
     </div>
   </div>
 {/if}
 
 <style>
+    .main {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .label {
+        height: 20%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        font-size: 10px;
+    }
+
     .graph {
         height: 100%;
         width: 100%;
