@@ -166,6 +166,7 @@
         {
           type: 'scatter',
           tooltip: {},
+          symbolSize: 5,
           itemStyle: {
             color: '#09341F',
             opacity: 0.1,
@@ -192,7 +193,7 @@
             color: '#09341F',
             opacity: 0.5,
             symbol:'none',
-            width: 5
+            width: 2
           },
           showSymbol: false
         }
