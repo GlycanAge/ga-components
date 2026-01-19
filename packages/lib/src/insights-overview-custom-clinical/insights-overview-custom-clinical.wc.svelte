@@ -173,7 +173,7 @@
   <div class="main">
     {#if badAreas.length}
       <div class="causes" style="border-top: 1px solid #09341F33; border-bottom: {greenAreas.length || orangeAreas.length ? 'none' : '1px solid #09341F33'}">
-        <span style="font-size: 0.58rem; min-width: 72px;">High impact</span>
+        <span style="font-size: 0.58rem; min-width: 82px;">High overlap</span>
         <div style="display: flex; flex-wrap: wrap; gap: 0.2rem;">
           {#each badAreas as area}
             <div class="cause-chip bad">
@@ -186,7 +186,7 @@
     {/if}
     {#if orangeAreas.length}
       <div class="causes" style="border-top: 1px solid #09341F33; border-bottom: {greenAreas.length ? 'none' : '1px solid #09341F33'}">
-        <div style="font-size: 0.58rem; min-width: 72px;">Medium impact</div>
+        <div style="font-size: 0.58rem; min-width: 82px;">Moderate overlap</div>
         <div style="display: flex; flex-wrap: wrap; gap: 0.2rem;">
           {#each orangeAreas as oArea}
             <div class="cause-chip slightly-bad">
@@ -199,7 +199,7 @@
     {/if}
     {#if greenAreas.length}
       <div class="causes" style="border-top: 1px solid #09341F33; border-bottom: 1px solid #09341F33;">
-        <span style="font-size: 0.58rem; min-width: 72px;">Low impact</span>
+        <span style="font-size: 0.58rem; min-width: 82px;">Low overlap</span>
         <div style="display: flex; flex-wrap: wrap; gap: 0.2rem;">
           {#each greenAreas as gArea}
             <div class="cause-chip good">
@@ -224,7 +224,7 @@
     .causes {
         display: flex;
         flex: 1;
-        gap: 0.2rem;
+        gap: 1rem;
         padding: 0.5rem;
         align-items: center;
     }
