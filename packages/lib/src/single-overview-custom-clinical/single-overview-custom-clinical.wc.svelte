@@ -53,7 +53,7 @@
       <span style="height: 80%; display: flex;">
           <b>{percentile}</b>
       </span>
-      <sup style="margin-top: -4px;"><b>{suffix(percentile, lang)}</b></sup>
+      <sup style="margin-top: -2px;"><b>{suffix(percentile, lang)}</b></sup>
       &nbsp;percentile:
     </div>
 
@@ -171,7 +171,7 @@
         flex-direction: column;
         align-items: center;
         position: absolute;
-        transform: translate(-50%, -125%);
+        transform: translate(-50%, -115%);
         width: 24%;
         color: white;
         font-weight: 500;
