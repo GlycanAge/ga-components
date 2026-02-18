@@ -27,7 +27,7 @@
     },
     {
       name: 'lifestyle',
-      label: 'Glycan bisection',
+      label: 'Glycan Bisection',
       csvName: 'Bpercentile',
     },
     {
