@@ -46,6 +46,7 @@ export default () => {
   import('./src/insights-overview-latest/insights-overview-latest.wc.svelte');
   import('./src/action-steps-three/action-steps-three.wc.svelte');
   import('./src/action-steps-three-clp/action-steps-three-clp.wc.svelte');
+  import('./src/action-steps-three-clp-ch/action-steps-three-clp-ch.wc.svelte');
   import('./src/action-steps-three-client/action-steps-three-client.wc.svelte');
   import('./src/arrow-graph/arrow-graph.wc.svelte');
   import('./src/arrow-graph-three/arrow-graph-three.wc.svelte');
