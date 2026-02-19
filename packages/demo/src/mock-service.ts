@@ -3,22 +3,22 @@ import { Service } from '../../lib/src/shared/utils/service';
 export class MockService implements Service {
   getReport() {
     return Promise.resolve({
-      Bpercentile: '78',
+      Bpercentile: '10',
       Bxaverage: '0.107',
       Bxmax: '0.176',
       Bxmin: '0.074',
       Byourscore: '0.100',
-      G0percentile: '55',
+      G0percentile: '78',
       G0xaverage: '0.162',
       G0xmax: '0.288',
       G0xmin: '0.078',
       G0yourscore: '0.169',
-      G1percentile: '33',
+      G1percentile: '1',
       G1xaverage: '0.396',
       G1xmax: '0.432',
       G1xmin: '0.331',
       G1yourscore: '0.370',
-      G2percentile: '49',
+      G2percentile: '77',
       G2xaverage: '0.272',
       G2xmax: '0.384',
       G2xmin: '0.188',
@@ -52,13 +52,13 @@ export class MockService implements Service {
       P2: '0.361821744506497',
       P20: '0.416961207937129',
       P21: '17.4905077157188',
-      P21percentile: '23',
+      P21percentile: '90',
       P21xaverage: '0.213',
       P21xmax: '0.25',
       P21xmin: '0.176',
       P21yourscore: '0.201',
       P22: '10.7184385730859',
-      P22percentile: '49',
+      P22percentile: '90',
       P22xaverage: '0.117',
       P22xmax: '0.154',
       P22xmin: '0.084',
@@ -95,7 +95,7 @@ export class MockService implements Service {
       P8xmin: '0.015',
       P8yourscore: '0.027',
       P9: '0.238153518130527',
-      Spercentile: '20',
+      Spercentile: '12',
       Sxaverage: '0.165',
       Sxmax: '0.236',
       Sxmin: '0.109',
@@ -118,7 +118,7 @@ export class MockService implements Service {
       trrd: '20231017',
       type: 'regular',
       userId: 'some-id',
-      sex: 'M'
+      sex: 'F'
     });
   }
 
@@ -128,11 +128,42 @@ export class MockService implements Service {
       data: [
         {x: 28, y: 30, result: false},
         {x: 29, y: 27, result: false},
-        {x: 30, y: 32, result: false},
-        {x: 31, y: 29, result: true},
-        {x: 31, y: 36, result: false},
-        {x: 31, y: 37, result: false},
-        {x: 32, y: 37, result: false},
+        {x: 30, y: 24, result: false},
+        {x: 31, y: 22, result: true},
+        // {x: 31, y: 55, result: false},
+        // {x: 31, y: 37, result: false},
+        // {x: 32, y: 25, result: false},
+      ]
+    });
+  }
+
+  getOverTimeDataIndexes() {
+    return Promise.resolve({
+      data: [
+        {
+          Bpercentile: 10,
+          Spercentile: 12,
+          G0percentile: 78,
+          G1percentile: 1,
+          G2percentile: 77,
+          result: false
+        },
+          {
+          Bpercentile: 22,
+            Spercentile: 33,
+            G0percentile: 49,
+            G1percentile: 89,
+            G2percentile: 16,
+          result: false
+          },
+        {
+          Bpercentile: 20,
+          Spercentile: 42,
+          G0percentile: 38,
+          G1percentile: 11,
+          G2percentile: 99,
+          result: true
+        }
       ]
     });
   }
