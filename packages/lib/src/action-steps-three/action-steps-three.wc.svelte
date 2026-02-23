@@ -8,6 +8,7 @@
   export let service: Service = window.GaReportService;
   export let lang: string;
 
+  export let branding = 'glycanage';
   let reportData: any;
 
   let gender = '';
@@ -234,8 +235,16 @@
 
 {#if show}
     <div class="main">
-        <div class="items-baseline" style="display: flex; background-color: #E4EDE9; height: auto; position: relative; border-radius: 12px;">
-          <div class="number" style="background: #36624C; width: auto; padding-left: 0.6rem;padding-right: 0.6rem;">{getTranslation(lang, 'PRIMARY_FOCUS')}</div>
+      <div
+        class="items-baseline"
+        style="display: flex; height: auto; position: relative; border-radius: 12px;
+               background-color: {branding === 'whitelabel' ? '#D1D4E0' : '#E4EDE9'};">
+        <div
+          class="number"
+          style="width: auto; padding-left: 0.6rem; padding-right: 0.6rem;
+                 background: {branding === 'whitelabel' ? '#14181F' : '#36624C'};">
+          {getTranslation(lang, 'PRIMARY_FOCUS')}
+        </div>
           <div style="padding: 1.5rem 2rem 1.1rem 2rem;">
             <div style="margin-bottom: 0.3rem; font-size: 12px;"><b>{primaryTitle}</b></div>
             <div style="font-size: 68%">{primaryDescription}</div>
@@ -244,8 +253,13 @@
             <div style="font-size: 68%">{primaryFurther}</div>
           </div>
         </div>
-        <div class="items-baseline" style="display: flex; background-color: #F2F6F4; border-radius: 12px; height: auto; position: relative;">
-          <div class="number" style="background: #86AF9A; width: auto; padding-left: 0.6rem;padding-right: 0.6rem;">{getTranslation(lang, 'SECONDARY_FOCUS')}</div>
+        <div class="items-baseline"
+             style="display: flex; height: auto; position: relative; border-radius: 12px;
+                    background-color: {branding === 'whitelabel' ? '#F0F1F5' : '#F2F6F4'};">
+          <div class="number" style="width: auto; padding-left: 0.6rem; padding-right: 0.6rem;
+                 background: {branding === 'whitelabel' ? '#14181F' : '#86AF9A'};">
+               {getTranslation(lang, 'SECONDARY_FOCUS')}
+          </div>
           <div style="padding: 1.5rem 2rem 1.1rem 2rem;">
             <div style="margin-bottom: 0.3rem; font-size: 12px;"><b>{supportiveTitle}</b></div>
             <div style="font-size: 68%">{supportiveDescription}</div>
