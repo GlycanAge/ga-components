@@ -69,6 +69,8 @@
   import '../../../dist/over-time-indexes.wc.js';
   import '../../../dist/over-time-indexes-clp-ch.wc.js';
   import '../../../dist/main-result-three.wc.js';
+  import '../../../dist/biological-age-rank.wc.js';
+  import '../../../dist/immune-resilience-index.wc.js';
   import '../../../dist/action-steps-three.wc.js';
   import '../../../dist/action-steps-three-clp.wc.js';
   import '../../../dist/action-steps-three-clp-ch.wc.js';
@@ -148,6 +150,13 @@
             { id: 'main-result-three-client', name: 'Main Result Three Client' },
             { id: 'main-result-custom', name: 'Main Result Custom' },
             { id: 'main-result-custom-clinical', name: 'Main Result Custom Clinical' },
+          ]
+        },
+        {
+          name: 'Medical Report',
+          components: [
+            { id: 'biological-age-rank', name: 'Biological Age Rank' },
+            { id: 'immune-resilience-index', name: 'Immune Resilience Index' },
           ]
         },
         {
@@ -796,6 +805,42 @@
               <h2>Main Result Custom Clinical</h2>
               <div class="demo-box" style="width: 265px; height: 64px;">
                 <ga-main-result-custom-clinical></ga-main-result-custom-clinical>
+              </div>
+
+            {:else if selectedComponent === 'biological-age-rank'}
+              <h2>Biological Age Rank</h2>
+              <p class="note">Percentile graph only — pass <code>percentile</code> (1–99).</p>
+              <div class="demo-section">
+                <h3>25th percentile</h3>
+                <div class="demo-box" style="width: 100%; max-width: 560px;">
+                  <ga-biological-age-rank percentile={25}></ga-biological-age-rank>
+                </div>
+                <h3>50th percentile</h3>
+                <div class="demo-box" style="width: 100%; max-width: 560px;">
+                  <ga-biological-age-rank percentile={50}></ga-biological-age-rank>
+                </div>
+                <h3>75th percentile</h3>
+                <div class="demo-box" style="width: 100%; max-width: 560px;">
+                  <ga-biological-age-rank percentile={75}></ga-biological-age-rank>
+                </div>
+              </div>
+
+            {:else if selectedComponent === 'immune-resilience-index'}
+              <h2>Immune Resilience Index</h2>
+              <p class="note">Percentile graph only — pass <code>percentile</code> (1–99).</p>
+              <div class="demo-section">
+                <h3>18th percentile</h3>
+                <div class="demo-box" style="width: 100%; max-width: 560px;">
+                  <ga-immune-resilience-index percentile={18}></ga-immune-resilience-index>
+                </div>
+                <h3>50th percentile</h3>
+                <div class="demo-box" style="width: 100%; max-width: 560px;">
+                  <ga-immune-resilience-index percentile={50}></ga-immune-resilience-index>
+                </div>
+                <h3>85th percentile</h3>
+                <div class="demo-box" style="width: 100%; max-width: 560px;">
+                  <ga-immune-resilience-index percentile={85}></ga-immune-resilience-index>
+                </div>
               </div>
 
             {:else if selectedComponent === 'results-overview'}

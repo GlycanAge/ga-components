@@ -74,4 +74,6 @@ export default () => {
   import('./src/over-time-clp/over-time-clp.wc.svelte');
   import('./src/over-time-indexes/over-time-indexes.wc.svelte');
   import('./src/over-time-indexes-clp-ch/over-time-indexes-clp-ch.wc.svelte');
+  import('./src/biological-age-rank/biological-age-rank.wc.svelte');
+  import('./src/immune-resilience-index/immune-resilience-index.wc.svelte');
 };
