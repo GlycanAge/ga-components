@@ -75,6 +75,8 @@
   import '../../../dist/action-steps-three-clp.wc.js';
   import '../../../dist/action-steps-three-clp-ch.wc.js';
   import '../../../dist/action-steps-three-client.wc.js';
+  import '../../../dist/biological-age-rank-scatter.wc.js';
+  import '../../../dist/immune-resilience-index-scatter.wc.js';
   import { MockService } from './mock-service';
 
   type ComponentEntry = { id: string; name: string };
@@ -157,6 +159,8 @@
           components: [
             { id: 'biological-age-rank', name: 'Biological Age Rank' },
             { id: 'immune-resilience-index', name: 'Immune Resilience Index' },
+            { id: 'biological-age-rank-scatter', name: 'Biological Age Rank Scatter' },
+            { id: 'immune-resilience-index-scatter', name: 'Immune Resilience Index Scatter' },
           ]
         },
         {
@@ -841,6 +845,18 @@
                 <div class="demo-box" style="width: 100%; max-width: 560px;">
                   <ga-immune-resilience-index percentile={85}></ga-immune-resilience-index>
                 </div>
+              </div>
+
+            {:else if selectedComponent === 'biological-age-rank-scatter'}
+              <h2>Biological Age Rank Scatter</h2>
+              <div class="demo-box" style="border-radius: 10px; width: 560px; height: 303px;">
+                <ga-biological-age-rank-scatter type="median" lang="english"></ga-biological-age-rank-scatter>
+              </div>
+
+            {:else if selectedComponent === 'immune-resilience-index-scatter'}
+              <h2>Immune Resilience Index Scatter</h2>
+              <div class="demo-box" style="border-radius: 10px; width: 560px; height: 303px;">
+                <ga-immune-resilience-index-scatter type="median" lang="english"></ga-immune-resilience-index-scatter>
               </div>
 
             {:else if selectedComponent === 'results-overview'}
