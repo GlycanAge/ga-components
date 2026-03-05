@@ -833,18 +833,9 @@
               <h2>Immune Resilience Index</h2>
               <p class="note">Percentile graph only — pass <code>percentile</code> (1–99).</p>
               <div class="demo-section">
-                <h3>18th percentile</h3>
-                <div class="demo-box" style="width: 100%; max-width: 560px;">
-                  <ga-immune-resilience-index percentile={18}></ga-immune-resilience-index>
-                </div>
-                <h3>50th percentile</h3>
-                <div class="demo-box" style="width: 100%; max-width: 560px;">
-                  <ga-immune-resilience-index percentile={50}></ga-immune-resilience-index>
-                </div>
-                <h3>85th percentile</h3>
-                <div class="demo-box" style="width: 100%; max-width: 560px;">
-                  <ga-immune-resilience-index percentile={85}></ga-immune-resilience-index>
-                </div>
+                 <div class="demo-box" style="width: 550px; height: 200px;">
+                   <ga-immune-resilience-index></ga-immune-resilience-index>
+                 </div>
               </div>
 
             {:else if selectedComponent === 'biological-age-rank-scatter'}
@@ -856,7 +847,7 @@
             {:else if selectedComponent === 'immune-resilience-index-scatter'}
               <h2>Immune Resilience Index Scatter</h2>
               <div class="demo-box" style="border-radius: 10px; width: 560px; height: 303px;">
-                <ga-immune-resilience-index-scatter type="median" lang="english"></ga-immune-resilience-index-scatter>
+                <ga-immune-resilience-index-scatter></ga-immune-resilience-index-scatter>
               </div>
 
             {:else if selectedComponent === 'results-overview'}

@@ -7,7 +7,6 @@
   import {suffix} from '../shared/functions/helpers';
 
   export let type: string;
-  export let lang: string;
   export let service: Service = window.GaReportService;
 
   let types = [

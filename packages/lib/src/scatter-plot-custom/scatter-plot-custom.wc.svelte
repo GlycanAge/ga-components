@@ -3,7 +3,7 @@
 <script lang="ts">
   import {onMount} from 'svelte';
   import {Service} from '../shared/utils/service';
-  import * as echarts from 'echarts';
+  // import * as echarts from 'echarts';
   import {getColorRedToBlueWithPercentile, getColorBlueToRedWithPercentile, getTranslation} from '../shared/functions/helpers';
 
   export let type: string;
@@ -57,30 +57,6 @@
     if (type == 'mature' || type == 'lifestyle'){
       return getColorBlueToRedWithPercentile(percentile);
     }
-  }
-
-  function useDummyData() {
-    reportData = { chronologicalage: 42, sex: 'M' };
-    gender = 'M';
-    chronoAge = 42;
-    percentile = 25;
-    score = 0.41;
-    scatterData = {
-      data: [
-        { x: 25, y: 0.35 }, { x: 28, y: 0.38 }, { x: 30, y: 0.36 }, { x: 32, y: 0.40 }, { x: 33, y: 0.39 },
-        { x: 35, y: 0.42 }, { x: 38, y: 0.41 }, { x: 40, y: 0.44 }, { x: 42, y: 0.43 }, { x: 45, y: 0.46 },
-        { x: 48, y: 0.45 }, { x: 50, y: 0.48 }, { x: 52, y: 0.47 }, { x: 55, y: 0.50 }, { x: 58, y: 0.49 },
-        { x: 60, y: 0.52 }, { x: 62, y: 0.51 }, { x: 65, y: 0.54 }, { x: 68, y: 0.53 }, { x: 70, y: 0.55 },
-        { x: 22, y: 0.32 }, { x: 26, y: 0.37 }, { x: 34, y: 0.40 }, { x: 36, y: 0.41 }, { x: 44, y: 0.45 },
-        { x: 46, y: 0.44 }, { x: 54, y: 0.49 }, { x: 56, y: 0.48 }, { x: 64, y: 0.52 }, { x: 66, y: 0.51 }
-      ]
-    };
-    lineData = {
-      data: [20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80].map((x, i) => ({
-        x,
-        y: 0.25 + (i / 13) * 0.25
-      }))
-    };
   }
 
   function drawGraph() {
@@ -334,27 +310,19 @@
   }
 
   onMount(async () => {
-    const svc = service || (typeof window !== 'undefined' ? window.GaReportService : null);
-    if (svc && typeof svc.getReport === 'function') {
-      try {
-        reportData = await svc.getReport();
-        gender = reportData?.sex ?? 'M';
-        scatterData = await svc.getScatterData(type, gender);
-        lineData = await svc.getLineData(type, gender);
-        chronoAge = Number(reportData?.chronologicalage ?? 42);
-        if (details && reportData) {
-          percentile = Number(reportData[details.csvPerc]);
-          score = Number(reportData[details.csvScore]);
-        }
-      } catch (_) {
-        useDummyData();
-      }
+    reportData = await service.getReport();
+    gender = reportData.sex;
+    scatterData = await service.getScatterData(type, gender);
+    lineData = await service.getLineData(type, gender);
+    chronoAge = Number(reportData.chronologicalage);
+
+    if (details) {
+      percentile = Number(reportData[details.csvPerc]);
+      score = Number(reportData[details.csvScore]);
     }
-    if (!scatterData?.data?.length || !lineData?.data?.length) {
-      useDummyData();
-    }
+
     drawGraph();
-  });
+  })
 </script>
 
 <div bind:this={el} style="width: 100%; height: 100%; position: relative;"></div>

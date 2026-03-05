@@ -7,6 +7,10 @@ export class Service {
     return Promise.resolve(true);
   }
 
+  getResilienceData(gender: string): Promise<any> {
+    return Promise.resolve(true);
+  }
+
   getLineData(type: string, gender: string): Promise<any> {
     return Promise.resolve(true);
   }
