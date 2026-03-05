@@ -44,9 +44,6 @@
         {
           source: scatterData.data.map(item => [item.x, item.y])
         }
-        // {
-        //   source: lineData.data.map(item => [item.x, item.y])
-        // }
       ],
       tooltip: {
         show: false
