@@ -846,7 +846,7 @@
 
             {:else if selectedComponent === 'immune-resilience-index-scatter'}
               <h2>Immune Resilience Index Scatter</h2>
-              <div class="demo-box" style="border-radius: 10px; width: 560px; height: 303px;">
+              <div class="demo-box" style="border-radius: 10px; width: 560px; height: 330px;">
                 <ga-immune-resilience-index-scatter></ga-immune-resilience-index-scatter>
               </div>
 

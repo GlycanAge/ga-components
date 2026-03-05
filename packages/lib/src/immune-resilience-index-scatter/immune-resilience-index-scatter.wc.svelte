@@ -35,9 +35,9 @@
       animation: false,
       backgroundColor: 'transparent',
       grid: {
-        top: '65px',
+        top: '25px',
         left: '50px',
-        right: '55px',
+        right: '45px',
         bottom: '40px'
       },
       dataset: [
@@ -122,10 +122,12 @@
         {
           type: 'scatter',
           tooltip: {},
+          symbolSize: 4,
           itemStyle: {
             color: '#09341F',
-            opacity: 0.1,
-            borderWidth: 1
+            opacity: 0.4,
+            borderWidth: 1,
+            lineWidth: 12
           }
         },
         {
