@@ -123,7 +123,7 @@
           symbolSize: 4,
           itemStyle: {
             color: '#09341F',
-            opacity: 0.4,
+            opacity: 0.15,
             borderWidth: 1,
             lineWidth: 12
           }
@@ -142,41 +142,100 @@
 
     chart.setOption(option);
 
-    option.graphic.push({
-      type: 'line',
-      shape: {
-        x1: chart.convertToPixel('xAxis', chronoAge),
-        y1: chart.convertToPixel('yAxis', 0),
-        x2: chart.convertToPixel('xAxis', chronoAge),
-        y2: chart.convertToPixel('yAxis', score)
-      },
-      style: {
-        stroke: getColorRedToBlueWithPercentile(percentile),
-        lineDash: [8, 8],
-        lineWidth: 1
-      },
-      z: 8
-    });
+    // Helper: generate rounded dash rectangles along a line
+    const dashLength = 10;
+    const gapLength = 6;
+    const dashThickness = 2;
+    const dashRadius = 1.5;
+    const outlineWidth = 1.5;
+    const dashColor = getColorRedToBlueWithPercentile(percentile);
 
-    option.graphic.push({
-      type: 'line',
-      shape: {
-        x1: chart.convertToPixel('xAxis', 15),
-        y1: chart.convertToPixel('yAxis', score),
-        x2: chart.convertToPixel('xAxis', chronoAge),
-        y2: chart.convertToPixel('yAxis', score)
-      },
-      style: {
-        stroke: getColorRedToBlueWithPercentile(percentile),
-        lineDash: [8, 8],
-        lineWidth: 1
-      },
-      z: 8
-    });
+    // Vertical dashed line: bottom (y=0) to score at chronoAge
+    {
+      const x = chart.convertToPixel('xAxis', chronoAge);
+      const yStart = chart.convertToPixel('yAxis', 0);
+      const yEnd = chart.convertToPixel('yAxis', score);
+      const totalLen = Math.abs(yEnd - yStart);
+      const dir = yEnd < yStart ? -1 : 1;
+      let offset = 0;
+      while (offset < totalLen) {
+        const segLen = Math.min(dashLength, totalLen - offset);
+        const yTop = dir === -1 ? yStart - offset - segLen : yStart + offset;
+        option.graphic.push({
+          type: 'rect',
+          zlevel: 10,
+          shape: {
+            x: x - dashThickness / 2 - outlineWidth,
+            y: yTop - outlineWidth,
+            width: dashThickness + outlineWidth * 2,
+            height: segLen + outlineWidth * 2,
+            r: dashRadius + outlineWidth
+          },
+          style: { fill: '#FFFFFF' },
+          z: 14
+        });
+        option.graphic.push({
+          type: 'rect',
+          zlevel: 10,
+          shape: {
+            x: x - dashThickness / 2,
+            y: yTop,
+            width: dashThickness,
+            height: segLen,
+            r: dashRadius
+          },
+          style: { fill: dashColor },
+          z: 15
+        });
+        offset += dashLength + gapLength;
+      }
+    }
+
+    // Horizontal dashed line: left (x=15) to chronoAge at score
+    {
+      const y = chart.convertToPixel('yAxis', score);
+      const xStart = chart.convertToPixel('xAxis', 15);
+      const xEnd = chart.convertToPixel('xAxis', chronoAge);
+      const totalLen = Math.abs(xEnd - xStart);
+      const dir = xEnd > xStart ? 1 : -1;
+      let offset = 0;
+      while (offset < totalLen) {
+        const segLen = Math.min(dashLength, totalLen - offset);
+        const xLeft = dir === 1 ? xStart + offset : xStart - offset - segLen;
+        option.graphic.push({
+          type: 'rect',
+          zlevel: 10,
+          shape: {
+            x: xLeft - outlineWidth,
+            y: y - dashThickness / 2 - outlineWidth,
+            width: segLen + outlineWidth * 2,
+            height: dashThickness + outlineWidth * 2,
+            r: dashRadius + outlineWidth
+          },
+          style: { fill: '#FFFFFF' },
+          z: 14
+        });
+        option.graphic.push({
+          type: 'rect',
+          zlevel: 10,
+          shape: {
+            x: xLeft,
+            y: y - dashThickness / 2,
+            width: segLen,
+            height: dashThickness,
+            r: dashRadius
+          },
+          style: { fill: dashColor },
+          z: 15
+        });
+        offset += dashLength + gapLength;
+      }
+    }
 
     option.graphic.push({
       name: 'Measured result',
       type: 'circle',
+      zlevel: 10,
       shape: {
         cx: chart.convertToPixel('xAxis', chronoAge),
         cy: chart.convertToPixel('yAxis', score),
@@ -185,7 +244,7 @@
       style: {
         fill: getColorRedToBlueWithPercentile(percentile),
         stroke: '#FFFFFF',
-        lineWidth: 1
+        lineWidth: 2
       },
       z: 15
     });
@@ -197,22 +256,33 @@
     const newSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     const scoreHolder = document.createElement('div');
 
-    newSvg.setAttribute("width", "71");
-    newSvg.setAttribute("height", "32");
-    newSvg.setAttribute("viewBox", "0 0 71 32");
+    newSvg.setAttribute("width", "75");
+    newSvg.setAttribute("height", "36");
+    newSvg.setAttribute("viewBox", "-2 -2 75 36");
     newSvg.setAttribute("fill", "none");
     newSvg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
     const path1 = document.createElementNS("http://www.w3.org/2000/svg", "path");
     path1.setAttribute("d", "M7 4C7 1.79086 8.79086 0 11 0H67C69.2091 0 71 1.79086 71 4V28C71 30.2091 69.2091 32 67 32H11C8.79086 32 7 30.2091 7 28V4Z");
     path1.setAttribute("fill", getColorRedToBlueWithPercentile(percentile));
+    path1.setAttribute("stroke", "#FFFFFF");
+    path1.setAttribute("stroke-width", "4");
+    path1.setAttribute("paint-order", "stroke");
+    const path2Outline = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path2Outline.setAttribute("d", "M7 10L1.13333 14.4C0.0666666 15.2 0.0666666 16.8 1.13333 17.6L7 22");
+    path2Outline.setAttribute("fill", "none");
+    path2Outline.setAttribute("stroke", "#FFFFFF");
+    path2Outline.setAttribute("stroke-width", "2.5");
+    path2Outline.setAttribute("stroke-linejoin", "round");
+    path2Outline.setAttribute("stroke-linecap", "round");
     const path2 = document.createElementNS("http://www.w3.org/2000/svg", "path");
     path2.setAttribute("d", "M1.13333 17.6C0.0666666 16.8 0.0666666 15.2 1.13333 14.4L7 10L7 22L1.13333 17.6Z");
     path2.setAttribute("fill", getColorRedToBlueWithPercentile(percentile));
+    newSvg.appendChild(path2Outline);
     newSvg.appendChild(path1);
     newSvg.appendChild(path2);
     newSvg.style.position = 'absolute';
-    newSvg.style.left = `${chartRect.left + xPixel + 10}px`;
-    newSvg.style.top = `${chartRect.top + yPixel - 15}px`;
+    newSvg.style.left = `${chartRect.left + xPixel + 8}px`;
+    newSvg.style.top = `${chartRect.top + yPixel - 17}px`;
     newSvg.style.zIndex = '8';
 
     scoreHolder.innerText = `${Number.parseFloat(score).toFixed(3)}`;
