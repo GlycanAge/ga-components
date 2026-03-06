@@ -71,11 +71,13 @@
   import '../../../dist/main-result-three.wc.js';
   import '../../../dist/biological-age-rank.wc.js';
   import '../../../dist/immune-resilience-index.wc.js';
+  import '../../../dist/immune-resilience-index-indications.wc.js';
   import '../../../dist/action-steps-three.wc.js';
   import '../../../dist/action-steps-three-clp.wc.js';
   import '../../../dist/action-steps-three-clp-ch.wc.js';
   import '../../../dist/action-steps-three-client.wc.js';
   import '../../../dist/biological-age-rank-scatter.wc.js';
+  import '../../../dist/biological-age-rank-indications.wc.js';
   import '../../../dist/immune-resilience-index-scatter.wc.js';
   import { MockService } from './mock-service';
 
@@ -158,8 +160,10 @@
           name: 'Medical Report',
           components: [
             { id: 'biological-age-rank', name: 'Biological Age Rank' },
-            { id: 'immune-resilience-index', name: 'Immune Resilience Index' },
+            { id: 'biological-age-rank-indications', name: 'Biological Age Rank Indications' },
             { id: 'biological-age-rank-scatter', name: 'Biological Age Rank Scatter' },
+            { id: 'immune-resilience-index', name: 'Immune Resilience Index' },
+            { id: 'immune-resilience-index-indications', name: 'Immune Resilience Index Indications' },
             { id: 'immune-resilience-index-scatter', name: 'Immune Resilience Index Scatter' },
           ]
         },
@@ -820,13 +824,28 @@
                 </div>
               </div>
 
+            {:else if selectedComponent === 'biological-age-rank-indications'}
+              <h2>Biological Age Rank Indications</h2>
+              <div class="demo-section">
+                <div class="demo-box" style="width: 550px; height: 588px;">
+                  <ga-biological-age-rank-indications></ga-biological-age-rank-indications>
+                </div>
+              </div>
+
             {:else if selectedComponent === 'immune-resilience-index'}
               <h2>Immune Resilience Index</h2>
-              <p class="note">Percentile graph only — pass <code>percentile</code> (1–99).</p>
               <div class="demo-section">
                  <div class="demo-box" style="width: 550px; height: 155px;">
                    <ga-immune-resilience-index></ga-immune-resilience-index>
                  </div>
+              </div>
+
+            {:else if selectedComponent === 'immune-resilience-index-indications'}
+              <h2>Immune Resilience Index Indications</h2>
+              <div class="demo-section">
+                <div class="demo-box" style="width: 550px; height: 70px;">
+                  <ga-immune-resilience-index-indications></ga-immune-resilience-index-indications>
+                </div>
               </div>
 
             {:else if selectedComponent === 'biological-age-rank-scatter'}
