@@ -49,8 +49,8 @@
         show: false
       },
       xAxis: {
-        min: 10,
-        max: 100,
+        min: 15,
+        max: 95,
         interval: 20,
         // name: 'Age',
         nameTextStyle: {
@@ -84,7 +84,7 @@
       },
       yAxis: {
         min:0,
-        max:4.5,
+        max:3.5,
         interval: 0.5,
         // name: 'Resilience index',
         nameTextStyle: {
@@ -161,7 +161,7 @@
     option.graphic.push({
       type: 'line',
       shape: {
-        x1: chart.convertToPixel('xAxis', 0),
+        x1: chart.convertToPixel('xAxis', 15),
         y1: chart.convertToPixel('yAxis', score),
         x2: chart.convertToPixel('xAxis', chronoAge),
         y2: chart.convertToPixel('yAxis', score)
