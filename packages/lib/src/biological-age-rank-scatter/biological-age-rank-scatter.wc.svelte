@@ -3,59 +3,19 @@
 <script lang="ts">
   import {onMount} from 'svelte';
   import {Service} from '../shared/utils/service';
-  import * as echarts from 'echarts';
-  import {suffix} from '../shared/functions/helpers';
+  // import * as echarts from 'echarts';
+  import { getColorBlueToRedWithPercentile } from '../shared/functions/helpers';
 
-  export let type: string;
   export let service: Service = window.GaReportService;
 
-  let types = [
-    {
-      name: 'mature',
-      csvPerc: 'G0percentile',
-      csvScore: 'G0yourscore'
-    },
-    {
-      name: 'youth',
-      csvPerc: 'G2percentile',
-      csvScore: 'G2yourscore'
-    },
-    {
-      name: 'shield',
-      csvPerc: 'Spercentile',
-      csvScore: 'Syourscore'
-    },
-    {
-      name: 'lifestyle',
-      csvPerc: 'Bpercentile',
-      csvScore: 'Byourscore'
-    },
-    {
-      name: 'median',
-      csvPerc: 'G1percentile',
-      csvScore: 'G1yourscore'
-    }
-  ]
-
   let reportData: any;
-  let scatterData: any;
-  let lineData: any;
-  let percentile = 0;
-  let score = 0;
+  let ageData: any;
   let chart: any = {};
   let gender = '';
   let chronoAge = 0;
+  let glycanage = 0;
+  let percentile = 0;
   let el: HTMLElement;
-
-  const details = types.find(x => x.name === type);
-  const primaryColor = '#008F8C';
-  const scatterColor = 'rgba(0,143,140,0.35)';
-
-  $: percentileLabel = (() => {
-    const p = Math.round(percentile || 0);
-    const ord = suffix(p, 'english');
-    return `${p}${ord} pct`;
-  })();
 
   function drawGraph() {
     if (el) {
@@ -71,204 +31,257 @@
         fontFamily: "Sen, sans serif"
       },
       animation: false,
-      backgroundColor: '#FFFFFF',
+      backgroundColor: 'transparent',
       grid: {
-        top: 36,
-        left: 64,
-        right: 32,
-        bottom: 52
+        top: '15px',
+        left: '50px',
+        right: '45px',
+        bottom: '45px'
       },
       dataset: [
         {
-          source: scatterData.data.map(item => [item.x, item.y])
+          source: ageData.data.map(item => [item.x, item.y])
         }
       ],
       tooltip: {
         show: false
       },
       xAxis: {
-        min: 0,
-        max: 100,
-        interval: 20,
-        name: 'Chronological age',
+        min: 10,
+        max: 90,
+        interval: 10,
+        // name: 'Age',
         nameTextStyle: {
-          color: '#4F5B67',
-          opacity: 0.9,
-          fontSize: 10,
-          padding: [18, 0, 0, 0]
+          color: '#09341F',
+          opacity: 0.8
         },
-        nameLocation: 'middle',
         axisLine: {
-          show: true,
+          show: false,
           lineStyle: {
-            color: '#E0E3E6',
-            width: 1
+            color: '#09341F',
+            opacity: 0.1
           },
-          symbol: ['none', 'none']
+          symbol: ['none', 'arrow'],
+          symbolSize: [5, 10],
+          symbolOffset: [8]
         },
         axisTick: {
           show: false
         },
         axisLabel: {
           show: true,
-          color: '#7A8794',
-          fontSize: 10,
-          opacity: 1,
+          color: '#09341F',
+          opacity: 0.8,
           formatter: function(value) {
             return value === 0 || value === 100 ? '' : value;
           }
         },
         splitLine: {
-          show: true,
-          lineStyle: {
-            color: '#F0F2F4'
-          }
+          show: true
         }
       },
       yAxis: {
-        min:0,
-        max:0.6,
-        name: 'Biological age',
+        min: 15,
+        max: 85,
+        // name: 'Resilience index',
         nameTextStyle: {
-          color: '#4F5B67',
-          opacity: 0.9,
-          fontSize: 10,
-          padding: [0, 0, 28, 0]
+          color: '#09341F',
+          opacity: 0.8
         },
-        nameLocation: 'middle',
-        nameRotate: 90,
         axisLine: {
-          show: true,
+          show: false,
           lineStyle: {
-            color: '#E0E3E6',
-            width: 1
+            color: '#09341F',
+            opacity: 0.1
           },
-          symbol: ['none', 'none']
+          symbol: ['none', 'arrow'],
+          symbolSize: [5, 10],
+          symbolOffset: [5]
         },
         axisTick: {
           show: false
         },
         axisLabel: {
-          show: false
+          show: false,
+          color: '#09341F',
+          opacity: 0.8,
+          formatter: function(value) {
+            return value === 0|| value === 0.6 ? '' : value;
+          }
         },
         splitLine: {
-          show: true,
-          lineStyle: {
-            color: '#F0F2F4'
-          }
+          show: true
         }
       },
       series: [
         {
           type: 'scatter',
           tooltip: {},
-          symbolSize: 5,
+          symbolSize: 4,
           itemStyle: {
-            color: scatterColor,
-            opacity: 1,
-            borderWidth: 1
+            color: '#09341F',
+            opacity: 0.15,
+            borderWidth: 1,
+            lineWidth: 12
           }
-        },
-        {
-          name: 'Result',
-          type: 'scatter',
-          data: [{ x: chronoAge, y: score }],
-          itemStyle: {
-            color: primaryColor,
-          },
-          symbolSize: 8
         }
       ],
-      graphic: [],
-      legend: {
-        show: false
-      }
+      graphic: []
     };
 
     chart.setOption(option);
 
-    option.graphic.push({
-      type: 'line',
-      shape: {
-        x1: chart.convertToPixel('xAxis', chronoAge),
-        y1: chart.convertToPixel('yAxis', 0),
-        x2: chart.convertToPixel('xAxis', chronoAge),
-        y2: chart.convertToPixel('yAxis', score)
-      },
-      style: {
-        stroke: primaryColor,
-        lineDash: [8, 8],
-        lineWidth: 2
-      },
-      z: 8
-    });
+    // Helper: generate rounded dash rectangles along a line
+    const dashLength = 10;
+    const gapLength = 6;
+    const dashThickness = 2;
+    const dashRadius = 1.5;
+    const outlineWidth = 1.5;
+    const dashColor = getColorBlueToRedWithPercentile(percentile);
 
-    option.graphic.push({
-      type: 'line',
-      shape: {
-        x1: chart.convertToPixel('xAxis', 0),
-        y1: chart.convertToPixel('yAxis', score),
-        x2: chart.convertToPixel('xAxis', chronoAge),
-        y2: chart.convertToPixel('yAxis', score)
-      },
-      style: {
-        stroke: primaryColor,
-        lineDash: [8, 8],
-        lineWidth: 2
-      },
-      z: 8
-    });
+    // Vertical dashed line: bottom (y=0) to glycanage at chronoAge
+    {
+      const x = chart.convertToPixel('xAxis', chronoAge);
+      const yStart = chart.convertToPixel('yAxis', 15);
+      const yEnd = chart.convertToPixel('yAxis', glycanage);
+      const totalLen = Math.abs(yEnd - yStart);
+      const dir = yEnd < yStart ? -1 : 1;
+      let offset = 0;
+      while (offset < totalLen) {
+        const segLen = Math.min(dashLength, totalLen - offset);
+        const yTop = dir === -1 ? yStart - offset - segLen : yStart + offset;
+        option.graphic.push({
+          type: 'rect',
+          zlevel: 10,
+          shape: {
+            x: x - dashThickness / 2 - outlineWidth,
+            y: yTop - outlineWidth,
+            width: dashThickness + outlineWidth * 2,
+            height: segLen + outlineWidth * 2,
+            r: dashRadius + outlineWidth
+          },
+          style: { fill: '#FFFFFF' },
+          z: 14
+        });
+        option.graphic.push({
+          type: 'rect',
+          zlevel: 10,
+          shape: {
+            x: x - dashThickness / 2,
+            y: yTop,
+            width: dashThickness,
+            height: segLen,
+            r: dashRadius
+          },
+          style: { fill: dashColor },
+          z: 15
+        });
+        offset += dashLength + gapLength;
+      }
+    }
+
+    // Horizontal dashed line: left (x=15) to chronoAge at glycanage
+    {
+      const y = chart.convertToPixel('yAxis', glycanage);
+      const xStart = chart.convertToPixel('xAxis', 10);
+      const xEnd = chart.convertToPixel('xAxis', chronoAge);
+      const totalLen = Math.abs(xEnd - xStart);
+      const dir = xEnd > xStart ? 1 : -1;
+      let offset = 0;
+      while (offset < totalLen) {
+        const segLen = Math.min(dashLength, totalLen - offset);
+        const xLeft = dir === 1 ? xStart + offset : xStart - offset - segLen;
+        option.graphic.push({
+          type: 'rect',
+          zlevel: 10,
+          shape: {
+            x: xLeft - outlineWidth,
+            y: y - dashThickness / 2 - outlineWidth,
+            width: segLen + outlineWidth * 2,
+            height: dashThickness + outlineWidth * 2,
+            r: dashRadius + outlineWidth
+          },
+          style: { fill: '#FFFFFF' },
+          z: 14
+        });
+        option.graphic.push({
+          type: 'rect',
+          zlevel: 10,
+          shape: {
+            x: xLeft,
+            y: y - dashThickness / 2,
+            width: segLen,
+            height: dashThickness,
+            r: dashRadius
+          },
+          style: { fill: dashColor },
+          z: 15
+        });
+        offset += dashLength + gapLength;
+      }
+    }
 
     option.graphic.push({
       name: 'Measured result',
       type: 'circle',
+      zlevel: 10,
       shape: {
         cx: chart.convertToPixel('xAxis', chronoAge),
-        cy: chart.convertToPixel('yAxis', score),
-        r: 4
+        cy: chart.convertToPixel('yAxis', glycanage),
+        r: 6
       },
       style: {
-        fill: primaryColor,
+        fill: getColorBlueToRedWithPercentile(percentile),
         stroke: '#FFFFFF',
-        lineWidth: 1.5
+        lineWidth: 2
       },
       z: 15
     });
 
     // Using position absolute we create result since we need SVG
     const xPixel = chart.convertToPixel('xAxis', chronoAge);
-    const yPixel = chart.convertToPixel('yAxis', score);
+    const yPixel = chart.convertToPixel('yAxis', glycanage);
 
     const newSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     const scoreHolder = document.createElement('div');
 
-    newSvg.setAttribute("width", "80");
-    newSvg.setAttribute("height", "28");
-    newSvg.setAttribute("viewBox", "0 0 71 32");
+    newSvg.setAttribute("width", "75");
+    newSvg.setAttribute("height", "36");
+    newSvg.setAttribute("viewBox", "-2 -2 75 36");
     newSvg.setAttribute("fill", "none");
     newSvg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
     const path1 = document.createElementNS("http://www.w3.org/2000/svg", "path");
     path1.setAttribute("d", "M7 4C7 1.79086 8.79086 0 11 0H67C69.2091 0 71 1.79086 71 4V28C71 30.2091 69.2091 32 67 32H11C8.79086 32 7 30.2091 7 28V4Z");
-    path1.setAttribute("fill", primaryColor);
+    path1.setAttribute("fill", getColorBlueToRedWithPercentile(percentile));
+    path1.setAttribute("stroke", "#FFFFFF");
+    path1.setAttribute("stroke-width", "4");
+    path1.setAttribute("paint-order", "stroke");
+    const path2Outline = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path2Outline.setAttribute("d", "M7 10L1.13333 14.4C0.0666666 15.2 0.0666666 16.8 1.13333 17.6L7 22");
+    path2Outline.setAttribute("fill", "none");
+    path2Outline.setAttribute("stroke", "#FFFFFF");
+    path2Outline.setAttribute("stroke-width", "2.5");
+    path2Outline.setAttribute("stroke-linejoin", "round");
+    path2Outline.setAttribute("stroke-linecap", "round");
     const path2 = document.createElementNS("http://www.w3.org/2000/svg", "path");
     path2.setAttribute("d", "M1.13333 17.6C0.0666666 16.8 0.0666666 15.2 1.13333 14.4L7 10L7 22L1.13333 17.6Z");
-    path2.setAttribute("fill", primaryColor);
+    path2.setAttribute("fill", getColorBlueToRedWithPercentile(percentile));
+    newSvg.appendChild(path2Outline);
     newSvg.appendChild(path1);
     newSvg.appendChild(path2);
     newSvg.style.position = 'absolute';
-    newSvg.style.left = `${chartRect.left + xPixel + 2}px`;
-    newSvg.style.top = `${chartRect.top + yPixel - 14}px`;
+    newSvg.style.left = `${chartRect.left + xPixel + 8}px`;
+    newSvg.style.top = `${chartRect.top + yPixel - 17}px`;
     newSvg.style.zIndex = '8';
 
-    scoreHolder.innerText = percentileLabel;
+    scoreHolder.innerText = `${Number.parseFloat(percentile)} pct`;
     scoreHolder.style.position = 'absolute';
-    scoreHolder.style.left = `${chartRect.left + xPixel + 20}px`
-    scoreHolder.style.top = `${chartRect.top + yPixel - 8}px`;
-    scoreHolder.style.font = 'bold 11px sans-serif';
+    scoreHolder.style.left = `${chartRect.left + xPixel + 26}px`
+    scoreHolder.style.top = `${chartRect.top + yPixel - 10}px`;
+    scoreHolder.style.font = 'bold 16px sans-serif';
     scoreHolder.style.color = 'white';
     scoreHolder.style.zIndex = '999';
     scoreHolder.style.fontFamily = 'Sen';
-    scoreHolder.style.paddingLeft = '4px';
 
     document.body.appendChild(scoreHolder);
     document.body.appendChild(newSvg);
@@ -279,22 +292,28 @@
   onMount(async () => {
     reportData = await service.getReport();
     gender = reportData.sex;
-    scatterData = await service.getScatterData(type, gender);
-    lineData = await service.getLineData(type, gender);
+    ageData = await service.getAgeData(gender);
     chronoAge = Number(reportData.chronologicalage);
+    glycanage = Number(reportData.glycanage);
 
-    if (details) {
-      percentile = Number(reportData[details.csvPerc]);
-      score = Number(reportData[details.csvScore]);
+    let under = ageData.data.filter((item: any) => item.y < glycanage).length;
+    let total = ageData.data.length;
+    percentile = Math.round((under / total) * 100);
+
+    if (percentile === 100 || percentile === 0) {
+      percentile = percentile === 100 ? 99 : 1;
     }
 
     drawGraph();
   })
 </script>
 
-<div bind:this={el} style="width: 100%; height: 100%; position: relative;"></div>
+<div style="width: 100%; height: 100%; position: relative; border: 1px solid #09341F33; border-radius: 10px;">
+  <div bind:this={el} style="width: 100%; height: 100%;"></div>
+  <div style="position: absolute; bottom: 6px; left: 50%; transform: translateX(-50%); font-family: Sen, sans-serif; font-size: 12px; color: #09341F; opacity: 0.8;">Chronological age</div>
+  <div style="position: absolute; top: 50%; right: 88%; transform: translateY(-50%) rotate(-90deg); font-family: Sen, sans-serif; font-size: 12px; color: #09341F; opacity: 0.8; white-space: nowrap;">Biological age</div>
+</div>
 
 <svelte:head>
   <link href="https://fonts.googleapis.com/css2?family=Sen:wght@400..800&display=swap" rel="stylesheet">
 </svelte:head>
-

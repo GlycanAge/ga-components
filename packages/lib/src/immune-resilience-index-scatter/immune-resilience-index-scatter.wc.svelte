@@ -35,10 +35,10 @@
       animation: false,
       backgroundColor: 'transparent',
       grid: {
-        top: '5px',
+        top: '15px',
         left: '50px',
         right: '45px',
-        bottom: '40px'
+        bottom: '45px'
       },
       dataset: [
         {
@@ -324,7 +324,7 @@
 
 <div style="width: 100%; height: 100%; position: relative; border: 1px solid #09341F33; border-radius: 10px;">
   <div bind:this={el} style="width: 100%; height: 100%;"></div>
-  <div style="position: absolute; bottom: 3px; left: 50%; transform: translateX(-50%); font-family: Sen, sans-serif; font-size: 12px; color: #09341F; opacity: 0.8;">Age</div>
+  <div style="position: absolute; bottom: 6px; left: 50%; transform: translateX(-50%); font-family: Sen, sans-serif; font-size: 12px; color: #09341F; opacity: 0.8;">Age</div>
   <div style="position: absolute; top: 50%; right: 83%; transform: translateY(-50%) rotate(-90deg); font-family: Sen, sans-serif; font-size: 12px; color: #09341F; opacity: 0.8; white-space: nowrap;">Immune resilience index</div>
 </div>
 
