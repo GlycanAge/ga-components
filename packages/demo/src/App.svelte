@@ -815,17 +815,8 @@
               <h2>Biological Age Rank</h2>
               <p class="note">Percentile graph only — pass <code>percentile</code> (1–99).</p>
               <div class="demo-section">
-                <h3>25th percentile</h3>
-                <div class="demo-box" style="width: 100%; max-width: 560px;">
-                  <ga-biological-age-rank percentile={25}></ga-biological-age-rank>
-                </div>
-                <h3>50th percentile</h3>
-                <div class="demo-box" style="width: 100%; max-width: 560px;">
-                  <ga-biological-age-rank percentile={50}></ga-biological-age-rank>
-                </div>
-                <h3>75th percentile</h3>
-                <div class="demo-box" style="width: 100%; max-width: 560px;">
-                  <ga-biological-age-rank percentile={75}></ga-biological-age-rank>
+                <div class="demo-box" style="width: 550px; height: 155px;">
+                  <ga-biological-age-rank></ga-biological-age-rank>
                 </div>
               </div>
 
@@ -833,20 +824,20 @@
               <h2>Immune Resilience Index</h2>
               <p class="note">Percentile graph only — pass <code>percentile</code> (1–99).</p>
               <div class="demo-section">
-                 <div class="demo-box" style="width: 550px; height: 200px;">
+                 <div class="demo-box" style="width: 550px; height: 155px;">
                    <ga-immune-resilience-index></ga-immune-resilience-index>
                  </div>
               </div>
 
             {:else if selectedComponent === 'biological-age-rank-scatter'}
               <h2>Biological Age Rank Scatter</h2>
-              <div class="demo-box" style="border-radius: 10px; width: 560px; height: 303px;">
+              <div class="demo-box" style="border-radius: 10px; width: 550px; height: 330px;">
                 <ga-biological-age-rank-scatter type="median" lang="english"></ga-biological-age-rank-scatter>
               </div>
 
             {:else if selectedComponent === 'immune-resilience-index-scatter'}
               <h2>Immune Resilience Index Scatter</h2>
-              <div class="demo-box" style="border-radius: 10px; width: 560px; height: 330px;">
+              <div class="demo-box" style="border-radius: 10px; width: 550px; height: 330px;">
                 <ga-immune-resilience-index-scatter></ga-immune-resilience-index-scatter>
               </div>
 
