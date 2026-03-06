@@ -35,7 +35,7 @@
       animation: false,
       backgroundColor: 'transparent',
       grid: {
-        top: '25px',
+        top: '5px',
         left: '50px',
         right: '45px',
         bottom: '40px'
@@ -49,7 +49,7 @@
         show: false
       },
       xAxis: {
-        min: 0,
+        min: 10,
         max: 100,
         interval: 20,
         // name: 'Age',
@@ -84,7 +84,8 @@
       },
       yAxis: {
         min:0,
-        max:2,
+        max:4.5,
+        interval: 0.5,
         // name: 'Resilience index',
         nameTextStyle: {
           color: '#09341F',
