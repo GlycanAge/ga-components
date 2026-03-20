@@ -10,6 +10,7 @@
 
   let reportData: any;
   let ageData: any;
+  let filteredData: any[] = [];
   let chart: any = {};
   let gender = '';
   let chronoAge = 0;
@@ -296,8 +297,9 @@
     chronoAge = Number(reportData.chronologicalage);
     glycanage = Number(reportData.glycanage);
 
-    let under = ageData.data.filter((item: any) => item.y < glycanage).length;
-    let total = ageData.data.length;
+    filteredData = ageData.data.filter((item: any) => item.x >= chronoAge - 5 && item.x <= chronoAge + 5);
+    let under = filteredData.filter((item: any) => item.y < glycanage).length;
+    let total = filteredData.length;
     percentile = Math.round((under / total) * 100);
 
     if (percentile === 100 || percentile === 0) {

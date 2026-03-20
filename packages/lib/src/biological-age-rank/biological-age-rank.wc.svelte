@@ -26,9 +26,11 @@
     ageData = await service.getAgeData(gender);
 
     glycanage = Number(reportData.glycanage);
+    let chronoage = Number(reportData.chronologicalage);
 
-    let under = ageData.data.filter((item: any) => item.y < glycanage).length;
-    let total = ageData.data.length;
+    let filteredData = ageData.data.filter((item: any) => item.x >= chronoage - 5 && item.x <= chronoage + 5);
+    let under = filteredData.filter((item: any) => item.y < glycanage).length;
+    let total = filteredData.length;
     percentile = Math.round((under / total) * 100);
 
     if (percentile === 100 || percentile === 0) {
