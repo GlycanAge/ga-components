@@ -10,6 +10,7 @@
 
   let reportData: any;
   let scatterData: any;
+  let filteredData: any[] = [];
   let score = 0;
   let chart: any = {};
   let gender = '';
@@ -310,8 +311,9 @@
 
     score = Number((g2/g0).toFixed(3));
 
-    let under = scatterData.data.filter((item: any) => item.y < score).length;
-    let total = scatterData.data.length;
+    filteredData = scatterData.data.filter((item: any) => item.x >= chronoAge - 5 && item.x <= chronoAge + 5);
+    let under = filteredData.filter((item: any) => item.y < score).length;
+    let total = filteredData.length;
     percentile = Math.round((under / total) * 100);
 
     if (percentile === 100 || percentile === 0) {
