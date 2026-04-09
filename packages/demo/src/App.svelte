@@ -70,6 +70,8 @@
   import '../../../dist/over-time-indexes-clp-ch.wc.js';
   import '../../../dist/main-result-three.wc.js';
   import '../../../dist/biological-age-rank.wc.js';
+  import '../../../dist/biological-age-rank-b2b.wc.js';
+  import '../../../dist/biological-age-rank-d2c.wc.js';
   import '../../../dist/immune-resilience-index.wc.js';
   import '../../../dist/immune-resilience-index-indications.wc.js';
   import '../../../dist/action-steps-three.wc.js';
@@ -78,6 +80,8 @@
   import '../../../dist/action-steps-three-client.wc.js';
   import '../../../dist/biological-age-rank-scatter.wc.js';
   import '../../../dist/biological-age-rank-indications.wc.js';
+  import '../../../dist/biological-age-rank-indications-b2b.wc.js';
+  import '../../../dist/biological-age-rank-indications-d2c.wc.js';
   import '../../../dist/immune-resilience-index-scatter.wc.js';
   import { MockService } from './mock-service';
 
@@ -94,6 +98,13 @@
     'b2b': {
       label: 'B2B',
       categories: [
+        {
+          name: 'Biological age rank (v3.1 b2b)',
+          components: [
+            { id: 'biological-age-rank-b2b', name: 'Biological Age Rank (used in v3.1 b2b report)' },
+            { id: 'biological-age-rank-indications-b2b', name: 'Biological Age Rank Indications (used in v3.1 b2b report)' },
+          ]
+        },
         {
           name: 'Graphs',
           components: [
@@ -159,9 +170,9 @@
         {
           name: 'Medical Report',
           components: [
-            { id: 'biological-age-rank', name: 'Biological Age Rank' },
-            { id: 'biological-age-rank-indications', name: 'Biological Age Rank Indications' },
-            { id: 'biological-age-rank-scatter', name: 'Biological Age Rank Scatter' },
+            { id: 'biological-age-rank', name: 'Biological Age Rank (used in medical report)' },
+            { id: 'biological-age-rank-indications', name: 'Biological Age Rank Indications (used in medical report)' },
+            { id: 'biological-age-rank-scatter', name: 'Biological Age Rank Scatter (used in medical report)' },
             { id: 'immune-resilience-index', name: 'Immune Resilience Index' },
             { id: 'immune-resilience-index-indications', name: 'Immune Resilience Index Indications' },
             { id: 'immune-resilience-index-scatter', name: 'Immune Resilience Index Scatter' },
@@ -261,6 +272,13 @@
             { id: 'main-result', name: 'Main Result' },
             { id: 'results-overview', name: 'Results Overview' },
             { id: 'single-overview', name: 'Single Overview' },
+          ]
+        },
+        {
+          name: 'Biological age rank (v3.1 d2c)',
+          components: [
+            { id: 'biological-age-rank-d2c', name: 'Biological Age Rank (used in v3.1 d2c report)' },
+            { id: 'biological-age-rank-indications-d2c', name: 'Biological Age Rank Indications (used in v3.1 d2c report)' },
           ]
         },
       ]
@@ -860,6 +878,24 @@
                 <ga-immune-resilience-index-scatter></ga-immune-resilience-index-scatter>
               </div>
 
+
+            {:else if selectedComponent === 'biological-age-rank-b2b'}
+              <h2>Biological Age Rank B2B</h2>
+              <p class="note">Percentile graph only — pass <code>percentile</code> (1–99).</p>
+              <div class="demo-section">
+                <div class="demo-box" style="width: 550px; height: 250px;">
+                  <ga-biological-age-rank-b2b></ga-biological-age-rank-b2b>
+                </div>
+              </div>
+
+            {:else if selectedComponent === 'biological-age-rank-indications-b2b'}
+              <h2>Biological Age Rank Indications B2B</h2>
+              <div class="demo-section">
+                <div class="demo-box" style="width: 500px; height: 250px;">
+                  <ga-biological-age-rank-indications-b2b></ga-biological-age-rank-indications-b2b>
+                </div>
+              </div>
+
             {:else if selectedComponent === 'results-overview'}
               <h2>Results Overview</h2>
               <p class="note">Also used in B2B2C and B2C</p>
@@ -1212,6 +1248,24 @@
                     <ga-results-overview type={type} lang="english"></ga-results-overview>
                   </div>
                 {/each}
+              </div>
+
+
+            {:else if selectedComponent === 'biological-age-rank-d2c'}
+              <h2>Biological Age Rank D2C</h2>
+              <p class="note">Percentile graph only — pass <code>percentile</code> (1–99).</p>
+              <div class="demo-section">
+                <div class="demo-box" style="width: 550px; height: 250px;">
+                  <ga-biological-age-rank-d2c></ga-biological-age-rank-d2c>
+                </div>
+              </div>
+
+            {:else if selectedComponent === 'biological-age-rank-indications-d2c'}
+              <h2>Biological Age Rank Indications D2C</h2>
+              <div class="demo-section">
+                <div class="demo-box" style="width: 500px; height: 250px;">
+                  <ga-biological-age-rank-indications-d2c></ga-biological-age-rank-indications-d2c>
+                </div>
               </div>
 
             {:else if selectedComponent === 'single-overview'}
