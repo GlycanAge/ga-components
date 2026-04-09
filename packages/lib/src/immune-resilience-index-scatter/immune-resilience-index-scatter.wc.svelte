@@ -43,7 +43,7 @@
       },
       dataset: [
         {
-          source: scatterData.data.map(item => [item.x, item.y])
+          source: scatterData.data.map(item => [item.CA, item.SS])
         }
       ],
       tooltip: {
@@ -311,8 +311,8 @@
 
     score = Number((g2/g0).toFixed(3));
 
-    filteredData = scatterData.data.filter((item: any) => item.x >= chronoAge - 5 && item.x <= chronoAge + 5);
-    let under = filteredData.filter((item: any) => item.y < score).length;
+    filteredData = scatterData.data.filter((item: any) => item.CA >= chronoAge - 5 && item.CA <= chronoAge + 5);
+    let under = filteredData.filter((item: any) => item.SS < score).length;
     let total = filteredData.length;
     percentile = Math.round((under / total) * 100);
 

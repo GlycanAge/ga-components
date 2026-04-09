@@ -41,7 +41,7 @@
       },
       dataset: [
         {
-          source: ageData.data.map(item => [item.x, item.y])
+          source: ageData.data.map(item => [item.CA, item.GA])
         }
       ],
       tooltip: {
@@ -297,8 +297,8 @@
     chronoAge = Number(reportData.chronologicalage);
     glycanage = Number(reportData.glycanage);
 
-    filteredData = ageData.data.filter((item: any) => item.x >= chronoAge - 5 && item.x <= chronoAge + 5);
-    let under = filteredData.filter((item: any) => item.y < glycanage).length;
+    filteredData = ageData.data.filter((item: any) => item.CA >= chronoAge - 5 && item.CA <= chronoAge + 5);
+    let under = filteredData.filter((item: any) => item.GA < glycanage).length;
     let total = filteredData.length;
     percentile = Math.round((under / total) * 100);
 
