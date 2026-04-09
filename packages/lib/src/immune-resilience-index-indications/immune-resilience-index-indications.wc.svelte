@@ -29,8 +29,8 @@
     r_index = Number(g2/g0);
     let chronoage = Number(reportData.chronologicalage);
 
-    let filteredData = resilienceData.data.filter((item: any) => item.x >= chronoage - 5 && item.x <= chronoage + 5);
-    let under = filteredData.filter((item: any) => item.y < r_index).length;
+    let filteredData = resilienceData.data.filter((item: any) => item.CA >= chronoage - 5 && item.CA <= chronoage + 5);
+    let under = filteredData.filter((item: any) => item.SS < r_index).length;
     let total = filteredData.length;
     percentile = Math.round((under / total) * 100);
 
