@@ -73,10 +73,6 @@
           </svg>
         </div>
 
-        <svg width="10" height="9" viewBox="0 0 10 9" fill="none" xmlns="http://www.w3.org/2000/svg" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, 30%);">
-          <path d="M4.39707 0.25C4.58952 -0.083333 5.07064 -0.0833333 5.26309 0.25L9.59322 7.75C9.78567 8.08333 9.5451 8.5 9.1602 8.5H0.499951C0.115051 8.5 -0.125512 8.08333 0.0669386 7.75L4.39707 0.25Z" fill="#66CCAA"/>
-        </svg>
-
         <div class="text-left" style="width: 34.7%;">
           Better
         </div>
