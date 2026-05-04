@@ -124,7 +124,7 @@
       yAxis: {
         type: 'value',
         min: 0,
-        max: 3.5,
+        max: 3,
         interval: 0.5,
         axisLine: { show: false },
         axisTick: { show: false },
@@ -134,7 +134,7 @@
           opacity: 0.8,
           fontFamily: 'Sen, sans-serif',
           fontSize: 11,
-          formatter: (val: number) => val === 0 || val === 3.5 ? '' : val.toFixed(1)
+          formatter: (val: number) => val === 0 || val === 3 ? '' : val.toFixed(1)
         },
         splitLine: {
           show: true,
