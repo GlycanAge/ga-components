@@ -134,7 +134,7 @@
           opacity: 0.8,
           fontFamily: 'Sen, sans-serif',
           fontSize: 11,
-          formatter: (val: number) => val === 0 ? '' : val.toFixed(1)
+          formatter: (val: number) => val === 0 || val === 4 ? '' : val.toFixed(1)
         },
         splitLine: {
           show: true,
@@ -147,7 +147,8 @@
           data: medianLine,
           symbol: 'none',
           smooth: true,
-          lineStyle: { color: '#09341F', width: 2, opacity: 0.85 },
+          zlevel: 10,
+          lineStyle: { color: '#005566', width: 2, opacity: 0.85 },
           silent: true
         }
       ],
@@ -178,13 +179,13 @@
     option.graphic.push({
       type: 'polygon', zlevel: 5, z: 5,
       shape: { points: bandPoints(p10, p90) },
-      style: { fill: 'rgba(64, 197, 155, 0.18)', stroke: 'none' }
+      style: { fill: '#EEF8F8', stroke: '#D3EBDF', lineWidth: 1 }
     });
     // Inner band: p25 → p75
     option.graphic.push({
       type: 'polygon', zlevel: 6, z: 6,
       shape: { points: bandPoints(p25, p75) },
-      style: { fill: 'rgba(64, 197, 155, 0.30)', stroke: 'none' }
+      style: { fill: '#CDEAED', stroke: '#B3E0D7', lineWidth: 1 }
     });
 
     // Dashed crosshair lines
@@ -297,12 +298,13 @@
     const scoreHolder = document.createElement('div');
     scoreHolder.innerText = `${chronoAge} · ${gender}`;
     scoreHolder.style.position = 'absolute';
-    scoreHolder.style.left = `${chartRect.left + xPixel + 22}px`;
+    scoreHolder.style.left = `${chartRect.left + xPixel + 47}px`;
     scoreHolder.style.top = `${chartRect.top + yPixel - 8}px`;
     scoreHolder.style.font = 'bold 14px Sen, sans-serif';
     scoreHolder.style.color = 'white';
     scoreHolder.style.zIndex = '999';
     scoreHolder.style.whiteSpace = 'nowrap';
+    scoreHolder.style.transform = 'translateX(-50%)';
 
     document.body.appendChild(scoreHolder);
     document.body.appendChild(newSvg);
