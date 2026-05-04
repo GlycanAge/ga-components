@@ -73,6 +73,7 @@
   import '../../../dist/biological-age-rank-b2b.wc.js';
   import '../../../dist/biological-age-rank-d2c.wc.js';
   import '../../../dist/immune-resilience-index.wc.js';
+  import '../../../dist/immune-resilience-index-latest.wc.js';
   import '../../../dist/immune-resilience-index-indications.wc.js';
   import '../../../dist/action-steps-three.wc.js';
   import '../../../dist/action-steps-three-clp.wc.js';
@@ -83,6 +84,7 @@
   import '../../../dist/biological-age-rank-indications-b2b.wc.js';
   import '../../../dist/biological-age-rank-indications-d2c.wc.js';
   import '../../../dist/immune-resilience-index-scatter.wc.js';
+  import '../../../dist/immune-resilience-index-scatter-latest.wc.js';
   import { MockService } from './mock-service';
 
   type ComponentEntry = { id: string; name: string };
@@ -168,7 +170,7 @@
           ]
         },
         {
-          name: 'Medical Report',
+          name: 'Medical Report (Immune resilience index)',
           components: [
             { id: 'biological-age-rank', name: 'Biological Age Rank (used in medical report)' },
             { id: 'biological-age-rank-indications', name: 'Biological Age Rank Indications (used in medical report)' },
@@ -851,12 +853,20 @@
               </div>
 
             {:else if selectedComponent === 'immune-resilience-index'}
-              <h2>Immune Resilience Index</h2>
+              <h2>Immune Resilience Index (v1.0)</h2>
               <div class="demo-section">
                  <div class="demo-box" style="width: 550px; height: 155px;">
                    <ga-immune-resilience-index></ga-immune-resilience-index>
                  </div>
               </div>
+
+              <h2>Immune Resilience Index Latest (v1.1)</h2>
+              <div class="demo-section">
+                <div class="demo-box" style="width: 550px; height: 155px;">
+                  <ga-immune-resilience-index-latest></ga-immune-resilience-index-latest>
+                </div>
+              </div>
+
 
             {:else if selectedComponent === 'immune-resilience-index-indications'}
               <h2>Immune Resilience Index Indications</h2>
@@ -873,9 +883,14 @@
               </div>
 
             {:else if selectedComponent === 'immune-resilience-index-scatter'}
-              <h2>Immune Resilience Index Scatter</h2>
+              <h2>Immune Resilience Index Scatter (v1.0)</h2>
               <div class="demo-box" style="border-radius: 10px; width: 550px; height: 330px;">
                 <ga-immune-resilience-index-scatter></ga-immune-resilience-index-scatter>
+              </div>
+
+              <h2>Immune Resilience Index Scatter Latest (v1.1)</h2>
+              <div class="demo-box" style="border-radius: 10px; width: 550px; height: 330px;">
+                <ga-immune-resilience-index-scatter-latest></ga-immune-resilience-index-scatter-latest>
               </div>
 
 

@@ -78,10 +78,12 @@ export default () => {
   import('./src/biological-age-rank-b2b/biological-age-rank-b2b.wc.svelte');
   import('./src/biological-age-rank-d2c/biological-age-rank-d2c.wc.svelte');
   import('./src/immune-resilience-index/immune-resilience-index.wc.svelte');
+  import('./src/immune-resilience-index-latest/immune-resilience-index-latest.wc.svelte');
   import('./src/immune-resilience-index-indications/immune-resilience-index-indications.wc.svelte');
   import('./src/biological-age-rank-scatter/biological-age-rank-scatter.wc.svelte');
   import('./src/biological-age-rank-indications/biological-age-rank-indications.wc.svelte');
   import('./src/biological-age-rank-indications-b2b/biological-age-rank-indications-b2b.wc.svelte');
   import('./src/biological-age-rank-indications-d2c/biological-age-rank-indications-d2c.wc.svelte');
   import('./src/immune-resilience-index-scatter/immune-resilience-index-scatter.wc.svelte');
+  import('./src/immune-resilience-index-scatter-latest/immune-resilience-index-scatter-latest.wc.svelte');
 };
