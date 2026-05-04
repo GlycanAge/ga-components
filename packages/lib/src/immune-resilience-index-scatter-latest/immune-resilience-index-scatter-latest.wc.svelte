@@ -124,7 +124,7 @@
       yAxis: {
         type: 'value',
         min: 0,
-        max: 4,
+        max: 3.5,
         interval: 0.5,
         axisLine: { show: false },
         axisTick: { show: false },
