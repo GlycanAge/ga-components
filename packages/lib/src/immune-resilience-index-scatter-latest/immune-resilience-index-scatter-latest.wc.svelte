@@ -134,7 +134,7 @@
           opacity: 0.8,
           fontFamily: 'Sen, sans-serif',
           fontSize: 11,
-          formatter: (val: number) => val === 0 || val === 4 ? '' : val.toFixed(1)
+          formatter: (val: number) => val === 0 || val === 3.5 ? '' : val.toFixed(1)
         },
         splitLine: {
           show: true,

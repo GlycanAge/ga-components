@@ -33,6 +33,7 @@ export default () => {
   import('./src/main-result-custom/main-result-custom.wc.svelte');
   import('./src/main-result-custom-clinical/main-result-custom-clinical.wc.svelte');
   import('./src/main-result-three/main-result-three.wc.svelte');
+  import('./src/main-result-three-immune/main-result-three-immune.wc.svelte');
   import('./src/main-result-three-client/main-result-three-client.wc.svelte');
   import('./src/results-overview-three/results-overview-three.wc.svelte');
   import('./src/results-overview-three-clp-ch/results-overview-three-clp-ch.wc.svelte');

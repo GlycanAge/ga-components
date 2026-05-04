@@ -69,6 +69,7 @@
   import '../../../dist/over-time-indexes.wc.js';
   import '../../../dist/over-time-indexes-clp-ch.wc.js';
   import '../../../dist/main-result-three.wc.js';
+  import '../../../dist/main-result-three-immune.wc.js';
   import '../../../dist/biological-age-rank.wc.js';
   import '../../../dist/biological-age-rank-b2b.wc.js';
   import '../../../dist/biological-age-rank-d2c.wc.js';
@@ -815,6 +816,11 @@
               <h2>Main Result Three</h2>
               <div class="demo-box" style="width: 550px;">
                 <ga-main-result-three lang="chinese"></ga-main-result-three>
+              </div>
+
+              <h2>Main Result Three Immune (v1.1)</h2>
+              <div class="demo-box" style="width: 550px; height: 34rem;">
+                <ga-main-result-three-immune lang="chinese"></ga-main-result-three-immune>
               </div>
 
             {:else if selectedComponent === 'main-result-three-client'}
