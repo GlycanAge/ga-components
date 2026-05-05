@@ -104,8 +104,8 @@
       tooltip: { show: false },
       xAxis: {
         type: 'value',
-        min: 15,
-        max: 95,
+        min: 20,
+        max: 80,
         interval: 20,
         axisLine: { show: false },
         axisTick: { show: false },
@@ -124,7 +124,7 @@
       yAxis: {
         type: 'value',
         min: 0,
-        max: 3,
+        max: gender === 'M' ? 2 : 3,
         interval: 0.5,
         axisLine: { show: false },
         axisTick: { show: false },
@@ -222,7 +222,7 @@
     // Horizontal dashed line: from left to chronoAge at score
     {
       const y = chart.convertToPixel('yAxis', score);
-      const xStart = chart.convertToPixel('xAxis', 15);
+      const xStart = chart.convertToPixel('xAxis', 20);
       const xEnd = chart.convertToPixel('xAxis', chronoAge);
       const totalLen = Math.abs(xEnd - xStart);
       let offset = 0;
