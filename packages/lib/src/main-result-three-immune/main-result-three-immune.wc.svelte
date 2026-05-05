@@ -195,12 +195,12 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        min-height: 3.5rem;
+        min-height: 5.2rem;
     }
 
     .slider-pin {
         position: absolute;
-        transform: translate(-50%, .5rem);
+        transform: translate(-50%, .20rem);
         bottom: 0;
     }
 
