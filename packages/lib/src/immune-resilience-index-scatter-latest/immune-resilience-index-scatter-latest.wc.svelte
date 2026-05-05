@@ -37,6 +37,7 @@
   function computeBands(data: any[]) {
     const ageMap: Map<number, number[]> = new Map();
     for (const item of data) {
+      if (item.CA > 80) continue;
       const age = Math.round(item.CA);
       if (!ageMap.has(age)) ageMap.set(age, []);
       ageMap.get(age)!.push(item.SS);

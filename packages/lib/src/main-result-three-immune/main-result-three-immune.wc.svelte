@@ -139,7 +139,7 @@
 
     .glycanage {
         display: flex;
-        font-size: 10rem;
+        font-size: 14rem;
         justify-content: center;
         align-items: center;
         line-height: 1;
@@ -149,7 +149,7 @@
         text-align: center;
         font-size: 1.1rem;
         color: #09341FCC;
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
         padding: 0 1rem;
     }
 
