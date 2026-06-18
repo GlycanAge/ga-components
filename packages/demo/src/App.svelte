@@ -77,6 +77,7 @@
   import '../../../dist/immune-resilience-index-latest.wc.js';
   import '../../../dist/immune-resilience-index-indications.wc.js';
   import '../../../dist/action-steps-three.wc.js';
+  import '../../../dist/action-steps-three-new.wc.js';
   import '../../../dist/action-steps-three-clp.wc.js';
   import '../../../dist/action-steps-three-clp-ch.wc.js';
   import '../../../dist/action-steps-three-client.wc.js';
@@ -246,6 +247,7 @@
           name: 'Action Steps',
           components: [
             { id: 'action-steps-three', name: 'Action Steps Three' },
+            { id: 'action-steps-three-new', name: 'Action Steps Three New' },
             { id: 'action-steps-three-clp', name: 'Action Steps Three CLP' },
             { id: 'action-steps-three-clp-ch', name: 'Action Steps Three CLP CH' },
             { id: 'action-steps-three-client', name: 'Action Steps Three Client' },
@@ -819,7 +821,7 @@
               </div>
 
               <h2>Main Result Three Immune (v1.1)</h2>
-              <div class="demo-box" style="width: 550px; height: 34rem;">
+              <div class="demo-box" style="width: 550px; height: 34rem;w">
                 <ga-main-result-three-immune lang="chinese"></ga-main-result-three-immune>
               </div>
 
@@ -1182,6 +1184,12 @@
               <h2>Action Steps Three</h2>
               <div class="demo-box" style="height: 600px; width: 550px;">
                 <ga-action-steps-three lang="english"></ga-action-steps-three>
+              </div>
+
+            {:else if selectedComponent === 'action-steps-three-new'}
+              <h2>Action Steps Three New</h2>
+              <div class="demo-box" style="height: 600px; width: 550px;">
+                <ga-action-steps-three-new lang="english"></ga-action-steps-three-new>
               </div>
 
             {:else if selectedComponent === 'action-steps-three-clp'}
